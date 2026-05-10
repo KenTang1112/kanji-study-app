@@ -163,6 +163,56 @@ class DataService {
     }
   }
 
+  // Convert selected words to quiz data format
+  convertWordsToQuizData(selectedWords, mode) {
+    switch (mode) {
+      case 'kana-to-kanji':
+        return selectedWords.map(item => ({
+          question: item.reading || '',
+          answer: item.word || item.kanji,
+          meaning: item.meaning || '',
+          vocabulary: item.vocabulary || [],
+          kanji: item.word || item.kanji,
+          reading: item.reading || '',
+          onyomi: item.onyomi || '',
+          relatedKanji: []
+        }));
+      
+      case 'kanji-to-reading':
+        return selectedWords.map(item => ({
+          question: item.word || item.kanji,
+          answer: item.reading || '',
+          meaning: item.meaning || '',
+          vocabulary: item.vocabulary || [],
+          kanji: item.word || item.kanji,
+          reading: item.reading || '',
+          onyomi: item.onyomi || '',
+          relatedKanji: []
+        }));
+      
+      case 'vocabulary-writing':
+        return selectedWords.map(item => ({
+          question: item.meaning || '',
+          answer: item.word,
+          meaning: item.meaning || '',
+          reading: item.reading || '',
+          relatedKanji: item.relatedKanji || []
+        }));
+      
+      case 'vocabulary-reading':
+        return selectedWords.map(item => ({
+          question: item.word,
+          answer: item.reading || '',
+          meaning: item.meaning || '',
+          reading: item.reading || '',
+          relatedKanji: item.relatedKanji || []
+        }));
+      
+      default:
+        return [];
+    }
+  }
+
   // Generate Jisho URL for a word
   getJishoUrl(word) {
     return `https://jisho.org/search/${encodeURIComponent(word)}`;

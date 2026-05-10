@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import HomeScreen from './components/HomeScreen';
 import ChapterSelection from './components/ChapterSelection';
+import WordSelection from './components/WordSelection';
 import QuizEngine from './components/QuizEngine';
 import VocabularyManager from './components/VocabularyManager';
 import FlaggedItemsManager from './components/FlaggedItemsManager';
@@ -11,6 +12,7 @@ function App() {
   const [currentScreen, setCurrentScreen] = useState('home');
   const [selectedMode, setSelectedMode] = useState(null);
   const [selectedChapters, setSelectedChapters] = useState([]);
+  const [selectedWords, setSelectedWords] = useState([]);
 
   const handleModeSelect = (mode) => {
     setSelectedMode(mode);
@@ -19,7 +21,7 @@ function App() {
 
   const handleChaptersSelect = (chapters) => {
     setSelectedChapters(chapters);
-    setCurrentScreen('quiz');
+    setCurrentScreen('word-selection');
   };
 
   const handleBackToHome = () => {
@@ -30,6 +32,15 @@ function App() {
 
   const handleBackToChapters = () => {
     setCurrentScreen('chapters');
+  };
+
+  const handleWordSelection = (words) => {
+    setSelectedWords(words);
+    setCurrentScreen('quiz');
+  };
+
+  const handleBackToWordSelection = () => {
+    setCurrentScreen('word-selection');
   };
 
   const handleManageVocabulary = () => {
@@ -55,13 +66,24 @@ function App() {
           />
         )}
         
+        {currentScreen === 'word-selection' && (
+          <WordSelection
+            mode={selectedMode}
+            selectedChapters={selectedChapters}
+            onBack={handleBackToChapters}
+            onStartQuiz={handleWordSelection}
+          />
+        )}
+        
         {currentScreen === 'quiz' && (
           <ErrorBoundary>
             <QuizEngine
               mode={selectedMode}
               chapters={selectedChapters}
+              selectedWords={selectedWords}
               onBackToHome={handleBackToHome}
               onBackToChapters={handleBackToChapters}
+              onBackToWordSelection={handleBackToWordSelection}
             />
           </ErrorBoundary>
         )}

@@ -3,7 +3,7 @@ import dataService from '../services/dataService';
 import HandwritingCanvas from './HandwritingCanvas';
 import DictionarySection from './DictionarySection';
 
-export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapters }) {
+export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome, onBackToChapters, onBackToWordSelection }) {
   const [cards, setCards] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -27,21 +27,22 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
 
   useEffect(() => {
     initializeSession();
-  }, [mode, chapters]);
+  }, [mode, selectedWords]);
 
   const initializeSession = () => {
     try {
       // Validate inputs
-      if (!mode || !chapters || !Array.isArray(chapters) || chapters.length === 0) {
-        console.error('Invalid mode or chapters:', { mode, chapters });
+      if (!mode || !selectedWords || !Array.isArray(selectedWords) || selectedWords.length === 0) {
+        console.error('Invalid mode or selectedWords:', { mode, selectedWords });
         return;
       }
 
-      const quizData = dataService.getDataForMode(mode, chapters);
+      // Convert selectedWords to quiz data format
+      const quizData = dataService.convertWordsToQuizData(selectedWords, mode);
       
       // Validate quiz data
       if (!quizData || !Array.isArray(quizData) || quizData.length === 0) {
-        console.error('No quiz data available for mode:', mode, 'chapters:', chapters);
+        console.error('No quiz data available for mode:', mode, 'selectedWords:', selectedWords);
         return;
       }
 
@@ -313,6 +314,12 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
               className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
             >
               Study Again
+            </button>
+            <button
+              onClick={onBackToWordSelection}
+              className="px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
+            >
+              Change Words
             </button>
             <button
               onClick={onBackToChapters}
