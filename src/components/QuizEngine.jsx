@@ -73,7 +73,7 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
 
   const handleGrade = (grade) => {
     const isCorrect = grade !== 'wrong';
-    const word = currentQuestion.word;
+    const word = mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji;
     
     // Update weak card score
     dataService.updateWeakCardScore(word, isCorrect);
