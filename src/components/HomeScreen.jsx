@@ -31,7 +31,7 @@ const studyModes = [
   }
 ];
 
-export default function HomeScreen({ onModeSelect, onManageVocabulary }) {
+export default function HomeScreen({ onModeSelect, onManageVocabulary, onManageFlaggedItems }) {
   const [hoveredMode, setHoveredMode] = useState(null);
 
   return (
@@ -72,12 +72,20 @@ export default function HomeScreen({ onModeSelect, onManageVocabulary }) {
       </div>
 
       <div className="mt-8 text-center">
-        <button
-          onClick={onManageVocabulary}
-          className="px-8 py-4 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold text-lg"
-        >
-          📚 Manage Vocabulary
-        </button>
+        <div className="flex gap-4 justify-center">
+          <button
+            onClick={onManageVocabulary}
+            className="px-8 py-4 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold text-lg"
+          >
+            📚 Manage Vocabulary
+          </button>
+          <button
+            onClick={onManageFlaggedItems}
+            className="px-8 py-4 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold text-lg"
+          >
+            🚩 View Flags
+          </button>
+        </div>
       </div>
 
       <div className="mt-12 text-center">
