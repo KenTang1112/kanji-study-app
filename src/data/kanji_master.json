@@ -7,20 +7,6 @@
     "vocabulary": ["循環"]
   },
   {
-    "kanji": "環",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["循環"]
-  },
-  {
-    "kanji": "麻",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["麻酔"]
-  },
-  {
     "kanji": "酔",
     "reading": "",
     "meaning": "",
@@ -28,32 +14,11 @@
     "vocabulary": ["麻酔", "酔う"]
   },
   {
-    "kanji": "皮",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["皮膚"]
-  },
-  {
     "kanji": "膚",
     "reading": "",
     "meaning": "",
     "chapter": 15,
     "vocabulary": ["皮膚"]
-  },
-  {
-    "kanji": "耳",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["耳鼻咽喉科"]
-  },
-  {
-    "kanji": "鼻",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["耳鼻咽喉科"]
   },
   {
     "kanji": "咽",
@@ -67,21 +32,7 @@
     "reading": "",
     "meaning": "",
     "chapter": 15,
-    "vocabulary": ["耳鼻咽喉科", "喉"]
-  },
-  {
-    "kanji": "科",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["耳鼻咽喉科"]
-  },
-  {
-    "kanji": "分",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["分泌", "抗生物質"]
+    "vocabulary": ["喉"]
   },
   {
     "kanji": "泌",
@@ -98,13 +49,6 @@
     "vocabulary": ["泌尿器", "糖尿病"]
   },
   {
-    "kanji": "器",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["泌尿器"]
-  },
-  {
     "kanji": "腫",
     "reading": "",
     "meaning": "",
@@ -116,38 +60,10 @@
     "reading": "",
     "meaning": "",
     "chapter": 15,
-    "vocabulary": ["腫瘍", "潰瘍"]
-  },
-  {
-    "kanji": "潰",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["潰瘍", "潰れる"]
+    "vocabulary": ["潰瘍"]
   },
   {
     "kanji": "抗",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["抗生物質"]
-  },
-  {
-    "kanji": "生",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["抗生物質"]
-  },
-  {
-    "kanji": "物",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["抗生物質"]
-  },
-  {
-    "kanji": "質",
     "reading": "",
     "meaning": "",
     "chapter": 15,
@@ -161,53 +77,11 @@
     "vocabulary": ["鎮痛剤", "鎮める"]
   },
   {
-    "kanji": "痛",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["鎮痛剤"]
-  },
-  {
-    "kanji": "剤",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["鎮痛剤"]
-  },
-  {
-    "kanji": "便",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["便箋", "便宜"]
-  },
-  {
     "kanji": "箋",
     "reading": "",
     "meaning": "",
     "chapter": 15,
     "vocabulary": ["便箋", "処方箋"]
-  },
-  {
-    "kanji": "処",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["処方箋"]
-  },
-  {
-    "kanji": "方",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["処方箋"]
-  },
-  {
-    "kanji": "治",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["治癒"]
   },
   {
     "kanji": "癒",
@@ -224,41 +98,6 @@
     "vocabulary": ["症状", "対症療法"]
   },
   {
-    "kanji": "状",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["症状"]
-  },
-  {
-    "kanji": "対",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["対症療法", "偏見"]
-  },
-  {
-    "kanji": "療",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["対症療法"]
-  },
-  {
-    "kanji": "法",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["対症療法"]
-  },
-  {
-    "kanji": "下",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["下痢", "垂れる"]
-  },
-  {
     "kanji": "痢",
     "reading": "",
     "meaning": "",
@@ -273,28 +112,7 @@
     "vocabulary": ["吐く", "吐き気", "吐露する"]
   },
   {
-    "kanji": "気",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["吐き気", "陰気"]
-  },
-  {
-    "kanji": "露",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["吐露する", "披露", "つゆ"]
-  },
-  {
     "kanji": "睡",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["睡眠"]
-  },
-  {
-    "kanji": "眠",
     "reading": "",
     "meaning": "",
     "chapter": 15,
@@ -308,20 +126,6 @@
     "vocabulary": ["糖尿病"]
   },
   {
-    "kanji": "病",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["糖尿病"]
-  },
-  {
-    "kanji": "脳",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["脳梗塞"]
-  },
-  {
     "kanji": "梗",
     "reading": "",
     "meaning": "",
@@ -333,28 +137,14 @@
     "reading": "",
     "meaning": "",
     "chapter": 15,
-    "vocabulary": ["脳梗塞", "心筋梗塞", "閉塞", "塞ぐ"]
+    "vocabulary": ["閉塞", "塞ぐ"]
   },
   {
-    "kanji": "心",
+    "kanji": "潰",
     "reading": "",
     "meaning": "",
     "chapter": 15,
-    "vocabulary": ["心筋梗塞"]
-  },
-  {
-    "kanji": "筋",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["心筋梗塞"]
-  },
-  {
-    "kanji": "閉",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["閉塞"]
+    "vocabulary": ["潰瘍", "潰れる"]
   },
   {
     "kanji": "妊",
@@ -375,21 +165,7 @@
     "reading": "",
     "meaning": "",
     "chapter": 15,
-    "vocabulary": ["視力", "監視する"]
-  },
-  {
-    "kanji": "力",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
     "vocabulary": ["視力"]
-  },
-  {
-    "kanji": "憂",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["憂鬱"]
   },
   {
     "kanji": "鬱",
@@ -406,20 +182,6 @@
     "vocabulary": ["渇く", "渇水"]
   },
   {
-    "kanji": "水",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["渇水", "洪水"]
-  },
-  {
-    "kanji": "過",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["過剰"]
-  },
-  {
     "kanji": "剰",
     "reading": "",
     "meaning": "",
@@ -434,21 +196,7 @@
     "vocabulary": ["偏見", "偏る"]
   },
   {
-    "kanji": "見",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["偏見"]
-  },
-  {
     "kanji": "胎",
-    "reading": "",
-    "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["胎児"]
-  },
-  {
-    "kanji": "児",
     "reading": "",
     "meaning": "",
     "chapter": 15,
@@ -462,10 +210,871 @@
     "vocabulary": ["矯正"]
   },
   {
-    "kanji": "正",
+    "kanji": "冠",
     "reading": "",
     "meaning": "",
-    "chapter": 15,
-    "vocabulary": ["矯正"]
+    "chapter": 16,
+    "vocabulary": ["冠婚葬祭"]
+  },
+  {
+    "kanji": "葬",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["葬式", "ほうむる"]
+  },
+  {
+    "kanji": "宛",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["宛先"]
+  },
+  {
+    "kanji": "寿",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["寿命", "ことぶき"]
+  },
+  {
+    "kanji": "芳",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["芳名", "かんばしい"]
+  },
+  {
+    "kanji": "丁",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["丁寧"]
+  },
+  {
+    "kanji": "披",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["披露"]
+  },
+  {
+    "kanji": "露",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["披露", "つゆ"]
+  },
+  {
+    "kanji": "宴",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["宴会"]
+  },
+  {
+    "kanji": "喪",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["喪失"]
+  },
+  {
+    "kanji": "郎",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["新郎"]
+  },
+  {
+    "kanji": "婿",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["花婿"]
+  },
+  {
+    "kanji": "嫁",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["嫁", "嫁ぐ"]
+  },
+  {
+    "kanji": "弔",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["弔う"]
+  },
+  {
+    "kanji": "逝",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["逝去"]
+  },
+  {
+    "kanji": "謹",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["謹賀"]
+  },
+  {
+    "kanji": "哀",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["哀悼", "哀しい"]
+  },
+  {
+    "kanji": "悼",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["追悼"]
+  },
+  {
+    "kanji": "冥",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["冥福"]
+  },
+  {
+    "kanji": "啓",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["拝啓"]
+  },
+  {
+    "kanji": "寧",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["丁寧"]
+  },
+  {
+    "kanji": "誠",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["誠実", "誠に"]
+  },
+  {
+    "kanji": "沙",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["ご無沙汰"]
+  },
+  {
+    "kanji": "汰",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["沙汰", "淘汰する"]
+  },
+  {
+    "kanji": "陰",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["陰", "陰気"]
+  },
+  {
+    "kanji": "賜",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["恩賜"]
+  },
+  {
+    "kanji": "悔",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["後悔", "悔いる"]
+  },
+  {
+    "kanji": "忌",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["忌日", "忌む"]
+  },
+  {
+    "kanji": "戚",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["親戚"]
+  },
+  {
+    "kanji": "慶",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["慶祝", "慶び"]
+  },
+  {
+    "kanji": "壱",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["壱万円"]
+  },
+  {
+    "kanji": "弐",
+    "reading": "",
+    "meaning": "",
+    "chapter": 16,
+    "vocabulary": ["弐千円"]
+  },
+  {
+    "kanji": "氾",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["氾濫"]
+  },
+  {
+    "kanji": "濫",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["氾濫"]
+  },
+  {
+    "kanji": "洪",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["洪水"]
+  },
+  {
+    "kanji": "堤",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["堤防"]
+  },
+  {
+    "kanji": "縮",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["縮小する", "縮める", "縮尺"]
+  },
+  {
+    "kanji": "尺",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["縮尺"]
+  },
+  {
+    "kanji": "津",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["津波"]
+  },
+  {
+    "kanji": "襲",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["襲う", "襲撃"]
+  },
+  {
+    "kanji": "噴",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["噴出", "噴火する"]
+  },
+  {
+    "kanji": "雷",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["雷雨", "かみなり"]
+  },
+  {
+    "kanji": "伐",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["伐採する"]
+  },
+  {
+    "kanji": "隠",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["隠居する", "隠れる"]
+  },
+  {
+    "kanji": "響",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["影響", "響き"]
+  },
+  {
+    "kanji": "樹",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["樹木", "樹立する"]
+  },
+  {
+    "kanji": "粘",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["粘性", "粘り強い"]
+  },
+  {
+    "kanji": "駆",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["かける", "駆使する"]
+  },
+  {
+    "kanji": "斉",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["一斉に"]
+  },
+  {
+    "kanji": "貴",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["貴族", "貴重な"]
+  },
+  {
+    "kanji": "懐",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["懐中電灯", "懐かしい"]
+  },
+  {
+    "kanji": "崖",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["断崖", "崖"]
+  },
+  {
+    "kanji": "模",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["模様", "規模"]
+  },
+  {
+    "kanji": "垂",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["垂直", "垂れる"]
+  },
+  {
+    "kanji": "範",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["範囲"]
+  },
+  {
+    "kanji": "瓦",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": []
+  },
+  {
+    "kanji": "霧",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["霧", "濃霧"]
+  },
+  {
+    "kanji": "炎",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["炎上する", "炎"]
+  },
+  {
+    "kanji": "枢",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["中枢"]
+  },
+  {
+    "kanji": "圏",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["首都圏"]
+  },
+  {
+    "kanji": "滝",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": []
+  },
+  {
+    "kanji": "嵐",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": []
+  },
+  {
+    "kanji": "瞬",
+    "reading": "",
+    "meaning": "",
+    "chapter": 17,
+    "vocabulary": ["瞬間", "瞬く"]
+  },
+  {
+    "kanji": "殉",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["殉職する"]
+  },
+  {
+    "kanji": "狙",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["狙う"]
+  },
+  {
+    "kanji": "詐",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["詐欺"]
+  },
+  {
+    "kanji": "欺",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["詐欺", "欺く"]
+  },
+  {
+    "kanji": "架",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["架空", "担架"]
+  },
+  {
+    "kanji": "邦",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["連邦", "邦画"]
+  },
+  {
+    "kanji": "監",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["監視する", "監禁する"]
+  },
+  {
+    "kanji": "拘",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["拘束する"]
+  },
+  {
+    "kanji": "祥",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["不祥事"]
+  },
+  {
+    "kanji": "粛",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["自粛する"]
+  },
+  {
+    "kanji": "虐",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["虐待する", "虐げる"]
+  },
+  {
+    "kanji": "殴",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["殴打する", "殴る"]
+  },
+  {
+    "kanji": "蹴",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["一蹴する", "蹴る"]
+  },
+  {
+    "kanji": "窃",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["窃盗"]
+  },
+  {
+    "kanji": "縛",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["束縛する", "縛る"]
+  },
+  {
+    "kanji": "奪",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["略奪する", "奪う"]
+  },
+  {
+    "kanji": "賄",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["賄賂", "賄う"]
+  },
+  {
+    "kanji": "宜",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["適宜", "便宜"]
+  },
+  {
+    "kanji": "賂",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["賄賂"]
+  },
+  {
+    "kanji": "怨",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["怨恨"]
+  },
+  {
+    "kanji": "恨",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["怨恨", "恨む"]
+  },
+  {
+    "kanji": "踏",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["踏み込む", "踏まえる"]
+  },
+  {
+    "kanji": "砕",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["砕ける"]
+  },
+  {
+    "kanji": "惨",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["悲惨", "惨めな"]
+  },
+  {
+    "kanji": "魔",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["邪魔", "通り魔"]
+  },
+  {
+    "kanji": "俺",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": []
+  },
+  {
+    "kanji": "拉",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["拉致する"]
+  },
+  {
+    "kanji": "脅",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["脅迫する", "脅かす", "脅す"]
+  },
+  {
+    "kanji": "迫",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["迫力", "迫る"]
+  },
+  {
+    "kanji": "痕",
+    "reading": "",
+    "meaning": "",
+    "chapter": 18,
+    "vocabulary": ["血痕", "傷痕"]
+  },
+  {
+    "kanji": "柵",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": []
+  },
+  {
+    "kanji": "墜",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["墜落する"]
+  },
+  {
+    "kanji": "隊",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["兵隊", "隊員"]
+  },
+  {
+    "kanji": "犠",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["犠牲"]
+  },
+  {
+    "kanji": "牲",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["犠牲"]
+  },
+  {
+    "kanji": "裁",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["裁判", "裁く"]
+  },
+  {
+    "kanji": "刑",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["刑罰", "死刑"]
+  },
+  {
+    "kanji": "陥",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["欠陥", "陥る"]
+  },
+  {
+    "kanji": "訴",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["訴訟する", "訴える"]
+  },
+  {
+    "kanji": "訟",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["訴訟する"]
+  },
+  {
+    "kanji": "控",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["控除する", "控える"]
+  },
+  {
+    "kanji": "溺",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["溺愛", "溺れる"]
+  },
+  {
+    "kanji": "扉",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": []
+  },
+  {
+    "kanji": "密",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["秘密", "精密な"]
+  },
+  {
+    "kanji": "衝",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["衝撃", "衝突"]
+  },
+  {
+    "kanji": "遮",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["遮断する", "遮る"]
+  },
+  {
+    "kanji": "繰",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["繰り返す"]
+  },
+  {
+    "kanji": "免",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["免許", "免れる"]
+  },
+  {
+    "kanji": "渋",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["渋滞", "渋い"]
+  },
+  {
+    "kanji": "執",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["執筆する", "執着する"]
+  },
+  {
+    "kanji": "猶",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["執行猶予"]
+  },
+  {
+    "kanji": "囚",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["囚人", "死刑囚"]
+  },
+  {
+    "kanji": "搬",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["運搬する"]
+  },
+  {
+    "kanji": "妨",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["妨害する", "妨げる"]
+  },
+  {
+    "kanji": "廷",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["法廷", "開廷する"]
+  },
+  {
+    "kanji": "傍",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["傍聴する", "傍ら"]
+  },
+  {
+    "kanji": "陪",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["陪審員"]
+  },
+  {
+    "kanji": "憩",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["休憩する"]
+  },
+  {
+    "kanji": "憶",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["記憶する"]
+  },
+  {
+    "kanji": "怠",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["怠惰な", "怠る", "怠ける"]
+  },
+  {
+    "kanji": "隔",
+    "reading": "",
+    "meaning": "",
+    "chapter": 19,
+    "vocabulary": ["隔週", "隔たる", "隔てる"]
   }
 ]
