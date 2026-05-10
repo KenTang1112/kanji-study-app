@@ -8,7 +8,7 @@
   },
   {
     "kanji": "酔",
-    "reading": "よ",
+    "reading": "すい",
     "meaning": "to get drunk, anesthesia",
     "chapter": 15,
     "vocabulary": ["麻酔", "酔う"]
@@ -214,18 +214,18 @@
     "reading": "かん",
     "meaning": "crown, ceremony",
     "chapter": 16,
-    "vocabulary": ["冠婚葬祭"]
+    "vocabulary": ["冠婚葬祭", "冠"]
   },
   {
     "kanji": "葬",
     "reading": "そう",
     "meaning": "funeral, burial",
     "chapter": 16,
-    "vocabulary": ["葬式", "ほうむる"]
+    "vocabulary": ["葬式", "葬る"]
   },
   {
-    "kanji": "宛",
-    "reading": "あて",
+    "kanji": "宛る",
+    "reading": "あてる",
     "meaning": "address, destination",
     "chapter": 16,
     "vocabulary": ["宛先"]
@@ -235,14 +235,14 @@
     "reading": "じゅ",
     "meaning": "longevity, congratulations",
     "chapter": 16,
-    "vocabulary": ["寿命", "ことぶき"]
+    "vocabulary": ["寿命", "寿"]
   },
   {
     "kanji": "芳",
     "reading": "ほう",
     "meaning": "fragrant, reputation",
     "chapter": 16,
-    "vocabulary": ["芳名", "かんばしい"]
+    "vocabulary": ["芳名", "芳しい"]
   },
   {
     "kanji": "丁",
@@ -263,7 +263,7 @@
     "reading": "ろ",
     "meaning": "dew, to disclose",
     "chapter": 16,
-    "vocabulary": ["披露", "つゆ"]
+    "vocabulary": ["披露", "露"]
   },
   {
     "kanji": "宴",
@@ -501,7 +501,7 @@
     "reading": "らい",
     "meaning": "thunder, lightning",
     "chapter": 17,
-    "vocabulary": ["雷雨", "かみなり"]
+    "vocabulary": ["雷雨", "雷"]
   },
   {
     "kanji": "伐",
@@ -543,7 +543,7 @@
     "reading": "く",
     "meaning": "to run, to drive",
     "chapter": 17,
-    "vocabulary": ["かける", "駆使する"]
+    "vocabulary": ["駆ける", "駆使する"]
   },
   {
     "kanji": "斉",
@@ -606,7 +606,7 @@
     "reading": "かわら",
     "meaning": "roof tile",
     "chapter": 17,
-    "vocabulary": []
+    "vocabulary": ["瓦"]
   },
   {
     "kanji": "霧",
@@ -641,14 +641,14 @@
     "reading": "たき",
     "meaning": "waterfall",
     "chapter": 17,
-    "vocabulary": []
+    "vocabulary": ["滝"]
   },
   {
     "kanji": "嵐",
     "reading": "あらし",
     "meaning": "storm, tempest",
     "chapter": 17,
-    "vocabulary": []
+    "vocabulary": ["嵐"]
   },
   {
     "kanji": "瞬",
@@ -665,8 +665,8 @@
     "vocabulary": ["殉職する"]
   },
   {
-    "kanji": "狙",
-    "reading": "ねら",
+    "kanji": "狙う",
+    "reading": "ねらう",
     "meaning": "to aim at, target",
     "chapter": 18,
     "vocabulary": ["狙う"]
@@ -837,7 +837,7 @@
     "reading": "おれ",
     "meaning": "I (masculine)",
     "chapter": 18,
-    "vocabulary": []
+    "vocabulary": ["俺"]
   },
   {
     "kanji": "拉",
