@@ -799,7 +799,7 @@
   },
   {
     "kanji": "踏",
-    "reading": "とう",
+    "reading": "ふむ",
     "meaning": "to step on, to tread",
     "chapter": 18,
     "vocabulary": ["踏み込む", "踏まえる"]
@@ -838,6 +838,20 @@
     "meaning": "to abduct, to pull",
     "chapter": 18,
     "vocabulary": ["拉致する"]
+  },
+  {
+    "kanji": "拐",
+    "reading": "かい",
+    "meaning": "to kidnap, to entice",
+    "chapter": 18,
+    "vocabulary": ["誘拐する"]
+  },
+  {
+    "kanji": "逮",
+    "reading": "たい",
+    "meaning": "to arrest, to capture",
+    "chapter": 18,
+    "vocabulary": ["逮捕する"]
   },
   {
     "kanji": "脅",
