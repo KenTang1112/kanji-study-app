@@ -30,13 +30,6 @@ const studyModes = [
     color: 'bg-orange-500 hover:bg-orange-600'
   },
   {
-    id: 'vocabulary-full',
-    title: 'Vocabulary Practice',
-    description: 'Write kanji and reading for full vocabulary practice',
-    icon: '🎯',
-    color: 'bg-indigo-500 hover:bg-indigo-600'
-  },
-  {
     id: 'self-uploading',
     title: 'Self Uploading',
     description: 'Upload vocabulary with kanji display for everyone',

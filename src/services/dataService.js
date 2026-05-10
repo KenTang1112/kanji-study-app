@@ -130,18 +130,6 @@ class DataService {
           reading: item.reading
         }));
       
-      case 'vocabulary-full':
-        return filteredData.map(item => ({
-          question: item.meaning,
-          answer: item.word,
-          reading: item.reading,
-          meaning: item.meaning,
-          relatedKanji: item.relatedKanji,
-          word: item.word,
-          reading: item.reading,
-          requiresBoth: true // Flag to indicate both kanji and reading input needed
-        }));
-      
       case 'self-uploading':
         return filteredData.map(item => ({
           question: item.meaning,

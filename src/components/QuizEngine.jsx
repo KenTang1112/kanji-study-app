@@ -227,8 +227,7 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
     );
   }
 
-  const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing' || mode === 'vocabulary-full';
-const needsBothInputs = mode === 'vocabulary-full';
+  const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing';
 const showKanji = mode === 'self-uploading';
 
   return (
@@ -325,68 +324,22 @@ const showKanji = mode === 'self-uploading';
                   <div className="text-lg text-gray-600 mb-4">This is a self-uploading card</div>
                   <div className="text-2xl text-gray-700 mb-4">Just study the kanji and reading below</div>
                 </div>
-              ) : needsHandwriting ? (
+              ) : {needsHandwriting ? (
                 <div>
                   <div className="text-lg text-gray-600 mb-4">Write your answer:</div>
-                  {needsBothInputs ? (
-                    <div className="space-y-4">
-                      <div>
-                        <div className="text-lg text-gray-600 mb-2">Write kanji:</div>
-                        <HandwritingCanvas ref={handwritingRef} />
-                      </div>
-                      <div>
-                        <div className="text-lg text-gray-600 mb-2">Type reading:</div>
-                        <input
-                          type="text"
-                          value={userAnswer}
-                          onChange={(e) => setUserAnswer(e.target.value)}
-                          className="w-full max-w-md mx-auto block px-4 py-3 text-2xl text-center border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
-                          placeholder="Enter reading (ひらがな)..."
-                          autoFocus
-                        />
-                      </div>
-                    </div>
-                  ) : (
-                    <HandwritingCanvas ref={handwritingRef} />
-                  )}
+                  <HandwritingCanvas ref={handwritingRef} />
                 </div>
               ) : (
                 <div>
                   <div className="text-lg text-gray-600 mb-4">Type your answer:</div>
-                  {needsBothInputs ? (
-                    <div className="space-y-4">
-                      <div>
-                        <div className="text-lg text-gray-600 mb-2">Type kanji:</div>
-                        <input
-                          type="text"
-                          value={userAnswer}
-                          onChange={(e) => setUserAnswer(e.target.value)}
-                          className="w-full max-w-md mx-auto block px-4 py-3 text-2xl text-center border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
-                          placeholder="Enter kanji (漢字)..."
-                          autoFocus
-                        />
-                      </div>
-                      <div>
-                        <div className="text-lg text-gray-600 mb-2">Type reading:</div>
-                        <input
-                          type="text"
-                          value={userAnswer}
-                          onChange={(e) => setUserAnswer(e.target.value)}
-                          className="w-full max-w-md mx-auto block px-4 py-3 text-2xl text-center border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
-                          placeholder="Enter reading (ひらがな)..."
-                        />
-                      </div>
-                    </div>
-                  ) : (
-                    <input
-                      type="text"
-                      value={userAnswer}
-                      onChange={(e) => setUserAnswer(e.target.value)}
-                      className="w-full max-w-md mx-auto block px-4 py-3 text-2xl text-center border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
-                      placeholder="Enter your answer..."
-                      autoFocus
-                    />
-                  )}
+                  <input
+                    type="text"
+                    value={userAnswer}
+                    onChange={(e) => setUserAnswer(e.target.value)}
+                    className="w-full max-w-md mx-auto block px-4 py-3 text-2xl text-center border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                    placeholder="Enter your answer..."
+                    autoFocus
+                  />
                 </div>
               )}
               
@@ -414,26 +367,6 @@ const showKanji = mode === 'self-uploading';
                       <div>
                         <span className="text-gray-600">Reading: </span>
                         <span className="text-xl">{currentQuestion.reading}</span>
-                      </div>
-                    </div>
-                  ) : needsBothInputs ? (
-                    <div className="space-y-2">
-                      <div>
-                        <span className="text-gray-600">Kanji: </span>
-                        {needsHandwriting ? (
-                          handwritingImage ? (
-                            <img 
-                              src={handwritingImage} 
-                              alt="Your handwritten kanji"
-                              className="max-w-xs mx-auto border border-gray-300 rounded-lg shadow-sm inline-block"
-                              style={{ maxHeight: '150px' }}
-                            />
-                          ) : '(No drawing)'
-                        ) : (userAnswer || '(Not entered)')}
-                      </div>
-                      <div>
-                        <span className="text-gray-600">Reading: </span>
-                        <span>{userAnswer || '(Not entered)'}</span>
                       </div>
                     </div>
                   ) : needsHandwriting ? (
