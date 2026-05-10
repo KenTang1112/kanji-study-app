@@ -28,13 +28,6 @@ const studyModes = [
     description: 'Given vocabulary, show reading and meaning',
     icon: '📚',
     color: 'bg-orange-500 hover:bg-orange-600'
-  },
-  {
-    id: 'manage-vocabulary',
-    title: 'Manage Vocabulary',
-    description: 'Add, edit, and manage vocabulary',
-    icon: '�',
-    color: 'bg-pink-500 hover:bg-pink-600'
   }
 ];
 

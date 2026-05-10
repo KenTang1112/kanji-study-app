@@ -1,0 +1,471 @@
+[
+  {
+    "kanji": "循",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["循環"]
+  },
+  {
+    "kanji": "環",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["循環"]
+  },
+  {
+    "kanji": "麻",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["麻酔"]
+  },
+  {
+    "kanji": "酔",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["麻酔", "酔う"]
+  },
+  {
+    "kanji": "皮",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["皮膚"]
+  },
+  {
+    "kanji": "膚",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["皮膚"]
+  },
+  {
+    "kanji": "耳",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["耳鼻咽喉科"]
+  },
+  {
+    "kanji": "鼻",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["耳鼻咽喉科"]
+  },
+  {
+    "kanji": "咽",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["耳鼻咽喉科"]
+  },
+  {
+    "kanji": "喉",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["耳鼻咽喉科", "喉"]
+  },
+  {
+    "kanji": "科",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["耳鼻咽喉科"]
+  },
+  {
+    "kanji": "分",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["分泌", "抗生物質"]
+  },
+  {
+    "kanji": "泌",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["分泌", "泌尿器"]
+  },
+  {
+    "kanji": "尿",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["泌尿器", "糖尿病"]
+  },
+  {
+    "kanji": "器",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["泌尿器"]
+  },
+  {
+    "kanji": "腫",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["腫れる", "腫瘍"]
+  },
+  {
+    "kanji": "瘍",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["腫瘍", "潰瘍"]
+  },
+  {
+    "kanji": "潰",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["潰瘍", "潰れる"]
+  },
+  {
+    "kanji": "抗",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["抗生物質"]
+  },
+  {
+    "kanji": "生",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["抗生物質"]
+  },
+  {
+    "kanji": "物",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["抗生物質"]
+  },
+  {
+    "kanji": "質",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["抗生物質"]
+  },
+  {
+    "kanji": "鎮",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["鎮痛剤", "鎮める"]
+  },
+  {
+    "kanji": "痛",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["鎮痛剤"]
+  },
+  {
+    "kanji": "剤",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["鎮痛剤"]
+  },
+  {
+    "kanji": "便",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["便箋", "便宜"]
+  },
+  {
+    "kanji": "箋",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["便箋", "処方箋"]
+  },
+  {
+    "kanji": "処",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["処方箋"]
+  },
+  {
+    "kanji": "方",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["処方箋"]
+  },
+  {
+    "kanji": "治",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["治癒"]
+  },
+  {
+    "kanji": "癒",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["治癒", "癒す"]
+  },
+  {
+    "kanji": "症",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["症状", "対症療法"]
+  },
+  {
+    "kanji": "状",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["症状"]
+  },
+  {
+    "kanji": "対",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["対症療法", "偏見"]
+  },
+  {
+    "kanji": "療",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["対症療法"]
+  },
+  {
+    "kanji": "法",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["対症療法"]
+  },
+  {
+    "kanji": "下",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["下痢", "垂れる"]
+  },
+  {
+    "kanji": "痢",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["下痢"]
+  },
+  {
+    "kanji": "吐",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["吐く", "吐き気", "吐露する"]
+  },
+  {
+    "kanji": "気",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["吐き気", "陰気"]
+  },
+  {
+    "kanji": "露",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["吐露する", "披露", "つゆ"]
+  },
+  {
+    "kanji": "睡",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["睡眠"]
+  },
+  {
+    "kanji": "眠",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["睡眠"]
+  },
+  {
+    "kanji": "糖",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["糖尿病"]
+  },
+  {
+    "kanji": "病",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["糖尿病"]
+  },
+  {
+    "kanji": "脳",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["脳梗塞"]
+  },
+  {
+    "kanji": "梗",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["脳梗塞", "心筋梗塞"]
+  },
+  {
+    "kanji": "塞",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["脳梗塞", "心筋梗塞", "閉塞", "塞ぐ"]
+  },
+  {
+    "kanji": "心",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["心筋梗塞"]
+  },
+  {
+    "kanji": "筋",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["心筋梗塞"]
+  },
+  {
+    "kanji": "閉",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["閉塞"]
+  },
+  {
+    "kanji": "妊",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["妊娠"]
+  },
+  {
+    "kanji": "娠",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["妊娠"]
+  },
+  {
+    "kanji": "視",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["視力", "監視する"]
+  },
+  {
+    "kanji": "力",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["視力"]
+  },
+  {
+    "kanji": "憂",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["憂鬱"]
+  },
+  {
+    "kanji": "鬱",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["憂鬱"]
+  },
+  {
+    "kanji": "渇",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["渇く", "渇水"]
+  },
+  {
+    "kanji": "水",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["渇水", "洪水"]
+  },
+  {
+    "kanji": "過",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["過剰"]
+  },
+  {
+    "kanji": "剰",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["過剰"]
+  },
+  {
+    "kanji": "偏",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["偏見", "偏る"]
+  },
+  {
+    "kanji": "見",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["偏見"]
+  },
+  {
+    "kanji": "胎",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["胎児"]
+  },
+  {
+    "kanji": "児",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["胎児"]
+  },
+  {
+    "kanji": "矯",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["矯正"]
+  },
+  {
+    "kanji": "正",
+    "reading": "",
+    "meaning": "",
+    "chapter": 15,
+    "vocabulary": ["矯正"]
+  }
+]

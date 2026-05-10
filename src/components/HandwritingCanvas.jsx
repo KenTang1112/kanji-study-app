@@ -135,15 +135,36 @@ const HandwritingCanvas = forwardRef((props, ref) => {
     }
   }));
 
+  const handleClear = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  };
+
   return (
     <div className="flex flex-col items-center">
       <canvas
         ref={canvasRef}
         className="handwriting-canvas border-2 border-gray-300 rounded-lg bg-white"
-        style={{ width: '300px', height: '200px', touchAction: 'none' }}
+        style={{ 
+          width: '300px', 
+          height: '200px', 
+          touchAction: 'none',
+          cursor: 'crosshair'
+        }}
       />
+      <button
+        onClick={handleClear}
+        className="mt-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm font-medium"
+      >
+        Clear
+      </button>
       <div className="mt-2 text-sm text-gray-500">
-        Use mouse or touch to write
+        Use mouse, touch, or Apple Pencil to write
       </div>
     </div>
   );

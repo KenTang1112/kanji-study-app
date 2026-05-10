@@ -1,8 +1,10 @@
-import kanjiVocabCh15_19 from '../data/kanji_vocab_ch15_19.json';
+import kanjiMaster from '../data/kanji_master.json';
+import vocabMaster from '../data/vocab_master.json';
 
 class DataService {
   constructor() {
-    this.baseData = kanjiVocabCh15_19;
+    this.kanjiData = kanjiMaster;
+    this.vocabData = vocabMaster;
     this.loadUserVocabulary();
     this.loadWeakCards();
   }
@@ -17,7 +19,8 @@ class DataService {
   loadUserVocabulary() {
     const stored = localStorage.getItem('userVocabulary');
     const userVocab = stored ? JSON.parse(stored) : [];
-    this.allData = [...this.baseData, ...userVocab];
+    this.userKanjiData = userVocab.filter(item => item.type === 'kanji') || [];
+    this.userVocabData = userVocab.filter(item => item.type === 'vocab') || [];
   }
 
   // Save weak cards to localStorage
@@ -32,13 +35,28 @@ class DataService {
 
   // Get all available chapters
   getAvailableChapters() {
-    const chapters = [...new Set(this.allData.map(item => item.chapter))];
-    return chapters.sort((a, b) => a - b);
+    const kanjiChapters = this.kanjiData.map(item => item.chapter);
+    const vocabChapters = this.vocabData.map(item => item.chapter);
+    const userKanjiChapters = this.userKanjiData.map(item => item.chapter);
+    const userVocabChapters = this.userVocabData.map(item => item.chapter);
+    
+    const allChapters = [...kanjiChapters, ...vocabChapters, ...userKanjiChapters, ...userVocabChapters];
+    const uniqueChapters = [...new Set(allChapters)];
+    return uniqueChapters.sort((a, b) => a - b);
   }
 
-  // Filter data by selected chapters
-  filterByChapters(chapters) {
-    return this.allData.filter(item => chapters.includes(item.chapter));
+  // Filter kanji data by selected chapters
+  filterKanjiByChapters(chapters) {
+    const baseKanji = this.kanjiData.filter(item => chapters.includes(item.chapter));
+    const userKanji = this.userKanjiData.filter(item => chapters.includes(item.chapter));
+    return [...baseKanji, ...userKanji];
+  }
+
+  // Filter vocabulary data by selected chapters
+  filterVocabByChapters(chapters) {
+    const baseVocab = this.vocabData.filter(item => chapters.includes(item.chapter));
+    const userVocab = this.userVocabData.filter(item => chapters.includes(item.chapter));
+    return [...baseVocab, ...userVocab];
   }
 
   // Shuffle array using Fisher-Yates algorithm
@@ -56,72 +74,79 @@ class DataService {
     return this.weakCards[word] || 0;
   }
 
-  // Update weak card score
-  updateWeakCardScore(word, isCorrect) {
-    if (!this.weakCards[word]) {
-      this.weakCards[word] = 0;
-    }
+  // Update weak card scores
+  updateWeakCardScores(correct, wrong) {
+    correct.forEach(word => {
+      this.weakCards[word] = Math.max(0, (this.weakCards[word] || 0) - 1);
+    });
     
-    if (isCorrect) {
-      this.weakCards[word] = Math.max(0, this.weakCards[word] - 1);
-    } else {
-      this.weakCards[word] = Math.min(10, this.weakCards[word] + 2);
-    }
+    wrong.forEach(word => {
+      this.weakCards[word] = (this.weakCards[word] || 0) + 2;
+    });
     
     this.saveWeakCards();
   }
 
-  // Generate quiz session with weak card prioritization
-  generateSession(chapters, sessionSize = 20) {
-    const filteredData = this.filterByChapters(chapters);
+  // Generate session with wrong cards prioritized
+  generateSession(cards, wrongCards) {
+    let sessionCards = [...cards];
     
-    // Sort by weak card score (weaker cards first)
-    const sortedByWeakness = filteredData.sort((a, b) => 
-      this.getWeakCardScore(b.word) - this.getWeakCardScore(a.word)
-    );
-
-    // Take top cards based on weakness, then shuffle
-    const sessionCards = sortedByWeakness.slice(0, sessionSize);
-    return this.shuffleArray(sessionCards);
+    // Add wrong cards to the beginning of the session
+    if (wrongCards.length > 0) {
+      const wrongCardObjects = wrongCards.map(card => 
+        cards.find(c => c.word === card || c.kanji === card)
+      ).filter(Boolean);
+      
+      // Remove wrong cards from original position and add to front
+      sessionCards = sessionCards.filter(card => 
+        !wrongCards.includes(card.word) && !wrongCards.includes(card.kanji)
+      );
+      sessionCards = [...wrongCardObjects, ...sessionCards];
+    }
+    
+    return sessionCards;
   }
 
   // Get data for specific study mode
   getDataForMode(mode, chapters) {
-    const filteredData = this.filterByChapters(chapters);
-    
     switch (mode) {
       case 'kana-to-kanji':
-        return filteredData.map(item => ({
-          question: item.reading,
-          answer: item.word,
-          meaning: item.meaning,
-          relatedKanji: item.relatedKanji,
-          word: item.word,
-          reading: item.reading
+        const kanjiData = this.filterKanjiByChapters(chapters);
+        return kanjiData.map(item => ({
+          question: item.reading || '', // Will be filled with actual reading later
+          answer: item.kanji,
+          meaning: item.meaning || '',
+          vocabulary: item.vocabulary || [],
+          kanji: item.kanji,
+          reading: item.reading || ''
         }));
       
       case 'kanji-to-reading':
-        return filteredData.map(item => ({
-          question: item.word,
-          answer: item.reading,
-          meaning: item.meaning,
-          relatedKanji: item.relatedKanji,
-          word: item.word,
-          reading: item.reading
+        const kanjiForReading = this.filterKanjiByChapters(chapters);
+        return kanjiForReading.map(item => ({
+          question: item.kanji,
+          answer: item.reading || '', // Will be filled with actual reading later
+          meaning: item.meaning || '',
+          vocabulary: item.vocabulary || [],
+          kanji: item.kanji,
+          reading: item.reading || ''
         }));
       
       case 'vocabulary-writing':
-        return filteredData.map(item => ({
+        const vocabForWriting = this.filterVocabByChapters(chapters);
+        return vocabForWriting.map(item => ({
           question: item.meaning,
           answer: item.word,
           reading: item.reading,
+          meaning: item.meaning,
           relatedKanji: item.relatedKanji,
           word: item.word,
           reading: item.reading
         }));
       
       case 'vocabulary-reading':
-        return filteredData.map(item => ({
+        const vocabForReading = this.filterVocabByChapters(chapters);
+        return vocabForReading.map(item => ({
           question: item.word,
           answer: item.reading,
           meaning: item.meaning,
@@ -130,20 +155,8 @@ class DataService {
           reading: item.reading
         }));
       
-      case 'self-uploading':
-        return filteredData.map(item => ({
-          question: item.meaning,
-          answer: item.word,
-          reading: item.reading,
-          meaning: item.meaning,
-          relatedKanji: item.relatedKanji,
-          word: item.word,
-          reading: item.reading,
-          showKanji: true // Flag to display kanji prominently
-        }));
-      
       default:
-        return filteredData;
+        return [];
     }
   }
 

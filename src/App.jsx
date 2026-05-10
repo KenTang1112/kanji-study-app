@@ -58,7 +58,7 @@ function App() {
           />
         )}
         
-        {currentScreen === 'manage-vocabulary' && (
+        {currentScreen === 'vocabulary-manager' && (
           <VocabularyManager onBack={handleBackToHome} />
         )}
       </div>

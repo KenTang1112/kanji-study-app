@@ -1,0 +1,289 @@
+[
+  {
+    "word": "循環",
+    "reading": "じゅんかん",
+    "meaning": "circulation",
+    "chapter": 15,
+    "relatedKanji": ["循"]
+  },
+  {
+    "word": "麻酔",
+    "reading": "ますい",
+    "meaning": "anesthesia",
+    "chapter": 15,
+    "relatedKanji": ["麻", "酔"]
+  },
+  {
+    "word": "酔う",
+    "reading": "よう",
+    "meaning": "to get drunk",
+    "chapter": 15,
+    "relatedKanji": ["酔"]
+  },
+  {
+    "word": "皮膚",
+    "reading": "ひふ",
+    "meaning": "skin",
+    "chapter": 15,
+    "relatedKanji": ["皮"]
+  },
+  {
+    "word": "耳鼻咽喉科",
+    "reading": "じびいんこうか",
+    "meaning": "ENT department",
+    "chapter": 15,
+    "relatedKanji": ["耳", "鼻", "咽", "喉", "科"]
+  },
+  {
+    "word": "喉",
+    "reading": "のど",
+    "meaning": "throat",
+    "chapter": 15,
+    "relatedKanji": ["喉"]
+  },
+  {
+    "word": "分泌",
+    "reading": "ぶんぴつ",
+    "meaning": "secretion",
+    "chapter": 15,
+    "relatedKanji": ["分", "泌"]
+  },
+  {
+    "word": "泌尿器",
+    "reading": "ひにょうき",
+    "meaning": "urinary organs",
+    "chapter": 15,
+    "relatedKanji": ["泌", "尿", "器"]
+  },
+  {
+    "word": "腫れる",
+    "reading": "はれる",
+    "meaning": "to swell",
+    "chapter": 15,
+    "relatedKanji": ["腫"]
+  },
+  {
+    "word": "腫瘍",
+    "reading": "しゅよう",
+    "meaning": "tumor",
+    "chapter": 15,
+    "relatedKanji": ["腫", "瘍"]
+  },
+  {
+    "word": "潰瘍",
+    "reading": "かいよう",
+    "meaning": "ulcer",
+    "chapter": 15,
+    "relatedKanji": ["潰", "瘍"]
+  },
+  {
+    "word": "抗生物質",
+    "reading": "こうせいぶっしつ",
+    "meaning": "antibiotics",
+    "chapter": 15,
+    "relatedKanji": ["抗", "生", "物", "質"]
+  },
+  {
+    "word": "鎮痛剤",
+    "reading": "ちんつうざい",
+    "meaning": "painkiller",
+    "chapter": 15,
+    "relatedKanji": ["鎮", "痛", "剤"]
+  },
+  {
+    "word": "鎮める",
+    "reading": "しずめる",
+    "meaning": "to calm down",
+    "chapter": 15,
+    "relatedKanji": ["鎮"]
+  },
+  {
+    "word": "便箋",
+    "reading": "びんせん",
+    "meaning": "writing paper",
+    "chapter": 15,
+    "relatedKanji": ["便", "箋"]
+  },
+  {
+    "word": "処方箋",
+    "reading": "しょほうせん",
+    "meaning": "prescription",
+    "chapter": 15,
+    "relatedKanji": ["処", "方", "箋"]
+  },
+  {
+    "word": "治癒",
+    "reading": "ちゆ",
+    "meaning": "healing",
+    "chapter": 15,
+    "relatedKanji": ["治", "癒"]
+  },
+  {
+    "word": "癒す",
+    "reading": "いやす",
+    "meaning": "to heal",
+    "chapter": 15,
+    "relatedKanji": ["癒"]
+  },
+  {
+    "word": "症状",
+    "reading": "しょうじょう",
+    "meaning": "symptoms",
+    "chapter": 15,
+    "relatedKanji": ["症", "状"]
+  },
+  {
+    "word": "対症療法",
+    "reading": "たいしょうりょうほう",
+    "meaning": "symptomatic treatment",
+    "chapter": 15,
+    "relatedKanji": ["対", "症", "療", "法"]
+  },
+  {
+    "word": "下痢",
+    "reading": "げり",
+    "meaning": "diarrhea",
+    "chapter": 15,
+    "relatedKanji": ["下", "痢"]
+  },
+  {
+    "word": "吐く",
+    "reading": "はく",
+    "meaning": "to vomit",
+    "chapter": 15,
+    "relatedKanji": ["吐"]
+  },
+  {
+    "word": "吐き気",
+    "reading": "はきけ",
+    "meaning": "nausea",
+    "chapter": 15,
+    "relatedKanji": ["吐", "気"]
+  },
+  {
+    "word": "吐露する",
+    "reading": "とろする",
+    "meaning": "to disclose",
+    "chapter": 15,
+    "relatedKanji": ["吐", "露"]
+  },
+  {
+    "word": "睡眠",
+    "reading": "すいみん",
+    "meaning": "sleep",
+    "chapter": 15,
+    "relatedKanji": ["睡", "眠"]
+  },
+  {
+    "word": "糖尿病",
+    "reading": "とうにょうびょう",
+    "meaning": "diabetes",
+    "chapter": 15,
+    "relatedKanji": ["糖", "尿", "病"]
+  },
+  {
+    "word": "脳梗塞",
+    "reading": "のうこうそく",
+    "meaning": "cerebral infarction",
+    "chapter": 15,
+    "relatedKanji": ["脳", "梗", "塞"]
+  },
+  {
+    "word": "心筋梗塞",
+    "reading": "しんきんこうそく",
+    "meaning": "heart attack",
+    "chapter": 15,
+    "relatedKanji": ["心", "筋", "梗", "塞"]
+  },
+  {
+    "word": "閉塞",
+    "reading": "へいそく",
+    "meaning": "blockage",
+    "chapter": 15,
+    "relatedKanji": ["閉", "塞"]
+  },
+  {
+    "word": "塞ぐ",
+    "reading": "ふさぐ",
+    "meaning": "to block",
+    "chapter": 15,
+    "relatedKanji": ["塞"]
+  },
+  {
+    "word": "潰れる",
+    "reading": "つぶれる",
+    "meaning": "to collapse",
+    "chapter": 15,
+    "relatedKanji": ["潰"]
+  },
+  {
+    "word": "妊娠",
+    "reading": "にんしん",
+    "meaning": "pregnancy",
+    "chapter": 15,
+    "relatedKanji": ["妊", "娠"]
+  },
+  {
+    "word": "視力",
+    "reading": "しりょく",
+    "meaning": "eyesight",
+    "chapter": 15,
+    "relatedKanji": ["視", "力"]
+  },
+  {
+    "word": "憂鬱",
+    "reading": "ゆううつ",
+    "meaning": "depression",
+    "chapter": 15,
+    "relatedKanji": ["憂", "鬱"]
+  },
+  {
+    "word": "渇く",
+    "reading": "かわく",
+    "meaning": "to be thirsty",
+    "chapter": 15,
+    "relatedKanji": ["渇"]
+  },
+  {
+    "word": "渇水",
+    "reading": "かっすい",
+    "meaning": "water shortage",
+    "chapter": 15,
+    "relatedKanji": ["渇", "水"]
+  },
+  {
+    "word": "過剰",
+    "reading": "かじょう",
+    "meaning": "excessive",
+    "chapter": 15,
+    "relatedKanji": ["過", "剰"]
+  },
+  {
+    "word": "偏見",
+    "reading": "へんけん",
+    "meaning": "prejudice",
+    "chapter": 15,
+    "relatedKanji": ["偏", "見"]
+  },
+  {
+    "word": "偏る",
+    "reading": "かたよる",
+    "meaning": "to be biased",
+    "chapter": 15,
+    "relatedKanji": ["偏"]
+  },
+  {
+    "word": "胎児",
+    "reading": "たいじ",
+    "meaning": "fetus",
+    "chapter": 15,
+    "relatedKanji": ["胎", "児"]
+  },
+  {
+    "word": "矯正",
+    "reading": "きょうせい",
+    "meaning": "correction",
+    "chapter": 15,
+    "relatedKanji": ["矯", "正"]
+  }
+]
