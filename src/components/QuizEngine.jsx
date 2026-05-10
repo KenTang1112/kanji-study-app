@@ -21,6 +21,8 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
   const [wrongCards, setWrongCards] = useState([]);
   const [sessionComplete, setSessionComplete] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [showFlagModal, setShowFlagModal] = useState(false);
+  const [flagReason, setFlagReason] = useState('');
   const handwritingRef = useRef(null);
 
   useEffect(() => {
@@ -97,6 +99,42 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
 
     // Move to next card
     moveToNextCard();
+  };
+
+  const handleFlagItem = () => {
+    setShowFlagModal(true);
+    setFlagReason('');
+  };
+
+  const handleFlagSubmit = () => {
+    if (!flagReason.trim()) {
+      alert('Please select a reason for flagging this item');
+      return;
+    }
+
+    const itemToFlag = {
+      word: mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji,
+      reading: currentQuestion.reading,
+      meaning: currentQuestion.meaning,
+      chapter: currentQuestion.chapter,
+      mode: mode,
+      reason: flagReason,
+      timestamp: new Date().toISOString(),
+      id: `${mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji}-${mode}-${Date.now()}`
+    };
+
+    // Get existing flagged items
+    const stored = localStorage.getItem('flaggedItems');
+    const flaggedItems = stored ? JSON.parse(stored) : [];
+    
+    // Add new flagged item
+    flaggedItems.push(itemToFlag);
+    localStorage.setItem('flaggedItems', JSON.stringify(flaggedItems));
+
+    // Close modal and show confirmation
+    setShowFlagModal(false);
+    setFlagReason('');
+    alert('Item has been flagged for review. Thank you for helping improve the quality!');
   };
 
   const moveToNextCard = () => {
@@ -530,11 +568,75 @@ const showKanji = mode === 'self-uploading';
                     Wrong
                   </button>
                 </div>
+                
+                {/* Flag Button */}
+                <div className="mt-4 text-center">
+                  <button
+                    onClick={() => handleFlagItem()}
+                    className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors text-sm font-medium"
+                  >
+                    🚩 Flag as Incorrect
+                  </button>
+                </div>
               </div>
             </div>
           )}
         </div>
       </div>
+    {/* Flag Confirmation Modal */}
+      {showFlagModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-lg p-6 max-w-md mx-4">
+            <h3 className="text-xl font-bold text-gray-800 mb-4">Flag as Incorrect</h3>
+            
+            <div className="mb-4">
+              <p className="text-sm text-gray-600 mb-2">
+                Item: {mode.includes('vocabulary') ? currentQuestion?.word : currentQuestion?.kanji}
+              </p>
+              <p className="text-sm text-gray-600">
+                Reading: {currentQuestion?.reading}
+              </p>
+              <p className="text-sm text-gray-600">
+                Meaning: {currentQuestion?.meaning}
+              </p>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Reason for flagging:
+              </label>
+              <select
+                value={flagReason}
+                onChange={(e) => setFlagReason(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="">Select a reason...</option>
+                <option value="wrong-reading">Incorrect reading</option>
+                <option value="wrong-meaning">Incorrect meaning</option>
+                <option value="wrong-kanji">Incorrect kanji</option>
+                <option value="typo">Typo or error</option>
+                <option value="outdated">Outdated information</option>
+                <option value="other">Other issue</option>
+              </select>
+            </div>
+
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setShowFlagModal(false)}
+                className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleFlagSubmit}
+                className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+              >
+                Flag Item
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
