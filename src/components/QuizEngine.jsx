@@ -426,7 +426,7 @@ const showKanji = mode === 'self-uploading';
                 onClick={() => handleShowHint('kanji')}
                 className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
               >
-                Show Related Kanji
+                {mode === 'kana-to-kanji' ? 'Show Full Reading' : 'Show Related Kanji'}
               </button>
             </div>
 
@@ -443,12 +443,15 @@ const showKanji = mode === 'self-uploading';
                 {hintType === 'kanji' && (
                   <div>
                     <div className="text-sm text-gray-600 mb-2">
-                      {mode.includes('vocabulary') ? 'Related Kanji:' : 'Example Vocabulary:'}
+                      {mode.includes('vocabulary') ? 'Related Kanji:' : 
+                       mode === 'kana-to-kanji' ? 'Full Reading:' : 'Example Vocabulary:'}
                     </div>
                     <div className="text-2xl font-bold text-gray-800">
                       {mode.includes('vocabulary') 
                         ? (currentQuestion?.relatedKanji || []).join(' • ') || 'No related kanji'
-                        : (currentQuestion?.vocabulary || []).join(' • ') || 'No example vocabulary'
+                        : mode === 'kana-to-kanji' 
+                          ? currentQuestion?.question || 'No reading available'
+                          : (currentQuestion?.vocabulary || []).join(' • ') || 'No example vocabulary'
                       }
                     </div>
                   </div>
