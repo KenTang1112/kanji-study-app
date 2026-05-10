@@ -28,13 +28,29 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
   }, [mode, chapters]);
 
   const initializeSession = () => {
-    const sessionCards = dataService.generateSession(chapters);
-    const quizData = dataService.getDataForMode(mode, chapters);
-    const shuffledCards = dataService.shuffleArray(quizData).slice(0, sessionCards.length);
-    
-    setCards(shuffledCards);
-    setCurrentQuestion(shuffledCards[0]);
-    setSessionStats(prev => ({ ...prev, total: shuffledCards.length }));
+    try {
+      // Validate inputs
+      if (!mode || !chapters || !Array.isArray(chapters) || chapters.length === 0) {
+        console.error('Invalid mode or chapters:', { mode, chapters });
+        return;
+      }
+
+      const quizData = dataService.getDataForMode(mode, chapters);
+      
+      // Validate quiz data
+      if (!quizData || !Array.isArray(quizData) || quizData.length === 0) {
+        console.error('No quiz data available for mode:', mode, 'chapters:', chapters);
+        return;
+      }
+
+      const shuffledCards = dataService.shuffleArray(quizData);
+      
+      setCards(shuffledCards);
+      setCurrentQuestion(shuffledCards[0]);
+      setSessionStats(prev => ({ ...prev, total: shuffledCards.length }));
+    } catch (error) {
+      console.error('Error initializing session:', error);
+    }
   };
 
   const handleShowHint = (type) => {
@@ -120,36 +136,46 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
   };
 
   const getQuestionText = () => {
-    if (!currentQuestion) return '';
+    if (!currentQuestion) return 'Loading...';
     
-    switch (mode) {
-      case 'kana-to-kanji':
-        return currentQuestion.question;
-      case 'kanji-to-reading':
-        return currentQuestion.question;
-      case 'vocabulary-writing':
-        return currentQuestion.meaning;
-      case 'vocabulary-reading':
-        return currentQuestion.question;
-      default:
-        return currentQuestion.question;
+    try {
+      switch (mode) {
+        case 'kana-to-kanji':
+          return currentQuestion.question || 'No question available';
+        case 'kanji-to-reading':
+          return currentQuestion.question || 'No question available';
+        case 'vocabulary-writing':
+          return currentQuestion.meaning || 'No meaning available';
+        case 'vocabulary-reading':
+          return currentQuestion.question || 'No question available';
+        default:
+          return currentQuestion.question || 'No question available';
+      }
+    } catch (error) {
+      console.error('Error getting question text:', error);
+      return 'Error loading question';
     }
   };
 
   const getAnswerText = () => {
-    if (!currentQuestion) return '';
+    if (!currentQuestion) return 'No answer available';
     
-    switch (mode) {
-      case 'kana-to-kanji':
-        return currentQuestion.answer;
-      case 'kanji-to-reading':
-        return currentQuestion.answer;
-      case 'vocabulary-writing':
-        return currentQuestion.answer;
-      case 'vocabulary-reading':
-        return currentQuestion.answer;
-      default:
-        return currentQuestion.answer;
+    try {
+      switch (mode) {
+        case 'kana-to-kanji':
+          return currentQuestion.answer || 'No answer available';
+        case 'kanji-to-reading':
+          return currentQuestion.answer || 'No answer available';
+        case 'vocabulary-writing':
+          return currentQuestion.answer || 'No answer available';
+        case 'vocabulary-reading':
+          return currentQuestion.answer || 'No answer available';
+        default:
+          return currentQuestion.answer || 'No answer available';
+      }
+    } catch (error) {
+      console.error('Error getting answer text:', error);
+      return 'Error loading answer';
     }
   };
 
@@ -158,6 +184,52 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
     const completed = sessionStats.correct + sessionStats.wrong;
     return total > 0 ? (completed / total) * 100 : 0;
   };
+
+  // Loading state
+  if (!currentQuestion && cards.length === 0) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+        <div className="bg-white rounded-xl shadow-lg p-8 max-w-md mx-4">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+            <h2 className="text-xl font-semibold text-gray-700 mb-2">Loading Quiz...</h2>
+            <p className="text-gray-600">Preparing your questions</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Empty state - no data available
+  if (cards.length === 0 && currentQuestion === null) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+        <div className="bg-white rounded-xl shadow-lg p-8 max-w-md mx-4">
+          <div className="text-center">
+            <div className="text-6xl mb-4">📚</div>
+            <h2 className="text-xl font-semibold text-gray-700 mb-2">No Quiz Data Available</h2>
+            <p className="text-gray-600 mb-4">
+              No questions found for the selected mode and chapters.
+            </p>
+            <div className="space-y-2">
+              <p className="text-sm text-gray-500">
+                Mode: {mode}
+              </p>
+              <p className="text-sm text-gray-500">
+                Chapters: {chapters ? chapters.join(', ') : 'None selected'}
+              </p>
+            </div>
+            <button
+              onClick={onBackToChapters}
+              className="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold"
+            >
+              Back to Chapter Selection
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (sessionComplete) {
     return (
@@ -230,6 +302,29 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
   const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing';
 const showKanji = mode === 'self-uploading';
 
+  // Additional safety check
+  if (!currentQuestion || !cards || cards.length === 0) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+        <div className="bg-white rounded-xl shadow-lg p-8 max-w-md mx-4">
+          <div className="text-center">
+            <div className="text-6xl mb-4">⚠️</div>
+            <h2 className="text-xl font-semibold text-gray-700 mb-2">Quiz Data Error</h2>
+            <p className="text-gray-600 mb-4">
+              Unable to load quiz questions. Please try again.
+            </p>
+            <button
+              onClick={onBackToChapters}
+              className="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold"
+            >
+              Back to Chapter Selection
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-4xl mx-auto">
       {/* Progress Bar */}
@@ -299,7 +394,9 @@ const showKanji = mode === 'self-uploading';
                 {hintType === 'meaning' && (
                   <div>
                     <div className="text-sm text-gray-600 mb-2">Meaning:</div>
-                    <div className="text-xl font-semibold text-gray-800">{currentQuestion.meaning}</div>
+                    <div className="text-xl font-semibold text-gray-800">
+                      {currentQuestion?.meaning || 'No meaning available'}
+                    </div>
                   </div>
                 )}
                 {hintType === 'kanji' && (
@@ -309,8 +406,8 @@ const showKanji = mode === 'self-uploading';
                     </div>
                     <div className="text-2xl font-bold text-gray-800">
                       {mode.includes('vocabulary') 
-                        ? (currentQuestion.relatedKanji || []).join(' • ')
-                        : (currentQuestion.vocabulary || []).join(' • ')
+                        ? (currentQuestion?.relatedKanji || []).join(' • ') || 'No related kanji'
+                        : (currentQuestion?.vocabulary || []).join(' • ') || 'No example vocabulary'
                       }
                     </div>
                   </div>
@@ -395,16 +492,16 @@ const showKanji = mode === 'self-uploading';
                 </div>
                 {mode !== 'vocabulary-reading' && (
                   <div className="text-xl text-gray-700 reading-text">
-                    {currentQuestion.reading}
+                    {currentQuestion?.reading || 'No reading available'}
                   </div>
                 )}
               </div>
 
               {/* Dictionary Section */}
               <DictionarySection 
-                word={mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji} 
-                reading={currentQuestion.reading} 
-                meaning={currentQuestion.meaning} 
+                word={mode.includes('vocabulary') ? currentQuestion?.word || 'Unknown' : currentQuestion?.kanji || 'Unknown'} 
+                reading={currentQuestion?.reading || 'No reading'} 
+                meaning={currentQuestion?.meaning || 'No meaning'} 
               />
 
               {/* Grading Buttons */}

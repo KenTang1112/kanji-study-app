@@ -3,6 +3,7 @@ import HomeScreen from './components/HomeScreen';
 import ChapterSelection from './components/ChapterSelection';
 import QuizEngine from './components/QuizEngine';
 import VocabularyManager from './components/VocabularyManager';
+import ErrorBoundary from './components/ErrorBoundary';
 import './App.css';
 
 function App() {
@@ -50,12 +51,14 @@ function App() {
         )}
         
         {currentScreen === 'quiz' && (
-          <QuizEngine
-            mode={selectedMode}
-            chapters={selectedChapters}
-            onBackToHome={handleBackToHome}
-            onBackToChapters={handleBackToChapters}
-          />
+          <ErrorBoundary>
+            <QuizEngine
+              mode={selectedMode}
+              chapters={selectedChapters}
+              onBackToHome={handleBackToHome}
+              onBackToChapters={handleBackToChapters}
+            />
+          </ErrorBoundary>
         )}
         
         {currentScreen === 'vocabulary-manager' && (
