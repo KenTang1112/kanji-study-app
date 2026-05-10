@@ -4,30 +4,44 @@ const studyModes = [
   {
     id: 'kana-to-kanji',
     title: 'Kana → Kanji',
-    description: 'Given the reading, write the kanji',
+    description: 'Given reading, write kanji',
     icon: '📝',
     color: 'bg-blue-500 hover:bg-blue-600'
   },
   {
     id: 'kanji-to-reading',
     title: 'Kanji → Reading',
-    description: 'Given the kanji, write the reading',
+    description: 'Given kanji, write reading',
     icon: '📖',
     color: 'bg-green-500 hover:bg-green-600'
   },
   {
     id: 'vocabulary-writing',
     title: 'Vocabulary Writing',
-    description: 'Given the meaning, write the vocabulary',
+    description: 'Given meaning, write vocabulary',
     icon: '✍️',
     color: 'bg-purple-500 hover:bg-purple-600'
   },
   {
     id: 'vocabulary-reading',
     title: 'Vocabulary Reading',
-    description: 'Given the vocabulary, show the reading and meaning',
+    description: 'Given vocabulary, show reading and meaning',
     icon: '📚',
     color: 'bg-orange-500 hover:bg-orange-600'
+  },
+  {
+    id: 'vocabulary-full',
+    title: 'Vocabulary Practice',
+    description: 'Write kanji and reading for full vocabulary practice',
+    icon: '🎯',
+    color: 'bg-indigo-500 hover:bg-indigo-600'
+  },
+  {
+    id: 'self-uploading',
+    title: 'Self Uploading',
+    description: 'Upload vocabulary with kanji display for everyone',
+    icon: '📤',
+    color: 'bg-pink-500 hover:bg-pink-600'
   }
 ];
 

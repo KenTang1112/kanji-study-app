@@ -10,6 +10,7 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
   const [showHint, setShowHint] = useState(false);
   const [hintType, setHintType] = useState(null);
   const [userAnswer, setUserAnswer] = useState('');
+  const [handwritingImage, setHandwritingImage] = useState('');
   const [sessionStats, setSessionStats] = useState({
     total: 0,
     correct: 0,
@@ -42,6 +43,12 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
   };
 
   const handleRevealAnswer = () => {
+    // Capture handwriting image before disabling canvas
+    if (handwritingRef.current && needsHandwriting) {
+      const imageData = handwritingRef.current.getImageData();
+      setHandwritingImage(imageData);
+    }
+    
     setShowAnswer(true);
     if (handwritingRef.current) {
       handwritingRef.current.disableCanvas();
@@ -79,6 +86,7 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
     setShowHint(false);
     setHintType(null);
     setUserAnswer('');
+    setHandwritingImage(''); // Reset handwriting image
     if (handwritingRef.current) {
       handwritingRef.current.clearCanvas();
       handwritingRef.current.enableCanvas();
@@ -219,7 +227,9 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
     );
   }
 
-  const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing';
+  const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing' || mode === 'vocabulary-full';
+const needsBothInputs = mode === 'vocabulary-full';
+const showKanji = mode === 'self-uploading';
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -259,6 +269,11 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
           <div className="text-lg text-gray-600 mb-4">Question:</div>
           <div className="text-4xl font-bold text-gray-800 kanji-text">
             {getQuestionText()}
+            {showKanji && currentQuestion.word && (
+              <div className="mt-4 text-6xl font-bold text-indigo-600 kanji-text">
+                {currentQuestion.word}
+              </div>
+            )}
           </div>
         </div>
 
@@ -305,22 +320,73 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
         <div className="mb-6">
           {!showAnswer ? (
             <div className="text-center">
-              {needsHandwriting ? (
+              {showKanji ? (
+                <div>
+                  <div className="text-lg text-gray-600 mb-4">This is a self-uploading card</div>
+                  <div className="text-2xl text-gray-700 mb-4">Just study the kanji and reading below</div>
+                </div>
+              ) : needsHandwriting ? (
                 <div>
                   <div className="text-lg text-gray-600 mb-4">Write your answer:</div>
-                  <HandwritingCanvas ref={handwritingRef} />
+                  {needsBothInputs ? (
+                    <div className="space-y-4">
+                      <div>
+                        <div className="text-lg text-gray-600 mb-2">Write kanji:</div>
+                        <HandwritingCanvas ref={handwritingRef} />
+                      </div>
+                      <div>
+                        <div className="text-lg text-gray-600 mb-2">Type reading:</div>
+                        <input
+                          type="text"
+                          value={userAnswer}
+                          onChange={(e) => setUserAnswer(e.target.value)}
+                          className="w-full max-w-md mx-auto block px-4 py-3 text-2xl text-center border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                          placeholder="Enter reading (ひらがな)..."
+                          autoFocus
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <HandwritingCanvas ref={handwritingRef} />
+                  )}
                 </div>
               ) : (
                 <div>
                   <div className="text-lg text-gray-600 mb-4">Type your answer:</div>
-                  <input
-                    type="text"
-                    value={userAnswer}
-                    onChange={(e) => setUserAnswer(e.target.value)}
-                    className="w-full max-w-md mx-auto block px-4 py-3 text-2xl text-center border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
-                    placeholder="Enter your answer..."
-                    autoFocus
-                  />
+                  {needsBothInputs ? (
+                    <div className="space-y-4">
+                      <div>
+                        <div className="text-lg text-gray-600 mb-2">Type kanji:</div>
+                        <input
+                          type="text"
+                          value={userAnswer}
+                          onChange={(e) => setUserAnswer(e.target.value)}
+                          className="w-full max-w-md mx-auto block px-4 py-3 text-2xl text-center border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                          placeholder="Enter kanji (漢字)..."
+                          autoFocus
+                        />
+                      </div>
+                      <div>
+                        <div className="text-lg text-gray-600 mb-2">Type reading:</div>
+                        <input
+                          type="text"
+                          value={userAnswer}
+                          onChange={(e) => setUserAnswer(e.target.value)}
+                          className="w-full max-w-md mx-auto block px-4 py-3 text-2xl text-center border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                          placeholder="Enter reading (ひらがな)..."
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <input
+                      type="text"
+                      value={userAnswer}
+                      onChange={(e) => setUserAnswer(e.target.value)}
+                      className="w-full max-w-md mx-auto block px-4 py-3 text-2xl text-center border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                      placeholder="Enter your answer..."
+                      autoFocus
+                    />
+                  )}
                 </div>
               )}
               
@@ -337,7 +403,49 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
               <div className="mb-6">
                 <div className="text-lg text-gray-600 mb-2">Your Answer:</div>
                 <div className="text-2xl font-semibold text-blue-600 mb-4">
-                  {needsHandwriting ? '(Handwritten answer)' : (userAnswer || '(No answer entered)')}
+                  {showKanji ? (
+                    <div className="space-y-2">
+                      <div>
+                        <span className="text-gray-600">Kanji: </span>
+                        <span className="text-2xl font-bold text-indigo-600 kanji-text">
+                          {currentQuestion.word}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-gray-600">Reading: </span>
+                        <span className="text-xl">{currentQuestion.reading}</span>
+                      </div>
+                    </div>
+                  ) : needsBothInputs ? (
+                    <div className="space-y-2">
+                      <div>
+                        <span className="text-gray-600">Kanji: </span>
+                        {needsHandwriting ? (
+                          handwritingImage ? (
+                            <img 
+                              src={handwritingImage} 
+                              alt="Your handwritten kanji"
+                              className="max-w-xs mx-auto border border-gray-300 rounded-lg shadow-sm inline-block"
+                              style={{ maxHeight: '150px' }}
+                            />
+                          ) : '(No drawing)'
+                        ) : (userAnswer || '(Not entered)')}
+                      </div>
+                      <div>
+                        <span className="text-gray-600">Reading: </span>
+                        <span>{userAnswer || '(Not entered)'}</span>
+                      </div>
+                    </div>
+                  ) : needsHandwriting ? (
+                    handwritingImage ? (
+                      <img 
+                        src={handwritingImage} 
+                        alt="Your handwritten answer"
+                        className="max-w-xs mx-auto border border-gray-300 rounded-lg shadow-sm"
+                        style={{ maxHeight: '150px' }}
+                      />
+                    ) : '(No drawing)'
+                  ) : (userAnswer || '(No answer entered)')}
                 </div>
               </div>
 

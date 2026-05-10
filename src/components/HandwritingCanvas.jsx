@@ -111,6 +111,12 @@ const HandwritingCanvas = forwardRef((props, ref) => {
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     },
+    getImageData: () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return null;
+      
+      return canvas.toDataURL('image/png');
+    },
     disableCanvas: () => {
       isEnabled.current = false;
       const canvas = canvasRef.current;

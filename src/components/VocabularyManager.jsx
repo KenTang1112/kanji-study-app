@@ -38,7 +38,9 @@ export default function VocabularyManager({ onBack }) {
   };
 
   const handleRelatedKanjiChange = (e) => {
-    const kanji = e.target.value.split('').filter(char => char.trim());
+    const input = e.target.value;
+    // Group kanji characters (remove spaces and group unique kanji)
+    const kanji = input.split('').filter(char => char.trim());
     setFormData(prev => ({
       ...prev,
       relatedKanji: kanji
@@ -256,16 +258,21 @@ export default function VocabularyManager({ onBack }) {
                 </div>
               </div>
               <div className="mt-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Related Kanji (optional)
-                </label>
-                <input
-                  type="text"
-                  value={formData.relatedKanji.join('')}
-                  onChange={handleRelatedKanjiChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="例: 循環 (enter kanji characters)"
-                />
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Related Kanji (optional)
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.relatedKanji.join('')}
+                    onChange={handleRelatedKanjiChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="例: 循環 (enter kanji characters, will be auto-grouped)"
+                  />
+                  <div className="text-xs text-gray-500 mt-1">
+                    Enter individual kanji characters - they'll be automatically grouped
+                  </div>
+                </div>
               </div>
               <div className="flex gap-4 mt-6">
                 <button
