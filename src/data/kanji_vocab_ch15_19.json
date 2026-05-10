@@ -1,0 +1,2217 @@
+[
+  {
+    "word": "循環",
+    "reading": "じゅんかん",
+    "meaning": "circulation",
+    "chapter": 15,
+    "relatedKanji": [
+      "循",
+      "環"
+    ]
+  },
+  {
+    "word": "麻酔",
+    "reading": "ますい",
+    "meaning": "anesthesia",
+    "chapter": 15,
+    "relatedKanji": [
+      "麻",
+      "酔"
+    ]
+  },
+  {
+    "word": "酔う",
+    "reading": "よう",
+    "meaning": "to get drunk",
+    "chapter": 15,
+    "relatedKanji": [
+      "酔"
+    ]
+  },
+  {
+    "word": "皮膚",
+    "reading": "ひふ",
+    "meaning": "skin",
+    "chapter": 15,
+    "relatedKanji": [
+      "皮",
+      "膚"
+    ]
+  },
+  {
+    "word": "耳鼻咽喉科",
+    "reading": "じびいんこうか",
+    "meaning": "ENT department",
+    "chapter": 15,
+    "relatedKanji": [
+      "耳",
+      "鼻",
+      "咽",
+      "喉",
+      "科"
+    ]
+  },
+  {
+    "word": "喉",
+    "reading": "のど",
+    "meaning": "throat",
+    "chapter": 15,
+    "relatedKanji": [
+      "喉"
+    ]
+  },
+  {
+    "word": "分泌",
+    "reading": "ぶんぴつ",
+    "meaning": "secretion",
+    "chapter": 15,
+    "relatedKanji": [
+      "分",
+      "泌"
+    ]
+  },
+  {
+    "word": "泌尿器",
+    "reading": "ひにょうき",
+    "meaning": "urinary organs",
+    "chapter": 15,
+    "relatedKanji": [
+      "泌",
+      "尿",
+      "器"
+    ]
+  },
+  {
+    "word": "腫れる",
+    "reading": "はれる",
+    "meaning": "to swell",
+    "chapter": 15,
+    "relatedKanji": [
+      "腫"
+    ]
+  },
+  {
+    "word": "腫瘍",
+    "reading": "しゅよう",
+    "meaning": "tumor",
+    "chapter": 15,
+    "relatedKanji": [
+      "腫",
+      "瘍"
+    ]
+  },
+  {
+    "word": "潰瘍",
+    "reading": "かいよう",
+    "meaning": "ulcer",
+    "chapter": 15,
+    "relatedKanji": [
+      "潰",
+      "瘍"
+    ]
+  },
+  {
+    "word": "抗生物質",
+    "reading": "こうせいぶっしつ",
+    "meaning": "antibiotics",
+    "chapter": 15,
+    "relatedKanji": [
+      "抗",
+      "生",
+      "物",
+      "質"
+    ]
+  },
+  {
+    "word": "鎮痛剤",
+    "reading": "ちんつうざい",
+    "meaning": "painkiller",
+    "chapter": 15,
+    "relatedKanji": [
+      "鎮",
+      "痛",
+      "剤"
+    ]
+  },
+  {
+    "word": "鎮める",
+    "reading": "しずめる",
+    "meaning": "to calm down",
+    "chapter": 15,
+    "relatedKanji": [
+      "鎮"
+    ]
+  },
+  {
+    "word": "便箋",
+    "reading": "びんせん",
+    "meaning": "writing paper",
+    "chapter": 15,
+    "relatedKanji": [
+      "便",
+      "箋"
+    ]
+  },
+  {
+    "word": "処方箋",
+    "reading": "しょほうせん",
+    "meaning": "prescription",
+    "chapter": 15,
+    "relatedKanji": [
+      "処",
+      "方",
+      "箋"
+    ]
+  },
+  {
+    "word": "治癒",
+    "reading": "ちゆ",
+    "meaning": "healing",
+    "chapter": 15,
+    "relatedKanji": [
+      "治",
+      "癒"
+    ]
+  },
+  {
+    "word": "癒す",
+    "reading": "いやす",
+    "meaning": "to heal",
+    "chapter": 15,
+    "relatedKanji": [
+      "癒"
+    ]
+  },
+  {
+    "word": "症状",
+    "reading": "しょうじょう",
+    "meaning": "symptoms",
+    "chapter": 15,
+    "relatedKanji": [
+      "症",
+      "状"
+    ]
+  },
+  {
+    "word": "対症療法",
+    "reading": "たいしょうりょうほう",
+    "meaning": "symptomatic treatment",
+    "chapter": 15,
+    "relatedKanji": [
+      "対",
+      "症",
+      "療",
+      "法"
+    ]
+  },
+  {
+    "word": "下痢",
+    "reading": "げり",
+    "meaning": "diarrhea",
+    "chapter": 15,
+    "relatedKanji": [
+      "下",
+      "痢"
+    ]
+  },
+  {
+    "word": "吐く",
+    "reading": "はく",
+    "meaning": "to vomit",
+    "chapter": 15,
+    "relatedKanji": [
+      "吐"
+    ]
+  },
+  {
+    "word": "吐き気",
+    "reading": "はきけ",
+    "meaning": "nausea",
+    "chapter": 15,
+    "relatedKanji": [
+      "吐",
+      "気"
+    ]
+  },
+  {
+    "word": "吐露する",
+    "reading": "とろする",
+    "meaning": "to disclose",
+    "chapter": 15,
+    "relatedKanji": [
+      "吐",
+      "露"
+    ]
+  },
+  {
+    "word": "睡眠",
+    "reading": "すいみん",
+    "meaning": "sleep",
+    "chapter": 15,
+    "relatedKanji": [
+      "睡",
+      "眠"
+    ]
+  },
+  {
+    "word": "糖尿病",
+    "reading": "とうにょうびょう",
+    "meaning": "diabetes",
+    "chapter": 15,
+    "relatedKanji": [
+      "糖",
+      "尿",
+      "病"
+    ]
+  },
+  {
+    "word": "脳梗塞",
+    "reading": "のうこうそく",
+    "meaning": "cerebral infarction",
+    "chapter": 15,
+    "relatedKanji": [
+      "脳",
+      "梗",
+      "塞"
+    ]
+  },
+  {
+    "word": "心筋梗塞",
+    "reading": "しんきんこうそく",
+    "meaning": "heart attack",
+    "chapter": 15,
+    "relatedKanji": [
+      "心",
+      "筋",
+      "梗",
+      "塞"
+    ]
+  },
+  {
+    "word": "閉塞",
+    "reading": "へいそく",
+    "meaning": "blockage",
+    "chapter": 15,
+    "relatedKanji": [
+      "閉",
+      "塞"
+    ]
+  },
+  {
+    "word": "塞ぐ",
+    "reading": "ふさぐ",
+    "meaning": "to block",
+    "chapter": 15,
+    "relatedKanji": [
+      "塞"
+    ]
+  },
+  {
+    "word": "潰れる",
+    "reading": "つぶれる",
+    "meaning": "to collapse",
+    "chapter": 15,
+    "relatedKanji": [
+      "潰"
+    ]
+  },
+  {
+    "word": "妊娠",
+    "reading": "にんしん",
+    "meaning": "pregnancy",
+    "chapter": 15,
+    "relatedKanji": [
+      "妊",
+      "娠"
+    ]
+  },
+  {
+    "word": "視力",
+    "reading": "しりょく",
+    "meaning": "eyesight",
+    "chapter": 15,
+    "relatedKanji": [
+      "視",
+      "力"
+    ]
+  },
+  {
+    "word": "憂鬱",
+    "reading": "ゆううつ",
+    "meaning": "depression",
+    "chapter": 15,
+    "relatedKanji": [
+      "憂",
+      "鬱"
+    ]
+  },
+  {
+    "word": "渇く",
+    "reading": "かわく",
+    "meaning": "to be thirsty",
+    "chapter": 15,
+    "relatedKanji": [
+      "渇"
+    ]
+  },
+  {
+    "word": "渇水",
+    "reading": "かっすい",
+    "meaning": "water shortage",
+    "chapter": 15,
+    "relatedKanji": [
+      "渇",
+      "水"
+    ]
+  },
+  {
+    "word": "過剰",
+    "reading": "かじょう",
+    "meaning": "excessive",
+    "chapter": 15,
+    "relatedKanji": [
+      "過",
+      "剰"
+    ]
+  },
+  {
+    "word": "偏見",
+    "reading": "へんけん",
+    "meaning": "prejudice",
+    "chapter": 15,
+    "relatedKanji": [
+      "偏",
+      "見"
+    ]
+  },
+  {
+    "word": "偏る",
+    "reading": "かたよる",
+    "meaning": "to be biased",
+    "chapter": 15,
+    "relatedKanji": [
+      "偏"
+    ]
+  },
+  {
+    "word": "胎児",
+    "reading": "たいじ",
+    "meaning": "fetus",
+    "chapter": 15,
+    "relatedKanji": [
+      "胎",
+      "児"
+    ]
+  },
+  {
+    "word": "矯正",
+    "reading": "きょうせい",
+    "meaning": "correction",
+    "chapter": 15,
+    "relatedKanji": [
+      "矯",
+      "正"
+    ]
+  },
+  {
+    "word": "冠婚葬祭",
+    "reading": "かんこんそうさい",
+    "meaning": "ceremonial occasions",
+    "chapter": 16,
+    "relatedKanji": [
+      "冠",
+      "婚",
+      "葬",
+      "祭"
+    ]
+  },
+  {
+    "word": "葬式",
+    "reading": "そうしき",
+    "meaning": "funeral",
+    "chapter": 16,
+    "relatedKanji": [
+      "葬",
+      "式"
+    ]
+  },
+  {
+    "word": "ほうむる",
+    "reading": "ほうむる",
+    "meaning": "to bury",
+    "chapter": 16,
+    "relatedKanji": [
+      "葬"
+    ]
+  },
+  {
+    "word": "宛先",
+    "reading": "あてさき",
+    "meaning": "address",
+    "chapter": 16,
+    "relatedKanji": [
+      "宛",
+      "先"
+    ]
+  },
+  {
+    "word": "寿命",
+    "reading": "じゅみょう",
+    "meaning": "lifespan",
+    "chapter": 16,
+    "relatedKanji": [
+      "寿",
+      "命"
+    ]
+  },
+  {
+    "word": "ことぶき",
+    "reading": "ことぶき",
+    "meaning": "congratulations",
+    "chapter": 16,
+    "relatedKanji": [
+      "寿"
+    ]
+  },
+  {
+    "word": "芳名",
+    "reading": "ほうめい",
+    "meaning": "name",
+    "chapter": 16,
+    "relatedKanji": [
+      "芳",
+      "名"
+    ]
+  },
+  {
+    "word": "かんばしい",
+    "reading": "かんばしい",
+    "meaning": "fragrant",
+    "chapter": 16,
+    "relatedKanji": [
+      "芳"
+    ]
+  },
+  {
+    "word": "丁寧",
+    "reading": "ていねい",
+    "meaning": "polite",
+    "chapter": 16,
+    "relatedKanji": [
+      "丁",
+      "寧"
+    ]
+  },
+  {
+    "word": "披露",
+    "reading": "ひろう",
+    "meaning": "announcement",
+    "chapter": 16,
+    "relatedKanji": [
+      "披",
+      "露"
+    ]
+  },
+  {
+    "word": "つゆ",
+    "reading": "つゆ",
+    "meaning": "dew",
+    "chapter": 16,
+    "relatedKanji": [
+      "露"
+    ]
+  },
+  {
+    "word": "宴会",
+    "reading": "えんかい",
+    "meaning": "banquet",
+    "chapter": 16,
+    "relatedKanji": [
+      "宴",
+      "会"
+    ]
+  },
+  {
+    "word": "喪失",
+    "reading": "そうしつ",
+    "meaning": "loss",
+    "chapter": 16,
+    "relatedKanji": [
+      "喪",
+      "失"
+    ]
+  },
+  {
+    "word": "新郎",
+    "reading": "しんろう",
+    "meaning": "groom",
+    "chapter": 16,
+    "relatedKanji": [
+      "新",
+      "郎"
+    ]
+  },
+  {
+    "word": "花婿",
+    "reading": "はなむこ",
+    "meaning": "bridegroom",
+    "chapter": 16,
+    "relatedKanji": [
+      "花",
+      "婿"
+    ]
+  },
+  {
+    "word": "嫁",
+    "reading": "よめ",
+    "meaning": "bride",
+    "chapter": 16,
+    "relatedKanji": [
+      "嫁"
+    ]
+  },
+  {
+    "word": "嫁ぐ",
+    "reading": "とつぐ",
+    "meaning": "to marry into",
+    "chapter": 16,
+    "relatedKanji": [
+      "嫁"
+    ]
+  },
+  {
+    "word": "弔う",
+    "reading": "とむらう",
+    "meaning": "to mourn",
+    "chapter": 16,
+    "relatedKanji": [
+      "弔"
+    ]
+  },
+  {
+    "word": "逝去",
+    "reading": "せいきょ",
+    "meaning": "death",
+    "chapter": 16,
+    "relatedKanji": [
+      "逝",
+      "去"
+    ]
+  },
+  {
+    "word": "謹賀",
+    "reading": "きんが",
+    "meaning": "respectful celebration",
+    "chapter": 16,
+    "relatedKanji": [
+      "謹",
+      "賀"
+    ]
+  },
+  {
+    "word": "哀悼",
+    "reading": "あいとう",
+    "meaning": "mourning",
+    "chapter": 16,
+    "relatedKanji": [
+      "哀",
+      "悼"
+    ]
+  },
+  {
+    "word": "哀しい",
+    "reading": "かなしい",
+    "meaning": "sad",
+    "chapter": 16,
+    "relatedKanji": [
+      "哀"
+    ]
+  },
+  {
+    "word": "追悼",
+    "reading": "ついとう",
+    "meaning": "memorial",
+    "chapter": 16,
+    "relatedKanji": [
+      "追",
+      "悼"
+    ]
+  },
+  {
+    "word": "冥福",
+    "reading": "めいふく",
+    "meaning": "happiness in the next world",
+    "chapter": 16,
+    "relatedKanji": [
+      "冥",
+      "福"
+    ]
+  },
+  {
+    "word": "拝啓",
+    "reading": "はいけい",
+    "meaning": "dear sir/madam",
+    "chapter": 16,
+    "relatedKanji": [
+      "拝",
+      "啓"
+    ]
+  },
+  {
+    "word": "誠実",
+    "reading": "せいじつ",
+    "meaning": "sincere",
+    "chapter": 16,
+    "relatedKanji": [
+      "誠",
+      "実"
+    ]
+  },
+  {
+    "word": "誠に",
+    "reading": "まことに",
+    "meaning": "truly",
+    "chapter": 16,
+    "relatedKanji": [
+      "誠"
+    ]
+  },
+  {
+    "word": "ご無沙汰",
+    "reading": "ごぶさた",
+    "meaning": "long time no see",
+    "chapter": 16,
+    "relatedKanji": [
+      "沙",
+      "汰"
+    ]
+  },
+  {
+    "word": "沙汰",
+    "reading": "さた",
+    "meaning": "affair",
+    "chapter": 16,
+    "relatedKanji": [
+      "沙",
+      "汰"
+    ]
+  },
+  {
+    "word": "淘汰する",
+    "reading": "とうたする",
+    "meaning": "to淘汰",
+    "chapter": 16,
+    "relatedKanji": [
+      "淘",
+      "汰"
+    ]
+  },
+  {
+    "word": "陰",
+    "reading": "かげ",
+    "meaning": "shadow",
+    "chapter": 16,
+    "relatedKanji": [
+      "陰"
+    ]
+  },
+  {
+    "word": "陰気",
+    "reading": "いんき",
+    "meaning": "gloomy",
+    "chapter": 16,
+    "relatedKanji": [
+      "陰",
+      "気"
+    ]
+  },
+  {
+    "word": "恩賜",
+    "reading": "おんし",
+    "meaning": "imperial gift",
+    "chapter": 16,
+    "relatedKanji": [
+      "恩",
+      "賜"
+    ]
+  },
+  {
+    "word": "後悔",
+    "reading": "こうかい",
+    "meaning": "regret",
+    "chapter": 16,
+    "relatedKanji": [
+      "後",
+      "悔"
+    ]
+  },
+  {
+    "word": "悔いる",
+    "reading": "くいる",
+    "meaning": "to regret",
+    "chapter": 16,
+    "relatedKanji": [
+      "悔"
+    ]
+  },
+  {
+    "word": "忌日",
+    "reading": "きにち",
+    "meaning": "death anniversary",
+    "chapter": 16,
+    "relatedKanji": [
+      "忌",
+      "日"
+    ]
+  },
+  {
+    "word": "忌む",
+    "reading": "いむ",
+    "meaning": "to avoid",
+    "chapter": 16,
+    "relatedKanji": [
+      "忌"
+    ]
+  },
+  {
+    "word": "親戚",
+    "reading": "しんせき",
+    "meaning": "relatives",
+    "chapter": 16,
+    "relatedKanji": [
+      "親",
+      "戚"
+    ]
+  },
+  {
+    "word": "慶祝",
+    "reading": "けいしゅく",
+    "meaning": "celebration",
+    "chapter": 16,
+    "relatedKanji": [
+      "慶",
+      "祝"
+    ]
+  },
+  {
+    "word": "慶び",
+    "reading": "よろこび",
+    "meaning": "joy",
+    "chapter": 16,
+    "relatedKanji": [
+      "慶"
+    ]
+  },
+  {
+    "word": "壱万円",
+    "reading": "いちまんえん",
+    "meaning": "10,000 yen",
+    "chapter": 16,
+    "relatedKanji": [
+      "壱",
+      "万",
+      "円"
+    ]
+  },
+  {
+    "word": "弐千円",
+    "reading": "にせんえん",
+    "meaning": "2,000 yen",
+    "chapter": 16,
+    "relatedKanji": [
+      "弐",
+      "千",
+      "円"
+    ]
+  },
+  {
+    "word": "氾濫",
+    "reading": "はんらん",
+    "meaning": "overflow",
+    "chapter": 17,
+    "relatedKanji": [
+      "氾",
+      "濫"
+    ]
+  },
+  {
+    "word": "洪水",
+    "reading": "こうずい",
+    "meaning": "flood",
+    "chapter": 17,
+    "relatedKanji": [
+      "洪",
+      "水"
+    ]
+  },
+  {
+    "word": "堤防",
+    "reading": "ていぼう",
+    "meaning": "embankment",
+    "chapter": 17,
+    "relatedKanji": [
+      "堤",
+      "防"
+    ]
+  },
+  {
+    "word": "縮小する",
+    "reading": "しゅくしょうする",
+    "meaning": "to shrink",
+    "chapter": 17,
+    "relatedKanji": [
+      "縮",
+      "小"
+    ]
+  },
+  {
+    "word": "縮める",
+    "reading": "ちぢめる",
+    "meaning": "to shorten",
+    "chapter": 17,
+    "relatedKanji": [
+      "縮"
+    ]
+  },
+  {
+    "word": "縮尺",
+    "reading": "しゅくしゃく",
+    "meaning": "scale",
+    "chapter": 17,
+    "relatedKanji": [
+      "縮",
+      "尺"
+    ]
+  },
+  {
+    "word": "津波",
+    "reading": "つなみ",
+    "meaning": "tsunami",
+    "chapter": 17,
+    "relatedKanji": [
+      "津",
+      "波"
+    ]
+  },
+  {
+    "word": "襲う",
+    "reading": "おそう",
+    "meaning": "to attack",
+    "chapter": 17,
+    "relatedKanji": [
+      "襲"
+    ]
+  },
+  {
+    "word": "襲撃",
+    "reading": "しゅうげき",
+    "meaning": "attack",
+    "chapter": 17,
+    "relatedKanji": [
+      "襲",
+      "撃"
+    ]
+  },
+  {
+    "word": "噴出",
+    "reading": "ふんしゅつ",
+    "meaning": "eruption",
+    "chapter": 17,
+    "relatedKanji": [
+      "噴",
+      "出"
+    ]
+  },
+  {
+    "word": "噴火する",
+    "reading": "ふんかする",
+    "meaning": "to erupt",
+    "chapter": 17,
+    "relatedKanji": [
+      "噴",
+      "火"
+    ]
+  },
+  {
+    "word": "雷雨",
+    "reading": "らいう",
+    "meaning": "thunderstorm",
+    "chapter": 17,
+    "relatedKanji": [
+      "雷",
+      "雨"
+    ]
+  },
+  {
+    "word": "かみなり",
+    "reading": "かみなり",
+    "meaning": "thunder",
+    "chapter": 17,
+    "relatedKanji": [
+      "雷"
+    ]
+  },
+  {
+    "word": "伐採する",
+    "reading": "ばっさいする",
+    "meaning": "to cut down trees",
+    "chapter": 17,
+    "relatedKanji": [
+      "伐",
+      "採"
+    ]
+  },
+  {
+    "word": "隠居する",
+    "reading": "いんきょする",
+    "meaning": "to retire",
+    "chapter": 17,
+    "relatedKanji": [
+      "隠",
+      "居"
+    ]
+  },
+  {
+    "word": "隠れる",
+    "reading": "かくれる",
+    "meaning": "to hide",
+    "chapter": 17,
+    "relatedKanji": [
+      "隠"
+    ]
+  },
+  {
+    "word": "影響",
+    "reading": "えいきょう",
+    "meaning": "influence",
+    "chapter": 17,
+    "relatedKanji": [
+      "影",
+      "響"
+    ]
+  },
+  {
+    "word": "響き",
+    "reading": "ひびき",
+    "meaning": "echo",
+    "chapter": 17,
+    "relatedKanji": [
+      "響"
+    ]
+  },
+  {
+    "word": "樹木",
+    "reading": "じゅもく",
+    "meaning": "trees",
+    "chapter": 17,
+    "relatedKanji": [
+      "樹",
+      "木"
+    ]
+  },
+  {
+    "word": "樹立する",
+    "reading": "じゅりつする",
+    "meaning": "to establish",
+    "chapter": 17,
+    "relatedKanji": [
+      "樹",
+      "立"
+    ]
+  },
+  {
+    "word": "粘性",
+    "reading": "ねんせい",
+    "meaning": "viscosity",
+    "chapter": 17,
+    "relatedKanji": [
+      "粘",
+      "性"
+    ]
+  },
+  {
+    "word": "粘り強い",
+    "reading": "ねばりづよい",
+    "meaning": "tenacious",
+    "chapter": 17,
+    "relatedKanji": [
+      "粘"
+    ]
+  },
+  {
+    "word": "駆ける",
+    "reading": "かける",
+    "meaning": "to run",
+    "chapter": 17,
+    "relatedKanji": [
+      "駆"
+    ]
+  },
+  {
+    "word": "駆使する",
+    "reading": "くしする",
+    "meaning": "to make full use of",
+    "chapter": 17,
+    "relatedKanji": [
+      "駆",
+      "使"
+    ]
+  },
+  {
+    "word": "一斉に",
+    "reading": "いっせいに",
+    "meaning": "all at once",
+    "chapter": 17,
+    "relatedKanji": [
+      "一",
+      "斉"
+    ]
+  },
+  {
+    "word": "貴族",
+    "reading": "きぞく",
+    "meaning": "nobility",
+    "chapter": 17,
+    "relatedKanji": [
+      "貴",
+      "族"
+    ]
+  },
+  {
+    "word": "貴重な",
+    "reading": "きちょうな",
+    "meaning": "valuable",
+    "chapter": 17,
+    "relatedKanji": [
+      "貴",
+      "重"
+    ]
+  },
+  {
+    "word": "懐中電灯",
+    "reading": "かいちゅうでんとう",
+    "meaning": "flashlight",
+    "chapter": 17,
+    "relatedKanji": [
+      "懐",
+      "中",
+      "電",
+      "灯"
+    ]
+  },
+  {
+    "word": "懐かしい",
+    "reading": "なつかしい",
+    "meaning": "nostalgic",
+    "chapter": 17,
+    "relatedKanji": [
+      "懐"
+    ]
+  },
+  {
+    "word": "断崖",
+    "reading": "だんがい",
+    "meaning": "cliff",
+    "chapter": 17,
+    "relatedKanji": [
+      "断",
+      "崖"
+    ]
+  },
+  {
+    "word": "崖",
+    "reading": "がけ",
+    "meaning": "cliff",
+    "chapter": 17,
+    "relatedKanji": [
+      "崖"
+    ]
+  },
+  {
+    "word": "模様",
+    "reading": "もよう",
+    "meaning": "pattern",
+    "chapter": 17,
+    "relatedKanji": [
+      "模",
+      "様"
+    ]
+  },
+  {
+    "word": "規模",
+    "reading": "きぼ",
+    "meaning": "scale",
+    "chapter": 17,
+    "relatedKanji": [
+      "規",
+      "模"
+    ]
+  },
+  {
+    "word": "垂直",
+    "reading": "すいちょく",
+    "meaning": "vertical",
+    "chapter": 17,
+    "relatedKanji": [
+      "垂",
+      "直"
+    ]
+  },
+  {
+    "word": "垂れる",
+    "reading": "たれる",
+    "meaning": "to hang down",
+    "chapter": 17,
+    "relatedKanji": [
+      "垂"
+    ]
+  },
+  {
+    "word": "範囲",
+    "reading": "はんい",
+    "meaning": "range",
+    "chapter": 17,
+    "relatedKanji": [
+      "範",
+      "囲"
+    ]
+  },
+  {
+    "word": "瓦",
+    "reading": "かわら",
+    "meaning": "roof tile",
+    "chapter": 17,
+    "relatedKanji": [
+      "瓦"
+    ]
+  },
+  {
+    "word": "霧",
+    "reading": "きり",
+    "meaning": "fog",
+    "chapter": 17,
+    "relatedKanji": [
+      "霧"
+    ]
+  },
+  {
+    "word": "濃霧",
+    "reading": "のうむ",
+    "meaning": "dense fog",
+    "chapter": 17,
+    "relatedKanji": [
+      "濃",
+      "霧"
+    ]
+  },
+  {
+    "word": "炎上する",
+    "reading": "えんじょうする",
+    "meaning": "to burst into flames",
+    "chapter": 17,
+    "relatedKanji": [
+      "炎",
+      "上"
+    ]
+  },
+  {
+    "word": "炎",
+    "reading": "ほのお",
+    "meaning": "flame",
+    "chapter": 17,
+    "relatedKanji": [
+      "炎"
+    ]
+  },
+  {
+    "word": "中枢",
+    "reading": "ちゅうすう",
+    "meaning": "center",
+    "chapter": 17,
+    "relatedKanji": [
+      "中",
+      "枢"
+    ]
+  },
+  {
+    "word": "首都圏",
+    "reading": "しゅとけん",
+    "meaning": "metropolitan area",
+    "chapter": 17,
+    "relatedKanji": [
+      "首",
+      "都",
+      "圏"
+    ]
+  },
+  {
+    "word": "滝",
+    "reading": "たき",
+    "meaning": "waterfall",
+    "chapter": 17,
+    "relatedKanji": [
+      "滝"
+    ]
+  },
+  {
+    "word": "嵐",
+    "reading": "あらし",
+    "meaning": "storm",
+    "chapter": 17,
+    "relatedKanji": [
+      "嵐"
+    ]
+  },
+  {
+    "word": "瞬間",
+    "reading": "しゅんかん",
+    "meaning": "moment",
+    "chapter": 17,
+    "relatedKanji": [
+      "瞬",
+      "間"
+    ]
+  },
+  {
+    "word": "瞬く",
+    "reading": "またたく",
+    "meaning": "to blink",
+    "chapter": 17,
+    "relatedKanji": [
+      "瞬"
+    ]
+  },
+  {
+    "word": "殉職する",
+    "reading": "じゅんしょくする",
+    "meaning": "to die in the line of duty",
+    "chapter": 18,
+    "relatedKanji": [
+      "殉",
+      "職"
+    ]
+  },
+  {
+    "word": "狙う",
+    "reading": "ねらう",
+    "meaning": "to aim at",
+    "chapter": 18,
+    "relatedKanji": [
+      "狙"
+    ]
+  },
+  {
+    "word": "詐欺",
+    "reading": "さぎ",
+    "meaning": "fraud",
+    "chapter": 18,
+    "relatedKanji": [
+      "詐",
+      "欺"
+    ]
+  },
+  {
+    "word": "欺く",
+    "reading": "あざむく",
+    "meaning": "to deceive",
+    "chapter": 18,
+    "relatedKanji": [
+      "欺"
+    ]
+  },
+  {
+    "word": "架空",
+    "reading": "かくう",
+    "meaning": "fictional",
+    "chapter": 18,
+    "relatedKanji": [
+      "架",
+      "空"
+    ]
+  },
+  {
+    "word": "担架",
+    "reading": "たんか",
+    "meaning": "stretcher",
+    "chapter": 18,
+    "relatedKanji": [
+      "担",
+      "架"
+    ]
+  },
+  {
+    "word": "連邦",
+    "reading": "れんぽう",
+    "meaning": "federation",
+    "chapter": 18,
+    "relatedKanji": [
+      "連",
+      "邦"
+    ]
+  },
+  {
+    "word": "邦画",
+    "reading": "ほうが",
+    "meaning": "Japanese film",
+    "chapter": 18,
+    "relatedKanji": [
+      "邦",
+      "画"
+    ]
+  },
+  {
+    "word": "監視する",
+    "reading": "かんしする",
+    "meaning": "to monitor",
+    "chapter": 18,
+    "relatedKanji": [
+      "監",
+      "視"
+    ]
+  },
+  {
+    "word": "監禁する",
+    "reading": "かんきんする",
+    "meaning": "to confine",
+    "chapter": 18,
+    "relatedKanji": [
+      "監",
+      "禁"
+    ]
+  },
+  {
+    "word": "拘束する",
+    "reading": "こうそくする",
+    "meaning": "to restrain",
+    "chapter": 18,
+    "relatedKanji": [
+      "拘",
+      "束"
+    ]
+  },
+  {
+    "word": "不祥事",
+    "reading": "ふしょうじ",
+    "meaning": "scandal",
+    "chapter": 18,
+    "relatedKanji": [
+      "不",
+      "祥",
+      "事"
+    ]
+  },
+  {
+    "word": "自粛する",
+    "reading": "じしゅくする",
+    "meaning": "to refrain voluntarily",
+    "chapter": 18,
+    "relatedKanji": [
+      "自",
+      "粛"
+    ]
+  },
+  {
+    "word": "虐待する",
+    "reading": "ぎゃくたいする",
+    "meaning": "to abuse",
+    "chapter": 18,
+    "relatedKanji": [
+      "虐",
+      "待"
+    ]
+  },
+  {
+    "word": "虐げる",
+    "reading": "しいたげる",
+    "meaning": "to oppress",
+    "chapter": 18,
+    "relatedKanji": [
+      "虐"
+    ]
+  },
+  {
+    "word": "殴打する",
+    "reading": "おうだする",
+    "meaning": "to strike",
+    "chapter": 18,
+    "relatedKanji": [
+      "殴",
+      "打"
+    ]
+  },
+  {
+    "word": "殴る",
+    "reading": "なぐる",
+    "meaning": "to hit",
+    "chapter": 18,
+    "relatedKanji": [
+      "殴"
+    ]
+  },
+  {
+    "word": "一蹴する",
+    "reading": "いっしゅうする",
+    "meaning": "to reject",
+    "chapter": 18,
+    "relatedKanji": [
+      "一",
+      "蹴"
+    ]
+  },
+  {
+    "word": "蹴る",
+    "reading": "ける",
+    "meaning": "to kick",
+    "chapter": 18,
+    "relatedKanji": [
+      "蹴"
+    ]
+  },
+  {
+    "word": "窃盗",
+    "reading": "せっとう",
+    "meaning": "theft",
+    "chapter": 18,
+    "relatedKanji": [
+      "窃",
+      "盗"
+    ]
+  },
+  {
+    "word": "束縛する",
+    "reading": "そくばくする",
+    "meaning": "to bind",
+    "chapter": 18,
+    "relatedKanji": [
+      "束",
+      "縛"
+    ]
+  },
+  {
+    "word": "縛る",
+    "reading": "しばる",
+    "meaning": "to tie",
+    "chapter": 18,
+    "relatedKanji": [
+      "縛"
+    ]
+  },
+  {
+    "word": "略奪する",
+    "reading": "りゃくだつする",
+    "meaning": "to plunder",
+    "chapter": 18,
+    "relatedKanji": [
+      "略",
+      "奪"
+    ]
+  },
+  {
+    "word": "奪う",
+    "reading": "うばう",
+    "meaning": "to rob",
+    "chapter": 18,
+    "relatedKanji": [
+      "奪"
+    ]
+  },
+  {
+    "word": "賄賂",
+    "reading": "わいろ",
+    "meaning": "bribe",
+    "chapter": 18,
+    "relatedKanji": [
+      "賄",
+      "賂"
+    ]
+  },
+  {
+    "word": "賄う",
+    "reading": "まかなう",
+    "meaning": "to provide for",
+    "chapter": 18,
+    "relatedKanji": [
+      "賄"
+    ]
+  },
+  {
+    "word": "適宜",
+    "reading": "てきぎ",
+    "meaning": "appropriate",
+    "chapter": 18,
+    "relatedKanji": [
+      "適",
+      "宜"
+    ]
+  },
+  {
+    "word": "便宜",
+    "reading": "べんぎ",
+    "meaning": "convenience",
+    "chapter": 18,
+    "relatedKanji": [
+      "便",
+      "宜"
+    ]
+  },
+  {
+    "word": "怨恨",
+    "reading": "えんこん",
+    "meaning": "grudge",
+    "chapter": 18,
+    "relatedKanji": [
+      "怨",
+      "恨"
+    ]
+  },
+  {
+    "word": "恨む",
+    "reading": "うらむ",
+    "meaning": "to resent",
+    "chapter": 18,
+    "relatedKanji": [
+      "恨"
+    ]
+  },
+  {
+    "word": "踏み込む",
+    "reading": "ふみこむ",
+    "meaning": "to step into",
+    "chapter": 18,
+    "relatedKanji": [
+      "踏",
+      "込"
+    ]
+  },
+  {
+    "word": "踏まえる",
+    "reading": "ふまえる",
+    "meaning": "to base on",
+    "chapter": 18,
+    "relatedKanji": [
+      "踏"
+    ]
+  },
+  {
+    "word": "砕ける",
+    "reading": "くだける",
+    "meaning": "to break",
+    "chapter": 18,
+    "relatedKanji": [
+      "砕"
+    ]
+  },
+  {
+    "word": "悲惨",
+    "reading": "ひさん",
+    "meaning": "tragic",
+    "chapter": 18,
+    "relatedKanji": [
+      "悲",
+      "惨"
+    ]
+  },
+  {
+    "word": "惨めな",
+    "reading": "みじめな",
+    "meaning": "miserable",
+    "chapter": 18,
+    "relatedKanji": [
+      "惨"
+    ]
+  },
+  {
+    "word": "邪魔",
+    "reading": "じゃま",
+    "meaning": "obstacle",
+    "chapter": 18,
+    "relatedKanji": [
+      "邪",
+      "魔"
+    ]
+  },
+  {
+    "word": "通り魔",
+    "reading": "とおりま",
+    "meaning": "random attacker",
+    "chapter": 18,
+    "relatedKanji": [
+      "通",
+      "魔"
+    ]
+  },
+  {
+    "word": "俺",
+    "reading": "おれ",
+    "meaning": "I (male)",
+    "chapter": 18,
+    "relatedKanji": [
+      "俺"
+    ]
+  },
+  {
+    "word": "拉致する",
+    "reading": "らちする",
+    "meaning": "to abduct",
+    "chapter": 18,
+    "relatedKanji": [
+      "拉",
+      "致"
+    ]
+  },
+  {
+    "word": "脅迫する",
+    "reading": "きょうはくする",
+    "meaning": "to threaten",
+    "chapter": 18,
+    "relatedKanji": [
+      "脅",
+      "迫"
+    ]
+  },
+  {
+    "word": "脅かす",
+    "reading": "おどかす",
+    "meaning": "to threaten",
+    "chapter": 18,
+    "relatedKanji": [
+      "脅"
+    ]
+  },
+  {
+    "word": "脅す",
+    "reading": "おどす",
+    "meaning": "to intimidate",
+    "chapter": 18,
+    "relatedKanji": [
+      "脅"
+    ]
+  },
+  {
+    "word": "迫力",
+    "reading": "はくりょく",
+    "meaning": "power",
+    "chapter": 18,
+    "relatedKanji": [
+      "迫",
+      "力"
+    ]
+  },
+  {
+    "word": "迫る",
+    "reading": "せまる",
+    "meaning": "to approach",
+    "chapter": 18,
+    "relatedKanji": [
+      "迫"
+    ]
+  },
+  {
+    "word": "血痕",
+    "reading": "けっこん",
+    "meaning": "bloodstain",
+    "chapter": 18,
+    "relatedKanji": [
+      "血",
+      "痕"
+    ]
+  },
+  {
+    "word": "傷痕",
+    "reading": "きずあと",
+    "meaning": "scar",
+    "chapter": 18,
+    "relatedKanji": [
+      "傷",
+      "痕"
+    ]
+  },
+  {
+    "word": "柵",
+    "reading": "さく",
+    "meaning": "fence",
+    "chapter": 19,
+    "relatedKanji": [
+      "柵"
+    ]
+  },
+  {
+    "word": "墜落する",
+    "reading": "ついらくする",
+    "meaning": "to crash",
+    "chapter": 19,
+    "relatedKanji": [
+      "墜",
+      "落"
+    ]
+  },
+  {
+    "word": "兵隊",
+    "reading": "へいたい",
+    "meaning": "soldier",
+    "chapter": 19,
+    "relatedKanji": [
+      "兵",
+      "隊"
+    ]
+  },
+  {
+    "word": "隊員",
+    "reading": "たいいん",
+    "meaning": "member",
+    "chapter": 19,
+    "relatedKanji": [
+      "隊",
+      "員"
+    ]
+  },
+  {
+    "word": "犠牲",
+    "reading": "ぎせい",
+    "meaning": "sacrifice",
+    "chapter": 19,
+    "relatedKanji": [
+      "犠",
+      "牲"
+    ]
+  },
+  {
+    "word": "裁判",
+    "reading": "さいばん",
+    "meaning": "trial",
+    "chapter": 19,
+    "relatedKanji": [
+      "裁",
+      "判"
+    ]
+  },
+  {
+    "word": "裁く",
+    "reading": "さばく",
+    "meaning": "to judge",
+    "chapter": 19,
+    "relatedKanji": [
+      "裁"
+    ]
+  },
+  {
+    "word": "刑罰",
+    "reading": "けいばつ",
+    "meaning": "punishment",
+    "chapter": 19,
+    "relatedKanji": [
+      "刑",
+      "罰"
+    ]
+  },
+  {
+    "word": "死刑",
+    "reading": "しけい",
+    "meaning": "death penalty",
+    "chapter": 19,
+    "relatedKanji": [
+      "死",
+      "刑"
+    ]
+  },
+  {
+    "word": "欠陥",
+    "reading": "けっかん",
+    "meaning": "defect",
+    "chapter": 19,
+    "relatedKanji": [
+      "欠",
+      "陥"
+    ]
+  },
+  {
+    "word": "陥る",
+    "reading": "おちいる",
+    "meaning": "to fall into",
+    "chapter": 19,
+    "relatedKanji": [
+      "陥"
+    ]
+  },
+  {
+    "word": "訴訟する",
+    "reading": "そしょうする",
+    "meaning": "to sue",
+    "chapter": 19,
+    "relatedKanji": [
+      "訴",
+      "訟"
+    ]
+  },
+  {
+    "word": "訴える",
+    "reading": "うったえる",
+    "meaning": "to appeal",
+    "chapter": 19,
+    "relatedKanji": [
+      "訴"
+    ]
+  },
+  {
+    "word": "控除する",
+    "reading": "こうじょする",
+    "meaning": "to deduct",
+    "chapter": 19,
+    "relatedKanji": [
+      "控",
+      "除"
+    ]
+  },
+  {
+    "word": "控える",
+    "reading": "ひかえる",
+    "meaning": "to refrain",
+    "chapter": 19,
+    "relatedKanji": [
+      "控"
+    ]
+  },
+  {
+    "word": "溺愛",
+    "reading": "できあい",
+    "meaning": "excessive love",
+    "chapter": 19,
+    "relatedKanji": [
+      "溺",
+      "愛"
+    ]
+  },
+  {
+    "word": "溺れる",
+    "reading": "おぼれる",
+    "meaning": "to drown",
+    "chapter": 19,
+    "relatedKanji": [
+      "溺"
+    ]
+  },
+  {
+    "word": "扉",
+    "reading": "とびら",
+    "meaning": "door",
+    "chapter": 19,
+    "relatedKanji": [
+      "扉"
+    ]
+  },
+  {
+    "word": "秘密",
+    "reading": "ひみつ",
+    "meaning": "secret",
+    "chapter": 19,
+    "relatedKanji": [
+      "秘",
+      "密"
+    ]
+  },
+  {
+    "word": "精密な",
+    "reading": "せいみつな",
+    "meaning": "precise",
+    "chapter": 19,
+    "relatedKanji": [
+      "精",
+      "密"
+    ]
+  },
+  {
+    "word": "衝撃",
+    "reading": "しょうげき",
+    "meaning": "shock",
+    "chapter": 19,
+    "relatedKanji": [
+      "衝",
+      "撃"
+    ]
+  },
+  {
+    "word": "衝突",
+    "reading": "しょうとつ",
+    "meaning": "collision",
+    "chapter": 19,
+    "relatedKanji": [
+      "衝",
+      "突"
+    ]
+  },
+  {
+    "word": "遮断する",
+    "reading": "しゃだんする",
+    "meaning": "to cut off",
+    "chapter": 19,
+    "relatedKanji": [
+      "遮",
+      "断"
+    ]
+  },
+  {
+    "word": "遮る",
+    "reading": "さえぎる",
+    "meaning": "to obstruct",
+    "chapter": 19,
+    "relatedKanji": [
+      "遮"
+    ]
+  },
+  {
+    "word": "繰り返す",
+    "reading": "くりかえす",
+    "meaning": "to repeat",
+    "chapter": 19,
+    "relatedKanji": [
+      "繰",
+      "返"
+    ]
+  },
+  {
+    "word": "免許",
+    "reading": "めんきょ",
+    "meaning": "license",
+    "chapter": 19,
+    "relatedKanji": [
+      "免",
+      "許"
+    ]
+  },
+  {
+    "word": "免れる",
+    "reading": "まぬがれる",
+    "meaning": "to escape",
+    "chapter": 19,
+    "relatedKanji": [
+      "免"
+    ]
+  },
+  {
+    "word": "渋滞",
+    "reading": "じゅうたい",
+    "meaning": "traffic jam",
+    "chapter": 19,
+    "relatedKanji": [
+      "渋",
+      "滞"
+    ]
+  },
+  {
+    "word": "渋い",
+    "reading": "しぶい",
+    "meaning": "bitter",
+    "chapter": 19,
+    "relatedKanji": [
+      "渋"
+    ]
+  },
+  {
+    "word": "執筆する",
+    "reading": "しっぴつする",
+    "meaning": "to write",
+    "chapter": 19,
+    "relatedKanji": [
+      "執",
+      "筆"
+    ]
+  },
+  {
+    "word": "執着する",
+    "reading": "しゅうちゃくする",
+    "meaning": "to cling to",
+    "chapter": 19,
+    "relatedKanji": [
+      "執",
+      "着"
+    ]
+  },
+  {
+    "word": "執行猶予",
+    "reading": "しっこうゆうよ",
+    "meaning": "suspended sentence",
+    "chapter": 19,
+    "relatedKanji": [
+      "執",
+      "行",
+      "猶",
+      "予"
+    ]
+  },
+  {
+    "word": "囚人",
+    "reading": "しゅうじん",
+    "meaning": "prisoner",
+    "chapter": 19,
+    "relatedKanji": [
+      "囚",
+      "人"
+    ]
+  },
+  {
+    "word": "死刑囚",
+    "reading": "しけいしゅう",
+    "meaning": "death row inmate",
+    "chapter": 19,
+    "relatedKanji": [
+      "死",
+      "刑",
+      "囚"
+    ]
+  },
+  {
+    "word": "運搬する",
+    "reading": "うんぱんする",
+    "meaning": "to transport",
+    "chapter": 19,
+    "relatedKanji": [
+      "運",
+      "搬"
+    ]
+  },
+  {
+    "word": "妨害する",
+    "reading": "ぼうがいする",
+    "meaning": "to obstruct",
+    "chapter": 19,
+    "relatedKanji": [
+      "妨",
+      "害"
+    ]
+  },
+  {
+    "word": "妨げる",
+    "reading": "さまたげる",
+    "meaning": "to hinder",
+    "chapter": 19,
+    "relatedKanji": [
+      "妨"
+    ]
+  },
+  {
+    "word": "法廷",
+    "reading": "ほうてい",
+    "meaning": "courtroom",
+    "chapter": 19,
+    "relatedKanji": [
+      "法",
+      "廷"
+    ]
+  },
+  {
+    "word": "開廷する",
+    "reading": "かいていする",
+    "meaning": "to open court",
+    "chapter": 19,
+    "relatedKanji": [
+      "開",
+      "廷"
+    ]
+  },
+  {
+    "word": "傍聴する",
+    "reading": "ぼうちょうする",
+    "meaning": "to observe a trial",
+    "chapter": 19,
+    "relatedKanji": [
+      "傍",
+      "聴"
+    ]
+  },
+  {
+    "word": "傍ら",
+    "reading": "かたわら",
+    "meaning": "beside",
+    "chapter": 19,
+    "relatedKanji": [
+      "傍"
+    ]
+  },
+  {
+    "word": "陪審員",
+    "reading": "ばいしんいん",
+    "meaning": "juror",
+    "chapter": 19,
+    "relatedKanji": [
+      "陪",
+      "審",
+      "員"
+    ]
+  },
+  {
+    "word": "休憩する",
+    "reading": "きゅうけいする",
+    "meaning": "to take a break",
+    "chapter": 19,
+    "relatedKanji": [
+      "休",
+      "憩"
+    ]
+  },
+  {
+    "word": "記憶する",
+    "reading": "きおくする",
+    "meaning": "to memorize",
+    "chapter": 19,
+    "relatedKanji": [
+      "記",
+      "憶"
+    ]
+  },
+  {
+    "word": "怠惰な",
+    "reading": "たいだな",
+    "meaning": "lazy",
+    "chapter": 19,
+    "relatedKanji": [
+      "怠",
+      "惰"
+    ]
+  },
+  {
+    "word": "怠る",
+    "reading": "おこたる",
+    "meaning": "to neglect",
+    "chapter": 19,
+    "relatedKanji": [
+      "怠"
+    ]
+  },
+  {
+    "word": "怠ける",
+    "reading": "なまける",
+    "meaning": "to loaf",
+    "chapter": 19,
+    "relatedKanji": [
+      "怠"
+    ]
+  },
+  {
+    "word": "隔週",
+    "reading": "かくしゅう",
+    "meaning": "every other week",
+    "chapter": 19,
+    "relatedKanji": [
+      "隔",
+      "週"
+    ]
+  },
+  {
+    "word": "隔たる",
+    "reading": "へだたる",
+    "meaning": "to be distant",
+    "chapter": 19,
+    "relatedKanji": [
+      "隔"
+    ]
+  },
+  {
+    "word": "隔てる",
+    "reading": "へだてる",
+    "meaning": "to separate",
+    "chapter": 19,
+    "relatedKanji": [
+      "隔"
+    ]
+  }
+]

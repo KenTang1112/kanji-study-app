@@ -1,0 +1,27 @@
+/* Additional custom styles for the app */
+.kanji-text {
+  font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+  font-weight: 500;
+}
+
+.reading-text {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+}
+
+.meaning-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Handwriting canvas styles */
+.handwriting-canvas {
+  touch-action: none;
+  cursor: crosshair;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
