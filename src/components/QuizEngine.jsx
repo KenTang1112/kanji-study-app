@@ -268,9 +268,9 @@ const showKanji = mode === 'self-uploading';
           <div className="text-lg text-gray-600 mb-4">Question:</div>
           <div className="text-4xl font-bold text-gray-800 kanji-text">
             {getQuestionText()}
-            {showKanji && currentQuestion.word && (
+            {showKanji && currentQuestion.kanji && (
               <div className="mt-4 text-6xl font-bold text-indigo-600 kanji-text">
-                {currentQuestion.word}
+                {currentQuestion.kanji}
               </div>
             )}
           </div>
@@ -304,9 +304,14 @@ const showKanji = mode === 'self-uploading';
                 )}
                 {hintType === 'kanji' && (
                   <div>
-                    <div className="text-sm text-gray-600 mb-2">Related Kanji:</div>
+                    <div className="text-sm text-gray-600 mb-2">
+                      {mode.includes('vocabulary') ? 'Related Kanji:' : 'Example Vocabulary:'}
+                    </div>
                     <div className="text-2xl font-bold text-gray-800">
-                      {currentQuestion.relatedKanji.join(' • ')}
+                      {mode.includes('vocabulary') 
+                        ? (currentQuestion.relatedKanji || []).join(' • ')
+                        : (currentQuestion.vocabulary || []).join(' • ')
+                      }
                     </div>
                   </div>
                 )}
@@ -396,7 +401,11 @@ const showKanji = mode === 'self-uploading';
               </div>
 
               {/* Dictionary Section */}
-              <DictionarySection word={currentQuestion.word} reading={currentQuestion.reading} meaning={currentQuestion.meaning} />
+              <DictionarySection 
+                word={mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji} 
+                reading={currentQuestion.reading} 
+                meaning={currentQuestion.meaning} 
+              />
 
               {/* Grading Buttons */}
               <div className="mt-8">

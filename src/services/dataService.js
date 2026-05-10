@@ -118,7 +118,8 @@ class DataService {
           meaning: item.meaning || '',
           vocabulary: item.vocabulary || [],
           kanji: item.kanji,
-          reading: item.reading || ''
+          reading: item.reading || '',
+          relatedKanji: [] // Empty for kanji modes
         }));
       
       case 'kanji-to-reading':
@@ -129,7 +130,8 @@ class DataService {
           meaning: item.meaning || '',
           vocabulary: item.vocabulary || [],
           kanji: item.kanji,
-          reading: item.reading || ''
+          reading: item.reading || '',
+          relatedKanji: [] // Empty for kanji modes
         }));
       
       case 'vocabulary-writing':
