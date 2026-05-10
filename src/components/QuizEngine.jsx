@@ -324,7 +324,7 @@ const showKanji = mode === 'self-uploading';
                   <div className="text-lg text-gray-600 mb-4">This is a self-uploading card</div>
                   <div className="text-2xl text-gray-700 mb-4">Just study the kanji and reading below</div>
                 </div>
-              ) : {needsHandwriting ? (
+              ) : needsHandwriting ? (
                 <div>
                   <div className="text-lg text-gray-600 mb-4">Write your answer:</div>
                   <HandwritingCanvas ref={handwritingRef} />
