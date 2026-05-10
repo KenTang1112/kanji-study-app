@@ -30,10 +30,10 @@ const studyModes = [
     color: 'bg-orange-500 hover:bg-orange-600'
   },
   {
-    id: 'self-uploading',
-    title: 'Self Uploading',
-    description: 'Upload vocabulary with kanji display for everyone',
-    icon: '📤',
+    id: 'manage-vocabulary',
+    title: 'Manage Vocabulary',
+    description: 'Add, edit, and manage vocabulary',
+    icon: '�',
     color: 'bg-pink-500 hover:bg-pink-600'
   }
 ];
