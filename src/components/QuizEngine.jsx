@@ -76,7 +76,10 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
     const word = mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji;
     
     // Update weak card score
-    dataService.updateWeakCardScore(word, isCorrect);
+    dataService.updateWeakCardScores(
+      isCorrect ? [word] : [],
+      !isCorrect ? [word] : []
+    );
     
     // Update session stats
     setSessionStats(prev => ({

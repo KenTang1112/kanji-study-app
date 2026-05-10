@@ -7,6 +7,8 @@ export default function ChapterSelection({ selectedMode, onChaptersSelect, onBac
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Refresh data to get latest user vocabulary
+    dataService.refreshData();
     const chapters = dataService.getAvailableChapters();
     setAvailableChapters(chapters);
     // Default select all chapters
