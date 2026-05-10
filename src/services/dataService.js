@@ -119,6 +119,7 @@ class DataService {
           vocabulary: item.vocabulary || [],
           kanji: item.kanji,
           reading: item.reading || '',
+          onyomi: item.onyomi || '', // Include onyomi as alternative answer
           relatedKanji: [] // Empty for kanji modes
         }));
       
