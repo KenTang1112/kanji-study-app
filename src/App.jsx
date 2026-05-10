@@ -2,6 +2,7 @@ import { useState } from 'react';
 import HomeScreen from './components/HomeScreen';
 import ChapterSelection from './components/ChapterSelection';
 import QuizEngine from './components/QuizEngine';
+import VocabularyManager from './components/VocabularyManager';
 import './App.css';
 
 function App() {
@@ -29,11 +30,15 @@ function App() {
     setCurrentScreen('chapters');
   };
 
+  const handleManageVocabulary = () => {
+    setCurrentScreen('vocabulary-manager');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {currentScreen === 'home' && (
-          <HomeScreen onModeSelect={handleModeSelect} />
+          <HomeScreen onModeSelect={handleModeSelect} onManageVocabulary={handleManageVocabulary} />
         )}
         
         {currentScreen === 'chapters' && (
@@ -51,6 +56,10 @@ function App() {
             onBackToHome={handleBackToHome}
             onBackToChapters={handleBackToChapters}
           />
+        )}
+        
+        {currentScreen === 'vocabulary-manager' && (
+          <VocabularyManager onBack={handleBackToHome} />
         )}
       </div>
     </div>

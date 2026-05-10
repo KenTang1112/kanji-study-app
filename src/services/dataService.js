@@ -2,7 +2,8 @@ import kanjiVocabCh15_19 from '../data/kanji_vocab_ch15_19.json';
 
 class DataService {
   constructor() {
-    this.allData = kanjiVocabCh15_19;
+    this.baseData = kanjiVocabCh15_19;
+    this.loadUserVocabulary();
     this.loadWeakCards();
   }
 
@@ -12,9 +13,21 @@ class DataService {
     this.weakCards = stored ? JSON.parse(stored) : {};
   }
 
+  // Load user vocabulary from localStorage
+  loadUserVocabulary() {
+    const stored = localStorage.getItem('userVocabulary');
+    const userVocab = stored ? JSON.parse(stored) : [];
+    this.allData = [...this.baseData, ...userVocab];
+  }
+
   // Save weak cards to localStorage
   saveWeakCards() {
     localStorage.setItem('weakCards', JSON.stringify(this.weakCards));
+  }
+
+  // Refresh data when user vocabulary changes
+  refreshData() {
+    this.loadUserVocabulary();
   }
 
   // Get all available chapters

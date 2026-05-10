@@ -31,7 +31,7 @@ const studyModes = [
   }
 ];
 
-export default function HomeScreen({ onModeSelect }) {
+export default function HomeScreen({ onModeSelect, onManageVocabulary }) {
   const [hoveredMode, setHoveredMode] = useState(null);
 
   return (
@@ -69,6 +69,15 @@ export default function HomeScreen({ onModeSelect }) {
             </div>
           </button>
         ))}
+      </div>
+
+      <div className="mt-8 text-center">
+        <button
+          onClick={onManageVocabulary}
+          className="px-8 py-4 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold text-lg"
+        >
+          📚 Manage Vocabulary
+        </button>
       </div>
 
       <div className="mt-12 text-center">
