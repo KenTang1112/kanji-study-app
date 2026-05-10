@@ -137,7 +137,7 @@ class DataService {
       case 'vocabulary-writing':
         const vocabForWriting = this.filterVocabByChapters(chapters);
         return vocabForWriting.map(item => ({
-          question: item.meaning,
+          question: item.reading,
           answer: item.word,
           reading: item.reading,
           meaning: item.meaning,

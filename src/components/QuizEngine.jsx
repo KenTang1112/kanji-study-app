@@ -148,7 +148,7 @@ export default function QuizEngine({ mode, chapters, onBackToHome, onBackToChapt
         case 'kanji-to-reading':
           return currentQuestion.question || 'No question available';
         case 'vocabulary-writing':
-          return currentQuestion.meaning || 'No meaning available';
+          return currentQuestion.question || 'No question available';
         case 'vocabulary-reading':
           return currentQuestion.question || 'No question available';
         default:
