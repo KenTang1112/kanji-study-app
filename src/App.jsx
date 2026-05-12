@@ -58,7 +58,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {currentScreen === 'home' && (
-          <HomeScreen onModeSelect={handleModeSelect} onManageVocabulary={handleManageVocabulary} onManageFlaggedItems={handleFlaggedItems} />
+          <HomeScreen onModeSelect={handleModeSelect} onManageVocabulary={handleManageVocabulary} onManageFlaggedItems={handleFlaggedItems} onPracticeTest={handlePracticeTest} />
         )}
         
         {currentScreen === 'chapters' && (
