@@ -20,175 +20,200 @@
     "reading": "ふ",
     "meaning": "skin",
     "chapter": 15,
-    "vocabulary": ["皮膚"]
+    "vocabulary": ["皮膚"],
+    "relatedVocabularyHiragana": ["ひふ"]
   },
   {
     "kanji": "咽",
     "reading": "いん",
     "meaning": "throat, pharynx",
     "chapter": 15,
-    "vocabulary": ["耳鼻咽喉科"]
+    "vocabulary": ["耳鼻咽喉科"],
+    "relatedVocabularyHiragana": ["じびいんこうか"]
   },
   {
     "kanji": "喉",
     "reading": "こう",
     "meaning": "throat",
     "chapter": 15,
-    "vocabulary": ["喉"]
+    "vocabulary": ["喉"],
+    "relatedVocabularyHiragana": ["のど"]
   },
   {
     "kanji": "泌",
     "reading": "ひつ",
     "meaning": "to secrete",
     "chapter": 15,
-    "vocabulary": ["分泌", "泌尿器"]
+    "vocabulary": ["分泌", "泌尿器"],
+    "relatedVocabularyHiragana": ["ぶんぴつ", "ひにょうき"]
   },
   {
     "kanji": "尿",
     "reading": "にょう",
     "meaning": "urine",
     "chapter": 15,
-    "vocabulary": ["泌尿器", "糖尿病"]
+    "vocabulary": ["泌尿器", "糖尿病"],
+    "relatedVocabularyHiragana": ["ひにょうき", "とうにょうびょう"]
   },
   {
     "kanji": "腫",
     "reading": "しゅ",
     "meaning": "swelling, tumor",
     "chapter": 15,
-    "vocabulary": ["腫れる", "腫瘍"]
+    "vocabulary": ["腫れる", "腫瘍"],
+    "relatedVocabularyHiragana": ["はれる", "しゅよう"]
   },
   {
     "kanji": "瘍",
     "reading": "よう",
     "meaning": "ulcer",
     "chapter": 15,
-    "vocabulary": ["潰瘍"]
+    "vocabulary": ["潰瘍"],
+    "relatedVocabularyHiragana": ["かいよう"]
   },
   {
     "kanji": "抗",
     "reading": "こう",
     "meaning": "to resist, anti-",
     "chapter": 15,
-    "vocabulary": ["抗生物質"]
+    "vocabulary": ["抗生物質"],
+    "relatedVocabularyHiragana": ["こうせいぶっしつ"]
   },
   {
     "kanji": "鎮",
     "reading": "ちん",
     "meaning": "to calm, to suppress",
     "chapter": 15,
-    "vocabulary": ["鎮痛剤", "鎮める"]
+    "vocabulary": ["鎮痛剤", "鎮める"],
+    "relatedVocabularyHiragana": ["ちんつうざい", "しずめる"]
   },
   {
     "kanji": "箋",
     "reading": "せん",
     "meaning": "paper, note",
     "chapter": 15,
-    "vocabulary": ["便箋", "処方箋"]
+    "vocabulary": ["便箋", "処方箋"],
+    "relatedVocabularyHiragana": ["びんせん", "しょほうせん"]
   },
   {
     "kanji": "癒",
     "reading": "ゆ",
     "meaning": "to heal, cure",
     "chapter": 15,
-    "vocabulary": ["治癒", "癒す"]
+    "vocabulary": ["治癒", "癒す"],
+    "relatedVocabularyHiragana": ["ちゆ", "いやす"]
   },
   {
     "kanji": "症",
     "reading": "しょう",
     "meaning": "symptom, condition",
     "chapter": 15,
-    "vocabulary": ["症状", "対症療法"]
+    "vocabulary": ["症状", "対症療法"],
+    "relatedVocabularyHiragana": ["しょうじょう", "たいしょうりょうほう"]
   },
   {
     "kanji": "痢",
     "reading": "り",
     "meaning": "diarrhea",
     "chapter": 15,
-    "vocabulary": ["下痢"]
+    "vocabulary": ["下痢"],
+    "relatedVocabularyHiragana": ["げり"]
   },
   {
     "kanji": "吐",
     "reading": "と",
     "meaning": "to vomit, to confess",
     "chapter": 15,
-    "vocabulary": ["吐く", "吐き気", "吐露する"]
+    "vocabulary": ["吐く", "吐き気", "吐露する"],
+    "relatedVocabularyHiragana": ["はく", "はきけ", "とろする"]
   },
   {
     "kanji": "睡",
     "reading": "すい",
     "meaning": "sleep",
     "chapter": 15,
-    "vocabulary": ["睡眠"]
+    "vocabulary": ["睡眠"],
+    "relatedVocabularyHiragana": ["すいみん"]
   },
   {
     "kanji": "糖",
     "reading": "とう",
     "meaning": "sugar",
     "chapter": 15,
-    "vocabulary": ["糖尿病"]
+    "vocabulary": ["糖尿病"],
+    "relatedVocabularyHiragana": ["とうにょうびょう"]
   },
   {
     "kanji": "梗",
     "reading": "こう",
     "meaning": "blockage, infarction",
     "chapter": 15,
-    "vocabulary": ["脳梗塞", "心筋梗塞"]
+    "vocabulary": ["脳梗塞", "心筋梗塞"],
+    "relatedVocabularyHiragana": ["のうこうそく", "しんきんこうそく"]
   },
   {
     "kanji": "塞",
     "reading": "そく",
     "meaning": "to block, obstruction",
     "chapter": 15,
-    "vocabulary": ["閉塞", "塞ぐ"]
+    "vocabulary": ["閉塞", "塞ぐ"],
+    "relatedVocabularyHiragana": ["へいそく", "ふさぐ"]
   },
   {
     "kanji": "潰",
     "reading": "かい",
     "meaning": "to crush, ulcer",
     "chapter": 15,
-    "vocabulary": ["潰瘍", "潰れる"]
+    "vocabulary": ["潰瘍", "潰れる"],
+    "relatedVocabularyHiragana": ["かいよう", "つぶれる"]
   },
   {
     "kanji": "妊",
     "reading": "にん",
     "meaning": "pregnancy",
     "chapter": 15,
-    "vocabulary": ["妊娠"]
+    "vocabulary": ["妊娠"],
+    "relatedVocabularyHiragana": ["にんしん"]
   },
   {
     "kanji": "娠",
     "reading": "しん",
     "meaning": "pregnancy",
     "chapter": 15,
-    "vocabulary": ["妊娠"]
+    "vocabulary": ["妊娠"],
+    "relatedVocabularyHiragana": ["にんしん"]
   },
   {
     "kanji": "視",
     "reading": "し",
     "meaning": "to see, eyesight",
     "chapter": 15,
-    "vocabulary": ["視力"]
+    "vocabulary": ["視力"],
+    "relatedVocabularyHiragana": ["しりょく"]
   },
   {
     "kanji": "鬱",
     "reading": "うつ",
     "meaning": "depression, gloomy",
     "chapter": 15,
-    "vocabulary": ["憂鬱"]
+    "vocabulary": ["憂鬱"],
+    "relatedVocabularyHiragana": ["ゆううつ"]
   },
   {
     "kanji": "渇",
     "reading": "かつ",
     "meaning": "to thirst, dry",
     "chapter": 15,
-    "vocabulary": ["渇く", "渇水"]
+    "vocabulary": ["渇く", "渇水"],
+    "relatedVocabularyHiragana": ["かわく", "かっすい"]
   },
   {
     "kanji": "剰",
     "reading": "じょう",
     "meaning": "excess, surplus",
     "chapter": 15,
-    "vocabulary": ["過剰"]
+    "vocabulary": ["過剰"],
+    "relatedVocabularyHiragana": ["かじょう"]
   },
   {
     "kanji": "偏",
