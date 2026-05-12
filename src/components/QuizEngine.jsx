@@ -457,7 +457,7 @@ const showKanji = mode === 'self-uploading';
                       {mode.includes('vocabulary') 
                         ? (currentQuestion?.relatedKanji || []).join(' • ') || 'No related vocabulary'
                         : mode === 'kana-to-kanji' 
-                          ? (currentQuestion?.vocabulary || []).join(' • ') || 'No related vocabulary'
+                          ? (currentQuestion?.relatedVocabulary || []).join(' • ') || 'No related vocabulary'
                           : (currentQuestion?.vocabulary || []).join(' • ') || 'No example vocabulary'
                       }
                     </div>

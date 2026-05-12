@@ -116,7 +116,8 @@ class DataService {
           question: item.reading || '', // Will be filled with actual reading later
           answer: item.kanji,
           meaning: item.meaning || '',
-          vocabulary: this.getRelatedVocabularyForKanji([item.kanji], item.kanji),
+          vocabulary: item.vocabulary || [], // Keep original kanji vocabulary
+          relatedVocabulary: this.getRelatedVocabularyForKanji([item.kanji], item.kanji), // New field for hiragana readings
           kanji: item.kanji,
           reading: item.reading || '',
           onyomi: item.onyomi || '', // Include onyomi as alternative answer
