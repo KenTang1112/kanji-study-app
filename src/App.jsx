@@ -5,6 +5,7 @@ import WordSelection from './components/WordSelection';
 import QuizEngine from './components/QuizEngine';
 import VocabularyManager from './components/VocabularyManager';
 import FlaggedItemsManager from './components/FlaggedItemsManager';
+import PracticeTest from './components/PracticeTest';
 import ErrorBoundary from './components/ErrorBoundary';
 import './App.css';
 
@@ -51,6 +52,8 @@ function App() {
     setCurrentScreen('flagged-items');
   };
 
+  const handlePracticeTest = () => { setCurrentScreen('practice-test'); };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -73,6 +76,10 @@ function App() {
             onBack={handleBackToChapters}
             onStartQuiz={handleWordSelection}
           />
+        )}
+        
+        {currentScreen === 'practice-test' && (
+          <PracticeTest onBack={handleBackToHome} />
         )}
         
         {currentScreen === 'quiz' && (

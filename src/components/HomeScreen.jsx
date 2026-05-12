@@ -31,7 +31,7 @@ const studyModes = [
   }
 ];
 
-export default function HomeScreen({ onModeSelect, onManageVocabulary, onManageFlaggedItems }) {
+export default function HomeScreen({ onModeSelect, onManageVocabulary, onManageFlaggedItems, onPracticeTest }) {
   const [hoveredMode, setHoveredMode] = useState(null);
 
   return (
@@ -84,6 +84,12 @@ export default function HomeScreen({ onModeSelect, onManageVocabulary, onManageF
             className="px-8 py-4 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold text-lg"
           >
             🚩 View Flags
+          </button>
+          <button
+            onClick={onPracticeTest}
+            className="px-8 py-4 bg-purple-500 text-white rounded-xl hover:bg-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold text-lg"
+          >
+            📝 練習テスト (15-19課)
           </button>
         </div>
       </div>
