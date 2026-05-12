@@ -227,7 +227,7 @@ const CHAPTERS = [
         sentences: [
           { num: 1, full: 'つつしんでおくやみ申し上げます。',
             targets: [{ word: 'おくやみ', answer: 'お悔やみ' }],
-            writingTargets: [{ word: 'つつしんで', answer: '慎んで' }] },
+            writingTargets: [{ word: 'おくやみ', answer: 'お悔やみ' }, { word: 'つつしんで', answer: '慎んで' }] },
           { num: 2, full: '祖父の一周忌に親戚が集まった。',
             targets: [{ word: '一周忌', answer: 'いっしゅうき' }, { word: '親戚', answer: 'しんせき' }] },
           { num: 3, full: '日本人女性の平均 じゅみょうは何歳ですか。',
@@ -654,7 +654,7 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
                           <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
                             placeholder="読み"
                             className={`px-2 py-1 rounded border text-sm outline-none transition-all
-                              ${submitted ? (correct ? 'bg-emerald-100 border-emerald-400 text-emerald-800' : 'bg-red-100 border-red-400 text-red-700') : 'bg-blue-50 border-blue-300 focus:border-blue-500 focus:bg-white'}`}
+                              ${submitted ? (correct ? 'bg-emerald-100 border-emerald-400 text-emerald-800' : 'bg-amber-100 border-amber-400 text-amber-800') : 'bg-white border-gray-300 focus:border-indigo-400 focus:bg-indigo-50'}`}
                             style={{ width: `${Math.max(90, t.answer.length * 13 + 20)}px` }} />
                           {submitted && correct && <span className="text-[11px] text-emerald-600 font-bold">✓</span>}
                           {submitted && wrong && <span className="text-[11px] text-emerald-700 font-bold">{t.answer}</span>}
