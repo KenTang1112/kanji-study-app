@@ -192,7 +192,7 @@ class DataService {
       
       case 'vocabulary-writing':
         return selectedWords.map(item => ({
-          question: item.meaning || '',
+          question: item.reading || '',
           answer: item.word,
           meaning: item.meaning || '',
           reading: item.reading || '',

@@ -301,7 +301,7 @@
     "relatedKanji": ["葬"]
   },
   {
-    "word": "ほうむる",
+    "word": "葬る",
     "reading": "ほうむる",
     "meaning": "to bury",
     "chapter": 16,
@@ -322,7 +322,7 @@
     "relatedKanji": ["寿"]
   },
   {
-    "word": "ことぶき",
+    "word": "寿",
     "reading": "ことぶき",
     "meaning": "congratulations",
     "chapter": 16,
@@ -336,7 +336,7 @@
     "relatedKanji": ["芳"]
   },
   {
-    "word": "かんばしい",
+    "word": "芳しい",
     "reading": "かんばしい",
     "meaning": "fragrant",
     "chapter": 16,
@@ -357,7 +357,7 @@
     "relatedKanji": ["披", "露"]
   },
   {
-    "word": "つゆ",
+    "word": "露",
     "reading": "つゆ",
     "meaning": "dew",
     "chapter": 16,
@@ -665,7 +665,7 @@
     "relatedKanji": ["雷"]
   },
   {
-    "word": "かみなり",
+    "word": "雷",
     "reading": "かみなり",
     "meaning": "thunder",
     "chapter": 17,
@@ -735,7 +735,7 @@
     "relatedKanji": ["粘"]
   },
   {
-    "word": "かける",
+    "word": "駆ける",
     "reading": "かける",
     "meaning": "to run",
     "chapter": 17,
@@ -1538,5 +1538,201 @@
     "meaning": "to separate",
     "chapter": 19,
     "relatedKanji": ["隔"]
+  },
+  {
+    "word": "眼科",
+    "reading": "がんか",
+    "meaning": "ophthalmology",
+    "chapter": 15,
+    "relatedKanji": []
+  },
+  {
+    "word": "心臓",
+    "reading": "しんぞう",
+    "meaning": "heart",
+    "chapter": 15,
+    "relatedKanji": []
+  },
+  {
+    "word": "腎臓",
+    "reading": "じんぞう",
+    "meaning": "kidney",
+    "chapter": 15,
+    "relatedKanji": []
+  },
+  {
+    "word": "亀",
+    "reading": "かめ",
+    "meaning": "turtle",
+    "chapter": 15,
+    "relatedKanji": []
+  },
+  {
+    "word": "受診",
+    "reading": "じゅしん",
+    "meaning": "medical consultation",
+    "chapter": 15,
+    "relatedKanji": []
+  },
+  {
+    "word": "摂取する",
+    "reading": "せっしゅする",
+    "meaning": "ingest",
+    "chapter": 15,
+    "relatedKanji": []
+  },
+  {
+    "word": "効く",
+    "reading": "きく",
+    "meaning": "effective",
+    "chapter": 15,
+    "relatedKanji": []
+  },
+  {
+    "word": "疾患",
+    "reading": "しっかん",
+    "meaning": "disease",
+    "chapter": 15,
+    "relatedKanji": []
+  },
+  {
+    "word": "肝臓",
+    "reading": "かんぞう",
+    "meaning": "liver",
+    "chapter": 15,
+    "relatedKanji": []
+  },
+  {
+    "word": "挨拶",
+    "reading": "あいさつ",
+    "meaning": "greeting",
+    "chapter": 16,
+    "relatedKanji": []
+  },
+  {
+    "word": "平均",
+    "reading": "へいきん",
+    "meaning": "average",
+    "chapter": 16,
+    "relatedKanji": []
+  },
+  {
+    "word": "失敗",
+    "reading": "しっぱい",
+    "meaning": "failure",
+    "chapter": 16,
+    "relatedKanji": []
+  },
+  {
+    "word": "疑問",
+    "reading": "ぎもん",
+    "meaning": "question",
+    "chapter": 16,
+    "relatedKanji": []
+  },
+  {
+    "word": "税抜金額",
+    "reading": "ぜいぬききんがく",
+    "meaning": "price excluding tax",
+    "chapter": 16,
+    "relatedKanji": []
+  },
+  {
+    "word": "消費税",
+    "reading": "しょうひぜい",
+    "meaning": "consumption tax",
+    "chapter": 16,
+    "relatedKanji": []
+  },
+  {
+    "word": "印鑑",
+    "reading": "いんかん",
+    "meaning": "signature stamp",
+    "chapter": 17,
+    "relatedKanji": []
+  },
+  {
+    "word": "避難",
+    "reading": "ひなん",
+    "meaning": "evacuation",
+    "chapter": 17,
+    "relatedKanji": []
+  },
+  {
+    "word": "契約",
+    "reading": "けいやく",
+    "meaning": "contract",
+    "chapter": 17,
+    "relatedKanji": []
+  },
+  {
+    "word": "垂直距離",
+    "reading": "すいちょくきょり",
+    "meaning": "vertical distance",
+    "chapter": 17,
+    "relatedKanji": []
+  },
+  {
+    "word": "範囲",
+    "reading": "はんい",
+    "meaning": "range",
+    "chapter": 17,
+    "relatedKanji": []
+  },
+  {
+    "word": "犯罪組織",
+    "reading": "はんざいそしき",
+    "meaning": "criminal organization",
+    "chapter": 18,
+    "relatedKanji": []
+  },
+  {
+    "word": "図った",
+    "reading": "はかった",
+    "meaning": "planned",
+    "chapter": 18,
+    "relatedKanji": []
+  },
+  {
+    "word": "逮捕",
+    "reading": "たいほ",
+    "meaning": "arrest",
+    "chapter": 18,
+    "relatedKanji": []
+  },
+  {
+    "word": "鑑定",
+    "reading": "かんてい",
+    "meaning": "appraisal",
+    "chapter": 18,
+    "relatedKanji": []
+  },
+  {
+    "word": "児童",
+    "reading": "じどう",
+    "meaning": "juvenile",
+    "chapter": 19,
+    "relatedKanji": []
+  },
+  {
+    "word": "執行猶予",
+    "reading": "しっこうゆうよ",
+    "meaning": "suspended period",
+    "chapter": 19,
+    "relatedKanji": []
+  },
+  {
+    "word": "追突",
+    "reading": "ついとつ",
+    "meaning": "rear-end collision",
+    "chapter": 19,
+    "relatedKanji": []
+  },
+  {
+    "word": "放送",
+    "reading": "ほうそう",
+    "meaning": "broadcast",
+    "chapter": 19,
+    "relatedKanji": []
   }
 ]

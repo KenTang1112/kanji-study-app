@@ -1,0 +1,263 @@
+[
+  {
+    "word": "眼科",
+    "reading": "がんか",
+    "meaning": "ophthalmology",
+    "chapter": 15,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778585487797
+  },
+  {
+    "word": "心臓",
+    "reading": "しんぞう",
+    "meaning": "heart",
+    "chapter": 15,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778585551033
+  },
+  {
+    "word": "腎臓",
+    "reading": "じんぞう",
+    "meaning": "kidney",
+    "chapter": 15,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778585580555
+  },
+  {
+    "word": "亀",
+    "reading": "かめ",
+    "meaning": "turtle",
+    "chapter": 15,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778585602227
+  },
+  {
+    "word": "受診",
+    "reading": "じゅしん",
+    "meaning": "medical consultation",
+    "chapter": 15,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778585648405
+  },
+  {
+    "word": "摂取する",
+    "reading": "せっしゅする",
+    "meaning": "ingest",
+    "chapter": 15,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778585707092
+  },
+  {
+    "word": "効く",
+    "reading": "きく",
+    "meaning": "effective",
+    "chapter": 15,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778585742818
+  },
+  {
+    "word": "矯正",
+    "reading": "きょうせい",
+    "meaning": "correction",
+    "chapter": 15,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778585772136
+  },
+  {
+    "word": "疾患",
+    "reading": "しっかん",
+    "meaning": "disease",
+    "chapter": 15,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778585990937
+  },
+  {
+    "word": "肝臓",
+    "reading": "かんぞう",
+    "meaning": "liver",
+    "chapter": 15,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586017835
+  },
+  {
+    "word": "挨拶",
+    "reading": "あいさつ",
+    "meaning": "greeting",
+    "chapter": 16,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586065963
+  },
+  {
+    "word": "平均",
+    "reading": "へいきん",
+    "meaning": "average",
+    "chapter": 16,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586113738
+  },
+  {
+    "word": "失敗",
+    "reading": "しっぱい",
+    "meaning": "failure",
+    "chapter": 16,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586132961
+  },
+  {
+    "word": "疑問",
+    "reading": "ぎもん",
+    "meaning": "question",
+    "chapter": 16,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586167543
+  },
+  {
+    "word": "税抜金額",
+    "reading": "ぜいぬききんがく",
+    "meaning": "price excluding tax",
+    "chapter": 16,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586285473
+  },
+  {
+    "word": "消費税",
+    "reading": "しょうひぜい",
+    "meaning": "consumption tax",
+    "chapter": 16,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586332515
+  },
+  {
+    "word": "印鑑",
+    "reading": "いんかん",
+    "meaning": "signature stamp",
+    "chapter": 17,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586371744
+  },
+  {
+    "word": "避難",
+    "reading": "ひなん",
+    "meaning": "evacuation",
+    "chapter": 17,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586415813
+  },
+  {
+    "word": "契約",
+    "reading": "けいやく",
+    "meaning": "contract",
+    "chapter": 17,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586459671
+  },
+  {
+    "word": "垂直距離",
+    "reading": "すいちょくきょり",
+    "meaning": "vertical distance",
+    "chapter": 17,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586513412
+  },
+  {
+    "word": "範囲",
+    "reading": "はんい",
+    "meaning": "range",
+    "chapter": 17,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586589910
+  },
+  {
+    "word": "犯罪組織",
+    "reading": "はんざいそしき",
+    "meaning": "criminal organization",
+    "chapter": 18,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586648093
+  },
+  {
+    "word": "図った",
+    "reading": "はかった",
+    "meaning": "planned",
+    "chapter": 18,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586692218
+  },
+  {
+    "word": "逮捕",
+    "reading": "たいほ",
+    "meaning": "arrest",
+    "chapter": 18,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586742662
+  },
+  {
+    "word": "鑑定",
+    "reading": "かんてい",
+    "meaning": "appraisal",
+    "chapter": 18,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586778386
+  },
+  {
+    "word": "児童",
+    "reading": "じどう",
+    "meaning": "juvenile",
+    "chapter": 19,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778586870654
+  },
+  {
+    "word": "執行猶予",
+    "reading": "しっこうゆうよ",
+    "meaning": "suspended period",
+    "chapter": 19,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778587006700
+  },
+  {
+    "word": "追突",
+    "reading": "ついとつ",
+    "meaning": "rear-end  collision",
+    "chapter": 19,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778587154356
+  },
+  {
+    "word": "放送",
+    "reading": "ほうそう",
+    "meaning": "broadcast",
+    "chapter": 19,
+    "relatedKanji": [],
+    "type": "vocab",
+    "id": 1778587230631
+  }
+]
