@@ -4,14 +4,16 @@
     "reading": "じゅん",
     "meaning": "to follow, to circulate",
     "chapter": 15,
-    "vocabulary": ["循環"]
+    "vocabulary": ["循環"],
+    "relatedVocabularyHiragana": ["じゅんかん"]
   },
   {
     "kanji": "酔",
     "reading": "すい",
     "meaning": "to get drunk, anesthesia",
     "chapter": 15,
-    "vocabulary": ["麻酔", "酔う"]
+    "vocabulary": ["麻酔", "酔う"],
+    "relatedVocabularyHiragana": ["ますい", "よう"]
   },
   {
     "kanji": "膚",
