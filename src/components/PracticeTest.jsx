@@ -538,7 +538,7 @@ function ReadingListSection({ sec, chId, answers, onChange, submitted }) {
           return (
             <div key={q.num}
               className={`flex items-start gap-3 p-3 rounded-xl border transition-all
-                ${submitted ? (correct ? 'border-green-300 bg-green-50' : 'border-red-300 bg-red-50') : 'border-gray-200 bg-white hover:border-blue-300'}`}
+                ${submitted ? (correct ? 'border-emerald-300 bg-emerald-50' : 'border-amber-300 bg-amber-50') : 'border-gray-200 bg-white hover:border-blue-300'}`}
             >
               <span className="text-gray-500 text-sm font-semibold pt-1 shrink-0">{CIRCLED[q.num - 1]}</span>
               <div className="flex-1">
@@ -546,9 +546,9 @@ function ReadingListSection({ sec, chId, answers, onChange, submitted }) {
                 <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
                   placeholder="ひらがなで"
                   className={`w-full px-2 py-1 rounded border text-sm outline-none
-                    ${submitted ? (correct ? 'bg-green-100 border-green-300 text-green-800' : 'bg-red-100 border-red-300 text-red-700') : 'bg-gray-50 border-gray-300 focus:border-blue-400 focus:bg-white'}`} />
-                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-gray-400 mr-1">{val || '未回答'}</span><span className="text-green-700 font-bold">→ {q.answer}</span></p>}
-                {submitted && correct && <p className="text-xs text-green-600 font-bold mt-1">✓ 正解</p>}
+                    ${submitted ? (correct ? 'bg-green-100 border-green-300 text-green-800' : 'bg-amber-100 border-amber-300 text-amber-700') : 'bg-gray-50 border-gray-300 focus:border-blue-400 focus:bg-white'}`} />
+                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-gray-400 mr-1">{val || '未回答'}</span><span className="text-emerald-700 font-bold">→ {q.answer}</span></p>}
+                {submitted && correct && <p className="text-xs text-emerald-600 font-bold mt-1">✓ 正解</p>}
               </div>
             </div>
           );
@@ -582,7 +582,7 @@ function ReadingHeadlinesSection({ sec, chId, answers, onChange, submitted }) {
           return (
             <div key={q.num}
               className={`flex items-start gap-3 p-3 rounded-xl border transition-all
-                ${submitted ? (correct ? 'border-green-300 bg-green-50' : 'border-red-300 bg-red-50') : 'border-gray-200 bg-white hover:border-blue-300'}`}
+                ${submitted ? (correct ? 'border-emerald-300 bg-emerald-50' : 'border-amber-300 bg-amber-50') : 'border-gray-200 bg-white hover:border-blue-300'}`}
             >
               <span className="text-gray-500 text-sm font-semibold pt-1 shrink-0">{CIRCLED[q.num - 1]}</span>
               <div className="flex-1">
@@ -590,9 +590,9 @@ function ReadingHeadlinesSection({ sec, chId, answers, onChange, submitted }) {
                 <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
                   placeholder="ひらがなで"
                   className={`w-full px-2 py-1 rounded border text-sm outline-none
-                    ${submitted ? (correct ? 'bg-green-100 border-green-300 text-green-800' : 'bg-red-100 border-red-300 text-red-700') : 'bg-gray-50 border-gray-300 focus:border-blue-400 focus:bg-white'}`} />
-                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-gray-400 mr-1">{val || '未回答'}</span><span className="text-green-700 font-bold">→ {q.answer}</span></p>}
-                {submitted && correct && <p className="text-xs text-green-600 font-bold mt-1">✓ 正解</p>}
+                    ${submitted ? (correct ? 'bg-green-100 border-green-300 text-green-800' : 'bg-amber-100 border-amber-300 text-amber-700') : 'bg-gray-50 border-gray-300 focus:border-blue-400 focus:bg-white'}`} />
+                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-gray-400 mr-1">{val || '未回答'}</span><span className="text-emerald-700 font-bold">→ {q.answer}</span></p>}
+                {submitted && correct && <p className="text-xs text-emerald-600 font-bold mt-1">✓ 正解</p>}
               </div>
             </div>
           );
@@ -654,10 +654,10 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
                           <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
                             placeholder="読み"
                             className={`px-2 py-1 rounded border text-sm outline-none transition-all
-                              ${submitted ? (correct ? 'bg-green-100 border-green-400 text-green-800' : 'bg-red-100 border-red-400 text-red-700') : 'bg-blue-50 border-blue-300 focus:border-blue-500 focus:bg-white'}`}
+                              ${submitted ? (correct ? 'bg-emerald-100 border-emerald-400 text-emerald-800' : 'bg-red-100 border-red-400 text-red-700') : 'bg-blue-50 border-blue-300 focus:border-blue-500 focus:bg-white'}`}
                             style={{ width: `${Math.max(90, t.answer.length * 13 + 20)}px` }} />
-                          {submitted && correct && <span className="text-[11px] text-green-600 font-bold">✓</span>}
-                          {submitted && wrong && <span className="text-[11px] text-green-700 font-bold">{t.answer}</span>}
+                          {submitted && correct && <span className="text-[11px] text-emerald-600 font-bold">✓</span>}
+                          {submitted && wrong && <span className="text-[11px] text-emerald-700 font-bold">{t.answer}</span>}
                         </div>
                       );
                     })}
