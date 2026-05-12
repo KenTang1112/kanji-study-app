@@ -116,7 +116,7 @@ class DataService {
           question: item.reading || '', // Will be filled with actual reading later
           answer: item.kanji,
           meaning: item.meaning || '',
-          vocabulary: item.vocabulary || [],
+          vocabulary: this.getRelatedVocabularyForKanji([item.kanji], item.kanji),
           kanji: item.kanji,
           reading: item.reading || '',
           onyomi: item.onyomi || '', // Include onyomi as alternative answer
@@ -142,7 +142,7 @@ class DataService {
           answer: item.word,
           reading: item.reading,
           meaning: item.meaning,
-          relatedKanji: item.relatedKanji,
+          relatedKanji: this.getRelatedVocabularyForKanji(item.relatedKanji, item.word),
           word: item.word,
           reading: item.reading
         }));
@@ -153,7 +153,7 @@ class DataService {
           question: item.word,
           answer: item.reading,
           meaning: item.meaning,
-          relatedKanji: item.relatedKanji,
+          relatedKanji: this.getRelatedVocabularyForKanji(item.relatedKanji, item.word),
           word: item.word,
           reading: item.reading
         }));
@@ -161,6 +161,32 @@ class DataService {
       default:
         return [];
     }
+  }
+
+  // Get related vocabulary for kanji (excluding current word)
+  getRelatedVocabularyForKanji(relatedKanji, currentWord) {
+    if (!relatedKanji || relatedKanji.length === 0) return [];
+    
+    const allVocab = this.filterVocabByChapters(Array.from({length: 19}, (_, i) => i + 1));
+    const relatedVocab = [];
+    
+    relatedKanji.forEach(kanji => {
+      const vocabWithKanji = allVocab.filter(vocab => 
+        vocab.word.includes(kanji) && 
+        vocab.word !== currentWord &&
+        !relatedVocab.some(rv => rv.word === vocab.word)
+      );
+      
+      vocabWithKanji.forEach(vocab => {
+        relatedVocab.push({
+          word: vocab.word,
+          reading: vocab.reading
+        });
+      });
+    });
+    
+    // Limit to 5 related vocabularies and return only hiragana readings
+    return relatedVocab.slice(0, 5).map(v => v.reading);
   }
 
   // Convert selected words to quiz data format

@@ -433,7 +433,7 @@ const showKanji = mode === 'self-uploading';
                 onClick={() => handleShowHint('kanji')}
                 className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
               >
-                {mode === 'kana-to-kanji' ? 'Show Full Reading' : 'Show Related Kanji'}
+                {mode === 'kana-to-kanji' ? 'Show Related Vocabularies' : 'Show Related Kanji'}
               </button>
             </div>
 
@@ -450,14 +450,14 @@ const showKanji = mode === 'self-uploading';
                 {hintType === 'kanji' && (
                   <div>
                     <div className="text-sm text-gray-600 mb-2">
-                      {mode.includes('vocabulary') ? 'Related Kanji:' : 
-                       mode === 'kana-to-kanji' ? 'Full Reading:' : 'Example Vocabulary:'}
+                      {mode.includes('vocabulary') ? 'Related Vocabulary (Hiragana):' : 
+                       mode === 'kana-to-kanji' ? 'Related Vocabulary (Hiragana):' : 'Example Vocabulary:'}
                     </div>
                     <div className="text-2xl font-bold text-gray-800">
                       {mode.includes('vocabulary') 
-                        ? (currentQuestion?.relatedKanji || []).join(' • ') || 'No related kanji'
+                        ? (currentQuestion?.relatedKanji || []).join(' • ') || 'No related vocabulary'
                         : mode === 'kana-to-kanji' 
-                          ? currentQuestion?.question || 'No reading available'
+                          ? (currentQuestion?.vocabulary || []).join(' • ') || 'No related vocabulary'
                           : (currentQuestion?.vocabulary || []).join(' • ') || 'No example vocabulary'
                       }
                     </div>
@@ -550,7 +550,7 @@ const showKanji = mode === 'self-uploading';
 
               {/* Dictionary Section */}
               <DictionarySection 
-                word={mode.includes('vocabulary') ? currentQuestion?.word || 'Unknown' : currentQuestion?.kanji || 'Unknown'} 
+                word={mode.includes('vocabulary') ? currentQuestion?.word || currentQuestion?.answer || 'Unknown' : currentQuestion?.kanji || currentQuestion?.answer || 'Unknown'} 
                 reading={currentQuestion?.reading || 'No reading'} 
                 meaning={currentQuestion?.meaning || 'No meaning'} 
               />
