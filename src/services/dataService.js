@@ -1,5 +1,5 @@
-import kanjiMaster from '../data/kanji_master.json';
-import vocabMaster from '../data/vocab_master.json';
+import kanjiMaster from '../data/kanji_master.json?v=202605130400';
+import vocabMaster from '../data/vocab_master.json?v=202605130400';
 
 class DataService {
   constructor() {
