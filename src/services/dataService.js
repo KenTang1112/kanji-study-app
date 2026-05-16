@@ -1,6 +1,11 @@
 import kanjiMaster from '../data/kanji_master.json?v=202605130400';
 import vocabMaster from '../data/vocab_master.json?v=202605130400';
 
+// Tracked localStorage keys
+// weakCards            — per-word weakness scores
+// userVocabulary       — user-added kanji/vocab entries
+// jlpt_n2_progress     — JLPT N2 practice session progress (completed, total, lastSession)
+
 class DataService {
     constructor() {
           this.kanjiData = kanjiMaster;
@@ -8,6 +13,19 @@ class DataService {
           this.loadUserVocabulary();
           this.loadWeakCards();
     }
+
+  // Load JLPT N2 progress from localStorage
+  loadJLPTN2Progress() {
+        try {
+              const stored = localStorage.getItem('jlpt_n2_progress');
+              return stored ? JSON.parse(stored) : null;
+        } catch { return null; }
+  }
+
+  // Save JLPT N2 progress to localStorage
+  saveJLPTN2Progress(progress) {
+        localStorage.setItem('jlpt_n2_progress', JSON.stringify(progress));
+  }
 
   // Load weak cards from localStorage
   loadWeakCards() {
