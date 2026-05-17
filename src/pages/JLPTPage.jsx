@@ -67,12 +67,12 @@ function buildPool(filters) {
 
   if (filters.grammar && grammarData.length > 0) {
     grammarData.forEach(item => {
-      const distractors = (item.distractors || []).slice(0, 3);
+      const distractors = pickDistractors(grammarData, item, 'meaning', 3);
       if (distractors.length < 3) return;
       const options = shuffle([item.meaning, ...distractors]);
       items.push({
         type: 'grammar',
-        question: `「${item.pattern}」の使い方は？`,
+        question: `「${item.pattern}」の意味は？`,
         subtext: item.example || '',
         options,
         correctAnswer: item.meaning,
@@ -166,6 +166,7 @@ export default function JLPTPage({ onBack }) {
     kanji:   true,
     grammar: grammarData.length > 0,
   });
+  const [numSets, setNumSets]   = useState(1);
   const [session, setSession] = useState([]);
   const [idx, setIdx]         = useState(0);
   const [selected, setSelected] = useState(null);
@@ -188,7 +189,8 @@ export default function JLPTPage({ onBack }) {
   function startSession() {
     const pool = buildPool(filters);
     if (!pool.length) return;
-    setSession(pool.slice(0, Math.min(pool.length, SESSION_SIZE)));
+    const limit = numSets === 'all' ? pool.length : Math.min(pool.length, SESSION_SIZE * numSets);
+    setSession(pool.slice(0, limit));
     setIdx(0);
     setSelected(null);
     setChecked(false);
@@ -257,7 +259,7 @@ export default function JLPTPage({ onBack }) {
             </div>
           )}
 
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <div className="bg-white rounded-xl shadow-lg p-6 mb-4">
             <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Question types</h2>
             <div className="flex gap-3 flex-wrap">
               {filterCfg.map(({ key, label, activeCls, disabled, note }) => (
@@ -277,9 +279,32 @@ export default function JLPTPage({ onBack }) {
                 </button>
               ))}
             </div>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Session size</h2>
+            <div className="flex gap-3 flex-wrap">
+              {[1, 2, 3, 'all'].map(n => {
+                const label = n === 'all' ? `All · ${previewCount}q` : `${n} set${n > 1 ? 's' : ''} · ${Math.min(previewCount, SESSION_SIZE * n)}q`;
+                const active = numSets === n;
+                return (
+                  <button
+                    key={n}
+                    onClick={() => setNumSets(n)}
+                    className={`px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-150 ${
+                      active
+                        ? 'bg-indigo-500 text-white ring-2 ring-indigo-300 shadow'
+                        : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
             <p className="text-xs text-gray-400 mt-4">
               {previewCount > 0
-                ? `${Math.min(previewCount, SESSION_SIZE)} questions per session · ${previewCount} in pool`
+                ? `${numSets === 'all' ? previewCount : Math.min(previewCount, SESSION_SIZE * numSets)} questions this session · ${previewCount} in pool`
                 : 'Enable at least one question type to begin.'}
             </p>
           </div>
