@@ -1,1 +1,402 @@
-[]
+[
+  {
+    "id": "g001",
+    "pattern": "あげく（に）",
+    "meaning": "After a long process of ~, ended up (negative result)",
+    "example": "さんざん迷ったあげく、何も買わなかった。",
+    "example_translation": "After a long time of wavering, I ended up not buying anything.",
+    "distractors": ["たすえに", "てからでなく", "あまり"]
+  },
+  {
+    "id": "g002",
+    "pattern": "あまり（に）",
+    "meaning": "So much ~, that... (excessive degree causes a result)",
+    "example": "心配のあまり、眠れなかった。",
+    "example_translation": "I was so worried that I couldn't sleep.",
+    "distractors": ["あげくに", "あまりに", "だけに"]
+  },
+  {
+    "id": "g003",
+    "pattern": "以上（は）",
+    "meaning": "Now that ~, since ~ (obligation follows from situation)",
+    "example": "約束した以上は、守らなければならない。",
+    "example_translation": "Now that I made a promise, I must keep it.",
+    "distractors": ["からには", "ために", "からこそ"]
+  },
+  {
+    "id": "g004",
+    "pattern": "一方だ",
+    "meaning": "Keep on ~ing, ~ more and more (continuing tendency in one direction)",
+    "example": "物価は上がる一方だ。",
+    "example_translation": "Prices keep rising.",
+    "distractors": ["ばかりだ", "ところだ", "ようだ"]
+  },
+  {
+    "id": "g005",
+    "pattern": "うちに",
+    "meaning": "While ~, before ~ (do something before a state changes)",
+    "example": "熱いうちに食べてください。",
+    "example_translation": "Please eat it while it's hot.",
+    "distractors": ["あいだに", "ときに", "まえに"]
+  },
+  {
+    "id": "g006",
+    "pattern": "おかげで",
+    "meaning": "Thanks to ~, because of ~ (positive result)",
+    "example": "あなたのおかげで、試験に合格できた。",
+    "example_translation": "Thanks to you, I was able to pass the exam.",
+    "distractors": ["せいで", "のために", "によって"]
+  },
+  {
+    "id": "g007",
+    "pattern": "おそれがある",
+    "meaning": "There is a risk/fear that ~ (negative possibility)",
+    "example": "台風が来るおそれがある。",
+    "example_translation": "There is a risk that a typhoon will come.",
+    "distractors": ["かもしれない", "はずがある", "ことがある"]
+  },
+  {
+    "id": "g008",
+    "pattern": "かかわらず",
+    "meaning": "Regardless of ~, despite ~ (condition doesn't affect result)",
+    "example": "天気にかかわらず、試合は行われる。",
+    "example_translation": "Regardless of the weather, the game will be held.",
+    "distractors": ["にもとづいて", "によって", "にかぎり"]
+  },
+  {
+    "id": "g009",
+    "pattern": "かぎり",
+    "meaning": "As long as ~, to the best of (a condition that must hold)",
+    "example": "健康である限り、働き続けたい。",
+    "example_translation": "As long as I am healthy, I want to keep working.",
+    "distractors": ["かぎりで", "以上は", "うちは"]
+  },
+  {
+    "id": "g010",
+    "pattern": "からこそ",
+    "meaning": "Precisely because ~ (strong emphasis on reason)",
+    "example": "あなたのことが好きだからこそ、厳しいことを言う。",
+    "example_translation": "Precisely because I like you, I say harsh things.",
+    "distractors": ["からには", "だから", "ためこそ"]
+  },
+  {
+    "id": "g011",
+    "pattern": "からすると／からすれば",
+    "meaning": "Judging from ~, from the standpoint of ~",
+    "example": "彼の様子からすると、怒っているようだ。",
+    "example_translation": "Judging from his manner, he seems to be angry.",
+    "distractors": ["からといって", "からには", "によると"]
+  },
+  {
+    "id": "g012",
+    "pattern": "からといって",
+    "meaning": "Just because ~, doesn't mean... (refuting a natural expectation)",
+    "example": "忙しいからといって、食事を抜くのはよくない。",
+    "example_translation": "Just because you're busy doesn't mean you should skip meals.",
+    "distractors": ["からこそ", "からすると", "だからこそ"]
+  },
+  {
+    "id": "g013",
+    "pattern": "くせに",
+    "meaning": "Even though ~, and yet ~ (criticism or complaint)",
+    "example": "知っているくせに、教えてくれなかった。",
+    "example_translation": "Even though you knew, you didn't tell me.",
+    "distractors": ["のに", "にもかかわらず", "けれども"]
+  },
+  {
+    "id": "g014",
+    "pattern": "ことから",
+    "meaning": "From the fact that ~, based on ~ (reason/evidence)",
+    "example": "名前が「かすみ」であることから、霞草と呼ばれている。",
+    "example_translation": "From the fact that its name is 'kasumi', it is called baby's breath.",
+    "distractors": ["ことで", "ために", "から"]
+  },
+  {
+    "id": "g015",
+    "pattern": "ことに",
+    "meaning": "Notably ~, to my surprise/delight ~ (expressing speaker's emotion)",
+    "example": "驚いたことに、彼は一度も間違えなかった。",
+    "example_translation": "Surprisingly, he never made a mistake.",
+    "distractors": ["ことが", "なことに", "もので"]
+  },
+  {
+    "id": "g016",
+    "pattern": "ことなく",
+    "meaning": "Without ~ing (doing something without the expected action)",
+    "example": "彼は一度も休むことなく、働き続けた。",
+    "example_translation": "He continued working without taking even one break.",
+    "distractors": ["ずに", "なくて", "もせずに"]
+  },
+  {
+    "id": "g017",
+    "pattern": "さえ〜ば",
+    "meaning": "If only ~, as long as ~ (minimal condition for a result)",
+    "example": "お金さえあれば、何でもできる。",
+    "example_translation": "If only you have money, you can do anything.",
+    "distractors": ["なら〜ば", "ば〜だけ", "でも〜たら"]
+  },
+  {
+    "id": "g018",
+    "pattern": "せいで",
+    "meaning": "Because of ~, due to ~ (negative outcome, blame)",
+    "example": "雨のせいで、試合が中止になった。",
+    "example_translation": "Because of the rain, the game was cancelled.",
+    "distractors": ["おかげで", "ために", "によって"]
+  },
+  {
+    "id": "g019",
+    "pattern": "だけあって",
+    "meaning": "As expected of ~, worthy of ~ (result meets expectation)",
+    "example": "プロだけあって、演奏が素晴らしかった。",
+    "example_translation": "As expected of a professional, the performance was wonderful.",
+    "distractors": ["だけに", "だから", "だけで"]
+  },
+  {
+    "id": "g020",
+    "pattern": "だけに",
+    "meaning": "Precisely because ~, all the more because ~ (result is natural given the situation)",
+    "example": "期待していただけに、失望も大きかった。",
+    "example_translation": "Because I had such high expectations, the disappointment was all the greater.",
+    "distractors": ["だけあって", "からこそ", "だけで"]
+  },
+  {
+    "id": "g021",
+    "pattern": "次第（で）",
+    "meaning": "Depending on ~; as soon as ~ (two related usages)",
+    "example": "結果次第で、次のステップを決める。",
+    "example_translation": "Depending on the results, we will decide the next step.",
+    "distractors": ["によって", "ごとに", "にしたがって"]
+  },
+  {
+    "id": "g022",
+    "pattern": "てならない",
+    "meaning": "Can't help feeling ~, extremely ~ (uncontrollable feeling)",
+    "example": "故郷が懐かしくてならない。",
+    "example_translation": "I can't help feeling nostalgic for my hometown.",
+    "distractors": ["てしょうがない", "てたまらない", "てやまない"]
+  },
+  {
+    "id": "g023",
+    "pattern": "というより",
+    "meaning": "Rather than ~, it would be more accurate to say ~ (correction or rephrasing)",
+    "example": "彼は怒っているというより、悲しんでいるようだ。",
+    "example_translation": "Rather than being angry, he seems sad.",
+    "distractors": ["のではなく", "ではなくて", "より〜ほうが"]
+  },
+  {
+    "id": "g024",
+    "pattern": "とたん（に）",
+    "meaning": "Just as ~, the moment ~ (something happens immediately after)",
+    "example": "外に出たとたん、雨が降り始めた。",
+    "example_translation": "The moment I went outside, it started to rain.",
+    "distractors": ["とき", "すると", "たらすぐ"]
+  },
+  {
+    "id": "g025",
+    "pattern": "にかけては",
+    "meaning": "When it comes to ~, in terms of ~ (expressing a special skill or characteristic)",
+    "example": "料理にかけては、彼女の右に出る者はいない。",
+    "example_translation": "When it comes to cooking, there is no one better than her.",
+    "distractors": ["については", "に関しては", "においては"]
+  },
+  {
+    "id": "g026",
+    "pattern": "にしては",
+    "meaning": "For ~, considering it is ~ (result is unexpected given the condition)",
+    "example": "初めてにしては、上手にできた。",
+    "example_translation": "Considering it was my first time, I did well.",
+    "distractors": ["としては", "にとっては", "わりには"]
+  },
+  {
+    "id": "g027",
+    "pattern": "にすぎない",
+    "meaning": "Nothing more than ~, merely ~ (minimizing something)",
+    "example": "これは私の意見にすぎない。",
+    "example_translation": "This is merely my opinion.",
+    "distractors": ["しかない", "だけだ", "ばかりだ"]
+  },
+  {
+    "id": "g028",
+    "pattern": "によって／によっては",
+    "meaning": "Depending on ~; by means of ~ (variation or means)",
+    "example": "人によって考え方が違う。",
+    "example_translation": "Ways of thinking differ depending on the person.",
+    "distractors": ["のために", "にとって", "をとおして"]
+  },
+  {
+    "id": "g029",
+    "pattern": "ば〜ほど",
+    "meaning": "The more ~ the more ~ (proportional increase)",
+    "example": "練習すればするほど、上手になる。",
+    "example_translation": "The more you practice, the better you become.",
+    "distractors": ["につれて", "にしたがって", "とともに"]
+  },
+  {
+    "id": "g030",
+    "pattern": "はずがない",
+    "meaning": "There is no way that ~, cannot possibly ~ (strong denial)",
+    "example": "彼がそんなことを言うはずがない。",
+    "example_translation": "There is no way he would say something like that.",
+    "distractors": ["わけがない", "ことはない", "ないはず"]
+  },
+  {
+    "id": "g031",
+    "pattern": "はもとより",
+    "meaning": "Not only ~ but also ~, ~ goes without saying and also ~",
+    "example": "彼は英語はもとより、フランス語も話せる。",
+    "example_translation": "He can speak French, not to mention English.",
+    "distractors": ["はもちろん", "だけでなく", "ばかりか"]
+  },
+  {
+    "id": "g032",
+    "pattern": "ものの",
+    "meaning": "Although ~, but ~ (concession: expected result doesn't follow)",
+    "example": "買ったものの、一度も使っていない。",
+    "example_translation": "Although I bought it, I haven't used it even once.",
+    "distractors": ["けれども", "が", "とはいえ"]
+  },
+  {
+    "id": "g033",
+    "pattern": "わけがない",
+    "meaning": "There is no reason why ~, it's impossible that ~ (logical impossibility)",
+    "example": "あんなに難しい問題が解けるわけがない。",
+    "example_translation": "There is no way I can solve such a difficult problem.",
+    "distractors": ["はずがない", "ことはない", "ないはずだ"]
+  },
+  {
+    "id": "g034",
+    "pattern": "わけにはいかない",
+    "meaning": "Cannot do ~, must not do ~ (social/moral obligation prevents it)",
+    "example": "約束したから、行かないわけにはいかない。",
+    "example_translation": "Since I made a promise, I cannot not go.",
+    "distractors": ["ことはできない", "てはいけない", "なければならない"]
+  },
+  {
+    "id": "g035",
+    "pattern": "をきっかけに",
+    "meaning": "Taking ~ as a chance/trigger to do something",
+    "example": "この失敗をきっかけに、もっと頑張ろうと思った。",
+    "example_translation": "Taking this failure as a trigger, I decided to try harder.",
+    "distractors": ["を契機として", "のために", "のおかげで"]
+  },
+  {
+    "id": "g036",
+    "pattern": "ようがない／ようもない",
+    "meaning": "There is no way to ~, it is impossible to ~ (means don't exist)",
+    "example": "こんな難しい問題は解きようがない。",
+    "example_translation": "There is no way to solve such a difficult problem.",
+    "distractors": ["わけがない", "ことができない", "はずがない"]
+  },
+  {
+    "id": "g037",
+    "pattern": "つつ（も）",
+    "meaning": "While ~ing, even while ~ing (simultaneous actions, often with contradiction)",
+    "example": "悪いと知りつつも、やめられなかった。",
+    "example_translation": "Even while knowing it was wrong, I couldn't stop.",
+    "distractors": ["ながら（も）", "てからも", "ながらに"]
+  },
+  {
+    "id": "g038",
+    "pattern": "ないことには",
+    "meaning": "Unless ~, without ~ing (necessary condition for something to be possible)",
+    "example": "見ないことには、何とも言えない。",
+    "example_translation": "Unless I see it, I can't say anything.",
+    "distractors": ["なければ", "なくては", "ないかぎり"]
+  },
+  {
+    "id": "g039",
+    "pattern": "にもかかわらず",
+    "meaning": "Despite ~, in spite of ~ (unexpected result given the condition)",
+    "example": "雨にもかかわらず、大勢の人が集まった。",
+    "example_translation": "Despite the rain, a large number of people gathered.",
+    "distractors": ["にかかわらず", "にもかかわって", "をもとに"]
+  },
+  {
+    "id": "g040",
+    "pattern": "ほど〜はない",
+    "meaning": "Nothing is as ~ as ~, ~ is the most ~ (superlative comparison)",
+    "example": "健康ほど大切なものはない。",
+    "example_translation": "Nothing is as important as health.",
+    "distractors": ["くらい〜はない", "より〜はない", "ほどでもない"]
+  },
+  {
+    "id": "g041",
+    "pattern": "にともなって",
+    "meaning": "As ~, in accordance with ~, accompanying ~ (parallel change)",
+    "example": "経済の発展にともなって、生活水準も上がった。",
+    "example_translation": "As the economy developed, the standard of living also rose.",
+    "distractors": ["とともに", "につれて", "によって"]
+  },
+  {
+    "id": "g042",
+    "pattern": "上（で）",
+    "meaning": "After doing ~, in the process of ~ (sequential action as precondition)",
+    "example": "よく考えた上で、決断した。",
+    "example_translation": "After thinking it over carefully, I made my decision.",
+    "distractors": ["てから", "のちに", "たあとで"]
+  },
+  {
+    "id": "g043",
+    "pattern": "に反して",
+    "meaning": "Contrary to ~, going against ~ (result is opposite to expectation)",
+    "example": "予想に反して、試合は接戦だった。",
+    "example_translation": "Contrary to expectations, the game was close.",
+    "distractors": ["に沿って", "にしたがって", "に応じて"]
+  },
+  {
+    "id": "g044",
+    "pattern": "にほかならない",
+    "meaning": "Is nothing but ~, is precisely ~ (emphatic assertion of identity)",
+    "example": "これは差別にほかならない。",
+    "example_translation": "This is nothing but discrimination.",
+    "distractors": ["にすぎない", "にちがいない", "にほかなく"]
+  },
+  {
+    "id": "g045",
+    "pattern": "かねない",
+    "meaning": "May well ~, might possibly ~ (negative possibility, concern)",
+    "example": "そんな無理をすると、体を壊しかねない。",
+    "example_translation": "If you push yourself that hard, you might ruin your health.",
+    "distractors": ["かもしれない", "おそれがある", "ないとも限らない"]
+  },
+  {
+    "id": "g046",
+    "pattern": "かねる",
+    "meaning": "Cannot bring oneself to ~, find it difficult to ~ (reluctance or impossibility)",
+    "example": "そのご要望にはお応えしかねます。",
+    "example_translation": "I find it difficult to comply with that request.",
+    "distractors": ["できない", "てしまえない", "わけにいかない"]
+  },
+  {
+    "id": "g047",
+    "pattern": "きり（で）",
+    "meaning": "Only ~; just ~; (and nothing since then)",
+    "example": "彼とは一度会ったきり、連絡がない。",
+    "example_translation": "I met him once and have had no contact since.",
+    "distractors": ["しか", "ばかり", "だけ"]
+  },
+  {
+    "id": "g048",
+    "pattern": "をもとに",
+    "meaning": "Based on ~, drawing from ~ (using something as a basis or material)",
+    "example": "実話をもとに、映画が作られた。",
+    "example_translation": "A movie was made based on a true story.",
+    "distractors": ["にもとづいて", "をきっかけに", "にしたがって"]
+  },
+  {
+    "id": "g049",
+    "pattern": "にしたがって",
+    "meaning": "As ~, following ~, in accordance with ~ (gradual change or rules)",
+    "example": "山を登るにしたがって、気温が下がった。",
+    "example_translation": "As I climbed the mountain, the temperature dropped.",
+    "distractors": ["にともなって", "につれて", "にあわせて"]
+  },
+  {
+    "id": "g050",
+    "pattern": "たとえ〜ても",
+    "meaning": "Even if ~, no matter how ~ (hypothetical concession)",
+    "example": "たとえ失敗しても、諦めない。",
+    "example_translation": "Even if I fail, I won't give up.",
+    "distractors": ["もし〜ても", "どんなに〜ても", "いくら〜ても"]
+  }
+]
