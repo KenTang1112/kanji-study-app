@@ -1,16 +1,11 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import kanjiData  from '../data/kanji_master.json';
 import vocabData  from '../data/vocab_master.json';
 import grammarData from '../data/grammar_n2.json';
 
-const SESSION_SIZE = 20;
+const SET_SIZE = 20;
 const LS_KEY = 'jlpt_n2_progress';
 const LETTERS = ['A', 'B', 'C', 'D'];
-
-// ── Stub ───────────────────────────────────────────────────────────────────
-// TODO: implement to dynamically generate one question for type 'vocab'|'kanji'|'grammar'
-// eslint-disable-next-line no-unused-vars
-function generateQuestion(type) { return null; }
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 function shuffle(arr) {
@@ -30,20 +25,21 @@ function pickDistractors(pool, excludeItem, field, n) {
   return candidates.slice(0, n);
 }
 
+// Returns items in deterministic order (NO global shuffle).
+// Options within each item are shuffled so A/B/C/D placement is random.
 function buildPool(filters) {
   const items = [];
 
   if (filters.vocab) {
     vocabData.forEach(item => {
-      const distractors = pickDistractors(vocabData, item, 'meaning', 3);
+      const distractors = pickDistractors(vocabData, item, 'word', 3);
       if (distractors.length < 3) return;
-      const options = shuffle([item.meaning, ...distractors]);
       items.push({
         type: 'vocab',
-        question: `「${item.word}」の意味は？`,
+        question: item.meaning,
         subtext: item.reading,
-        options,
-        correctAnswer: item.meaning,
+        options: shuffle([item.word, ...distractors]),
+        correctAnswer: item.word,
         explanation: `${item.word}（${item.reading}）→ ${item.meaning}`,
       });
     });
@@ -53,12 +49,11 @@ function buildPool(filters) {
     kanjiData.forEach(item => {
       const distractors = pickDistractors(kanjiData, item, 'reading', 3);
       if (distractors.length < 3) return;
-      const options = shuffle([item.reading, ...distractors]);
       items.push({
         type: 'kanji',
         question: `「${item.kanji}」の読み方は？`,
         subtext: item.meaning,
-        options,
+        options: shuffle([item.reading, ...distractors]),
         correctAnswer: item.reading,
         explanation: `${item.kanji} → ${item.reading}（${item.meaning}）`,
       });
@@ -67,21 +62,20 @@ function buildPool(filters) {
 
   if (filters.grammar && grammarData.length > 0) {
     grammarData.forEach(item => {
-      const distractors = pickDistractors(grammarData, item, 'meaning', 3);
+      const distractors = pickDistractors(grammarData, item, 'pattern', 3);
       if (distractors.length < 3) return;
-      const options = shuffle([item.meaning, ...distractors]);
       items.push({
         type: 'grammar',
-        question: `「${item.pattern}」の意味は？`,
+        question: item.meaning,
         subtext: item.example || '',
-        options,
-        correctAnswer: item.meaning,
+        options: shuffle([item.pattern, ...distractors]),
+        correctAnswer: item.pattern,
         explanation: `${item.pattern}: ${item.meaning}${item.example ? `\n例：${item.example}` : ''}`,
       });
     });
   }
 
-  return shuffle(items);
+  return items;
 }
 
 function saveProgress(results) {
@@ -160,15 +154,15 @@ function OptionButton({ letter, text, isSelected, isChecked, isCorrect, onClick 
 
 // ── Main component ─────────────────────────────────────────────────────────
 export default function JLPTPage({ onBack }) {
-  const [phase, setPhase]     = useState('setup');
-  const [filters, setFilters] = useState({
+  const [phase, setPhase]       = useState('setup');
+  const [filters, setFilters]   = useState({
     vocab:   true,
     kanji:   true,
     grammar: grammarData.length > 0,
   });
-  const [numSets, setNumSets]   = useState(1);
-  const [session, setSession] = useState([]);
-  const [idx, setIdx]         = useState(0);
+  const [selectedSets, setSelectedSets] = useState(new Set([0]));
+  const [session, setSession]   = useState([]);
+  const [idx, setIdx]           = useState(0);
   const [selected, setSelected] = useState(null);
   const [checked, setChecked]   = useState(false);
   const [results, setResults]   = useState([]);
@@ -180,17 +174,42 @@ export default function JLPTPage({ onBack }) {
     } catch { return null; }
   }, []);
 
-  const previewCount = useMemo(() => buildPool(filters).length, [filters]);
+  const poolItems = useMemo(() => buildPool(filters), [filters]);
+
+  const sets = useMemo(() => {
+    const result = [];
+    for (let i = 0; i < poolItems.length; i += SET_SIZE) {
+      result.push(poolItems.slice(i, i + SET_SIZE));
+    }
+    return result;
+  }, [poolItems]);
+
+  // Reset to Set 1 whenever question-type filters change
+  const filtersKey = `${filters.vocab}-${filters.kanji}-${filters.grammar}`;
+  useEffect(() => { setSelectedSets(new Set([0])); }, [filtersKey]);
+
+  const selectedCount = [...selectedSets].reduce((sum, i) => sum + (sets[i]?.length ?? 0), 0);
 
   function toggleFilter(key) {
     setFilters(f => ({ ...f, [key]: !f[key] }));
   }
 
+  function toggleSet(i) {
+    setSelectedSets(prev => {
+      const next = new Set(prev);
+      next.has(i) ? next.delete(i) : next.add(i);
+      return next;
+    });
+  }
+
+  function selectAllSets() { setSelectedSets(new Set(sets.map((_, i) => i))); }
+  function clearSets()     { setSelectedSets(new Set()); }
+
   function startSession() {
-    const pool = buildPool(filters);
-    if (!pool.length) return;
-    const limit = numSets === 'all' ? pool.length : Math.min(pool.length, SESSION_SIZE * numSets);
-    setSession(pool.slice(0, limit));
+    if (!selectedSets.size) return;
+    const items = [...selectedSets].sort((a, b) => a - b).flatMap(i => sets[i] ?? []);
+    if (!items.length) return;
+    setSession(shuffle(items));
     setIdx(0);
     setSelected(null);
     setChecked(false);
@@ -259,6 +278,7 @@ export default function JLPTPage({ onBack }) {
             </div>
           )}
 
+          {/* Question type filter */}
           <div className="bg-white rounded-xl shadow-lg p-6 mb-4">
             <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Question types</h2>
             <div className="flex gap-3 flex-wrap">
@@ -279,42 +299,53 @@ export default function JLPTPage({ onBack }) {
                 </button>
               ))}
             </div>
+            <p className="text-xs text-gray-400 mt-3">{poolItems.length} questions in pool</p>
           </div>
 
+          {/* Set selector */}
           <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
-            <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Session size</h2>
-            <div className="flex gap-3 flex-wrap">
-              {[1, 2, 3, 'all'].map(n => {
-                const label = n === 'all' ? `All · ${previewCount}q` : `${n} set${n > 1 ? 's' : ''} · ${Math.min(previewCount, SESSION_SIZE * n)}q`;
-                const active = numSets === n;
-                return (
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Sets ({SET_SIZE} questions each)</h2>
+              <div className="flex gap-3">
+                <button onClick={selectAllSets} className="text-xs font-semibold text-indigo-500 hover:text-indigo-700 transition-colors">All</button>
+                <span className="text-gray-300">·</span>
+                <button onClick={clearSets} className="text-xs font-semibold text-gray-400 hover:text-gray-600 transition-colors">Clear</button>
+              </div>
+            </div>
+
+            {sets.length > 0 ? (
+              <div className="grid grid-cols-5 sm:grid-cols-8 gap-2">
+                {sets.map((set, i) => (
                   <button
-                    key={n}
-                    onClick={() => setNumSets(n)}
-                    className={`px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-150 ${
-                      active
+                    key={i}
+                    onClick={() => toggleSet(i)}
+                    className={`py-2 rounded-lg text-sm font-bold transition-all duration-150 ${
+                      selectedSets.has(i)
                         ? 'bg-indigo-500 text-white ring-2 ring-indigo-300 shadow'
                         : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
                     }`}
                   >
-                    {label}
+                    {i + 1}
                   </button>
-                );
-              })}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-xs text-gray-400">Enable at least one question type to see sets.</p>
+            )}
+
             <p className="text-xs text-gray-400 mt-4">
-              {previewCount > 0
-                ? `${numSets === 'all' ? previewCount : Math.min(previewCount, SESSION_SIZE * numSets)} questions this session · ${previewCount} in pool`
-                : 'Enable at least one question type to begin.'}
+              {selectedCount > 0
+                ? `${selectedCount} questions selected across ${selectedSets.size} set${selectedSets.size !== 1 ? 's' : ''}`
+                : 'Select at least one set to begin.'}
             </p>
           </div>
 
           <button
             onClick={startSession}
-            disabled={!anyActive || previewCount === 0}
+            disabled={!anyActive || selectedCount === 0}
             className="w-full bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 disabled:from-gray-300 disabled:to-gray-300 disabled:cursor-not-allowed text-white rounded-xl py-4 text-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none transition-all duration-200"
           >
-            Start Session →
+            {selectedCount > 0 ? `Start ${selectedCount} Questions →` : 'Start Session →'}
           </button>
         </div>
       </div>
@@ -364,7 +395,7 @@ export default function JLPTPage({ onBack }) {
               onClick={() => setPhase('setup')}
               className="flex-1 py-3 rounded-xl border-2 border-gray-200 text-gray-600 font-semibold hover:border-gray-300 hover:bg-gray-50 transition-all"
             >
-              Change Filters
+              Change Sets
             </button>
             <button
               onClick={startSession}
@@ -390,7 +421,6 @@ export default function JLPTPage({ onBack }) {
     <div className="flex flex-col items-center min-h-screen py-8">
       <div className="w-full max-w-2xl">
 
-        {/* Top bar */}
         <div className="flex items-center justify-between mb-6">
           <button onClick={onBack} className="text-sm text-gray-500 hover:text-gray-800 font-medium transition-colors">
             ← Back
@@ -401,12 +431,10 @@ export default function JLPTPage({ onBack }) {
           </button>
         </div>
 
-        {/* Progress bar */}
         <div className="mb-6">
           <ProgressBar current={idx + 1} total={session.length} />
         </div>
 
-        {/* Question card */}
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-4">
           <div className="flex items-center gap-3 mb-5">
             <TypeBadge type={q.type} />
@@ -443,7 +471,6 @@ export default function JLPTPage({ onBack }) {
           )}
         </div>
 
-        {/* Action button */}
         {!checked ? (
           <button
             onClick={handleCheck}
