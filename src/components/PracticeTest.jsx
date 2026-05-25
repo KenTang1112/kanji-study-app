@@ -537,7 +537,7 @@ const CHAPTERS = [
               { word: '陛下',   answer: 'へいか' },
               { word: '勲章',   answer: 'くんしょう' },
               { word: '皇居',   answer: 'こうきょ' },
-              { word: '催',     answer: 'もよお' },
+              { word: '催され',  answer: 'もよおされ' },
               { word: '皇太子', answer: 'こうたいし' },
               { word: '妃',     answer: 'ひ' },
             ],
@@ -575,7 +575,7 @@ const CHAPTERS = [
           { num: 2, full: '臓器移植をした患者にきょぜつ反応が現れた。',
             writingTargets: [{ word: 'きょぜつ', answer: '拒絶' }] },
           { num: 3, full: '今、すれちがった人は会社のどうりょうに似ている。',
-            writingTargets: [{ word: 'どうりょう', answer: '同僚' }] },
+            writingTargets: [{ word: 'すれちがった', answer: '擦れ違った' }, { word: 'どうりょう', answer: '同僚' }] },
           { num: 4, full: '兄は世界のしへいや硬貨を集めるのが好きです。',
             writingTargets: [{ word: 'しへい', answer: '紙幣' }] },
           { num: 5, full: 'べっそうでパーティーをします。ぜひ、遊びに来てください。',
@@ -598,9 +598,9 @@ const CHAPTERS = [
         instruction: '次の見出しや記事を読んで、下線部①〜⑫の読みをひらがなで書きなさい。',
         headlines: [
           { text: '①絶滅の②危機にある③幻の鳥を④保護', inverted: true },
-          { text: '⑤横綱 初場所で６⑥連覇を⑦狙う',    inverted: true },
-          { text: '○○⑧内野手 初の⑨盗塁王に⑩輝く',   inverted: false },
-          { text: 'プロ野球パンサーズ　餅つき大会でファンと交流　選手とコーチ、⑪監督も参加してファンと⑫親睦を深めた。', inverted: false },
+          { text: '⑤横綱 初場所で⑥連覇を⑦狙う',      inverted: true },
+          { text: '○○ 初の⑧盗塁に⑨輝く',             inverted: false },
+          { text: 'プロ野球パンサーズ　⑩餅つき大会でファンと交流　選手とコーチ、⑪監督も参加してファンと⑫親睦を深めた。', inverted: false },
         ],
         questions: [
           { num: 1,  target: '絶滅', answer: 'ぜつめつ' },
@@ -610,9 +610,9 @@ const CHAPTERS = [
           { num: 5,  target: '横綱', answer: 'よこづな' },
           { num: 6,  target: '連覇', answer: 'れんぱ' },
           { num: 7,  target: '狙う', answer: 'ねらう' },
-          { num: 8,  target: '内野手', answer: 'ないやしゅ' },
-          { num: 9,  target: '盗塁王', answer: 'とうるいおう' },
-          { num: 10, target: '輝く', answer: 'かがやく' },
+          { num: 8,  target: '盗塁', answer: 'とうるい' },
+          { num: 9,  target: '輝く', answer: 'かがやく' },
+          { num: 10, target: '餅',   answer: 'もち' },
           { num: 11, target: '監督', answer: 'かんとく' },
           { num: 12, target: '親睦', answer: 'しんぼく' },
         ],
@@ -628,7 +628,7 @@ const CHAPTERS = [
             num: 1,
             full: '三島由紀夫の『お嬢さん』という小説を読んだことがありますか。',
             targets: [
-              { word: '三島由紀夫', answer: 'みしまゆきお' },
+              { word: 'お嬢さん', answer: 'おじょうさん' },
             ],
           },
           {
@@ -636,7 +636,6 @@ const CHAPTERS = [
             full: '表彰台に立った選手たちは、国歌が流れるなかで国旗を見つめた。',
             targets: [
               { word: '表彰台', answer: 'ひょうしょうだい' },
-              { word: '国歌',   answer: 'こっか' },
               { word: '国旗',   answer: 'こっき' },
             ],
           },
@@ -644,8 +643,9 @@ const CHAPTERS = [
             num: 3,
             full: 'あの選手はインタビューを受けるとき、髪の毛を触る癖がある。',
             targets: [
-              { word: '髪の毛', answer: 'かみのけ' },
-              { word: '癖',     answer: 'くせ' },
+              { word: '髪',  answer: 'かみ' },
+              { word: '触る', answer: 'さわる' },
+              { word: '癖',  answer: 'くせ' },
             ],
           },
           {
@@ -683,28 +683,22 @@ const CHAPTERS = [
           { num: 7, full: 'はたを振って応援する。',
             writingTargets: [{ word: 'はた', answer: '旗' }] },
           { num: 8, full: '親の愛情にうえているように見える。',
-            writingTargets: [{ word: 'うえている', answer: '飢えている' }] },
+            writingTargets: [{ word: 'うえて', answer: '飢えて' }] },
         ],
       },
 
-      // 問題4 — multiple choice (circle correct kanji)
+      // 問題4 — kanji multiple choice
       {
-        id: 's4', type: 'reading_sentences',
+        id: 's4', type: 'kanji_choice',
         label: '問題4',
         instruction: '{　} の正しいほうに○をつけなさい。',
         sentences: [
-          { num: 1, full: '選挙をきけん {危険　棄権} する。',
-            targets: [{ word: '棄権', answer: 'きけん' }] },
-          { num: 2, full: '人権をようご {擁護　養護} する。',
-            targets: [{ word: '擁護', answer: 'ようご' }] },
-          { num: 3, full: 'どう {胴　銅} メダルを獲得する。',
-            targets: [{ word: '銅', answer: 'どう' }] },
-          { num: 4, full: 'かんせい {完成　歓声} が上がる。',
-            targets: [{ word: '歓声', answer: 'かんせい' }] },
-          { num: 5, full: '空をとぶ {飛ぶ　跳ぶ}。',
-            targets: [{ word: '飛ぶ', answer: 'とぶ' }] },
-          { num: 6, full: '我がチームのけんとう {健闘　検討} を祈る。',
-            targets: [{ word: '健闘', answer: 'けんとう' }] },
+          { num: 1, pre: '選挙をきけん', post: 'する。',           choices: ['危険', '棄権'], answer: '棄権' },
+          { num: 2, pre: '人権をようご', post: 'する。',           choices: ['擁護', '養護'], answer: '擁護' },
+          { num: 3, pre: 'どう',         post: 'メダルを獲得する。', choices: ['胴', '銅'],    answer: '銅' },
+          { num: 4, pre: 'かんせい',     post: 'が上がる。',        choices: ['完成', '歓声'], answer: '歓声' },
+          { num: 5, pre: '空をとぶ',     post: '。',               choices: ['飛ぶ', '跳ぶ'], answer: '飛ぶ' },
+          { num: 6, pre: '我がチームのけんとう', post: 'を祈る。', choices: ['健闘', '検討'], answer: '健闘' },
         ],
       },
 
@@ -727,7 +721,7 @@ const CHAPTERS = [
             full: '父は輸入業者から仕入れた商品を小売店に卸す仕事をしています。',
             targets: [
               { word: '輸入業者', answer: 'ゆにゅうぎょうしゃ' },
-              { word: '小売店',   answer: 'こうりてん' },
+              { word: '仕入れた', answer: 'しいれた' },
               { word: '卸す',     answer: 'おろす' },
             ],
           },
@@ -736,6 +730,7 @@ const CHAPTERS = [
             full: '自動販売機で飲み物を買う場合、小銭が必要です。',
             targets: [
               { word: '自動販売機', answer: 'じどうはんばいき' },
+              { word: '場合',       answer: 'ばあい' },
               { word: '小銭',       answer: 'こぜに' },
             ],
           },
@@ -754,6 +749,7 @@ const CHAPTERS = [
               { word: '江戸時代', answer: 'えどじだい' },
               { word: '庶民',     answer: 'しょみん' },
               { word: '娯楽',     answer: 'ごらく' },
+              { word: '研究書',   answer: 'けんきゅうしょ' },
               { word: '出版',     answer: 'しゅっぱん' },
             ],
           },
@@ -778,6 +774,8 @@ const CHAPTERS = [
             num: 7,
             full: '私は両親と妻を扶養している。',
             targets: [
+              { word: '両親', answer: 'りょうしん' },
+              { word: '妻',   answer: 'つま' },
               { word: '扶養', answer: 'ふよう' },
             ],
           },
@@ -794,6 +792,8 @@ const CHAPTERS = [
             full: '車掌は安全を確認した上でドアを閉めた。',
             targets: [
               { word: '車掌', answer: 'しゃしょう' },
+              { word: '安全', answer: 'あんぜん' },
+              { word: '確認', answer: 'かくにん' },
             ],
           },
           {
@@ -810,6 +810,7 @@ const CHAPTERS = [
             full: 'プールで潜水の練習をした。',
             targets: [
               { word: '潜水', answer: 'せんすい' },
+              { word: '練習', answer: 'れんしゅう' },
             ],
           },
         ],
@@ -822,9 +823,9 @@ const CHAPTERS = [
         instruction: '送りがなが必要な場合はそれに注意して、下線部の言葉を漢字で書きなさい。',
         sentences: [
           { num: 1, full: '夏がしゅんのこの魚はあなにもぐっているためアナゴと呼ばれる。',
-            writingTargets: [{ word: 'しゅん', answer: '旬' }, { word: 'あな', answer: '穴' }, { word: 'もぐっている', answer: '潜っている' }] },
+            writingTargets: [{ word: 'しゅん', answer: '旬' }, { word: 'あな', answer: '穴' }, { word: 'もぐって', answer: '潜って' }] },
           { num: 2, full: 'この古墳は一体だれのはかなのだろう。',
-            writingTargets: [{ word: 'はか', answer: '墓' }] },
+            writingTargets: [{ word: 'だれ', answer: '誰' }, { word: 'はか', answer: '墓' }] },
           { num: 3, full: '大型の船、１せきの値段はいくらぐらいですか。',
             writingTargets: [{ word: 'せき', answer: '隻' }] },
           { num: 4, full: 'クレジットカードでばかり買い物をしているときんせん感覚が鈍くなりそうだ。',
@@ -834,24 +835,18 @@ const CHAPTERS = [
         ],
       },
 
-      // 問題3 — multiple choice (circle correct kanji)
+      // 問題3 — kanji multiple choice
       {
-        id: 's3', type: 'reading_sentences',
+        id: 's3', type: 'kanji_choice',
         label: '問題3',
         instruction: '{　} の正しいほうに○をつけなさい。',
         sentences: [
-          { num: 1, full: 'しんじゅ {真珠　真珠} の指輪',
-            targets: [{ word: '真珠', answer: 'しんじゅ' }] },
-          { num: 2, full: '昆虫を捕るあみ {綱　網}',
-            targets: [{ word: '網', answer: 'あみ' }] },
-          { num: 3, full: '情報化社会のへいがい {幣害　弊害}',
-            targets: [{ word: '弊害', answer: 'へいがい' }] },
-          { num: 4, full: 'はんけい {半径　半経} ３センチの円',
-            targets: [{ word: '半径', answer: 'はんけい' }] },
-          { num: 5, full: 'テレビのごらく {誤楽　娯楽} 番組',
-            targets: [{ word: '娯楽', answer: 'ごらく' }] },
-          { num: 6, full: '国際線のとうじょう {塔乗　搭乗} ゲート',
-            targets: [{ word: '搭乗', answer: 'とうじょう' }] },
+          { num: 1, pre: 'しんじゅ',           post: 'の指輪',    choices: ['真珠', '真朱'], answer: '真珠' },
+          { num: 2, pre: '昆虫を捕るあみ',     post: '',          choices: ['綱', '網'],    answer: '網' },
+          { num: 3, pre: '情報化社会のへいがい', post: '',         choices: ['幣害', '弊害'], answer: '弊害' },
+          { num: 4, pre: 'はんけい',           post: '３センチの円', choices: ['半径', '半経'], answer: '半径' },
+          { num: 5, pre: 'テレビのごらく',     post: '番組',      choices: ['誤楽', '娯楽'], answer: '娯楽' },
+          { num: 6, pre: '国際線のとうじょう', post: 'ゲート',    choices: ['塔乗', '搭乗'], answer: '搭乗' },
         ],
       },
 
@@ -1120,6 +1115,54 @@ function InfoSection({ sec }) {
   );
 }
 
+// ─────────────────────────────────────────────────────────────────
+// KANJI CHOICE SECTION — pick the correct kanji from two options
+// ─────────────────────────────────────────────────────────────────
+function KanjiChoiceSection({ sec, chId, answers, onChange, submitted }) {
+  return (
+    <div className="mb-10">
+      <SectionHeader label={sec.label} instruction={sec.instruction} />
+      <div className="space-y-4">
+        {sec.sentences.map(s => {
+          const key = `${chId}-${sec.id}-${s.num}`;
+          const selected = answers[key] || '';
+          return (
+            <div key={s.num} className="flex items-start gap-3">
+              <span className="text-gray-500 font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
+              <p className="text-base kanji-text leading-loose">
+                {s.pre}
+                <span className="inline-flex gap-2 mx-1 align-middle">
+                  {s.choices.map(choice => {
+                    const isSelected = selected === choice;
+                    const showCorrect = submitted && choice === s.answer;
+                    const showWrong   = submitted && isSelected && choice !== s.answer;
+                    return (
+                      <button
+                        key={choice}
+                        onClick={() => !submitted && onChange(key, choice)}
+                        disabled={submitted}
+                        className={`px-2 py-0.5 rounded border kanji-text text-base transition-all
+                          ${isSelected && !submitted ? 'border-indigo-500 bg-indigo-50 text-indigo-800 font-bold' : ''}
+                          ${showCorrect ? 'border-emerald-500 bg-emerald-50 text-emerald-800 font-bold' : ''}
+                          ${showWrong ? 'border-amber-400 bg-amber-50 text-amber-700 opacity-60' : ''}
+                          ${!isSelected && !showCorrect && !showWrong ? 'border-gray-300 bg-white text-gray-700 hover:border-indigo-400 hover:bg-indigo-50' : ''}
+                        `}
+                      >
+                        {choice}
+                      </button>
+                    );
+                  })}
+                </span>
+                {s.post}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function SectionHeader({ label, instruction }) {
   return (
     <div className="flex flex-wrap items-baseline gap-2 mb-4">
@@ -1144,6 +1187,12 @@ function ScoreBanner({ chapter, answers, submitted }) {
         total++;
         const key = `${chapter.id}-${sec.id}-${item.num}`;
         if ((answers[key] || '').trim() === item.answer) correct++;
+      }
+      // kanji_choice — single answer per sentence
+      if (item.choices && item.answer) {
+        total++;
+        const key = `${chapter.id}-${sec.id}-${item.num}`;
+        if ((answers[key] || '') === item.answer) correct++;
       }
       // sentences array (reading_sentences) — may have multiple targets
       if (item.targets) {
@@ -1214,7 +1263,6 @@ export default function PracticeTest({ onBack }) {
         </button>
         <div>
           <h1 className="text-xl font-bold text-gray-800">練習テスト</h1>
-          <p className="text-xs text-gray-500">15〜19課</p>
         </div>
       </div>
 
@@ -1248,6 +1296,7 @@ export default function PracticeTest({ onBack }) {
         if (sec.type === 'reading_headlines')  return <ReadingHeadlinesSection  key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
         if (sec.type === 'reading_sentences')  return <ReadingSentencesSection  key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
         if (sec.type === 'writing')            return <WritingSection           key={sec.id} sec={sec} submitted={isSubmitted} />;
+        if (sec.type === 'kanji_choice')       return <KanjiChoiceSection       key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
         return null;
       })}
 
