@@ -31,7 +31,7 @@ const studyModes = [
   }
 ];
 
-export default function HomeScreen({ onModeSelect, onManageVocabulary, onManageFlaggedItems, onPracticeTest, onJLPTMode }) {
+export default function HomeScreen({ onModeSelect, onManageVocabulary, onManageFlaggedItems, onPracticeTest }) {
   const [hoveredMode, setHoveredMode] = useState(null);
 
   return (
@@ -71,25 +71,6 @@ export default function HomeScreen({ onModeSelect, onManageVocabulary, onManageF
         ))}
       </div>
 
-      {/* JLPT N2 Practice Mode */}
-      <div className="mt-8 w-full max-w-2xl">
-        <button
-          onClick={onJLPTMode}
-          className="w-full bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white rounded-xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-pink-300"
-        >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <span className="text-4xl">🎌</span>
-              <div className="text-left">
-                <h3 className="text-xl font-bold">JLPT N2 Practice</h3>
-                <p className="text-sm opacity-90">Grammar &amp; reading comprehension · Exam: Jul 5 2026</p>
-              </div>
-            </div>
-            <span className="text-2xl opacity-75">→</span>
-          </div>
-        </button>
-      </div>
-
       <div className="mt-8 text-center">
         <div className="flex gap-4 justify-center">
           <button
@@ -108,7 +89,7 @@ export default function HomeScreen({ onModeSelect, onManageVocabulary, onManageF
             onClick={onPracticeTest}
             className="px-8 py-4 bg-purple-500 text-white rounded-xl hover:bg-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold text-lg"
           >
-            📝 練習テスト (15-19課)
+            📝 練習テスト
           </button>
         </div>
       </div>

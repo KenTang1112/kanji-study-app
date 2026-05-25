@@ -7,7 +7,6 @@ import VocabularyManager from './components/VocabularyManager';
 import FlaggedItemsManager from './components/FlaggedItemsManager';
 import PracticeTest from './components/PracticeTest';
 import ErrorBoundary from './components/ErrorBoundary';
-import JLPTPage from './pages/JLPTPage';
 import './App.css';
 
 function App() {
@@ -55,13 +54,11 @@ function App() {
 
   const handlePracticeTest = () => { setCurrentScreen('practice-test'); };
 
-  const handleJLPTMode = () => { setCurrentScreen('jlpt-n2'); };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {currentScreen === 'home' && (
-          <HomeScreen onModeSelect={handleModeSelect} onManageVocabulary={handleManageVocabulary} onManageFlaggedItems={handleFlaggedItems} onPracticeTest={handlePracticeTest} onJLPTMode={handleJLPTMode} />
+          <HomeScreen onModeSelect={handleModeSelect} onManageVocabulary={handleManageVocabulary} onManageFlaggedItems={handleFlaggedItems} onPracticeTest={handlePracticeTest} />
         )}
         
         {currentScreen === 'chapters' && (
@@ -85,10 +82,6 @@ function App() {
           <PracticeTest onBack={handleBackToHome} />
         )}
 
-        {currentScreen === 'jlpt-n2' && (
-          <JLPTPage onBack={handleBackToHome} />
-        )}
-        
         {currentScreen === 'quiz' && (
           <ErrorBoundary>
             <QuizEngine
