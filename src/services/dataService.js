@@ -1,5 +1,6 @@
 import kanjiMaster from '../data/kanji_master.json?v=202605130400';
 import vocabMaster from '../data/vocab_master.json?v=202605130400';
+import vocabCh2022 from '../data/vocab_ch20_22.json';
 
 // Tracked localStorage keys
 // weakCards            — per-word weakness scores
@@ -8,7 +9,17 @@ import vocabMaster from '../data/vocab_master.json?v=202605130400';
 class DataService {
     constructor() {
           this.kanjiData = kanjiMaster;
-          this.vocabData = vocabMaster;
+          // Flatten ch20-22 nested structure → same shape as vocab_master entries
+          const flatCh2022 = vocabCh2022.flatMap(ch =>
+                ch.vocab.map(v => ({
+                      word:        v.word,
+                      reading:     v.reading,
+                      meaning:     v.meaning,
+                      chapter:     ch.chapter,
+                      relatedKanji: [],
+                }))
+          );
+          this.vocabData = [...vocabMaster, ...flatCh2022];
           this.loadUserVocabulary();
           this.loadWeakCards();
     }
@@ -162,7 +173,7 @@ class DataService {
   // Get related vocabulary for kanji (excluding current word)
   getRelatedVocabularyForKanji(relatedKanji, currentWord) {
         if (!relatedKanji || relatedKanji.length === 0) return [];
-        const allVocab = this.filterVocabByChapters(Array.from({length: 19}, (_, i) => i + 1));
+        const allVocab = this.filterVocabByChapters(Array.from({length: 22}, (_, i) => i + 1));
         const relatedVocab = [];
         relatedKanji.forEach(kanji => {
                 const vocabWithKanji = allVocab.filter(vocab =>
