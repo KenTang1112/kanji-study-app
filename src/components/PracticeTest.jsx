@@ -1226,12 +1226,142 @@ function ScoreBanner({ chapter, answers, submitted }) {
 }
 
 // ─────────────────────────────────────────────────────────────────
+// WRITING DRILL
+// ─────────────────────────────────────────────────────────────────
+function buildDrillCards() {
+  const cards = [];
+  CHAPTERS.forEach(ch => {
+    ch.sections.forEach(sec => {
+      if (sec.type === 'writing' || sec.type === 'reading_sentences') {
+        (sec.sentences || []).forEach(s => {
+          (s.writingTargets || []).forEach(t => {
+            cards.push({ word: t.word, answer: t.answer, sentence: s.full, chapter: ch.id });
+          });
+        });
+      }
+    });
+  });
+  for (let i = cards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cards[i], cards[j]] = [cards[j], cards[i]];
+  }
+  return cards;
+}
+
+function WritingDrillView({ onExit }) {
+  const [cards, setCards] = useState(() => buildDrillCards());
+  const [idx, setIdx] = useState(0);
+  const [revealed, setRevealed] = useState(false);
+
+  const done = idx >= cards.length;
+  const card = done ? null : cards[idx];
+
+  const handleNext = () => {
+    setRevealed(false);
+    setIdx(i => i + 1);
+  };
+
+  const handleRestart = () => {
+    setCards(buildDrillCards());
+    setIdx(0);
+    setRevealed(false);
+  };
+
+  return (
+    <div className="max-w-3xl mx-auto pb-32">
+      <div className="flex items-center justify-between mb-6">
+        <button onClick={onExit} className="flex items-center gap-1 px-3 py-2 bg-white rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 shadow-sm text-sm">
+          ← 練習テストに戻る
+        </button>
+        {!done && <span className="text-sm text-gray-500 font-medium">{idx + 1} / {cards.length}</span>}
+      </div>
+
+      {done ? (
+        <div className="text-center py-20">
+          <p className="text-2xl font-bold text-gray-800 mb-2">全問完了！</p>
+          <p className="text-gray-500 mb-8">書き練習が終わりました。</p>
+          <div className="flex gap-3 justify-center">
+            <button onClick={handleRestart}
+              className="px-6 py-2.5 rounded-xl font-bold bg-indigo-600 text-white hover:bg-indigo-700 text-sm shadow-md transition-all hover:scale-105 active:scale-95">
+              もう一度 ↺
+            </button>
+            <button onClick={onExit}
+              className="px-6 py-2.5 rounded-xl font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm">
+              戻る
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-8">
+          {/* Progress bar */}
+          <div className="mb-6 bg-gray-100 rounded-full h-1.5">
+            <div className="bg-indigo-500 rounded-full h-1.5 transition-all duration-300"
+              style={{ width: `${(idx / cards.length) * 100}%` }} />
+          </div>
+
+          {/* Chapter badge */}
+          <span className="text-xs font-semibold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded-full">{card.chapter}課</span>
+
+          {/* Sentence context */}
+          <p className="text-sm text-gray-500 mt-4 mb-2 kanji-text leading-relaxed">
+            {card.sentence.split(card.word).map((part, i, arr) => (
+              <span key={i}>
+                {part}
+                {i < arr.length - 1 && (
+                  <span className={`border-b-2 font-medium ${revealed ? 'border-emerald-500 text-emerald-700' : 'border-indigo-400 text-indigo-600'}`}>
+                    {revealed ? card.answer : card.word}
+                  </span>
+                )}
+              </span>
+            ))}
+          </p>
+
+          {/* Prompt */}
+          <p className="text-lg font-bold text-gray-800 mb-6 kanji-text">
+            「<span className="text-indigo-700">{card.word}</span>」を漢字で書いてください
+          </p>
+
+          {/* Canvas */}
+          <div className="flex flex-col items-center gap-4 mb-8">
+            <HandwritingCanvas key={`${idx}-${cards.length}`} width={200} height={120} disabled={revealed} />
+            {revealed && (
+              <div className="flex items-center gap-2 mt-2">
+                <span className="text-sm text-gray-500">答え：</span>
+                <span className="text-4xl font-bold text-gray-800 kanji-text">{card.answer}</span>
+              </div>
+            )}
+          </div>
+
+          {/* Action */}
+          <div className="flex justify-center">
+            {!revealed ? (
+              <button onClick={() => setRevealed(true)}
+                className="px-8 py-3 rounded-xl font-bold bg-indigo-600 text-white hover:bg-indigo-700 text-sm shadow-md transition-all hover:scale-105 active:scale-95">
+                答えを見る
+              </button>
+            ) : (
+              <button onClick={handleNext}
+                className="px-8 py-3 rounded-xl font-bold bg-emerald-600 text-white hover:bg-emerald-700 text-sm shadow-md transition-all hover:scale-105 active:scale-95">
+                {idx + 1 < cards.length ? '次へ →' : '完了 ✓'}
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────
 // MAIN
 // ─────────────────────────────────────────────────────────────────
 export default function PracticeTest({ onBack }) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState({});
+  const [drillMode, setDrillMode] = useState(false);
+
+  if (drillMode) return <WritingDrillView onExit={() => setDrillMode(false)} />;
 
   const chapter = CHAPTERS[activeIdx];
   const isSubmitted = !!submitted[chapter.id];
@@ -1261,9 +1391,13 @@ export default function PracticeTest({ onBack }) {
         <button onClick={onBack} className="flex items-center gap-1 px-3 py-2 bg-white rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 shadow-sm text-sm">
           ← ホーム
         </button>
-        <div>
+        <div className="flex-1">
           <h1 className="text-xl font-bold text-gray-800">練習テスト</h1>
         </div>
+        <button onClick={() => setDrillMode(true)}
+          className="flex items-center gap-1.5 px-3 py-2 bg-indigo-600 text-white rounded-xl text-sm font-bold shadow-sm hover:bg-indigo-700 transition-all whitespace-nowrap">
+          書き練習
+        </button>
       </div>
 
       {/* Chapter tabs */}
