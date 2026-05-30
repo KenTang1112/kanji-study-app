@@ -20,6 +20,9 @@ function AccuracyRing({ accuracy }) {
   );
 }
 
+// Normalize for auto-score comparison: trim + collapse whitespace
+const normalize = (s) => (s || '').trim().replace(/\s+/g, '');
+
 export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome, onBackToChapters, onBackToWordSelection }) {
   const [cards, setCards] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -28,6 +31,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   const [hintType, setHintType] = useState(null);
   const [userAnswer, setUserAnswer] = useState('');
   const [handwritingImage, setHandwritingImage] = useState('');
+  const [autoScore, setAutoScore] = useState(null); // 'correct' | 'wrong' | null
   const [sessionStats, setSessionStats] = useState({ total: 0, correct: 0, wrong: 0, easy: 0, hard: 0 });
   const [wrongCards, setWrongCards] = useState([]);
   const [missedCards, setMissedCards] = useState([]);
@@ -36,6 +40,9 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   const [showFlagModal, setShowFlagModal] = useState(false);
   const [flagReason, setFlagReason] = useState('');
   const handwritingRef = useRef(null);
+
+  const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing';
+  const isAutoScored = mode === 'kanji-to-reading' || mode === 'vocabulary-reading';
 
   useEffect(() => { initializeSession(); }, [mode, selectedWords]);
 
@@ -49,6 +56,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
       setCurrentQuestion(shuffled[0]);
       setSessionStats(prev => ({ ...prev, total: shuffled.length }));
       setMissedCards([]);
+      setWrongCards([]);
     } catch (err) { console.error('Error initializing session:', err); }
   };
 
@@ -56,10 +64,16 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
     if (handwritingRef.current && needsHandwriting) {
       setHandwritingImage(handwritingRef.current.getImageData());
     }
+    // Auto-score for reading modes
+    if (isAutoScored) {
+      const result = normalize(userAnswer) === normalize(currentQuestion.answer) ? 'correct' : 'wrong';
+      setAutoScore(result);
+    }
     setShowAnswer(true);
     if (handwritingRef.current) handwritingRef.current.disableCanvas();
   };
 
+  // Fix: compute newWrongCards synchronously so moveToNextCard sees the correct value
   const handleGrade = (grade) => {
     const isCorrect = grade !== 'wrong';
     const word = mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji;
@@ -78,20 +92,22 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
     };
     setSessionStats(finalStats);
 
+    const newWrongCards = !isCorrect ? [...wrongCards, currentQuestion] : wrongCards;
     if (!isCorrect) {
-      setWrongCards(prev => [...prev, currentQuestion]);
+      setWrongCards(newWrongCards);
       setMissedCards(prev => [...prev, currentQuestion]);
     }
 
-    moveToNextCard(finalStats);
+    moveToNextCard(finalStats, newWrongCards);
   };
 
-  const moveToNextCard = (latestStats = sessionStats) => {
+  const moveToNextCard = (latestStats = sessionStats, latestWrongCards = wrongCards) => {
     setShowAnswer(false);
     setShowHint(false);
     setHintType(null);
     setUserAnswer('');
     setHandwritingImage('');
+    setAutoScore(null);
     if (handwritingRef.current) {
       handwritingRef.current.clearCanvas();
       handwritingRef.current.enableCanvas();
@@ -101,9 +117,10 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
       const nextIndex = currentCardIndex + 1;
       setCurrentCardIndex(nextIndex);
       setCurrentQuestion(cards[nextIndex]);
-    } else if (wrongCards.length > 0) {
-      const nextWrongCard = wrongCards[0];
-      setWrongCards(prev => prev.slice(1));
+    } else if (latestWrongCards.length > 0) {
+      // Wrong cards: remove first from queue and show it
+      const nextWrongCard = latestWrongCards[0];
+      setWrongCards(latestWrongCards.slice(1));
       setCurrentQuestion(nextWrongCard);
     } else {
       dataService.saveSessionResult({
@@ -123,12 +140,11 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
     initializeSession();
     setCurrentCardIndex(0);
     setSessionComplete(false);
-    setWrongCards([]);
-    setMissedCards([]);
     setShowAnswer(false);
     setShowHint(false);
     setHintType(null);
     setUserAnswer('');
+    setAutoScore(null);
   };
 
   const handleFlagSubmit = () => {
@@ -148,9 +164,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
     setFlagReason('');
   };
 
-  const accuracy = sessionStats.total > 0 ? Math.round((sessionStats.correct / sessionStats.total) * 100) : 0;
   const progress = sessionStats.total > 0 ? ((sessionStats.correct + sessionStats.wrong) / sessionStats.total) * 100 : 0;
-  const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing';
 
   // Loading
   if (!currentQuestion && cards.length === 0) {
@@ -172,13 +186,11 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
         <div className="bg-[#171720] border border-[#2a2a38] rounded-2xl p-6">
           <h2 className="text-base font-semibold text-[#e0e0f0] text-center mb-5">Session complete</h2>
 
-          {/* Accuracy ring */}
           <div className="mb-4">
             <AccuracyRing accuracy={finalAccuracy} />
             <p className="text-xs text-[#606080] text-center mt-1">Accuracy · {sessionStats.total} questions</p>
           </div>
 
-          {/* Stats */}
           <div className="grid grid-cols-3 gap-2 mb-6">
             {[
               { label: 'Correct', value: sessionStats.correct, color: 'text-[#4AA85C]' },
@@ -192,7 +204,6 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
             ))}
           </div>
 
-          {/* Missed cards */}
           {missedCards.length > 0 && (
             <div className="mb-6">
               <p className="text-[10px] font-semibold tracking-widest uppercase text-[#3a3a55] mb-3">Missed</p>
@@ -220,7 +231,6 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
             </div>
           )}
 
-          {/* Actions */}
           <div className="flex gap-3">
             <button onClick={handleRestart} className="flex-1 py-3 bg-[#3CBFA5] text-[#0A0A0F] font-semibold rounded-xl text-sm hover:bg-[#33a891] transition-colors">
               Study again
@@ -229,7 +239,11 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
               Home
             </button>
           </div>
-          <button onClick={onBackToChapters} className="w-full mt-2 py-2.5 text-sm text-[#3a3a55] hover:text-[#606080] transition-colors">
+          {/* Fix 1: "Change chapters" now visible */}
+          <button
+            onClick={onBackToChapters}
+            className="w-full mt-3 py-2.5 bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-xl text-sm font-medium hover:text-[#e0e0f0] hover:border-[#3a3a55] transition-colors"
+          >
             Change chapters
           </button>
         </div>
@@ -329,7 +343,28 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
           </div>
         ) : (
           <div>
-            {/* User answer */}
+            {/* Auto-score banner for reading modes */}
+            {isAutoScored && autoScore && (
+              <div className={`rounded-xl px-4 py-3 mb-4 flex items-center gap-3 ${
+                autoScore === 'correct'
+                  ? 'bg-[#4AA85C11] border border-[#4AA85C44]'
+                  : 'bg-[#C1392B11] border border-[#C1392B44]'
+              }`}>
+                <span className="text-xl">{autoScore === 'correct' ? '✓' : '✗'}</span>
+                <div className="flex-1 min-w-0">
+                  <p className={`text-sm font-semibold ${autoScore === 'correct' ? 'text-[#4AA85C]' : 'text-[#C1392B]'}`}>
+                    {autoScore === 'correct' ? 'Correct!' : 'Incorrect'}
+                  </p>
+                  {autoScore === 'wrong' && userAnswer && (
+                    <p className="text-xs text-[#606080] mt-0.5 truncate">
+                      You wrote: <span className="text-[#e0e0f0]">{userAnswer}</span>
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Handwriting image (writing modes) */}
             {needsHandwriting && handwritingImage && (
               <div className="mb-4 text-center">
                 <p className="text-xs text-[#3a3a55] mb-2">Your answer</p>
@@ -353,33 +388,52 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
               meaning={currentQuestion?.meaning}
             />
 
-            {/* Grade buttons */}
+            {/* Grading */}
             <div className="mt-5">
-              <p className="text-xs text-[#3a3a55] text-center mb-3">How was this card?</p>
-              <div className="grid grid-cols-3 gap-2 mb-3">
-                <button
-                  onClick={() => handleGrade('easy')}
-                  className="py-3 bg-[#4AA85C1a] border border-[#4AA85C44] text-[#4AA85C] font-semibold rounded-xl text-sm hover:bg-[#4AA85C2a] transition-colors"
-                >
-                  Correct
-                </button>
-                <button
-                  onClick={() => handleGrade('hard')}
-                  className="py-3 bg-[#171720] border border-[#2a2a38] text-[#606080] font-semibold rounded-xl text-sm hover:text-[#e0e0f0] transition-colors"
-                >
-                  Hard
-                </button>
-                <button
-                  onClick={() => handleGrade('wrong')}
-                  className="py-3 bg-[#C1392B1a] border border-[#C1392B44] text-[#C1392B] font-semibold rounded-xl text-sm hover:bg-[#C1392B2a] transition-colors"
-                >
-                  Wrong
-                </button>
-              </div>
-              <button
-                onClick={() => setShowFlagModal(true)}
-                className="w-full py-2 text-xs text-[#3a3a55] hover:text-[#606080] transition-colors"
-              >
+              {isAutoScored ? (
+                /* Auto-scored modes: single Next button + small override row */
+                <>
+                  <button
+                    onClick={() => handleGrade(autoScore === 'correct' ? 'easy' : 'wrong')}
+                    className={`w-full py-3 font-semibold rounded-xl text-sm mb-3 transition-colors ${
+                      autoScore === 'correct'
+                        ? 'bg-[#4AA85C] text-white hover:bg-[#3d8f4d]'
+                        : 'bg-[#C1392B] text-white hover:bg-[#a62f24]'
+                    }`}
+                  >
+                    {autoScore === 'correct' ? 'Next →' : 'Retry this card →'}
+                  </button>
+                  {/* Manual override for edge cases */}
+                  <div className="flex gap-2">
+                    <button onClick={() => handleGrade('easy')} className="flex-1 py-2 bg-[#4AA85C11] border border-[#4AA85C33] text-[#4AA85C] rounded-xl text-xs hover:bg-[#4AA85C22] transition-colors">
+                      Mark correct
+                    </button>
+                    <button onClick={() => handleGrade('hard')} className="flex-1 py-2 bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-xl text-xs hover:text-[#e0e0f0] transition-colors">
+                      Hard
+                    </button>
+                    <button onClick={() => handleGrade('wrong')} className="flex-1 py-2 bg-[#C1392B11] border border-[#C1392B33] text-[#C1392B] rounded-xl text-xs hover:bg-[#C1392B22] transition-colors">
+                      Wrong
+                    </button>
+                  </div>
+                </>
+              ) : (
+                /* Handwriting modes: manual grading */
+                <>
+                  <p className="text-xs text-[#3a3a55] text-center mb-3">How was this card?</p>
+                  <div className="grid grid-cols-3 gap-2 mb-3">
+                    <button onClick={() => handleGrade('easy')} className="py-3 bg-[#4AA85C1a] border border-[#4AA85C44] text-[#4AA85C] font-semibold rounded-xl text-sm hover:bg-[#4AA85C2a] transition-colors">
+                      Correct
+                    </button>
+                    <button onClick={() => handleGrade('hard')} className="py-3 bg-[#171720] border border-[#2a2a38] text-[#606080] font-semibold rounded-xl text-sm hover:text-[#e0e0f0] transition-colors">
+                      Hard
+                    </button>
+                    <button onClick={() => handleGrade('wrong')} className="py-3 bg-[#C1392B1a] border border-[#C1392B44] text-[#C1392B] font-semibold rounded-xl text-sm hover:bg-[#C1392B2a] transition-colors">
+                      Wrong
+                    </button>
+                  </div>
+                </>
+              )}
+              <button onClick={() => setShowFlagModal(true)} className="w-full py-2 text-xs text-[#3a3a55] hover:text-[#606080] transition-colors">
                 🚩 Flag as incorrect
               </button>
             </div>
