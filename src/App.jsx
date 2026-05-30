@@ -24,23 +24,32 @@ function App() {
   const [appReady, setAppReady] = useState(false);
 
   useEffect(() => {
-    async function init() {
-      try {
-        const userId = userService.getCurrentUserId();
-        const user = await userService.getUser(userId);
-        if (user) {
-          setCurrentUser(user);
-        } else {
-          setNeedsProfileSetup(true);
+    // Load shared vocab once on mount (independent of auth)
+    dataService.loadSharedVocab().catch(console.error);
+
+    // Listen for Firebase Auth state — fires immediately on load
+    const unsubscribe = userService.onAuthStateChanged(async (firebaseUser) => {
+      if (firebaseUser) {
+        try {
+          const profile = await userService.getUser(firebaseUser.uid);
+          setCurrentUser(profile || {
+            id: firebaseUser.uid,
+            displayName: firebaseUser.displayName || 'User',
+            avatarUrl: firebaseUser.photoURL || null,
+            isGuest: firebaseUser.isAnonymous,
+          });
+          setNeedsProfileSetup(false);
+        } catch (err) {
+          console.error('Error loading profile:', err);
         }
-        await dataService.loadSharedVocab();
-      } catch (err) {
-        console.error('App init error:', err);
-      } finally {
-        setAppReady(true);
+      } else {
+        setCurrentUser(null);
+        setNeedsProfileSetup(true);
       }
-    }
-    init();
+      setAppReady(true);
+    });
+
+    return () => unsubscribe();
   }, []);
 
   const handleProfileSetupComplete = (user) => {
@@ -50,6 +59,12 @@ function App() {
 
   const handleUserUpdate = (updatedUser) => {
     setCurrentUser(updatedUser);
+  };
+
+  const handleSignOut = () => {
+    setCurrentUser(null);
+    setNeedsProfileSetup(true);
+    setCurrentScreen('home');
   };
 
   const handleModeSelect = (mode) => {
@@ -181,6 +196,7 @@ function App() {
           <ProfileScreen
             currentUser={currentUser}
             onUserUpdate={handleUserUpdate}
+            onSignOut={handleSignOut}
             onBack={handleBackToHome}
           />
         )}

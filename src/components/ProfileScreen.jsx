@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { userService } from '../services/userService';
 
-export default function ProfileScreen({ currentUser, onUserUpdate, onBack }) {
+export default function ProfileScreen({ currentUser, onUserUpdate, onSignOut, onBack }) {
   const [name, setName] = useState(currentUser?.displayName || '');
   const [avatarUrl, setAvatarUrl] = useState(currentUser?.avatarUrl || '');
   const [urlInput, setUrlInput] = useState('');
@@ -35,6 +35,12 @@ export default function ProfileScreen({ currentUser, onUserUpdate, onBack }) {
     }
   };
 
+  const handleSignOut = async () => {
+    if (!confirm('Sign out?')) return;
+    await userService.signOut();
+    onSignOut();
+  };
+
   const initial = (currentUser?.displayName || '?')[0].toUpperCase();
 
   return (
@@ -58,7 +64,7 @@ export default function ProfileScreen({ currentUser, onUserUpdate, onBack }) {
 
         {/* Avatar */}
         <div className="flex flex-col items-center mb-8">
-          <div className="relative mb-4">
+          <div className="mb-4">
             {avatarUrl ? (
               <img src={avatarUrl} alt="avatar" className="w-24 h-24 rounded-full object-cover border-4 border-indigo-100" />
             ) : (
@@ -68,7 +74,7 @@ export default function ProfileScreen({ currentUser, onUserUpdate, onBack }) {
             )}
           </div>
 
-          <div className="flex gap-2 mt-2 w-full max-w-xs">
+          <div className="flex gap-2 w-full max-w-xs">
             <input
               type="text"
               value={urlInput}
@@ -104,10 +110,23 @@ export default function ProfileScreen({ currentUser, onUserUpdate, onBack }) {
         <button
           onClick={handleSave}
           disabled={saving || !name.trim()}
-          className="w-full py-3 bg-indigo-500 text-white rounded-xl font-semibold hover:bg-indigo-600 transition-colors disabled:opacity-50"
+          className="w-full py-3 bg-indigo-500 text-white rounded-xl font-semibold hover:bg-indigo-600 transition-colors disabled:opacity-50 mb-4"
         >
-          {saving ? 'Saving...' : 'Save Changes'}
+          {saving ? 'Saving…' : 'Save Changes'}
         </button>
+
+        <button
+          onClick={handleSignOut}
+          className="w-full py-3 bg-gray-100 text-gray-600 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
+        >
+          Sign Out
+        </button>
+
+        {currentUser?.isGuest && (
+          <p className="text-xs text-center text-gray-400 mt-3">
+            You're a guest — sign out and sign in with Google to link your account across devices.
+          </p>
+        )}
       </div>
     </div>
   );
