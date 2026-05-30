@@ -1,37 +1,85 @@
 import { useState } from 'react';
 
+function IconKanaToKanji() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 20h9" stroke="#378ADD" strokeWidth="1.5"/>
+      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" stroke="#378ADD" strokeWidth="1.5"/>
+      <path d="M15 5l3 3" stroke="#85B7EB" strokeWidth="1"/>
+    </svg>
+  );
+}
+
+function IconKanjiToReading() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke="#3CBFA5" strokeWidth="1.5"/>
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke="#3CBFA5" strokeWidth="1.5"/>
+      <path d="M6 8h2M6 12h2" stroke="#9FE1CB" strokeWidth="1"/>
+    </svg>
+  );
+}
+
+function IconVocabWriting() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="#8B82F0" strokeWidth="1.5"/>
+      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke="#8B82F0" strokeWidth="1.5"/>
+      <path d="M17 4l3 3" stroke="#AFA9EC" strokeWidth="1"/>
+    </svg>
+  );
+}
+
+function IconVocabReading() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="#D4861C" strokeWidth="1.5"/>
+      <circle cx="12" cy="12" r="3" stroke="#D4861C" strokeWidth="1.5"/>
+      <circle cx="12" cy="12" r="1" fill="#EF9F27"/>
+    </svg>
+  );
+}
+
 const studyModes = [
   {
     id: 'kana-to-kanji',
     title: 'Kana → Kanji',
     description: 'Given reading, write kanji',
-    icon: '✍️',
+    Icon: IconKanaToKanji,
     accent: '#378ADD',
     pill: 'Writing',
+    bgColor: 'rgba(55,138,221,0.12)',
+    borderColor: 'rgba(55,138,221,0.2)',
   },
   {
     id: 'kanji-to-reading',
     title: 'Kanji → Reading',
     description: 'Given kanji, write reading',
-    icon: '📖',
+    Icon: IconKanjiToReading,
     accent: '#3CBFA5',
     pill: 'Reading',
+    bgColor: 'rgba(60,191,165,0.12)',
+    borderColor: 'rgba(60,191,165,0.2)',
   },
   {
     id: 'vocabulary-writing',
     title: 'Vocabulary Writing',
     description: 'Given meaning, write vocabulary',
-    icon: '🈶',
+    Icon: IconVocabWriting,
     accent: '#8B82F0',
     pill: 'Vocab',
+    bgColor: 'rgba(139,130,240,0.12)',
+    borderColor: 'rgba(139,130,240,0.2)',
   },
   {
     id: 'vocabulary-reading',
     title: 'Vocabulary Reading',
     description: 'Given vocabulary, show reading',
-    icon: '👁️',
+    Icon: IconVocabReading,
     accent: '#D4861C',
     pill: 'Vocab',
+    bgColor: 'rgba(212,134,28,0.12)',
+    borderColor: 'rgba(212,134,28,0.2)',
   },
 ];
 
@@ -69,7 +117,7 @@ export default function HomeScreen({
         <p className="text-[#3a3a55] text-sm">Master Japanese kanji and vocabulary for university exams</p>
       </div>
 
-      {/* Mode buttons — original big 2×2 grid */}
+      {/* Mode buttons */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mb-8">
         {studyModes.map((mode) => (
           <button
@@ -81,11 +129,12 @@ export default function HomeScreen({
               transition-all duration-200 focus:outline-none
               ${hoveredMode === mode.id ? 'scale-105 border-[#3a3a55] shadow-xl shadow-black/30' : 'shadow-lg shadow-black/20'}`}
           >
+            {/* SVG icon with duotone background */}
             <div
-              className="w-14 h-14 rounded-xl flex items-center justify-center text-4xl mb-4"
-              style={{ background: `${mode.accent}22` }}
+              className="w-14 h-14 rounded-xl flex items-center justify-center mb-4"
+              style={{ background: mode.bgColor, border: `0.5px solid ${mode.borderColor}` }}
             >
-              {mode.icon}
+              <mode.Icon />
             </div>
             <h3 className="text-2xl font-bold text-[#e0e0f0] mb-2">{mode.title}</h3>
             <p className="text-sm text-[#606080] text-center mb-4">{mode.description}</p>
@@ -103,7 +152,7 @@ export default function HomeScreen({
         ))}
       </div>
 
-      {/* Utility buttons — all visible on screen */}
+      {/* Utility buttons */}
       <div className="flex gap-3 flex-wrap justify-center mb-8">
         <button
           onClick={onManageVocabulary}
