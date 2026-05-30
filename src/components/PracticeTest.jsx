@@ -1361,14 +1361,14 @@ export default function PracticeTest({ onBack }) {
   const [submitted, setSubmitted] = useState({});
   const [drillMode, setDrillMode] = useState(false);
 
+  const handleChange = useCallback((key, val) => {
+    setAnswers(prev => ({ ...prev, [key]: val }));
+  }, []);
+
   if (drillMode) return <WritingDrillView onExit={() => setDrillMode(false)} />;
 
   const chapter = CHAPTERS[activeIdx];
   const isSubmitted = !!submitted[chapter.id];
-
-  const handleChange = useCallback((key, val) => {
-    setAnswers(prev => ({ ...prev, [key]: val }));
-  }, []);
 
   const handleSubmit = () => {
     setSubmitted(prev => ({ ...prev, [chapter.id]: true }));
