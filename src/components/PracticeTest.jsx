@@ -22,7 +22,7 @@ function HandwritingCanvas({ width = 130, height = 75, disabled }) {
     if (!drawing.current || disabled) return; e.preventDefault();
     const p = getPos(e); const ctx = canvasRef.current.getContext('2d');
     ctx.beginPath(); ctx.moveTo(last.current.x, last.current.y); ctx.lineTo(p.x, p.y);
-    ctx.strokeStyle = '#1a1a2e'; ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.stroke();
+    ctx.strokeStyle = '#e0e0f0'; ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.stroke();
     last.current = p;
   }, [disabled, getPos]);
   const stop = useCallback(() => { drawing.current = false; }, []);
@@ -42,7 +42,7 @@ function HandwritingCanvas({ width = 130, height = 75, disabled }) {
       <canvas ref={canvasRef} width={width * 2} height={height * 2}
         onMouseDown={start} onMouseMove={move} onMouseUp={stop} onMouseLeave={stop}
         style={{ touchAction: 'none', width: `${width}px`, height: `${height}px`, cursor: disabled ? 'default' : 'crosshair' }}
-        className="border-2 border-gray-400 rounded bg-amber-50" />
+        className="border border-[#2a2a38] rounded bg-[#0F0F14]" />
       {!disabled && <button onClick={clear} className="text-[10px] text-gray-400 hover:text-red-500 mt-0.5 leading-none">消す</button>}
     </span>
   );
@@ -864,12 +864,12 @@ function ReadingListSection({ sec, chId, answers, onChange, submitted }) {
 
       {/* Context box — single column */}
       {sec.contextLines && (
-        <div className="border-2 border-gray-500 rounded-lg p-4 mb-5 bg-gray-50">
+        <div className="border border-[#2a2a38] rounded-xl p-4 mb-5 bg-[#0F0F14]">
           {sec.contextTitle && (
-            <p className="text-center font-bold text-base tracking-widest kanji-text mb-3 border-b border-gray-300 pb-2">{sec.contextTitle}</p>
+            <p className="text-center font-bold text-base tracking-widest kanji-text mb-3 border-b border-[#2a2a38] pb-2 text-[#e0e0f0]">{sec.contextTitle}</p>
           )}
           {sec.contextLines.map((line, i) => (
-            <p key={i} className="text-sm leading-7 kanji-text whitespace-pre-wrap">{line || '\u00A0'}</p>
+            <p key={i} className="text-sm leading-7 kanji-text whitespace-pre-wrap text-[#e0e0f0]">{line || '\u00A0'}</p>
           ))}
         </div>
       )}
@@ -878,10 +878,10 @@ function ReadingListSection({ sec, chId, answers, onChange, submitted }) {
       {sec.contextDocs && (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
           {sec.contextDocs.map((doc, di) => (
-            <div key={di} className="border-2 border-gray-400 rounded-lg p-3 bg-gray-50 text-xs">
-              <p className="font-bold text-gray-600 text-center mb-2 border-b border-gray-300 pb-1">{doc.title}</p>
+            <div key={di} className="border border-[#2a2a38] rounded-xl p-3 bg-[#0F0F14] text-xs">
+              <p className="font-bold text-[#606080] text-center mb-2 border-b border-[#2a2a38] pb-1">{doc.title}</p>
               {doc.lines.map((line, li) => (
-                <p key={li} className="kanji-text leading-6">{line}</p>
+                <p key={li} className="kanji-text leading-6 text-[#e0e0f0]">{line}</p>
               ))}
             </div>
           ))}
@@ -898,17 +898,17 @@ function ReadingListSection({ sec, chId, answers, onChange, submitted }) {
           return (
             <div key={q.num}
               className={`flex items-start gap-3 p-3 rounded-xl border transition-all
-                ${submitted ? (correct ? 'border-emerald-300 bg-emerald-50' : 'border-amber-300 bg-amber-50') : 'border-gray-200 bg-white hover:border-blue-300'}`}
+                ${submitted ? (correct ? 'border-[#4AA85C44] bg-[#4AA85C0d]' : 'border-[#D4861C44] bg-[#D4861C0d]') : 'border-[#2a2a38] bg-[#171720] hover:border-[#3a3a55]'}`}
             >
-              <span className="text-gray-500 text-sm font-semibold pt-1 shrink-0">{CIRCLED[q.num - 1]}</span>
+              <span className="text-[#606080] text-sm font-semibold pt-1 shrink-0">{CIRCLED[q.num - 1]}</span>
               <div className="flex-1">
-                <p className="text-xl kanji-text font-medium text-gray-800 border-b-2 border-gray-600 inline-block mb-1">{q.target}</p>
+                <p className="text-xl kanji-text font-medium text-[#e0e0f0] border-b-2 border-[#606080] inline-block mb-1">{q.target}</p>
                 <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
                   placeholder="ひらがなで"
                   className={`w-full px-2 py-1 rounded border text-sm outline-none
-                    ${submitted ? (correct ? 'bg-green-100 border-green-300 text-green-800' : 'bg-amber-100 border-amber-300 text-amber-700') : 'bg-gray-50 border-gray-300 focus:border-blue-400 focus:bg-white'}`} />
-                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-gray-400 mr-1">{val || '未回答'}</span><span className="text-emerald-700 font-bold">→ {q.answer}</span></p>}
-                {submitted && correct && <p className="text-xs text-emerald-600 font-bold mt-1">✓ 正解</p>}
+                    ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0F0F14] border-[#2a2a38] text-[#e0e0f0] focus:border-[#C1392B]'}`} />
+                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-[#3a3a55] mr-1">{val || '未回答'}</span><span className="text-[#4AA85C] font-bold">→ {q.answer}</span></p>}
+                {submitted && correct && <p className="text-xs text-[#4AA85C] font-bold mt-1">✓ 正解</p>}
               </div>
             </div>
           );
@@ -925,11 +925,11 @@ function ReadingHeadlinesSection({ sec, chId, answers, onChange, submitted }) {
   return (
     <div className="mb-10">
       <SectionHeader label={sec.label} instruction={sec.instruction} />
-      <div className="border-2 border-gray-500 rounded-lg p-4 mb-5 bg-gray-50 space-y-3">
+      <div className="border border-[#2a2a38] rounded-xl p-4 mb-5 bg-[#0F0F14] space-y-3">
         {sec.headlines.map((h, i) => (
           <p key={i}
             className={`kanji-text text-lg leading-relaxed px-3 py-2 rounded font-medium
-              ${h.inverted ? 'bg-gray-800 text-white' : 'border border-dashed border-gray-500 bg-white'}`}
+              ${h.inverted ? 'bg-[#e0e0f0] text-[#0F0F14]' : 'border border-dashed border-[#3a3a55] text-[#e0e0f0]'}`}
           >{h.text}</p>
         ))}
       </div>
@@ -942,17 +942,17 @@ function ReadingHeadlinesSection({ sec, chId, answers, onChange, submitted }) {
           return (
             <div key={q.num}
               className={`flex items-start gap-3 p-3 rounded-xl border transition-all
-                ${submitted ? (correct ? 'border-emerald-300 bg-emerald-50' : 'border-amber-300 bg-amber-50') : 'border-gray-200 bg-white hover:border-blue-300'}`}
+                ${submitted ? (correct ? 'border-[#4AA85C44] bg-[#4AA85C0d]' : 'border-[#D4861C44] bg-[#D4861C0d]') : 'border-[#2a2a38] bg-[#171720] hover:border-[#3a3a55]'}`}
             >
-              <span className="text-gray-500 text-sm font-semibold pt-1 shrink-0">{CIRCLED[q.num - 1]}</span>
+              <span className="text-[#606080] text-sm font-semibold pt-1 shrink-0">{CIRCLED[q.num - 1]}</span>
               <div className="flex-1">
-                <p className="text-xl kanji-text font-medium text-gray-800 border-b-2 border-gray-600 inline-block mb-1">{q.target}</p>
+                <p className="text-xl kanji-text font-medium text-[#e0e0f0] border-b-2 border-[#606080] inline-block mb-1">{q.target}</p>
                 <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
                   placeholder="ひらがなで"
                   className={`w-full px-2 py-1 rounded border text-sm outline-none
-                    ${submitted ? (correct ? 'bg-green-100 border-green-300 text-green-800' : 'bg-amber-100 border-amber-300 text-amber-700') : 'bg-gray-50 border-gray-300 focus:border-blue-400 focus:bg-white'}`} />
-                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-gray-400 mr-1">{val || '未回答'}</span><span className="text-emerald-700 font-bold">→ {q.answer}</span></p>}
-                {submitted && correct && <p className="text-xs text-emerald-600 font-bold mt-1">✓ 正解</p>}
+                    ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0F0F14] border-[#2a2a38] text-[#e0e0f0] focus:border-[#C1392B]'}`} />
+                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-[#3a3a55] mr-1">{val || '未回答'}</span><span className="text-[#4AA85C] font-bold">→ {q.answer}</span></p>}
+                {submitted && correct && <p className="text-xs text-[#4AA85C] font-bold mt-1">✓ 正解</p>}
               </div>
             </div>
           );
@@ -970,7 +970,7 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
     <div className="mb-10">
       <SectionHeader label={sec.label} instruction={sec.instruction} />
       {sec.example && (
-        <div className="border border-gray-400 rounded inline-flex items-center px-4 py-1.5 mb-4 bg-white text-sm kanji-text">{sec.example}</div>
+        <div className="border border-[#2a2a38] rounded inline-flex items-center px-4 py-1.5 mb-4 bg-[#171720] text-sm kanji-text text-[#606080]">{sec.example}</div>
       )}
       <div className="space-y-6">
         {sec.sentences.map(s => {
@@ -986,7 +986,7 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
 
           return (
             <div key={s.num} className="flex items-start gap-3">
-              <span className="text-gray-500 font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
+              <span className="text-[#606080] font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
               <div className="flex-1">
                 {/* Sentence with underlined targets inline */}
                 <p className="text-base kanji-text leading-loose mb-3">
@@ -994,9 +994,9 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
                     if (!seg.isTarget) return <span key={si}>{seg.text}</span>;
                     const tInfo = allTargets.find(t => t.word === seg.text);
                     if (tInfo?.mode === 'writing') {
-                      return <span key={si} className="border-b-2 border-indigo-600 text-indigo-700 font-medium">{seg.text}</span>;
+                      return <span key={si} className="border-b-2 border-[#8B82F0] text-[#8B82F0] font-medium">{seg.text}</span>;
                     }
-                    return <span key={si} className="border-b-2 border-gray-700 font-medium">{seg.text}</span>;
+                    return <span key={si} className="border-b-2 border-[#606080] text-[#e0e0f0] font-medium">{seg.text}</span>;
                   })}
                 </p>
 
@@ -1010,14 +1010,14 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
                       const wrong = submitted && !correct;
                       return (
                         <div key={t.word} className="flex flex-col items-start gap-0.5">
-                          <span className="text-xs text-gray-500 kanji-text border-b border-gray-400 inline-block">{t.word}</span>
+                          <span className="text-xs text-[#606080] kanji-text border-b border-[#3a3a55] inline-block">{t.word}</span>
                           <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
                             placeholder="読み"
                             className={`px-2 py-1 rounded border text-sm outline-none transition-all
-                              ${submitted ? (correct ? 'bg-emerald-100 border-emerald-400 text-emerald-800' : 'bg-amber-100 border-amber-400 text-amber-800') : 'bg-white border-gray-300 focus:border-indigo-400 focus:bg-indigo-50'}`}
+                              ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0F0F14] border-[#2a2a38] text-[#e0e0f0] focus:border-[#C1392B]'}`}
                             style={{ width: `${Math.max(90, t.answer.length * 13 + 20)}px` }} />
-                          {submitted && correct && <span className="text-[11px] text-emerald-600 font-bold">✓</span>}
-                          {submitted && wrong && <span className="text-[11px] text-emerald-700 font-bold">{t.answer}</span>}
+                          {submitted && correct && <span className="text-[11px] text-[#4AA85C] font-bold">✓</span>}
+                          {submitted && wrong && <span className="text-[11px] text-[#4AA85C] font-bold">{t.answer}</span>}
                         </div>
                       );
                     })}
@@ -1029,13 +1029,13 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
                   <div className="flex flex-wrap gap-4">
                     {writingTargets.map(t => (
                       <div key={t.word} className="flex flex-col items-start gap-1">
-                        <span className="text-xs text-indigo-600 font-medium border-b border-indigo-400 kanji-text">{t.word} →漢字</span>
+                        <span className="text-xs text-[#8B82F0] font-medium border-b border-[#8B82F044] kanji-text">{t.word} →漢字</span>
                         <div className="flex items-center gap-2">
                           <HandwritingCanvas width={120} height={68} disabled={submitted} />
                           {submitted && (
                             <div className="flex items-center gap-1">
-                              <span className="text-xs text-gray-400">答：</span>
-                              <span className="text-2xl font-bold text-gray-800 kanji-text">{t.answer}</span>
+                              <span className="text-xs text-[#606080]">答：</span>
+                              <span className="text-2xl font-bold text-[#e0e0f0] kanji-text">{t.answer}</span>
                             </div>
                           )}
                         </div>
@@ -1066,12 +1066,12 @@ function WritingSection({ sec, submitted }) {
           const segments = splitSentence(s.full, writingTargets.map(t => ({ word: t.word, key: t.word })));
           return (
             <div key={s.num} className="flex items-start gap-3">
-              <span className="text-gray-500 font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
+              <span className="text-[#606080] font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
               <div className="flex-1">
                 <p className="text-base kanji-text leading-loose mb-2">
                   {segments.map((seg, si) =>
                     seg.isTarget
-                      ? <span key={si} className="border-b-2 border-gray-700 text-indigo-700 font-medium">{seg.text}</span>
+                      ? <span key={si} className="border-b-2 border-[#606080] text-[#8B82F0] font-medium">{seg.text}</span>
                       : <span key={si}>{seg.text}</span>
                   )}
                 </p>
@@ -1080,14 +1080,14 @@ function WritingSection({ sec, submitted }) {
                   {writingTargets.map(t => (
                     <div key={t.word} className="flex flex-col items-start gap-1">
                       {writingTargets.length > 1 && (
-                        <span className="text-xs text-indigo-600 font-medium kanji-text border-b border-indigo-400">{t.word}</span>
+                        <span className="text-xs text-[#8B82F0] font-medium kanji-text border-b border-[#8B82F044]">{t.word}</span>
                       )}
                       <div className="flex items-center gap-3">
                         <HandwritingCanvas width={130} height={75} disabled={submitted} />
                         {submitted && (
                           <div className="flex items-center gap-1">
-                            <span className="text-xs text-gray-400">答え：</span>
-                            <span className="text-2xl font-bold text-gray-800 kanji-text">{t.answer}</span>
+                            <span className="text-xs text-[#606080]">答え：</span>
+                            <span className="text-2xl font-bold text-[#e0e0f0] kanji-text">{t.answer}</span>
                           </div>
                         )}
                       </div>
@@ -1108,9 +1108,9 @@ function WritingSection({ sec, submitted }) {
 // ─────────────────────────────────────────────────────────────────
 function InfoSection({ sec }) {
   return (
-    <div className="mb-10 border border-gray-400 rounded-lg p-4 bg-gray-50">
-      <p className="font-bold text-gray-700 mb-2">─ {sec.label} ─</p>
-      <p className="text-sm text-gray-700 leading-relaxed kanji-text whitespace-pre-line">{sec.content}</p>
+    <div className="mb-10 border border-[#2a2a38] rounded-xl p-4 bg-[#171720]">
+      <p className="font-bold text-[#606080] mb-2">─ {sec.label} ─</p>
+      <p className="text-sm text-[#e0e0f0] leading-relaxed kanji-text whitespace-pre-line">{sec.content}</p>
     </div>
   );
 }
@@ -1128,7 +1128,7 @@ function KanjiChoiceSection({ sec, chId, answers, onChange, submitted }) {
           const selected = answers[key] || '';
           return (
             <div key={s.num} className="flex items-start gap-3">
-              <span className="text-gray-500 font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
+              <span className="text-[#606080] font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
               <p className="text-base kanji-text leading-loose">
                 {s.pre}
                 <span className="inline-flex gap-2 mx-1 align-middle">
@@ -1142,10 +1142,10 @@ function KanjiChoiceSection({ sec, chId, answers, onChange, submitted }) {
                         onClick={() => !submitted && onChange(key, choice)}
                         disabled={submitted}
                         className={`px-2 py-0.5 rounded border kanji-text text-base transition-all
-                          ${isSelected && !submitted ? 'border-indigo-500 bg-indigo-50 text-indigo-800 font-bold' : ''}
-                          ${showCorrect ? 'border-emerald-500 bg-emerald-50 text-emerald-800 font-bold' : ''}
-                          ${showWrong ? 'border-amber-400 bg-amber-50 text-amber-700 opacity-60' : ''}
-                          ${!isSelected && !showCorrect && !showWrong ? 'border-gray-300 bg-white text-gray-700 hover:border-indigo-400 hover:bg-indigo-50' : ''}
+                          ${isSelected && !submitted ? 'border-[#8B82F0] bg-[#8B82F011] text-[#8B82F0] font-bold' : ''}
+                          ${showCorrect ? 'border-[#4AA85C] bg-[#4AA85C11] text-[#4AA85C] font-bold' : ''}
+                          ${showWrong ? 'border-[#D4861C] bg-[#D4861C11] text-[#D4861C] opacity-60' : ''}
+                          ${!isSelected && !showCorrect && !showWrong ? 'border-[#2a2a38] bg-[#0F0F14] text-[#e0e0f0] hover:border-[#8B82F0]' : ''}
                         `}
                       >
                         {choice}
@@ -1166,8 +1166,8 @@ function KanjiChoiceSection({ sec, chId, answers, onChange, submitted }) {
 function SectionHeader({ label, instruction }) {
   return (
     <div className="flex flex-wrap items-baseline gap-2 mb-4">
-      <span className="font-bold text-gray-900 text-base shrink-0">{label}</span>
-      <span className="text-sm text-gray-600 leading-relaxed">{instruction}</span>
+      <span className="font-bold text-[#e0e0f0] text-base shrink-0">{label}</span>
+      <span className="text-sm text-[#606080] leading-relaxed">{instruction}</span>
     </div>
   );
 }
@@ -1274,12 +1274,12 @@ function WritingDrillView({ onExit }) {
     return (
       <div className="max-w-3xl mx-auto pb-32">
         <div className="flex items-center gap-4 mb-6">
-          <button onClick={onExit} className="flex items-center gap-1 px-3 py-2 bg-white rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 shadow-sm text-sm">
+          <button onClick={onExit} className="flex items-center gap-1 px-3 py-2 bg-[#171720] rounded-xl border border-[#2a2a38] text-[#606080] hover:text-[#e0e0f0] text-sm">
             ← 練習テストに戻る
           </button>
-          <h2 className="text-xl font-bold text-gray-800">書き練習</h2>
+          <h2 className="text-xl font-bold text-[#e0e0f0]">書き練習</h2>
         </div>
-        <p className="text-sm text-gray-500 mb-4">練習する課を選んでください</p>
+        <p className="text-sm text-[#606080] mb-4">練習する課を選んでください</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
           {CHAPTERS.map(ch => {
             const count = buildDrillCards(ch.id).length;
@@ -1314,32 +1314,32 @@ function WritingDrillView({ onExit }) {
   return (
     <div className="max-w-3xl mx-auto pb-32">
       <div className="flex items-center justify-between mb-6">
-        <button onClick={backToPicker} className="flex items-center gap-1 px-3 py-2 bg-white rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 shadow-sm text-sm">
+        <button onClick={backToPicker} className="flex items-center gap-1 px-3 py-2 bg-[#171720] rounded-xl border border-[#2a2a38] text-[#606080] hover:text-[#e0e0f0] text-sm">
           ← 課選択に戻る
         </button>
-        {!done && <span className="text-sm text-gray-500 font-medium">{idx + 1} / {cards.length}</span>}
+        {!done && <span className="text-sm text-[#606080] font-medium">{idx + 1} / {cards.length}</span>}
       </div>
 
       {done ? (
         <div className="text-center py-20">
-          <p className="text-2xl font-bold text-gray-800 mb-2">全問完了！</p>
-          <p className="text-gray-500 mb-8">書き練習が終わりました。</p>
+          <p className="text-2xl font-bold text-[#e0e0f0] mb-2">全問完了！</p>
+          <p className="text-[#606080] mb-8">書き練習が終わりました。</p>
           <div className="flex gap-3 justify-center">
             <button onClick={handleRestart}
-              className="px-6 py-2.5 rounded-xl font-bold text-white text-sm shadow-md transition-all hover:scale-105 active:scale-95"
+              className="px-6 py-2.5 rounded-xl font-bold text-white text-sm transition-all hover:scale-105 active:scale-95"
               style={{ background: accent }}>
               もう一度 ↺
             </button>
             <button onClick={backToPicker}
-              className="px-6 py-2.5 rounded-xl font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm">
+              className="px-6 py-2.5 rounded-xl font-bold bg-[#171720] border border-[#2a2a38] text-[#606080] hover:text-[#e0e0f0] text-sm">
               別の課を選ぶ
             </button>
           </div>
         </div>
       ) : (
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-8">
+        <div className="bg-[#171720] rounded-2xl border border-[#2a2a38] p-8">
           {/* Progress bar */}
-          <div className="mb-6 bg-gray-100 rounded-full h-1.5">
+          <div className="mb-6 bg-[#2a2a38] rounded-full h-1.5">
             <div className="rounded-full h-1.5 transition-all duration-300"
               style={{ width: `${(idx / cards.length) * 100}%`, background: accent }} />
           </div>
@@ -1349,12 +1349,12 @@ function WritingDrillView({ onExit }) {
             style={{ background: accent }}>{card.chapter}課</span>
 
           {/* Sentence context */}
-          <p className="text-sm text-gray-500 mt-4 mb-2 kanji-text leading-relaxed">
+          <p className="text-sm text-[#606080] mt-4 mb-2 kanji-text leading-relaxed">
             {card.sentence.split(card.word).map((part, i, arr) => (
               <span key={i}>
                 {part}
                 {i < arr.length - 1 && (
-                  <span className={`border-b-2 font-medium ${revealed ? 'border-emerald-500 text-emerald-700' : 'border-indigo-400 text-indigo-600'}`}>
+                  <span className={`border-b-2 font-medium ${revealed ? 'border-[#4AA85C] text-[#4AA85C]' : 'border-[#8B82F0] text-[#8B82F0]'}`}>
                     {revealed ? card.answer : card.word}
                   </span>
                 )}
@@ -1363,8 +1363,8 @@ function WritingDrillView({ onExit }) {
           </p>
 
           {/* Prompt */}
-          <p className="text-lg font-bold text-gray-800 mb-6 kanji-text">
-            「<span className="text-indigo-700">{card.word}</span>」を漢字で書いてください
+          <p className="text-lg font-bold text-[#e0e0f0] mb-6 kanji-text">
+            「<span className="text-[#8B82F0]">{card.word}</span>」を漢字で書いてください
           </p>
 
           {/* Canvas */}
@@ -1372,8 +1372,8 @@ function WritingDrillView({ onExit }) {
             <HandwritingCanvas key={`${idx}-${cards.length}`} width={200} height={120} disabled={revealed} />
             {revealed && (
               <div className="flex items-center gap-2 mt-2">
-                <span className="text-sm text-gray-500">答え：</span>
-                <span className="text-4xl font-bold text-gray-800 kanji-text">{card.answer}</span>
+                <span className="text-sm text-[#606080]">答え：</span>
+                <span className="text-4xl font-bold text-[#e0e0f0] kanji-text">{card.answer}</span>
               </div>
             )}
           </div>
@@ -1388,7 +1388,7 @@ function WritingDrillView({ onExit }) {
               </button>
             ) : (
               <button onClick={handleNext}
-                className="px-8 py-3 rounded-xl font-bold bg-emerald-600 text-white hover:bg-emerald-700 text-sm shadow-md transition-all hover:scale-105 active:scale-95">
+                className="px-8 py-3 rounded-xl font-bold bg-[#4AA85C] text-white hover:bg-[#3d8f4d] text-sm transition-all hover:scale-105 active:scale-95">
                 {idx + 1 < cards.length ? '次へ →' : '完了 ✓'}
               </button>
             )}
@@ -1435,14 +1435,14 @@ export default function PracticeTest({ onBack }) {
     <div className="max-w-3xl mx-auto pb-32">
       {/* Header */}
       <div className="flex items-center gap-4 mb-6">
-        <button onClick={onBack} className="flex items-center gap-1 px-3 py-2 bg-white rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 shadow-sm text-sm">
+        <button onClick={onBack} className="flex items-center gap-1 px-3 py-2 bg-[#171720] rounded-xl border border-[#2a2a38] text-[#606080] hover:text-[#e0e0f0] text-sm">
           ← ホーム
         </button>
         <div className="flex-1">
-          <h1 className="text-xl font-bold text-gray-800">練習テスト</h1>
+          <h1 className="text-xl font-bold text-[#e0e0f0]">練習テスト</h1>
         </div>
         <button onClick={() => setDrillMode(true)}
-          className="flex items-center gap-1.5 px-3 py-2 bg-indigo-600 text-white rounded-xl text-sm font-bold shadow-sm hover:bg-indigo-700 transition-all whitespace-nowrap">
+          className="flex items-center gap-1.5 px-3 py-2 bg-[#C1392B] text-white rounded-xl text-sm font-bold hover:bg-[#a62f24] transition-all whitespace-nowrap">
           書き練習
         </button>
       </div>
@@ -1452,7 +1452,7 @@ export default function PracticeTest({ onBack }) {
         {CHAPTERS.map((ch, i) => (
           <button key={ch.id} onClick={() => setActiveIdx(i)}
             className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all whitespace-nowrap border-2
-              ${activeIdx === i ? 'text-white' : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'}`}
+              ${activeIdx === i ? 'text-white' : 'bg-[#171720] text-[#606080] border-[#2a2a38] hover:border-[#3a3a55]'}`}
             style={activeIdx === i ? { background: ch.accent, borderColor: ch.accent } : {}}
           >
             {ch.id}課{submitted[ch.id] ? ' ✓' : ''}
@@ -1464,7 +1464,7 @@ export default function PracticeTest({ onBack }) {
       <div className="flex items-center gap-3 mb-8 pb-3 border-b-4" style={{ borderColor: chapter.accent }}>
         <span className="text-white text-3xl font-black px-3 py-1 rounded-lg leading-none" style={{ background: chapter.accent }}>{chapter.id}</span>
         <span className="text-white text-sm font-semibold px-1.5 py-0.5 rounded" style={{ background: chapter.accent }}>課</span>
-        <span className="text-2xl font-bold text-gray-800 tracking-wide">練習</span>
+        <span className="text-2xl font-bold text-[#e0e0f0] tracking-wide">練習</span>
       </div>
 
       {/* Score banner */}
@@ -1483,21 +1483,21 @@ export default function PracticeTest({ onBack }) {
 
       {/* Sticky bar */}
       <div className="fixed bottom-4 left-0 right-0 px-4 z-50">
-        <div className="max-w-3xl mx-auto bg-white/95 backdrop-blur rounded-2xl border border-gray-200 shadow-2xl p-4 flex items-center gap-4">
+        <div className="max-w-3xl mx-auto bg-[#171720]/95 backdrop-blur rounded-2xl border border-[#2a2a38] shadow-2xl p-4 flex items-center gap-4">
           {!isSubmitted ? (
             <>
-              <p className="flex-1 text-xs text-gray-500 leading-relaxed">読み問題を入力後に採点。手書き問題（問題3）は自己採点してください。</p>
+              <p className="flex-1 text-xs text-[#606080] leading-relaxed">読み問題を入力後に採点。手書き問題（問題3）は自己採点してください。</p>
               <button onClick={handleSubmit}
-                className="px-6 py-2.5 rounded-xl font-bold text-white text-sm shadow-md transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
+                className="px-6 py-2.5 rounded-xl font-bold text-white text-sm transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
                 style={{ background: chapter.accent }}>
                 採点する ✓
               </button>
             </>
           ) : (
             <>
-              <p className="flex-1 text-xs text-gray-600">採点完了！手書き問題の答えを確認してください。</p>
+              <p className="flex-1 text-xs text-[#606080]">採点完了！手書き問題の答えを確認してください。</p>
               <button onClick={handleReset}
-                className="px-6 py-2.5 rounded-xl font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm transition-all whitespace-nowrap">
+                className="px-6 py-2.5 rounded-xl font-bold bg-[#0F0F14] border border-[#2a2a38] text-[#606080] hover:text-[#e0e0f0] text-sm transition-all whitespace-nowrap">
                 やり直す ↺
               </button>
             </>
