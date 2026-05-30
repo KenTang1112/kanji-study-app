@@ -1228,14 +1228,15 @@ function ScoreBanner({ chapter, answers, submitted }) {
 // ─────────────────────────────────────────────────────────────────
 // WRITING DRILL
 // ─────────────────────────────────────────────────────────────────
-function buildDrillCards() {
+function buildDrillCards(chapterId) {
+  const chapters = chapterId === 'all' ? CHAPTERS : CHAPTERS.filter(ch => ch.id === chapterId);
   const cards = [];
-  CHAPTERS.forEach(ch => {
+  chapters.forEach(ch => {
     ch.sections.forEach(sec => {
       if (sec.type === 'writing' || sec.type === 'reading_sentences') {
         (sec.sentences || []).forEach(s => {
           (s.writingTargets || []).forEach(t => {
-            cards.push({ word: t.word, answer: t.answer, sentence: s.full, chapter: ch.id });
+            cards.push({ word: t.word, answer: t.answer, sentence: s.full, chapter: ch.id, accent: ch.accent });
           });
         });
       }
@@ -1249,29 +1250,72 @@ function buildDrillCards() {
 }
 
 function WritingDrillView({ onExit }) {
-  const [cards, setCards] = useState(() => buildDrillCards());
+  const [selectedChapter, setSelectedChapter] = useState(null);
+  const [cards, setCards] = useState([]);
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
 
-  const done = idx >= cards.length;
-  const card = done ? null : cards[idx];
-
-  const handleNext = () => {
-    setRevealed(false);
-    setIdx(i => i + 1);
-  };
-
-  const handleRestart = () => {
-    setCards(buildDrillCards());
+  const startDrill = (chapterId) => {
+    setCards(buildDrillCards(chapterId));
+    setSelectedChapter(chapterId);
     setIdx(0);
     setRevealed(false);
   };
 
+  const backToPicker = () => {
+    setSelectedChapter(null);
+    setCards([]);
+    setIdx(0);
+    setRevealed(false);
+  };
+
+  // ── Chapter picker ──
+  if (!selectedChapter) {
+    return (
+      <div className="max-w-3xl mx-auto pb-32">
+        <div className="flex items-center gap-4 mb-6">
+          <button onClick={onExit} className="flex items-center gap-1 px-3 py-2 bg-white rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 shadow-sm text-sm">
+            ← 練習テストに戻る
+          </button>
+          <h2 className="text-xl font-bold text-gray-800">書き練習</h2>
+        </div>
+        <p className="text-sm text-gray-500 mb-4">練習する課を選んでください</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+          {CHAPTERS.map(ch => {
+            const count = buildDrillCards(ch.id).length;
+            if (count === 0) return null;
+            return (
+              <button key={ch.id} onClick={() => startDrill(ch.id)}
+                className="flex flex-col items-center gap-1 py-5 rounded-2xl text-white font-bold shadow-md transition-all hover:scale-105 active:scale-95"
+                style={{ background: ch.accent }}>
+                <span className="text-2xl font-black">{ch.id}</span>
+                <span className="text-xs font-semibold opacity-80">課</span>
+                <span className="text-xs opacity-70 mt-1">{count}問</span>
+              </button>
+            );
+          })}
+        </div>
+        <button onClick={() => startDrill('all')}
+          className="w-full py-3 rounded-2xl font-bold bg-gray-800 text-white hover:bg-gray-700 text-sm shadow-md transition-all hover:scale-105 active:scale-95">
+          全課まとめて練習
+        </button>
+      </div>
+    );
+  }
+
+  // ── Drill ──
+  const done = idx >= cards.length;
+  const card = done ? null : cards[idx];
+  const accent = selectedChapter === 'all' ? '#4f46e5' : (CHAPTERS.find(ch => ch.id === selectedChapter)?.accent ?? '#4f46e5');
+
+  const handleNext = () => { setRevealed(false); setIdx(i => i + 1); };
+  const handleRestart = () => { setCards(buildDrillCards(selectedChapter)); setIdx(0); setRevealed(false); };
+
   return (
     <div className="max-w-3xl mx-auto pb-32">
       <div className="flex items-center justify-between mb-6">
-        <button onClick={onExit} className="flex items-center gap-1 px-3 py-2 bg-white rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 shadow-sm text-sm">
-          ← 練習テストに戻る
+        <button onClick={backToPicker} className="flex items-center gap-1 px-3 py-2 bg-white rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 shadow-sm text-sm">
+          ← 課選択に戻る
         </button>
         {!done && <span className="text-sm text-gray-500 font-medium">{idx + 1} / {cards.length}</span>}
       </div>
@@ -1282,12 +1326,13 @@ function WritingDrillView({ onExit }) {
           <p className="text-gray-500 mb-8">書き練習が終わりました。</p>
           <div className="flex gap-3 justify-center">
             <button onClick={handleRestart}
-              className="px-6 py-2.5 rounded-xl font-bold bg-indigo-600 text-white hover:bg-indigo-700 text-sm shadow-md transition-all hover:scale-105 active:scale-95">
+              className="px-6 py-2.5 rounded-xl font-bold text-white text-sm shadow-md transition-all hover:scale-105 active:scale-95"
+              style={{ background: accent }}>
               もう一度 ↺
             </button>
-            <button onClick={onExit}
+            <button onClick={backToPicker}
               className="px-6 py-2.5 rounded-xl font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm">
-              戻る
+              別の課を選ぶ
             </button>
           </div>
         </div>
@@ -1295,12 +1340,13 @@ function WritingDrillView({ onExit }) {
         <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-8">
           {/* Progress bar */}
           <div className="mb-6 bg-gray-100 rounded-full h-1.5">
-            <div className="bg-indigo-500 rounded-full h-1.5 transition-all duration-300"
-              style={{ width: `${(idx / cards.length) * 100}%` }} />
+            <div className="rounded-full h-1.5 transition-all duration-300"
+              style={{ width: `${(idx / cards.length) * 100}%`, background: accent }} />
           </div>
 
           {/* Chapter badge */}
-          <span className="text-xs font-semibold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded-full">{card.chapter}課</span>
+          <span className="text-xs font-semibold text-white px-2 py-0.5 rounded-full"
+            style={{ background: accent }}>{card.chapter}課</span>
 
           {/* Sentence context */}
           <p className="text-sm text-gray-500 mt-4 mb-2 kanji-text leading-relaxed">
@@ -1336,7 +1382,8 @@ function WritingDrillView({ onExit }) {
           <div className="flex justify-center">
             {!revealed ? (
               <button onClick={() => setRevealed(true)}
-                className="px-8 py-3 rounded-xl font-bold bg-indigo-600 text-white hover:bg-indigo-700 text-sm shadow-md transition-all hover:scale-105 active:scale-95">
+                className="px-8 py-3 rounded-xl font-bold text-white text-sm shadow-md transition-all hover:scale-105 active:scale-95"
+                style={{ background: accent }}>
                 答えを見る
               </button>
             ) : (
