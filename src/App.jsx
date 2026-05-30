@@ -136,7 +136,7 @@ function App() {
         <FirstVisitModal onComplete={handleProfileSetupComplete} />
       )}
 
-      <div className={`container mx-auto px-4 max-w-4xl ${showBottomNav ? 'pb-20 pt-6' : 'py-6'}`}>
+      <div className={`container mx-auto px-4 max-w-4xl ${showBottomNav ? 'pb-20 lg:pb-6 pt-6' : 'py-6'}`}>
         {currentScreen === 'home' && (
           <HomeScreen
             onModeSelect={handleModeSelect}
@@ -205,9 +205,9 @@ function App() {
         )}
       </div>
 
-      {/* Bottom Navigation */}
+      {/* Bottom Navigation — phone and tablet only */}
       {showBottomNav && (
-        <div className="fixed bottom-0 left-0 right-0 bg-[#0F0F14] border-t border-[#1e1e2a] flex z-40 pb-safe">
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-[#0F0F14] border-t border-[#1e1e2a] flex z-40 pb-safe">
           {[
             { screen: 'home', icon: '🏠', label: 'Home' },
             { screen: 'vocabulary-manager', icon: '📚', label: 'Vocab' },
