@@ -31,11 +31,33 @@ const studyModes = [
   }
 ];
 
-export default function HomeScreen({ onModeSelect, onManageVocabulary, onManageFlaggedItems, onPracticeTest }) {
+export default function HomeScreen({
+  onModeSelect, onManageVocabulary, onManageFlaggedItems, onPracticeTest,
+  onProgress, onNavigateToProfile, currentUser,
+}) {
   const [hoveredMode, setHoveredMode] = useState(null);
 
+  const initial = (currentUser?.displayName || '?')[0].toUpperCase();
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-12">
+    <div className="relative flex flex-col items-center justify-center min-h-screen py-12">
+      {/* Profile button — top right */}
+      <button
+        onClick={onNavigateToProfile}
+        className="absolute top-4 right-4 flex items-center gap-2 bg-white rounded-full shadow-md px-3 py-2 hover:shadow-lg transition-shadow"
+      >
+        {currentUser?.avatarUrl ? (
+          <img src={currentUser.avatarUrl} alt="avatar" className="w-8 h-8 rounded-full object-cover" />
+        ) : (
+          <div className="w-8 h-8 rounded-full bg-indigo-400 flex items-center justify-center text-white text-sm font-bold">
+            {initial}
+          </div>
+        )}
+        <span className="text-sm font-medium text-gray-700 max-w-[80px] truncate">
+          {currentUser?.displayName || 'Profile'}
+        </span>
+      </button>
+
       <div className="text-center mb-12">
         <h1 className="text-5xl font-bold text-gray-800 mb-4">
           漢字勉強
@@ -56,8 +78,8 @@ export default function HomeScreen({ onModeSelect, onManageVocabulary, onManageF
             onMouseEnter={() => setHoveredMode(mode.id)}
             onMouseLeave={() => setHoveredMode(null)}
             className={`
-              ${mode.color} text-white rounded-xl p-8 
-              transform transition-all duration-200 
+              ${mode.color} text-white rounded-xl p-8
+              transform transition-all duration-200
               ${hoveredMode === mode.id ? 'scale-105 shadow-xl' : 'shadow-lg'}
               focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50
             `}
@@ -72,22 +94,28 @@ export default function HomeScreen({ onModeSelect, onManageVocabulary, onManageF
       </div>
 
       <div className="mt-8 text-center">
-        <div className="flex gap-4 justify-center">
+        <div className="flex gap-3 justify-center flex-wrap">
           <button
             onClick={onManageVocabulary}
-            className="px-8 py-4 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold text-lg"
+            className="px-6 py-3 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold"
           >
-            📚 Manage Vocabulary
+            📚 Shared Vocab
+          </button>
+          <button
+            onClick={onProgress}
+            className="px-6 py-3 bg-teal-500 text-white rounded-xl hover:bg-teal-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold"
+          >
+            📊 Progress
           </button>
           <button
             onClick={onManageFlaggedItems}
-            className="px-8 py-4 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold text-lg"
+            className="px-6 py-3 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold"
           >
             🚩 View Flags
           </button>
           <button
             onClick={onPracticeTest}
-            className="px-8 py-4 bg-purple-500 text-white rounded-xl hover:bg-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold text-lg"
+            className="px-6 py-3 bg-purple-500 text-white rounded-xl hover:bg-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold"
           >
             📝 練習テスト
           </button>

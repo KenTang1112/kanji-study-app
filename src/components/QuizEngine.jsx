@@ -77,21 +77,22 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   const handleGrade = (grade) => {
     const isCorrect = grade !== 'wrong';
     const word = mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji;
-    
+
     // Update weak card score
     dataService.updateWeakCardScores(
       isCorrect ? [word] : [],
       !isCorrect ? [word] : []
     );
-    
-    // Update session stats
-    setSessionStats(prev => ({
-      ...prev,
-      correct: isCorrect ? prev.correct + 1 : prev.correct,
-      wrong: !isCorrect ? prev.wrong + 1 : prev.wrong,
-      easy: grade === 'easy' ? prev.easy + 1 : prev.easy,
-      hard: grade === 'hard' ? prev.hard + 1 : prev.hard
-    }));
+
+    // Compute final stats synchronously so we can persist them if session ends
+    const finalStats = {
+      ...sessionStats,
+      correct: isCorrect ? sessionStats.correct + 1 : sessionStats.correct,
+      wrong: !isCorrect ? sessionStats.wrong + 1 : sessionStats.wrong,
+      easy: grade === 'easy' ? sessionStats.easy + 1 : sessionStats.easy,
+      hard: grade === 'hard' ? sessionStats.hard + 1 : sessionStats.hard,
+    };
+    setSessionStats(finalStats);
 
     // Handle wrong cards for retry
     if (!isCorrect) {
@@ -99,7 +100,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
     }
 
     // Move to next card
-    moveToNextCard();
+    moveToNextCard(finalStats);
   };
 
   const handleFlagItem = () => {
@@ -138,13 +139,13 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
     alert('Item has been flagged for review. Thank you for helping improve the quality!');
   };
 
-  const moveToNextCard = () => {
+  const moveToNextCard = (latestStats = sessionStats) => {
     // Reset state for next card
     setShowAnswer(false);
     setShowHint(false);
     setHintType(null);
     setUserAnswer('');
-    setHandwritingImage(''); // Reset handwriting image
+    setHandwritingImage('');
     if (handwritingRef.current) {
       handwritingRef.current.clearCanvas();
       handwritingRef.current.enableCanvas();
@@ -161,7 +162,20 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
       setWrongCards(prev => prev.slice(1));
       setCurrentQuestion(nextWrongCard);
     } else {
-      // Session complete
+      // Session complete — persist result
+      dataService.saveSessionResult({
+        id: `session-${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        mode,
+        chapters,
+        total: latestStats.total,
+        correct: latestStats.correct,
+        wrong: latestStats.wrong,
+        easy: latestStats.easy,
+        hard: latestStats.hard,
+        accuracy: latestStats.total > 0 ? Math.round((latestStats.correct / latestStats.total) * 100) : 0,
+      });
+      dataService.saveChapterStats(chapters, latestStats);
       setSessionComplete(true);
     }
   };

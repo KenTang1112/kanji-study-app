@@ -1,10 +1,13 @@
 import kanjiMaster from '../data/kanji_master.json?v=202605130400';
 import vocabMaster from '../data/vocab_master.json?v=202605130400';
 import vocabCh2022 from '../data/vocab_ch20_22.json';
+import { sharedVocabService } from './sharedVocabService.js';
 
 // Tracked localStorage keys
 // weakCards            — per-word weakness scores
-// userVocabulary       — user-added kanji/vocab entries
+// userVocabulary       — user-added kanji/vocab entries (local only, legacy)
+// sessionHistory       — array of past quiz sessions
+// chapterStats         — per-chapter study counts
 
 class DataService {
     constructor() {
@@ -20,6 +23,8 @@ class DataService {
                 }))
           );
           this.vocabData = [...vocabMaster, ...flatCh2022];
+          this.sharedKanjiData = [];
+          this.sharedVocabItems = [];
           this.loadUserVocabulary();
           this.loadWeakCards();
     }
@@ -48,13 +53,77 @@ class DataService {
         this.loadUserVocabulary();
   }
 
+  // Load shared vocab from Firestore into memory
+  async loadSharedVocab() {
+        const items = await sharedVocabService.getAll();
+        this.sharedKanjiData = items.filter(i => i.type === 'kanji');
+        this.sharedVocabItems = items.filter(i => i.type !== 'kanji');
+  }
+
+  // Update in-memory shared vocab pool after add/delete (no Firestore call needed)
+  refreshSharedVocab(items) {
+        this.sharedKanjiData = items.filter(i => i.type === 'kanji');
+        this.sharedVocabItems = items.filter(i => i.type !== 'kanji');
+  }
+
+  // Save session result to localStorage history (capped at 100)
+  saveSessionResult(result) {
+        const stored = localStorage.getItem('sessionHistory');
+        const history = stored ? JSON.parse(stored) : [];
+        history.unshift(result);
+        localStorage.setItem('sessionHistory', JSON.stringify(history.slice(0, 100)));
+  }
+
+  // Get all session history
+  getSessionHistory() {
+        const stored = localStorage.getItem('sessionHistory');
+        return stored ? JSON.parse(stored) : [];
+  }
+
+  // Save per-chapter stats
+  saveChapterStats(chapters, stats) {
+        const stored = localStorage.getItem('chapterStats');
+        const chapterStats = stored ? JSON.parse(stored) : {};
+        const perChapter = chapters.length > 0 ? Math.round(stats.total / chapters.length) : 0;
+        const correctPerChapter = chapters.length > 0 ? Math.round(stats.correct / chapters.length) : 0;
+        chapters.forEach(ch => {
+              const key = String(ch);
+              if (!chapterStats[key]) {
+                    chapterStats[key] = { studyCount: 0, totalCards: 0, totalCorrect: 0 };
+              }
+              chapterStats[key].studyCount += 1;
+              chapterStats[key].totalCards += perChapter;
+              chapterStats[key].totalCorrect += correctPerChapter;
+        });
+        localStorage.setItem('chapterStats', JSON.stringify(chapterStats));
+  }
+
+  // Get all chapter stats
+  getChapterStats() {
+        const stored = localStorage.getItem('chapterStats');
+        return stored ? JSON.parse(stored) : {};
+  }
+
+  // Get top N weak cards sorted by score descending
+  getWeakCards(limit = 20) {
+        return Object.entries(this.weakCards)
+              .filter(([, score]) => score > 0)
+              .sort(([, a], [, b]) => b - a)
+              .slice(0, limit)
+              .map(([word, score]) => ({ word, score }));
+  }
+
   // Get all available chapters
   getAvailableChapters() {
         const kanjiChapters = this.kanjiData.map(item => item.chapter);
         const vocabChapters = this.vocabData.map(item => item.chapter);
         const userKanjiChapters = this.userKanjiData.map(item => item.chapter);
         const userVocabChapters = this.userVocabData.map(item => item.chapter);
-        const allChapters = [...kanjiChapters, ...vocabChapters, ...userKanjiChapters, ...userVocabChapters];
+        const sharedChapters = [
+              ...this.sharedKanjiData.map(i => i.chapter),
+              ...this.sharedVocabItems.map(i => i.chapter),
+        ];
+        const allChapters = [...kanjiChapters, ...vocabChapters, ...userKanjiChapters, ...userVocabChapters, ...sharedChapters];
         const uniqueChapters = [...new Set(allChapters)];
         return uniqueChapters.sort((a, b) => a - b);
   }
@@ -63,14 +132,16 @@ class DataService {
   filterKanjiByChapters(chapters) {
         const baseKanji = this.kanjiData.filter(item => chapters.includes(item.chapter));
         const userKanji = this.userKanjiData.filter(item => chapters.includes(item.chapter));
-        return [...baseKanji, ...userKanji];
+        const sharedKanji = this.sharedKanjiData.filter(item => chapters.includes(item.chapter));
+        return [...baseKanji, ...userKanji, ...sharedKanji];
   }
 
   // Filter vocabulary data by selected chapters
   filterVocabByChapters(chapters) {
         const baseVocab = this.vocabData.filter(item => chapters.includes(item.chapter));
         const userVocab = this.userVocabData.filter(item => chapters.includes(item.chapter));
-        return [...baseVocab, ...userVocab];
+        const sharedVocab = this.sharedVocabItems.filter(item => chapters.includes(item.chapter));
+        return [...baseVocab, ...userVocab, ...sharedVocab];
   }
 
   // Shuffle array using Fisher-Yates algorithm
