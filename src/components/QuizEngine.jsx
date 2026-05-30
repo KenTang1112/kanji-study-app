@@ -391,31 +391,16 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
             {/* Grading */}
             <div className="mt-5">
               {isAutoScored ? (
-                /* Auto-scored modes: single Next button + small override row */
-                <>
-                  <button
-                    onClick={() => handleGrade(autoScore === 'correct' ? 'easy' : 'wrong')}
-                    className={`w-full py-3 font-semibold rounded-xl text-sm mb-3 transition-colors ${
-                      autoScore === 'correct'
-                        ? 'bg-[#4AA85C] text-white hover:bg-[#3d8f4d]'
-                        : 'bg-[#C1392B] text-white hover:bg-[#a62f24]'
-                    }`}
-                  >
-                    {autoScore === 'correct' ? 'Next →' : 'Retry this card →'}
-                  </button>
-                  {/* Manual override for edge cases */}
-                  <div className="flex gap-2">
-                    <button onClick={() => handleGrade('easy')} className="flex-1 py-2 bg-[#4AA85C11] border border-[#4AA85C33] text-[#4AA85C] rounded-xl text-xs hover:bg-[#4AA85C22] transition-colors">
-                      Mark correct
-                    </button>
-                    <button onClick={() => handleGrade('hard')} className="flex-1 py-2 bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-xl text-xs hover:text-[#e0e0f0] transition-colors">
-                      Hard
-                    </button>
-                    <button onClick={() => handleGrade('wrong')} className="flex-1 py-2 bg-[#C1392B11] border border-[#C1392B33] text-[#C1392B] rounded-xl text-xs hover:bg-[#C1392B22] transition-colors">
-                      Wrong
-                    </button>
-                  </div>
-                </>
+                <button
+                  onClick={() => handleGrade(autoScore === 'correct' ? 'easy' : 'wrong')}
+                  className={`w-full py-3 font-semibold rounded-xl text-sm transition-colors ${
+                    autoScore === 'correct'
+                      ? 'bg-[#4AA85C] text-white hover:bg-[#3d8f4d]'
+                      : 'bg-[#C1392B] text-white hover:bg-[#a62f24]'
+                  }`}
+                >
+                  {autoScore === 'correct' ? 'Next →' : 'Retry this card →'}
+                </button>
               ) : (
                 /* Handwriting modes: manual grading */
                 <>
