@@ -19,7 +19,7 @@ const HandwritingCanvas = forwardRef((props, ref) => {
       canvas.height = rect.height;
       
       // Set drawing styles
-      ctx.strokeStyle = '#1f2937';
+      ctx.strokeStyle = '#e0e0f0';
       ctx.lineWidth = 2;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
@@ -149,7 +149,7 @@ const HandwritingCanvas = forwardRef((props, ref) => {
     <div className="flex flex-col items-center">
       <canvas
         ref={canvasRef}
-        className="handwriting-canvas border-2 border-gray-300 rounded-lg bg-white"
+        className="handwriting-canvas border border-[#2a2a38] rounded-xl bg-[#0F0F14]"
         style={{ 
           width: '300px', 
           height: '200px', 
@@ -159,13 +159,10 @@ const HandwritingCanvas = forwardRef((props, ref) => {
       />
       <button
         onClick={handleClear}
-        className="mt-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm font-medium"
+        className="mt-2 px-4 py-1.5 bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-lg hover:text-[#e0e0f0] transition-colors text-xs font-medium"
       >
-        Clear
+        消す (Clear)
       </button>
-      <div className="mt-2 text-sm text-gray-500">
-        Use mouse, touch, or Apple Pencil to write
-      </div>
     </div>
   );
 });

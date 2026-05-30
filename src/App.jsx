@@ -116,24 +116,27 @@ function App() {
     setCurrentScreen('profile');
   };
 
+  const bottomNavScreens = ['home', 'vocabulary-manager', 'progress', 'profile', 'flagged-items'];
+  const showBottomNav = bottomNavScreens.includes(currentScreen);
+
   if (!appReady) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0F0F14] flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto mb-4" />
-          <p className="text-gray-600 text-lg">読み込み中...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C1392B] mx-auto mb-4" />
+          <p className="text-[#606080] text-lg">読み込み中...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-[#0F0F14]">
       {needsProfileSetup && (
         <FirstVisitModal onComplete={handleProfileSetupComplete} />
       )}
 
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className={`container mx-auto px-4 max-w-4xl ${showBottomNav ? 'pb-20 pt-6' : 'py-6'}`}>
         {currentScreen === 'home' && (
           <HomeScreen
             onModeSelect={handleModeSelect}
@@ -201,6 +204,32 @@ function App() {
           />
         )}
       </div>
+
+      {/* Bottom Navigation */}
+      {showBottomNav && (
+        <div className="fixed bottom-0 left-0 right-0 bg-[#0F0F14] border-t border-[#1e1e2a] flex z-40 pb-safe">
+          {[
+            { screen: 'home', icon: '🏠', label: 'Home' },
+            { screen: 'vocabulary-manager', icon: '📚', label: 'Vocab' },
+            { screen: 'progress', icon: '📊', label: 'Progress' },
+            { screen: 'profile', icon: '👤', label: 'Profile' },
+          ].map(({ screen, icon, label }) => (
+            <button
+              key={screen}
+              onClick={() => setCurrentScreen(screen)}
+              className={`flex-1 flex flex-col items-center gap-1 py-3 text-xs font-medium transition-colors ${
+                currentScreen === screen ? 'text-[#C1392B]' : 'text-[#3a3a55] hover:text-[#606080]'
+              }`}
+            >
+              <span className="text-xl leading-none">{icon}</span>
+              <span>{label}</span>
+              {currentScreen === screen && (
+                <span className="w-1 h-1 rounded-full bg-[#C1392B]" />
+              )}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

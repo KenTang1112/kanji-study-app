@@ -1,37 +1,32 @@
 import { useState, useEffect } from 'react';
 import dataService from '../services/dataService';
 
+const MODE_LABELS = {
+  'kana-to-kanji': 'Kana → Kanji',
+  'kanji-to-reading': 'Kanji → Reading',
+  'vocabulary-writing': 'Vocabulary Writing',
+  'vocabulary-reading': 'Vocabulary Reading',
+};
+
 export default function ChapterSelection({ selectedMode, onChaptersSelect, onBack }) {
   const [availableChapters, setAvailableChapters] = useState([]);
   const [selectedChapters, setSelectedChapters] = useState([]);
+  const [chapterStats, setChapterStats] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Refresh data to get latest user vocabulary
     dataService.refreshData();
     const chapters = dataService.getAvailableChapters();
     setAvailableChapters(chapters);
-    // Default select all chapters
     setSelectedChapters(chapters);
+    setChapterStats(dataService.getChapterStats());
     setIsLoading(false);
   }, []);
 
   const handleChapterToggle = (chapter) => {
-    setSelectedChapters(prev => {
-      if (prev.includes(chapter)) {
-        return prev.filter(c => c !== chapter);
-      } else {
-        return [...prev, chapter];
-      }
-    });
-  };
-
-  const handleSelectAll = () => {
-    setSelectedChapters(availableChapters);
-  };
-
-  const handleDeselectAll = () => {
-    setSelectedChapters([]);
+    setSelectedChapters(prev =>
+      prev.includes(chapter) ? prev.filter(c => c !== chapter) : [...prev, chapter]
+    );
   };
 
   const handleStart = () => {
@@ -42,110 +37,128 @@ export default function ChapterSelection({ selectedMode, onChaptersSelect, onBac
     onChaptersSelect(selectedChapters);
   };
 
-  const getModeTitle = (mode) => {
-    const titles = {
-      'kana-to-kanji': 'Kana → Kanji',
-      'kanji-to-reading': 'Kanji → Reading',
-      'vocabulary-writing': 'Vocabulary Writing',
-      'vocabulary-reading': 'Vocabulary Reading'
-    };
-    return titles[mode] || mode;
+  const getAccuracy = (ch) => {
+    const s = chapterStats[String(ch)];
+    if (!s || s.totalCards === 0) return null;
+    return Math.round((s.totalCorrect / s.totalCards) * 100);
+  };
+
+  const accuracyColor = (pct) => {
+    if (pct >= 80) return 'text-[#4AA85C]';
+    if (pct >= 60) return 'text-[#D4861C]';
+    return 'text-[#C1392B]';
   };
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-lg text-gray-600">Loading...</div>
+      <div className="min-h-screen bg-[#0F0F14] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#C1392B]" />
       </div>
     );
   }
 
+  const totalKanji = selectedChapters.reduce((sum, ch) => {
+    return sum + dataService.filterKanjiByChapters([ch]).length;
+  }, 0);
+
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="bg-white rounded-xl shadow-lg p-8">
-        <div className="mb-6">
-          <button
-            onClick={onBack}
-            className="flex items-center text-gray-600 hover:text-gray-800 mb-4"
-          >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Home
-          </button>
-          
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            {getModeTitle(selectedMode)}
-          </h2>
-          <p className="text-gray-600">
-            Select chapters to study ({selectedChapters.length} selected)
-          </p>
-        </div>
-
-        <div className="mb-6">
-          <div className="flex gap-4 mb-4">
-            <button
-              onClick={handleSelectAll}
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-            >
-              Select All
-            </button>
-            <button
-              onClick={handleDeselectAll}
-              className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
-            >
-              Deselect All
-            </button>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-            {availableChapters.map(chapter => (
-              <button
-                key={chapter}
-                onClick={() => handleChapterToggle(chapter)}
-                className={`
-                  p-4 rounded-lg border-2 transition-all duration-200
-                  ${selectedChapters.includes(chapter)
-                    ? 'border-blue-500 bg-blue-50 text-blue-700 font-semibold'
-                    : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
-                  }
-                `}
-              >
-                Chapter {chapter}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex justify-between items-center">
-          <div className="text-sm text-gray-500">
-            {selectedChapters.length} chapter{selectedChapters.length !== 1 ? 's' : ''} selected
-          </div>
-          <button
-            onClick={handleStart}
-            disabled={selectedChapters.length === 0}
-            className={`
-              px-8 py-3 rounded-lg font-semibold transition-all duration-200
-              ${selectedChapters.length === 0
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'bg-green-500 text-white hover:bg-green-600 shadow-lg hover:shadow-xl'
-              }
-            `}
-          >
-            Start Study Session
-          </button>
+      {/* Header */}
+      <div className="flex items-center gap-3 mb-6">
+        <button
+          onClick={onBack}
+          className="w-9 h-9 bg-[#171720] border border-[#2a2a38] rounded-lg flex items-center justify-center text-[#606080] hover:text-[#e0e0f0] transition-colors flex-shrink-0"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <div>
+          <h2 className="text-lg font-semibold text-[#e0e0f0]">{MODE_LABELS[selectedMode] || selectedMode}</h2>
+          <p className="text-xs text-[#606080]">Select chapters</p>
         </div>
       </div>
 
-      <div className="mt-6 bg-white rounded-lg shadow-md p-4">
-        <h3 className="font-semibold text-gray-700 mb-2">Session Info:</h3>
-        <div className="text-sm text-gray-600 space-y-1">
-          <p>• Cards will be shuffled randomly</p>
-          <p>• Wrong answers may reappear</p>
-          <p>• Weak cards are prioritized</p>
-          <p>• Progress is saved locally</p>
-        </div>
+      {/* Stats row */}
+      <div className="grid grid-cols-3 gap-3 mb-5">
+        {[
+          { label: 'selected', value: selectedChapters.length, color: 'text-[#C1392B]' },
+          { label: 'kanji', value: totalKanji, color: 'text-[#3CBFA5]' },
+          { label: 'chapters total', value: availableChapters.length, color: 'text-[#D4861C]' },
+        ].map(({ label, value, color }) => (
+          <div key={label} className="bg-[#171720] border border-[#2a2a38] rounded-xl p-3 text-center">
+            <div className={`text-xl font-bold ${color}`}>{value}</div>
+            <div className="text-[10px] text-[#606080] mt-0.5">{label}</div>
+          </div>
+        ))}
       </div>
+
+      {/* Select all / none */}
+      <div className="flex gap-2 mb-4">
+        <button
+          onClick={() => setSelectedChapters(availableChapters)}
+          className="px-3 py-1.5 text-xs font-medium bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-lg hover:text-[#e0e0f0] hover:border-[#3a3a55] transition-colors"
+        >
+          Select all
+        </button>
+        <button
+          onClick={() => setSelectedChapters([])}
+          className="px-3 py-1.5 text-xs font-medium bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-lg hover:text-[#e0e0f0] hover:border-[#3a3a55] transition-colors"
+        >
+          Deselect all
+        </button>
+      </div>
+
+      {/* Chapter list */}
+      <div className="flex flex-col gap-2 mb-6">
+        {availableChapters.map(chapter => {
+          const selected = selectedChapters.includes(chapter);
+          const accuracy = getAccuracy(chapter);
+          return (
+            <button
+              key={chapter}
+              onClick={() => handleChapterToggle(chapter)}
+              className={`bg-[#171720] border rounded-xl px-4 py-3 flex items-center justify-between transition-all ${
+                selected ? 'border-[#C1392B]' : 'border-[#2a2a38] hover:border-[#3a3a55]'
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <div className={`w-5 h-5 rounded flex items-center justify-center flex-shrink-0 ${
+                  selected ? 'bg-[#C1392B]' : 'bg-[#2a2a38] border border-[#3a3a55]'
+                }`}>
+                  {selected && <div className="w-2.5 h-2.5 bg-white rounded-sm" />}
+                </div>
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-[#e0e0f0]">Chapter {chapter}</div>
+                  {chapterStats[String(chapter)]?.studyCount > 0 && (
+                    <div className="text-xs text-[#3a3a55]">
+                      Studied {chapterStats[String(chapter)].studyCount}×
+                    </div>
+                  )}
+                </div>
+              </div>
+              {accuracy !== null ? (
+                <span className={`text-sm font-semibold ${accuracyColor(accuracy)}`}>{accuracy}%</span>
+              ) : (
+                <span className="text-sm text-[#3a3a55]">—</span>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Start button */}
+      <button
+        onClick={handleStart}
+        disabled={selectedChapters.length === 0}
+        className={`w-full py-4 rounded-xl font-semibold text-sm transition-all ${
+          selectedChapters.length === 0
+            ? 'bg-[#171720] text-[#3a3a55] border border-[#2a2a38] cursor-not-allowed'
+            : 'bg-[#C1392B] text-white hover:bg-[#a62f24]'
+        }`}
+      >
+        Start session →
+      </button>
     </div>
   );
 }

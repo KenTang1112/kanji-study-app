@@ -1,0 +1,362 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .canvas { font-family: 'Inter', sans-serif; background: #070710; padding: 32px; }
+
+  .canvas-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 32px; padding-bottom: 20px; border-bottom: 0.5px solid #1e1e2a;
+  }
+  .c-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #3a3a55; margin-bottom: 4px; }
+  .c-title { font-size: 22px; font-weight: 600; color: #e0e0f0; letter-spacing: -0.5px; }
+  .c-title span { color: #C1392B; }
+  .c-tag { font-size: 11px; color: #606080; padding: 5px 12px; border: 0.5px solid #2a2a38; border-radius: 100px; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+
+  .sw { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+
+  .slabel {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
+    color: #3a3a55; display: flex; align-items: center; gap: 7px;
+  }
+  .snum {
+    width: 18px; height: 18px; border-radius: 50%; background: #C1392B;
+    color: #fff; font-size: 9px; font-weight: 600; display: flex; align-items: center; justify-content: center;
+  }
+
+  .phone {
+    width: 200px; height: 410px; background: #0F0F14;
+    border-radius: 30px; border: 0.5px solid #2a2a38; overflow: hidden; position: relative; flex-shrink: 0;
+  }
+  .phone::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 64px; height: 20px; background: #0A0A0F; border-radius: 0 0 12px 12px; z-index: 10;
+  }
+
+  .scr { width: 100%; height: 100%; overflow: hidden; position: relative; background: #0F0F14; }
+  .sb { display: flex; justify-content: space-between; align-items: center; padding: 26px 14px 6px; font-size: 8px; font-weight: 600; color: #3a3a55; }
+
+  .noto { font-family: 'Noto Sans JP', sans-serif; }
+  .red { color: #C1392B; }
+  .teal { color: #3CBFA5; }
+  .amber { color: #D4861C; }
+  .green { color: #4AA85C; }
+  .purple { color: #8B82F0; }
+  .muted { color: #606080; }
+
+  .bnav {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    display: flex; background: #0F0F14; border-top: 0.5px solid #1e1e2a; padding: 6px 0 9px;
+  }
+  .bni { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 7px; color: #3a3a55; }
+  .bni.act { color: #C1392B; }
+  .bni-ico { font-size: 14px; }
+  .bni-dot { width: 3px; height: 3px; border-radius: 50%; background: #C1392B; margin-top: 1px; }
+
+  .track { height: 3px; background: #1e1e2a; border-radius: 2px; overflow: hidden; }
+  .fill-r { height: 100%; background: #C1392B; border-radius: 2px; }
+
+  .card { background: #171720; border: 0.5px solid #2a2a38; border-radius: 12px; }
+  .pill { padding: 3px 8px; border-radius: 100px; font-size: 7.5px; font-weight: 600; border: 0.5px solid; }
+
+  .btn-p { width: 100%; padding: 9px; border-radius: 10px; background: #C1392B; color: #fff; font-size: 9.5px; font-weight: 600; border: none; text-align: center; }
+  .btn-g { width: 100%; padding: 8px; border-radius: 10px; background: transparent; color: #606080; font-size: 9px; border: 0.5px solid #2a2a38; text-align: center; margin-top: 5px; }
+  .btn-tl { width: 100%; padding: 9px; border-radius: 10px; background: #3CBFA5; color: #0A0A0F; font-size: 9.5px; font-weight: 600; border: none; text-align: center; }
+
+  .desc {
+    width: 200px; background: #171720; border: 0.5px solid #2a2a38;
+    border-radius: 10px; padding: 10px 12px;
+  }
+  .desc-lbl { font-size: 9px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #C1392B; margin-bottom: 5px; }
+  .desc-txt { font-size: 10px; color: #606080; line-height: 1.5; }
+
+  .divider { display: flex; align-items: center; gap: 16px; margin: 28px 0; }
+  .div-line { flex: 1; height: 0.5px; background: #1e1e2a; }
+  .div-txt { font-size: 10px; color: #3a3a55; white-space: nowrap; }
+
+  .footer { text-align: center; padding-top: 24px; border-top: 0.5px solid #1e1e2a; font-size: 11px; color: #3a3a55; line-height: 1.7; }
+
+  .sec-lbl { font-size: 7.5px; font-weight: 600; color: #3a3a55; letter-spacing: 0.08em; text-transform: uppercase; }
+</style>
+
+<div class="canvas">
+  <h2 style="position:absolute;width:1px;height:1px;overflow:hidden">漢字勉強 Kanji Study App — dark theme mobile mockup, 4 screens</h2>
+
+  <div class="canvas-header">
+    <div>
+      <div class="c-eyebrow">Mobile mockup</div>
+      <div class="c-title">漢字勉強 <span>·</span> Kanji Study</div>
+    </div>
+    <div class="c-tag">4 screens · University exam prep</div>
+  </div>
+
+  <!-- ROW 1 -->
+  <div class="grid">
+
+    <!-- S1: HOME -->
+    <div class="sw">
+      <div class="slabel"><span class="snum">1</span> Home</div>
+      <div class="phone">
+        <div class="scr">
+          <div class="sb"><span>9:41</span><span>●●●</span></div>
+          <div style="padding:4px 14px 0;text-align:center">
+            <div style="font-family:'Noto Sans JP',sans-serif;font-size:36px;font-weight:700;color:#C1392B;line-height:1;margin-bottom:4px">漢字</div>
+            <div style="font-size:10px;font-weight:600;color:#e0e0f0;margin-bottom:2px">Kanji Study</div>
+            <div style="font-size:7.5px;color:#606080">Master kanji for university exams</div>
+          </div>
+          <div style="padding:10px 14px 0">
+            <div class="sec-lbl" style="margin-bottom:6px">Study modes</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
+              <div class="card" style="padding:9px">
+                <div style="width:28px;height:28px;border-radius:8px;background:rgba(55,138,221,0.15);display:flex;align-items:center;justify-content:center;font-size:13px;margin-bottom:5px">✍️</div>
+                <div style="font-size:8.5px;font-weight:600;color:#e0e0f0;margin-bottom:2px">Kana → Kanji</div>
+                <div style="font-size:7px;color:#606080">Write from reading</div>
+                <div style="margin-top:5px"><span class="pill" style="border-color:rgba(55,138,221,0.3);color:#378ADD;background:rgba(55,138,221,0.1)">Writing</span></div>
+              </div>
+              <div class="card" style="padding:9px">
+                <div style="width:28px;height:28px;border-radius:8px;background:rgba(60,191,165,0.15);display:flex;align-items:center;justify-content:center;font-size:13px;margin-bottom:5px">📖</div>
+                <div style="font-size:8.5px;font-weight:600;color:#e0e0f0;margin-bottom:2px">Kanji → Reading</div>
+                <div style="font-size:7px;color:#606080">Write the kana</div>
+                <div style="margin-top:5px"><span class="pill" style="border-color:rgba(60,191,165,0.3);color:#3CBFA5;background:rgba(60,191,165,0.1)">Reading</span></div>
+              </div>
+              <div class="card" style="padding:9px">
+                <div style="width:28px;height:28px;border-radius:8px;background:rgba(139,130,240,0.15);display:flex;align-items:center;justify-content:center;font-size:13px;margin-bottom:5px">🈶</div>
+                <div style="font-size:8.5px;font-weight:600;color:#e0e0f0;margin-bottom:2px">Vocab writing</div>
+                <div style="font-size:7px;color:#606080">From meaning</div>
+                <div style="margin-top:5px"><span class="pill" style="border-color:rgba(139,130,240,0.3);color:#8B82F0;background:rgba(139,130,240,0.1)">Vocab</span></div>
+              </div>
+              <div class="card" style="padding:9px">
+                <div style="width:28px;height:28px;border-radius:8px;background:rgba(212,134,28,0.15);display:flex;align-items:center;justify-content:center;font-size:13px;margin-bottom:5px">👁️</div>
+                <div style="font-size:8.5px;font-weight:600;color:#e0e0f0;margin-bottom:2px">Vocab reading</div>
+                <div style="font-size:7px;color:#606080">Show meaning</div>
+                <div style="margin-top:5px"><span class="pill" style="border-color:rgba(212,134,28,0.3);color:#D4861C;background:rgba(212,134,28,0.1)">Vocab</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:8px 14px 0;display:flex;gap:5px">
+            <div style="flex:1;background:#171720;border:0.5px solid #2a2a38;border-radius:9px;padding:7px 9px;font-size:8px;color:#606080;text-align:center">Manage vocab</div>
+            <div style="flex:1;background:#171720;border:0.5px solid #2a2a38;border-radius:9px;padding:7px 9px;font-size:8px;color:#606080;text-align:center">View flags</div>
+            <div style="flex:1;background:#C1392B;border-radius:9px;padding:7px 9px;font-size:8px;color:#fff;text-align:center;font-weight:600">練習テスト</div>
+          </div>
+          <div style="padding:8px 14px 0">
+            <div class="track"><div class="fill-r" style="width:62%"></div></div>
+            <div style="display:flex;justify-content:space-between;font-size:7px;color:#3a3a55;margin-top:3px"><span>Overall progress</span><span>62%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="desc">
+        <div class="desc-lbl">Home screen</div>
+        <div class="desc-txt">All four study modes accessible immediately. Quick actions and progress at a glance.</div>
+      </div>
+    </div>
+
+    <!-- S2: CHAPTER SELECT -->
+    <div class="sw">
+      <div class="slabel"><span class="snum">2</span> Chapter select</div>
+      <div class="phone">
+        <div class="scr">
+          <div class="sb"><span>9:41</span><span>●●●</span></div>
+          <div style="padding:4px 14px 0;display:flex;align-items:center;gap:8px">
+            <div style="width:20px;height:20px;background:#171720;border:0.5px solid #2a2a38;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#606080;flex-shrink:0">←</div>
+            <div>
+              <div style="font-size:11px;font-weight:600;color:#e0e0f0">Kana → Kanji</div>
+              <div style="font-size:7.5px;color:#606080">Select chapters</div>
+            </div>
+          </div>
+          <div style="padding:8px 14px 0">
+            <div style="display:flex;gap:5px;margin-bottom:8px">
+              <div style="flex:1;background:#171720;border:0.5px solid #2a2a38;border-radius:8px;padding:6px 8px;text-align:center">
+                <div style="font-size:13px;font-weight:600;color:#C1392B">12</div>
+                <div style="font-size:7px;color:#606080">selected</div>
+              </div>
+              <div style="flex:1;background:#171720;border:0.5px solid #2a2a38;border-radius:8px;padding:6px 8px;text-align:center">
+                <div style="font-size:13px;font-weight:600;color:#3CBFA5">340</div>
+                <div style="font-size:7px;color:#606080">kanji</div>
+              </div>
+              <div style="flex:1;background:#171720;border:0.5px solid #2a2a38;border-radius:8px;padding:6px 8px;text-align:center">
+                <div style="font-size:13px;font-weight:600;color:#D4861C">71%</div>
+                <div style="font-size:7px;color:#606080">accuracy</div>
+              </div>
+            </div>
+            <div class="sec-lbl" style="margin-bottom:6px">Chapters</div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div class="card" style="padding:8px 10px;display:flex;align-items:center;justify-content:space-between">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <div style="width:16px;height:16px;border-radius:4px;background:#C1392B;display:flex;align-items:center;justify-content:center">
+                    <div style="width:8px;height:8px;background:#fff;border-radius:2px"></div>
+                  </div>
+                  <div>
+                    <div style="font-size:8.5px;font-weight:600;color:#e0e0f0">Chapter 1</div>
+                    <div style="font-size:7px;color:#606080">基礎 · 28 kanji</div>
+                  </div>
+                </div>
+                <div style="font-size:8px;color:#4AA85C;font-weight:600">98%</div>
+              </div>
+              <div class="card" style="padding:8px 10px;display:flex;align-items:center;justify-content:space-between">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <div style="width:16px;height:16px;border-radius:4px;background:#C1392B;display:flex;align-items:center;justify-content:center">
+                    <div style="width:8px;height:8px;background:#fff;border-radius:2px"></div>
+                  </div>
+                  <div>
+                    <div style="font-size:8.5px;font-weight:600;color:#e0e0f0">Chapter 2</div>
+                    <div style="font-size:7px;color:#606080">日常 · 32 kanji</div>
+                  </div>
+                </div>
+                <div style="font-size:8px;color:#3CBFA5;font-weight:600">84%</div>
+              </div>
+              <div class="card" style="padding:8px 10px;display:flex;align-items:center;justify-content:space-between;border-color:#C1392B">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <div style="width:16px;height:16px;border-radius:4px;background:#2a2a38;border:0.5px solid #3a3a55"></div>
+                  <div>
+                    <div style="font-size:8.5px;font-weight:600;color:#e0e0f0">Chapter 3</div>
+                    <div style="font-size:7px;color:#606080">自然 · 30 kanji</div>
+                  </div>
+                </div>
+                <div style="font-size:8px;color:#C1392B;font-weight:600">55%</div>
+              </div>
+              <div class="card" style="padding:8px 10px;display:flex;align-items:center;justify-content:space-between;opacity:0.5">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <div style="width:16px;height:16px;border-radius:4px;background:#2a2a38;border:0.5px solid #3a3a55"></div>
+                  <div>
+                    <div style="font-size:8.5px;font-weight:600;color:#e0e0f0">Chapter 4</div>
+                    <div style="font-size:7px;color:#606080">社会 · 35 kanji</div>
+                  </div>
+                </div>
+                <div style="font-size:8px;color:#606080;font-weight:600">—</div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:8px 14px 0"><div class="btn-p">Start session →</div></div>
+        </div>
+      </div>
+      <div class="desc">
+        <div class="desc-lbl">Chapter select</div>
+        <div class="desc-txt">Per-chapter accuracy shown upfront. Weak chapters surface clearly in red.</div>
+      </div>
+    </div>
+
+    <!-- S3: QUIZ -->
+    <div class="sw">
+      <div class="slabel"><span class="snum">3</span> Quiz session</div>
+      <div class="phone">
+        <div class="scr">
+          <div class="sb"><span>9:41</span><span>●●●</span></div>
+          <div style="padding:4px 14px 0;display:flex;align-items:center;gap:8px">
+            <div style="width:20px;height:20px;background:#171720;border:0.5px solid #2a2a38;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#606080;flex-shrink:0">←</div>
+            <div style="flex:1;height:3px;background:#1e1e2a;border-radius:2px;overflow:hidden"><div style="height:100%;background:#C1392B;border-radius:2px;width:40%"></div></div>
+            <div style="font-size:7.5px;color:#606080;flex-shrink:0">4 / 10</div>
+          </div>
+          <div style="padding:8px 14px 0">
+            <div class="card" style="padding:14px;text-align:center;margin-bottom:6px">
+              <div style="font-size:7.5px;color:#606080;margin-bottom:8px;letter-spacing:0.06em;text-transform:uppercase">Write the kanji for</div>
+              <div style="font-family:'Noto Sans JP',sans-serif;font-size:26px;font-weight:700;color:#e0e0f0;margin-bottom:4px">さくら</div>
+              <div style="font-size:7.5px;color:#606080">cherry blossom</div>
+            </div>
+            <div style="background:#0F0F14;border:0.5px solid #2a2a38;border-radius:10px;padding:10px;margin-bottom:6px;min-height:50px;display:flex;align-items:center;justify-content:center">
+              <div style="font-family:'Noto Sans JP',sans-serif;font-size:24px;font-weight:700;color:#e0e0f0">桜</div>
+            </div>
+            <div style="display:flex;gap:5px;margin-bottom:6px">
+              <div style="flex:1;background:rgba(74,168,92,0.1);border:0.5px solid rgba(74,168,92,0.35);border-radius:9px;padding:8px;text-align:center">
+                <div style="font-size:8px;font-weight:600;color:#4AA85C">Correct</div>
+              </div>
+              <div style="flex:1;background:#171720;border:0.5px solid #2a2a38;border-radius:9px;padding:8px;text-align:center">
+                <div style="font-size:8px;color:#606080">Wrong</div>
+              </div>
+              <div style="flex:1;background:#171720;border:0.5px solid #2a2a38;border-radius:9px;padding:8px;text-align:center">
+                <div style="font-size:8px;color:#606080">Flag</div>
+              </div>
+            </div>
+            <div style="background:rgba(60,191,165,0.08);border:0.5px solid rgba(60,191,165,0.2);border-radius:9px;padding:8px">
+              <div style="font-size:7.5px;color:#3CBFA5;line-height:1.5">桜 is the standard form. 櫻 is the traditional variant — both accepted in modern usage.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="desc">
+        <div class="desc-lbl">Quiz session</div>
+        <div class="desc-txt">Self-graded with instant explanation. Flag button surfaces items for later review.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider">
+    <div class="div-line"></div>
+    <div class="div-txt">Results · Progress</div>
+    <div class="div-line"></div>
+  </div>
+
+  <!-- ROW 2: 1 centred screen -->
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px">
+
+    <!-- S4: RESULTS -->
+    <div class="sw" style="grid-column:2">
+      <div class="slabel"><span class="snum">4</span> Session results</div>
+      <div class="phone">
+        <div class="scr">
+          <div class="sb"><span>9:41</span><span>●●●</span></div>
+          <div style="padding:6px 14px 0;text-align:center">
+            <div style="font-size:10px;font-weight:600;color:#e0e0f0;margin-bottom:10px">Session complete</div>
+            <div style="width:64px;height:64px;border-radius:50%;border:2px solid #C1392B;display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+              <div style="font-size:18px;font-weight:700;color:#C1392B">78%</div>
+            </div>
+            <div style="font-size:7.5px;color:#606080;margin-bottom:10px">Accuracy · 40 questions</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:8px">
+              <div class="card" style="padding:8px;text-align:center">
+                <div style="font-size:13px;font-weight:600;color:#4AA85C">31</div>
+                <div style="font-size:7px;color:#606080">Correct</div>
+              </div>
+              <div class="card" style="padding:8px;text-align:center">
+                <div style="font-size:13px;font-weight:600;color:#C1392B">9</div>
+                <div style="font-size:7px;color:#606080">Wrong</div>
+              </div>
+              <div class="card" style="padding:8px;text-align:center">
+                <div style="font-size:13px;font-weight:600;color:#D4861C">5</div>
+                <div style="font-size:7px;color:#606080">Flagged</div>
+              </div>
+            </div>
+            <div class="sec-lbl" style="text-align:left;margin-bottom:6px">Missed kanji</div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div class="card" style="padding:7px 10px;display:flex;align-items:center;justify-content:space-between">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <div style="font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:700;color:#e0e0f0">憂</div>
+                  <div>
+                    <div style="font-size:8px;font-weight:600;color:#e0e0f0">うれい</div>
+                    <div style="font-size:7px;color:#606080">grief, sorrow</div>
+                  </div>
+                </div>
+                <span class="pill" style="border-color:rgba(193,57,43,0.3);color:#C1392B;background:rgba(193,57,43,0.1)">Wrong</span>
+              </div>
+              <div class="card" style="padding:7px 10px;display:flex;align-items:center;justify-content:space-between">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <div style="font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:700;color:#e0e0f0">慕</div>
+                  <div>
+                    <div style="font-size:8px;font-weight:600;color:#e0e0f0">した</div>
+                    <div style="font-size:7px;color:#606080">yearn for</div>
+                  </div>
+                </div>
+                <span class="pill" style="border-color:rgba(212,134,28,0.3);color:#D4861C;background:rgba(212,134,28,0.1)">Flagged</span>
+              </div>
+            </div>
+          </div>
+          <div style="padding:8px 14px 0;display:flex;gap:5px">
+            <div style="flex:1"><div class="btn-tl">Drill weak spots</div></div>
+            <div style="flex:1"><div class="btn-g" style="margin-top:0">Home</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="desc">
+        <div class="desc-lbl">Session results</div>
+        <div class="desc-txt">Accuracy ring, breakdown by outcome, and missed kanji listed immediately for focused follow-up.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    漢字勉強 · Kanji Study App · 4 core screens · University exam prep
+  </div>
+</div>

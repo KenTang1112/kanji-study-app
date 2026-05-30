@@ -3,6 +3,23 @@ import dataService from '../services/dataService';
 import HandwritingCanvas from './HandwritingCanvas';
 import DictionarySection from './DictionarySection';
 
+function AccuracyRing({ accuracy }) {
+  const r = 32;
+  const circ = 2 * Math.PI * r;
+  const offset = circ * (1 - accuracy / 100);
+  return (
+    <svg width="88" height="88" viewBox="0 0 88 88" className="mx-auto">
+      <circle cx="44" cy="44" r={r} fill="none" stroke="#2a2a38" strokeWidth="5" />
+      <circle cx="44" cy="44" r={r} fill="none" stroke="#C1392B" strokeWidth="5"
+        strokeDasharray={circ} strokeDashoffset={offset}
+        strokeLinecap="round" transform="rotate(-90 44 44)" />
+      <text x="44" y="50" textAnchor="middle" fill="#C1392B" fontSize="17" fontWeight="700" fontFamily="Inter, sans-serif">
+        {accuracy}%
+      </text>
+    </svg>
+  );
+}
+
 export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome, onBackToChapters, onBackToWordSelection }) {
   const [cards, setCards] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -11,80 +28,47 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   const [hintType, setHintType] = useState(null);
   const [userAnswer, setUserAnswer] = useState('');
   const [handwritingImage, setHandwritingImage] = useState('');
-  const [sessionStats, setSessionStats] = useState({
-    total: 0,
-    correct: 0,
-    wrong: 0,
-    easy: 0,
-    hard: 0
-  });
+  const [sessionStats, setSessionStats] = useState({ total: 0, correct: 0, wrong: 0, easy: 0, hard: 0 });
   const [wrongCards, setWrongCards] = useState([]);
+  const [missedCards, setMissedCards] = useState([]);
   const [sessionComplete, setSessionComplete] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [showFlagModal, setShowFlagModal] = useState(false);
   const [flagReason, setFlagReason] = useState('');
   const handwritingRef = useRef(null);
 
-  useEffect(() => {
-    initializeSession();
-  }, [mode, selectedWords]);
+  useEffect(() => { initializeSession(); }, [mode, selectedWords]);
 
   const initializeSession = () => {
     try {
-      // Validate inputs
-      if (!mode || !selectedWords || !Array.isArray(selectedWords) || selectedWords.length === 0) {
-        console.error('Invalid mode or selectedWords:', { mode, selectedWords });
-        return;
-      }
-
-      // Convert selectedWords to quiz data format
+      if (!mode || !selectedWords || !Array.isArray(selectedWords) || selectedWords.length === 0) return;
       const quizData = dataService.convertWordsToQuizData(selectedWords, mode);
-      
-      // Validate quiz data
-      if (!quizData || !Array.isArray(quizData) || quizData.length === 0) {
-        console.error('No quiz data available for mode:', mode, 'selectedWords:', selectedWords);
-        return;
-      }
-
-      const shuffledCards = dataService.shuffleArray(quizData);
-      
-      setCards(shuffledCards);
-      setCurrentQuestion(shuffledCards[0]);
-      setSessionStats(prev => ({ ...prev, total: shuffledCards.length }));
-    } catch (error) {
-      console.error('Error initializing session:', error);
-    }
-  };
-
-  const handleShowHint = (type) => {
-    setHintType(type);
-    setShowHint(true);
+      if (!quizData || quizData.length === 0) return;
+      const shuffled = dataService.shuffleArray(quizData);
+      setCards(shuffled);
+      setCurrentQuestion(shuffled[0]);
+      setSessionStats(prev => ({ ...prev, total: shuffled.length }));
+      setMissedCards([]);
+    } catch (err) { console.error('Error initializing session:', err); }
   };
 
   const handleRevealAnswer = () => {
-    // Capture handwriting image before disabling canvas
     if (handwritingRef.current && needsHandwriting) {
-      const imageData = handwritingRef.current.getImageData();
-      setHandwritingImage(imageData);
+      setHandwritingImage(handwritingRef.current.getImageData());
     }
-    
     setShowAnswer(true);
-    if (handwritingRef.current) {
-      handwritingRef.current.disableCanvas();
-    }
+    if (handwritingRef.current) handwritingRef.current.disableCanvas();
   };
 
   const handleGrade = (grade) => {
     const isCorrect = grade !== 'wrong';
     const word = mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji;
 
-    // Update weak card score
     dataService.updateWeakCardScores(
       isCorrect ? [word] : [],
       !isCorrect ? [word] : []
     );
 
-    // Compute final stats synchronously so we can persist them if session ends
     const finalStats = {
       ...sessionStats,
       correct: isCorrect ? sessionStats.correct + 1 : sessionStats.correct,
@@ -94,53 +78,15 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
     };
     setSessionStats(finalStats);
 
-    // Handle wrong cards for retry
     if (!isCorrect) {
       setWrongCards(prev => [...prev, currentQuestion]);
+      setMissedCards(prev => [...prev, currentQuestion]);
     }
 
-    // Move to next card
     moveToNextCard(finalStats);
   };
 
-  const handleFlagItem = () => {
-    setShowFlagModal(true);
-    setFlagReason('');
-  };
-
-  const handleFlagSubmit = () => {
-    if (!flagReason.trim()) {
-      alert('Please select a reason for flagging this item');
-      return;
-    }
-
-    const itemToFlag = {
-      word: mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji,
-      reading: currentQuestion.reading,
-      meaning: currentQuestion.meaning,
-      chapter: currentQuestion.chapter,
-      mode: mode,
-      reason: flagReason,
-      timestamp: new Date().toISOString(),
-      id: `${mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji}-${mode}-${Date.now()}`
-    };
-
-    // Get existing flagged items
-    const stored = localStorage.getItem('flaggedItems');
-    const flaggedItems = stored ? JSON.parse(stored) : [];
-    
-    // Add new flagged item
-    flaggedItems.push(itemToFlag);
-    localStorage.setItem('flaggedItems', JSON.stringify(flaggedItems));
-
-    // Close modal and show confirmation
-    setShowFlagModal(false);
-    setFlagReason('');
-    alert('Item has been flagged for review. Thank you for helping improve the quality!');
-  };
-
   const moveToNextCard = (latestStats = sessionStats) => {
-    // Reset state for next card
     setShowAnswer(false);
     setShowHint(false);
     setHintType(null);
@@ -151,28 +97,21 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
       handwritingRef.current.enableCanvas();
     }
 
-    // Check if we need to insert wrong cards
     if (currentCardIndex < cards.length - 1) {
       const nextIndex = currentCardIndex + 1;
       setCurrentCardIndex(nextIndex);
       setCurrentQuestion(cards[nextIndex]);
     } else if (wrongCards.length > 0) {
-      // Start reviewing wrong cards
       const nextWrongCard = wrongCards[0];
       setWrongCards(prev => prev.slice(1));
       setCurrentQuestion(nextWrongCard);
     } else {
-      // Session complete — persist result
       dataService.saveSessionResult({
         id: `session-${Date.now()}`,
         timestamp: new Date().toISOString(),
-        mode,
-        chapters,
-        total: latestStats.total,
-        correct: latestStats.correct,
-        wrong: latestStats.wrong,
-        easy: latestStats.easy,
-        hard: latestStats.hard,
+        mode, chapters,
+        total: latestStats.total, correct: latestStats.correct,
+        wrong: latestStats.wrong, easy: latestStats.easy, hard: latestStats.hard,
         accuracy: latestStats.total > 0 ? Math.round((latestStats.correct / latestStats.total) * 100) : 0,
       });
       dataService.saveChapterStats(chapters, latestStats);
@@ -185,477 +124,296 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
     setCurrentCardIndex(0);
     setSessionComplete(false);
     setWrongCards([]);
+    setMissedCards([]);
     setShowAnswer(false);
     setShowHint(false);
     setHintType(null);
     setUserAnswer('');
   };
 
-  const getQuestionText = () => {
-    if (!currentQuestion) return 'Loading...';
-    
-    try {
-      switch (mode) {
-        case 'kana-to-kanji':
-          return currentQuestion.question || 'No question available';
-        case 'kanji-to-reading':
-          return currentQuestion.question || 'No question available';
-        case 'vocabulary-writing':
-          return currentQuestion.question || 'No question available';
-        case 'vocabulary-reading':
-          return currentQuestion.question || 'No question available';
-        default:
-          return currentQuestion.question || 'No question available';
-      }
-    } catch (error) {
-      console.error('Error getting question text:', error);
-      return 'Error loading question';
-    }
+  const handleFlagSubmit = () => {
+    if (!flagReason.trim()) { alert('Please select a reason'); return; }
+    const item = {
+      word: mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji,
+      reading: currentQuestion.reading, meaning: currentQuestion.meaning,
+      chapter: currentQuestion.chapter, mode, reason: flagReason,
+      timestamp: new Date().toISOString(),
+      id: `${mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji}-${mode}-${Date.now()}`,
+    };
+    const stored = localStorage.getItem('flaggedItems');
+    const flags = stored ? JSON.parse(stored) : [];
+    flags.push(item);
+    localStorage.setItem('flaggedItems', JSON.stringify(flags));
+    setShowFlagModal(false);
+    setFlagReason('');
   };
 
-  const getAnswerText = () => {
-    if (!currentQuestion) return 'No answer available';
-    
-    try {
-      switch (mode) {
-        case 'kana-to-kanji':
-          return currentQuestion.answer || 'No answer available';
-        case 'kanji-to-reading':
-          return currentQuestion.answer || 'No answer available';
-        case 'vocabulary-writing':
-          return currentQuestion.answer || 'No answer available';
-        case 'vocabulary-reading':
-          return currentQuestion.answer || 'No answer available';
-        default:
-          return currentQuestion.answer || 'No answer available';
-      }
-    } catch (error) {
-      console.error('Error getting answer text:', error);
-      return 'Error loading answer';
-    }
-  };
+  const accuracy = sessionStats.total > 0 ? Math.round((sessionStats.correct / sessionStats.total) * 100) : 0;
+  const progress = sessionStats.total > 0 ? ((sessionStats.correct + sessionStats.wrong) / sessionStats.total) * 100 : 0;
+  const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing';
 
-  const getProgressPercentage = () => {
-    const total = sessionStats.total;
-    const completed = sessionStats.correct + sessionStats.wrong;
-    return total > 0 ? (completed / total) * 100 : 0;
-  };
-
-  // Loading state
+  // Loading
   if (!currentQuestion && cards.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="bg-white rounded-xl shadow-lg p-8 max-w-md mx-4">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-            <h2 className="text-xl font-semibold text-gray-700 mb-2">Loading Quiz...</h2>
-            <p className="text-gray-600">Preparing your questions</p>
-          </div>
-        </div>
+      <div className="min-h-screen bg-[#0F0F14] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#C1392B]" />
       </div>
     );
   }
 
-  // Empty state - no data available
-  if (cards.length === 0 && currentQuestion === null) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="bg-white rounded-xl shadow-lg p-8 max-w-md mx-4">
-          <div className="text-center">
-            <div className="text-6xl mb-4">📚</div>
-            <h2 className="text-xl font-semibold text-gray-700 mb-2">No Quiz Data Available</h2>
-            <p className="text-gray-600 mb-4">
-              No questions found for the selected mode and chapters.
-            </p>
-            <div className="space-y-2">
-              <p className="text-sm text-gray-500">
-                Mode: {mode}
-              </p>
-              <p className="text-sm text-gray-500">
-                Chapters: {chapters ? chapters.join(', ') : 'None selected'}
-              </p>
-            </div>
-            <button
-              onClick={onBackToChapters}
-              className="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold"
-            >
-              Back to Chapter Selection
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
+  // Session complete
   if (sessionComplete) {
+    const finalAccuracy = sessionStats.total > 0
+      ? Math.round((sessionStats.correct / sessionStats.total) * 100)
+      : 0;
+
     return (
-      <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Session Complete! 🎉
-          </h2>
-          
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mb-6">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">Session Summary</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-green-600">{sessionStats.correct}</div>
-                <div className="text-sm text-gray-600">Correct</div>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-red-600">{sessionStats.wrong}</div>
-                <div className="text-sm text-gray-600">Wrong</div>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-blue-600">{sessionStats.easy}</div>
-                <div className="text-sm text-gray-600">Easy</div>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-orange-600">{sessionStats.hard}</div>
-                <div className="text-sm text-gray-600">Hard</div>
-              </div>
-            </div>
-            <div className="mt-4 text-center">
-              <div className="text-lg font-semibold text-gray-700">
-                Accuracy: {sessionStats.total > 0 ? Math.round((sessionStats.correct / sessionStats.total) * 100) : 0}%
-              </div>
-            </div>
+      <div className="max-w-lg mx-auto">
+        <div className="bg-[#171720] border border-[#2a2a38] rounded-2xl p-6">
+          <h2 className="text-base font-semibold text-[#e0e0f0] text-center mb-5">Session complete</h2>
+
+          {/* Accuracy ring */}
+          <div className="mb-4">
+            <AccuracyRing accuracy={finalAccuracy} />
+            <p className="text-xs text-[#606080] text-center mt-1">Accuracy · {sessionStats.total} questions</p>
           </div>
 
-          <div className="flex gap-4 justify-center">
-            <button
-              onClick={handleRestart}
-              className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-            >
-              Study Again
-            </button>
-            <button
-              onClick={onBackToWordSelection}
-              className="px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
-            >
-              Change Words
-            </button>
-            <button
-              onClick={onBackToChapters}
-              className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-            >
-              Change Chapters
-            </button>
-            <button
-              onClick={onBackToHome}
-              className="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
-            >
-              Back to Home
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!currentQuestion) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-lg text-gray-600">Loading...</div>
-      </div>
-    );
-  }
-
-  const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing';
-const showKanji = mode === 'self-uploading';
-
-  // Additional safety check
-  if (!currentQuestion || !cards || cards.length === 0) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="bg-white rounded-xl shadow-lg p-8 max-w-md mx-4">
-          <div className="text-center">
-            <div className="text-6xl mb-4">⚠️</div>
-            <h2 className="text-xl font-semibold text-gray-700 mb-2">Quiz Data Error</h2>
-            <p className="text-gray-600 mb-4">
-              Unable to load quiz questions. Please try again.
-            </p>
-            <button
-              onClick={onBackToChapters}
-              className="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold"
-            >
-              Back to Chapter Selection
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="max-w-4xl mx-auto">
-      {/* Progress Bar */}
-      <div className="mb-6">
-        <div className="flex justify-between text-sm text-gray-600 mb-2">
-          <span>Progress: {sessionStats.correct + sessionStats.wrong} / {sessionStats.total}</span>
-          <span>Accuracy: {sessionStats.total > 0 ? Math.round((sessionStats.correct / (sessionStats.correct + sessionStats.wrong || 1)) * 100) : 0}%</span>
-        </div>
-        <div className="w-full bg-gray-200 rounded-full h-3">
-          <div 
-            className="bg-gradient-to-r from-blue-500 to-indigo-500 h-3 rounded-full transition-all duration-300"
-            style={{ width: `${getProgressPercentage()}%` }}
-          />
-        </div>
-      </div>
-
-      <div className="bg-white rounded-xl shadow-lg p-8">
-        {/* Navigation */}
-        <div className="flex justify-between items-center mb-6">
-          <button
-            onClick={onBackToChapters}
-            className="flex items-center text-gray-600 hover:text-gray-800"
-          >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Exit Session
-          </button>
-          <div className="text-sm text-gray-500">
-            Card {currentCardIndex + 1} of {cards.length}
-          </div>
-        </div>
-
-        {/* Question */}
-        <div className="text-center mb-8">
-          <div className="text-lg text-gray-600 mb-4">Question:</div>
-          <div className="text-4xl font-bold text-gray-800 kanji-text">
-            {getQuestionText()}
-            {showKanji && currentQuestion.kanji && (
-              <div className="mt-4 text-6xl font-bold text-indigo-600 kanji-text">
-                {currentQuestion.kanji}
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-2 mb-6">
+            {[
+              { label: 'Correct', value: sessionStats.correct, color: 'text-[#4AA85C]' },
+              { label: 'Wrong', value: sessionStats.wrong, color: 'text-[#C1392B]' },
+              { label: 'Hard', value: sessionStats.hard, color: 'text-[#D4861C]' },
+            ].map(({ label, value, color }) => (
+              <div key={label} className="bg-[#0F0F14] border border-[#2a2a38] rounded-xl p-3 text-center">
+                <div className={`text-xl font-bold ${color}`}>{value}</div>
+                <div className="text-[10px] text-[#606080] mt-0.5">{label}</div>
               </div>
-            )}
+            ))}
           </div>
-        </div>
 
-        {/* Hint Section */}
-        {!showAnswer && (
-          <div className="mb-6">
-            <div className="flex gap-4 justify-center mb-4">
-              <button
-                onClick={() => handleShowHint('meaning')}
-                className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors"
-              >
-                Show Meaning
-              </button>
-              <button
-                onClick={() => handleShowHint('kanji')}
-                className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
-              >
-                {mode === 'kana-to-kanji' ? 'Show Related Vocabularies' : 'Show Related Kanji'}
-              </button>
-            </div>
-
-            {showHint && (
-              <div className="bg-gray-50 rounded-lg p-4 text-center">
-                {hintType === 'meaning' && (
-                  <div>
-                    <div className="text-sm text-gray-600 mb-2">Meaning:</div>
-                    <div className="text-xl font-semibold text-gray-800">
-                      {currentQuestion?.meaning || 'No meaning available'}
-                    </div>
-                  </div>
-                )}
-                {hintType === 'kanji' && (
-                  <div>
-                    <div className="text-sm text-gray-600 mb-2">
-                      {mode.includes('vocabulary') ? 'Related Vocabulary (Hiragana):' : 
-                       mode === 'kana-to-kanji' ? 'Related Vocabulary (Hiragana):' : 'Example Vocabulary:'}
-                    </div>
-                    <div className="text-2xl font-bold text-gray-800">
-                      {mode.includes('vocabulary') 
-                        ? (currentQuestion?.relatedKanji || []).join(' • ') || 'No related vocabulary'
-                        : mode === 'kana-to-kanji' 
-                          ? (currentQuestion?.relatedVocabulary || []).join(' • ') || 'No related vocabulary'
-                          : (currentQuestion?.vocabulary || []).join(' • ') || 'No example vocabulary'
-                      }
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Answer Input Area */}
-        <div className="mb-6">
-          {!showAnswer ? (
-            <div className="text-center">
-              {showKanji ? (
-                <div>
-                  <div className="text-lg text-gray-600 mb-4">This is a self-uploading card</div>
-                  <div className="text-2xl text-gray-700 mb-4">Just study the kanji and reading below</div>
-                </div>
-              ) : needsHandwriting ? (
-                <div>
-                  <div className="text-lg text-gray-600 mb-4">Write your answer:</div>
-                  <HandwritingCanvas ref={handwritingRef} />
-                </div>
-              ) : (
-                <div>
-                  <div className="text-lg text-gray-600 mb-4">Type your answer:</div>
-                  <input
-                    type="text"
-                    value={userAnswer}
-                    onChange={(e) => setUserAnswer(e.target.value)}
-                    className="w-full max-w-md mx-auto block px-4 py-3 text-2xl text-center border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
-                    placeholder="Enter your answer..."
-                    autoFocus
-                  />
-                </div>
-              )}
-              
-              <button
-                onClick={handleRevealAnswer}
-                className="mt-6 px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-lg font-semibold"
-              >
-                Reveal Answer
-              </button>
-            </div>
-          ) : (
-            <div className="text-center">
-              {/* User Answer Display */}
-              <div className="mb-6">
-                <div className="text-lg text-gray-600 mb-2">Your Answer:</div>
-                <div className="text-2xl font-semibold text-blue-600 mb-4">
-                  {showKanji ? (
-                    <div className="space-y-2">
+          {/* Missed cards */}
+          {missedCards.length > 0 && (
+            <div className="mb-6">
+              <p className="text-[10px] font-semibold tracking-widest uppercase text-[#3a3a55] mb-3">Missed</p>
+              <div className="flex flex-col gap-2">
+                {missedCards.slice(0, 5).map((card, i) => (
+                  <div key={i} className="bg-[#0F0F14] border border-[#2a2a38] rounded-xl px-4 py-3 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="noto text-lg font-bold text-[#e0e0f0]">
+                        {mode.includes('vocabulary') ? card.word : (card.kanji || card.answer)}
+                      </span>
                       <div>
-                        <span className="text-gray-600">Kanji: </span>
-                        <span className="text-2xl font-bold text-indigo-600 kanji-text">
-                          {currentQuestion.word}
-                        </span>
-                      </div>
-                      <div>
-                        <span className="text-gray-600">Reading: </span>
-                        <span className="text-xl">{currentQuestion.reading}</span>
+                        <div className="text-xs font-semibold text-[#e0e0f0]">{card.reading}</div>
+                        <div className="text-xs text-[#606080]">{card.meaning}</div>
                       </div>
                     </div>
-                  ) : needsHandwriting ? (
-                    handwritingImage ? (
-                      <img 
-                        src={handwritingImage} 
-                        alt="Your handwritten answer"
-                        className="max-w-xs mx-auto border border-gray-300 rounded-lg shadow-sm"
-                        style={{ maxHeight: '150px' }}
-                      />
-                    ) : '(No drawing)'
-                  ) : (userAnswer || '(No answer entered)')}
-                </div>
-              </div>
-
-              {/* Correct Answer Display */}
-              <div className="mb-6">
-                <div className="text-lg text-gray-600 mb-2">Correct Answer:</div>
-                <div className="text-3xl font-bold text-green-600 kanji-text mb-2">
-                  {getAnswerText()}
-                </div>
-                {mode !== 'vocabulary-reading' && (
-                  <div className="text-xl text-gray-700 reading-text">
-                    {currentQuestion?.reading || 'No reading available'}
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full border border-[#C1392B33] text-[#C1392B] bg-[#C1392B11]">
+                      Wrong
+                    </span>
                   </div>
+                ))}
+                {missedCards.length > 5 && (
+                  <p className="text-xs text-[#3a3a55] text-center">+{missedCards.length - 5} more</p>
                 )}
-              </div>
-
-              {/* Dictionary Section */}
-              <DictionarySection 
-                word={mode.includes('vocabulary') ? currentQuestion?.word || currentQuestion?.answer || 'Unknown' : currentQuestion?.kanji || currentQuestion?.answer || 'Unknown'} 
-                reading={currentQuestion?.reading || 'No reading'} 
-                meaning={currentQuestion?.meaning || 'No meaning'} 
-              />
-
-              {/* Grading Buttons */}
-              <div className="mt-8">
-                <div className="text-lg text-gray-600 mb-4">How was this card?</div>
-                <div className="flex gap-4 justify-center">
-                  <button
-                    onClick={() => handleGrade('easy')}
-                    className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors font-semibold"
-                  >
-                    Easy
-                  </button>
-                  <button
-                    onClick={() => handleGrade('hard')}
-                    className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-semibold"
-                  >
-                    Hard
-                  </button>
-                  <button
-                    onClick={() => handleGrade('wrong')}
-                    className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-semibold"
-                  >
-                    Wrong
-                  </button>
-                </div>
-                
-                {/* Flag Button */}
-                <div className="mt-4 text-center">
-                  <button
-                    onClick={() => handleFlagItem()}
-                    className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors text-sm font-medium"
-                  >
-                    🚩 Flag as Incorrect
-                  </button>
-                </div>
               </div>
             </div>
           )}
+
+          {/* Actions */}
+          <div className="flex gap-3">
+            <button onClick={handleRestart} className="flex-1 py-3 bg-[#3CBFA5] text-[#0A0A0F] font-semibold rounded-xl text-sm hover:bg-[#33a891] transition-colors">
+              Study again
+            </button>
+            <button onClick={onBackToHome} className="flex-1 py-3 bg-[#0F0F14] border border-[#2a2a38] text-[#606080] font-semibold rounded-xl text-sm hover:text-[#e0e0f0] hover:border-[#3a3a55] transition-colors">
+              Home
+            </button>
+          </div>
+          <button onClick={onBackToChapters} className="w-full mt-2 py-2.5 text-sm text-[#3a3a55] hover:text-[#606080] transition-colors">
+            Change chapters
+          </button>
         </div>
       </div>
-    {/* Flag Confirmation Modal */}
-      {showFlagModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-lg p-6 max-w-md mx-4">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Flag as Incorrect</h3>
-            
-            <div className="mb-4">
-              <p className="text-sm text-gray-600 mb-2">
-                Item: {mode.includes('vocabulary') ? currentQuestion?.word : currentQuestion?.kanji}
-              </p>
-              <p className="text-sm text-gray-600">
-                Reading: {currentQuestion?.reading}
-              </p>
-              <p className="text-sm text-gray-600">
-                Meaning: {currentQuestion?.meaning}
-              </p>
-            </div>
+    );
+  }
 
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Reason for flagging:
-              </label>
-              <select
-                value={flagReason}
-                onChange={(e) => setFlagReason(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="">Select a reason...</option>
-                <option value="wrong-reading">Incorrect reading</option>
-                <option value="wrong-meaning">Incorrect meaning</option>
-                <option value="wrong-kanji">Incorrect kanji</option>
-                <option value="typo">Typo or error</option>
-                <option value="outdated">Outdated information</option>
-                <option value="other">Other issue</option>
-              </select>
-            </div>
+  if (!currentQuestion) return null;
 
-            <div className="flex gap-3 justify-end">
+  return (
+    <div className="max-w-2xl mx-auto">
+      {/* Progress header */}
+      <div className="flex items-center gap-3 mb-5">
+        <button
+          onClick={onBackToChapters}
+          className="w-9 h-9 bg-[#171720] border border-[#2a2a38] rounded-lg flex items-center justify-center text-[#606080] hover:text-[#e0e0f0] transition-colors flex-shrink-0"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <div className="flex-1 h-2 bg-[#1e1e2a] rounded-full overflow-hidden">
+          <div
+            className="h-full bg-[#C1392B] rounded-full transition-all duration-300"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        <span className="text-xs text-[#606080] flex-shrink-0">
+          {sessionStats.correct + sessionStats.wrong} / {sessionStats.total}
+        </span>
+      </div>
+
+      {/* Question card */}
+      <div className="bg-[#171720] border border-[#2a2a38] rounded-2xl p-6 mb-4 text-center">
+        <p className="text-[10px] font-semibold tracking-widest uppercase text-[#606080] mb-4">
+          {mode === 'kana-to-kanji' ? 'Write the kanji for' :
+           mode === 'kanji-to-reading' ? 'Write the reading for' :
+           mode === 'vocabulary-writing' ? 'Write the word for' :
+           'Write the reading for'}
+        </p>
+        <div className="noto text-4xl font-bold text-[#e0e0f0] mb-2">
+          {currentQuestion.question}
+        </div>
+        {showHint && hintType === 'meaning' && (
+          <div className="mt-3 text-sm text-[#3CBFA5]">{currentQuestion.meaning}</div>
+        )}
+        {showHint && hintType === 'kanji' && (
+          <div className="mt-3 text-sm text-[#3CBFA5]">
+            {mode.includes('vocabulary')
+              ? (currentQuestion.relatedKanji || []).join(' · ') || 'No related vocab'
+              : mode === 'kana-to-kanji'
+                ? (currentQuestion.relatedVocabulary || []).join(' · ') || 'No related vocab'
+                : (currentQuestion.vocabulary || []).join(' · ') || 'No examples'}
+          </div>
+        )}
+      </div>
+
+      {/* Answer area */}
+      <div className="bg-[#171720] border border-[#2a2a38] rounded-2xl p-6 mb-4">
+        {!showAnswer ? (
+          <div className="text-center">
+            {needsHandwriting ? (
+              <div className="mb-4">
+                <HandwritingCanvas ref={handwritingRef} />
+              </div>
+            ) : (
+              <input
+                type="text"
+                value={userAnswer}
+                onChange={e => setUserAnswer(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleRevealAnswer()}
+                className="w-full max-w-sm mx-auto block px-4 py-3 text-xl text-center bg-[#0F0F14] border border-[#2a2a38] rounded-xl text-[#e0e0f0] focus:border-[#C1392B] focus:outline-none mb-4"
+                placeholder="Your answer…"
+                autoFocus
+              />
+            )}
+            <div className="flex gap-3 justify-center mb-4">
               <button
-                onClick={() => setShowFlagModal(false)}
-                className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors"
+                onClick={() => { setHintType('meaning'); setShowHint(true); }}
+                className="px-4 py-2 bg-[#0F0F14] border border-[#2a2a38] text-[#606080] rounded-xl text-sm hover:text-[#e0e0f0] transition-colors"
               >
-                Cancel
+                Meaning hint
               </button>
               <button
-                onClick={handleFlagSubmit}
-                className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                onClick={() => { setHintType('kanji'); setShowHint(true); }}
+                className="px-4 py-2 bg-[#0F0F14] border border-[#2a2a38] text-[#606080] rounded-xl text-sm hover:text-[#e0e0f0] transition-colors"
               >
-                Flag Item
+                Related hint
+              </button>
+            </div>
+            <button
+              onClick={handleRevealAnswer}
+              className="w-full py-3 bg-[#C1392B] text-white font-semibold rounded-xl text-sm hover:bg-[#a62f24] transition-colors"
+            >
+              Reveal Answer
+            </button>
+          </div>
+        ) : (
+          <div>
+            {/* User answer */}
+            {needsHandwriting && handwritingImage && (
+              <div className="mb-4 text-center">
+                <p className="text-xs text-[#3a3a55] mb-2">Your answer</p>
+                <img src={handwritingImage} alt="Your answer" className="max-w-[200px] mx-auto rounded-lg border border-[#2a2a38] opacity-80" />
+              </div>
+            )}
+
+            {/* Correct answer */}
+            <div className="text-center mb-5">
+              <p className="text-xs text-[#3a3a55] mb-2">Correct answer</p>
+              <div className="noto text-4xl font-bold text-[#e0e0f0] mb-1">{currentQuestion.answer}</div>
+              {mode !== 'vocabulary-reading' && (
+                <div className="text-base text-[#606080]">{currentQuestion.reading}</div>
+              )}
+            </div>
+
+            {/* Dictionary */}
+            <DictionarySection
+              word={mode.includes('vocabulary') ? currentQuestion?.word || currentQuestion?.answer : currentQuestion?.kanji || currentQuestion?.answer}
+              reading={currentQuestion?.reading}
+              meaning={currentQuestion?.meaning}
+            />
+
+            {/* Grade buttons */}
+            <div className="mt-5">
+              <p className="text-xs text-[#3a3a55] text-center mb-3">How was this card?</p>
+              <div className="grid grid-cols-3 gap-2 mb-3">
+                <button
+                  onClick={() => handleGrade('easy')}
+                  className="py-3 bg-[#4AA85C1a] border border-[#4AA85C44] text-[#4AA85C] font-semibold rounded-xl text-sm hover:bg-[#4AA85C2a] transition-colors"
+                >
+                  Correct
+                </button>
+                <button
+                  onClick={() => handleGrade('hard')}
+                  className="py-3 bg-[#171720] border border-[#2a2a38] text-[#606080] font-semibold rounded-xl text-sm hover:text-[#e0e0f0] transition-colors"
+                >
+                  Hard
+                </button>
+                <button
+                  onClick={() => handleGrade('wrong')}
+                  className="py-3 bg-[#C1392B1a] border border-[#C1392B44] text-[#C1392B] font-semibold rounded-xl text-sm hover:bg-[#C1392B2a] transition-colors"
+                >
+                  Wrong
+                </button>
+              </div>
+              <button
+                onClick={() => setShowFlagModal(true)}
+                className="w-full py-2 text-xs text-[#3a3a55] hover:text-[#606080] transition-colors"
+              >
+                🚩 Flag as incorrect
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Flag modal */}
+      {showFlagModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-[#171720] border border-[#2a2a38] rounded-2xl p-6 max-w-sm w-full mx-4">
+            <h3 className="text-base font-semibold text-[#e0e0f0] mb-1">Flag as incorrect</h3>
+            <p className="text-xs text-[#606080] mb-4">
+              {mode.includes('vocabulary') ? currentQuestion?.word : currentQuestion?.kanji} · {currentQuestion?.reading}
+            </p>
+            <select
+              value={flagReason}
+              onChange={e => setFlagReason(e.target.value)}
+              className="w-full px-3 py-2.5 bg-[#0F0F14] border border-[#2a2a38] text-[#e0e0f0] rounded-xl text-sm focus:border-[#C1392B] focus:outline-none mb-4"
+            >
+              <option value="">Select a reason…</option>
+              <option value="wrong-reading">Incorrect reading</option>
+              <option value="wrong-meaning">Incorrect meaning</option>
+              <option value="wrong-kanji">Incorrect kanji</option>
+              <option value="typo">Typo or error</option>
+              <option value="outdated">Outdated information</option>
+              <option value="other">Other issue</option>
+            </select>
+            <div className="flex gap-3">
+              <button onClick={() => setShowFlagModal(false)} className="flex-1 py-2.5 bg-[#0F0F14] border border-[#2a2a38] text-[#606080] rounded-xl text-sm hover:text-[#e0e0f0] transition-colors">
+                Cancel
+              </button>
+              <button onClick={handleFlagSubmit} className="flex-1 py-2.5 bg-[#C1392B] text-white rounded-xl text-sm font-semibold hover:bg-[#a62f24] transition-colors">
+                Flag
               </button>
             </div>
           </div>

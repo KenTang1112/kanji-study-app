@@ -104,199 +104,148 @@ export default function VocabularyManager({ onBack, currentUser }) {
     return contributors[item.addedBy]?.avatarUrl || item.addedByAvatar || null;
   };
 
+  const inputCls = "w-full px-4 py-2.5 bg-[#0F0F14] border border-[#2a2a38] text-[#e0e0f0] rounded-xl focus:border-[#C1392B] focus:outline-none text-sm placeholder-[#3a3a55]";
+  const labelCls = "block text-xs font-medium text-[#606080] mb-1.5";
+
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-white rounded-xl shadow-lg p-8">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-6">
-          <button onClick={onBack} className="flex items-center text-gray-600 hover:text-gray-800">
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Home
-          </button>
-          <h2 className="text-3xl font-bold text-gray-800">Shared Vocabulary</h2>
-        </div>
+      {/* Header */}
+      <div className="mb-6">
+        <p className="text-[10px] font-semibold tracking-widest uppercase text-[#3a3a55] mb-0.5">Community</p>
+        <h2 className="text-2xl font-bold text-[#e0e0f0]">Shared Vocabulary</h2>
+      </div>
 
-        {/* Action Buttons */}
-        <div className="flex gap-4 mb-6 flex-wrap">
-          <button
-            onClick={() => setShowAddForm(true)}
-            className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors font-semibold"
-          >
-            ➕ Add Vocabulary
-          </button>
-          <button
-            onClick={loadVocabulary}
-            className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-semibold"
-          >
-            🔄 Refresh
-          </button>
-        </div>
+      {/* Action Buttons */}
+      <div className="flex gap-3 mb-5 flex-wrap">
+        <button
+          onClick={() => setShowAddForm(v => !v)}
+          className="px-5 py-2.5 bg-[#C1392B] text-white rounded-xl text-sm font-semibold hover:bg-[#a62f24] transition-colors"
+        >
+          ➕ Add Vocabulary
+        </button>
+        <button
+          onClick={loadVocabulary}
+          className="px-5 py-2.5 bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-xl text-sm hover:text-[#e0e0f0] hover:border-[#3a3a55] transition-colors"
+        >
+          🔄 Refresh
+        </button>
+      </div>
 
-        {/* Add Form */}
-        {showAddForm && (
-          <div className="bg-gray-50 rounded-lg p-6 mb-6">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">Add New Vocabulary</h3>
-            <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Entry Type *</label>
-                  <select
-                    name="type"
-                    value={formData.type}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  >
-                    <option value="vocab">Vocabulary Word</option>
-                    <option value="kanji">Kanji Character</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {formData.type === 'kanji' ? 'Kanji Character *' : 'Word (Kanji) *'}
-                  </label>
-                  <input
-                    type="text" name="word" value={formData.word} onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    placeholder="例: 循環" required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Reading (Hiragana) *</label>
-                  <input
-                    type="text" name="reading" value={formData.reading} onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    placeholder="例: じゅんかん" required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Meaning (English) *</label>
-                  <input
-                    type="text" name="meaning" value={formData.meaning} onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    placeholder="例: circulation" required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Chapter Number *</label>
-                  <input
-                    type="number" name="chapter" value={formData.chapter} onChange={handleInputChange}
-                    min="1" max="999"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    placeholder="例: 15" required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Related Kanji (optional)</label>
-                  <input
-                    type="text" value={formData.relatedKanji.join('')} onChange={handleRelatedKanjiChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    placeholder="例: 循環"
-                  />
-                </div>
-              </div>
-              <div className="flex gap-4 mt-6">
-                <button type="submit" className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold">
-                  Add
-                </button>
-                <button type="button" onClick={resetForm} className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 font-semibold">
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        )}
-
-        {/* Vocabulary List */}
-        {loading ? (
-          <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-indigo-500 mx-auto mb-3" />
-            <p className="text-gray-500">Loading shared vocabulary…</p>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            {getVocabularyByChapter().length === 0 ? (
-              <div className="text-center py-12 bg-gray-50 rounded-lg">
-                <div className="text-gray-500 text-lg mb-2">No shared vocabulary yet</div>
-                <div className="text-gray-400">Click "Add Vocabulary" to contribute to the shared pool</div>
-              </div>
-            ) : (
-              getVocabularyByChapter().map(({ chapter, items }) => (
-                <div key={chapter} className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="text-lg font-semibold text-gray-700 mb-3">
-                    Chapter {chapter} <span className="text-gray-400 font-normal text-sm">({items.length} items)</span>
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {items.map((item) => {
-                      const isOwn = currentUser && item.addedBy === currentUser.id;
-                      const contributorName = getContributorName(item);
-                      const contributorAvatar = getContributorAvatar(item);
-                      const initial = (contributorName[0] || '?').toUpperCase();
-
-                      return (
-                        <div key={item.docId} className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
-                          <div className="flex justify-between items-start mb-2">
-                            <div className="text-xl font-bold text-gray-800 kanji-text">{item.word}</div>
-                            {isOwn && (
-                              <button
-                                onClick={() => handleDelete(item)}
-                                className="text-red-400 hover:text-red-600 text-sm ml-2"
-                                title="Delete (only you can delete your own entries)"
-                              >
-                                🗑️
-                              </button>
-                            )}
-                          </div>
-                          <div className="text-sm text-gray-600 reading-text mb-1">{item.reading}</div>
-                          <div className="text-sm text-gray-700 mb-2">{item.meaning}</div>
-                          {item.relatedKanji?.length > 0 && (
-                            <div className="text-xs text-gray-500 mb-2">Kanji: {item.relatedKanji.join(' • ')}</div>
-                          )}
-                          {/* Contributor info */}
-                          <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-gray-100">
-                            {contributorAvatar ? (
-                              <img src={contributorAvatar} alt={contributorName} className="w-5 h-5 rounded-full object-cover" />
-                            ) : (
-                              <div className="w-5 h-5 rounded-full bg-indigo-300 flex items-center justify-center text-white text-xs font-bold">
-                                {initial}
-                              </div>
-                            )}
-                            <span className="text-xs text-gray-400">{contributorName}</span>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        )}
-
-        {/* Stats */}
-        {vocabulary.length > 0 && (
-          <div className="mt-8 bg-blue-50 rounded-lg p-4">
-            <h3 className="text-lg font-semibold text-gray-700 mb-2">Statistics</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {/* Add Form */}
+      {showAddForm && (
+        <div className="bg-[#171720] border border-[#2a2a38] rounded-2xl p-5 mb-5">
+          <h3 className="text-sm font-semibold text-[#e0e0f0] mb-4">Add New Vocabulary</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <div className="text-2xl font-bold text-blue-600">{vocabulary.length}</div>
-                <div className="text-sm text-gray-600">Total Items</div>
+                <label className={labelCls}>Entry Type *</label>
+                <select name="type" value={formData.type} onChange={handleInputChange} className={inputCls}>
+                  <option value="vocab">Vocabulary Word</option>
+                  <option value="kanji">Kanji Character</option>
+                </select>
               </div>
               <div>
-                <div className="text-2xl font-bold text-green-600">{getUniqueChapters().length}</div>
-                <div className="text-sm text-gray-600">Chapters</div>
+                <label className={labelCls}>{formData.type === 'kanji' ? 'Kanji Character *' : 'Word (Kanji) *'}</label>
+                <input type="text" name="word" value={formData.word} onChange={handleInputChange} className={inputCls} placeholder="例: 循環" required />
               </div>
               <div>
-                <div className="text-2xl font-bold text-purple-600">
-                  {new Set(vocabulary.map(v => v.addedBy)).size}
-                </div>
-                <div className="text-sm text-gray-600">Contributors</div>
+                <label className={labelCls}>Reading (Hiragana) *</label>
+                <input type="text" name="reading" value={formData.reading} onChange={handleInputChange} className={inputCls} placeholder="例: じゅんかん" required />
+              </div>
+              <div>
+                <label className={labelCls}>Meaning (English) *</label>
+                <input type="text" name="meaning" value={formData.meaning} onChange={handleInputChange} className={inputCls} placeholder="例: circulation" required />
+              </div>
+              <div>
+                <label className={labelCls}>Chapter Number *</label>
+                <input type="number" name="chapter" value={formData.chapter} onChange={handleInputChange} min="1" max="999" className={inputCls} placeholder="例: 15" required />
+              </div>
+              <div>
+                <label className={labelCls}>Related Kanji (optional)</label>
+                <input type="text" value={formData.relatedKanji.join('')} onChange={handleRelatedKanjiChange} className={inputCls} placeholder="例: 循環" />
               </div>
             </div>
+            <div className="flex gap-3 mt-5">
+              <button type="submit" className="px-5 py-2 bg-[#C1392B] text-white rounded-xl text-sm font-semibold hover:bg-[#a62f24] transition-colors">Add</button>
+              <button type="button" onClick={resetForm} className="px-5 py-2 bg-[#0F0F14] border border-[#2a2a38] text-[#606080] rounded-xl text-sm hover:text-[#e0e0f0] transition-colors">Cancel</button>
+            </div>
+          </form>
+        </div>
+      )}
+
+      {/* Vocabulary List */}
+      {loading ? (
+        <div className="text-center py-16">
+          <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#C1392B] mx-auto mb-3" />
+          <p className="text-[#606080] text-sm">Loading shared vocabulary…</p>
+        </div>
+      ) : (
+        <div className="space-y-5">
+          {getVocabularyByChapter().length === 0 ? (
+            <div className="text-center py-16 bg-[#171720] border border-[#2a2a38] rounded-2xl">
+              <p className="text-[#606080] mb-1">No shared vocabulary yet</p>
+              <p className="text-[#3a3a55] text-sm">Click "Add Vocabulary" to contribute</p>
+            </div>
+          ) : (
+            getVocabularyByChapter().map(({ chapter, items }) => (
+              <div key={chapter}>
+                <p className="text-[10px] font-semibold tracking-widest uppercase text-[#3a3a55] mb-3">
+                  Chapter {chapter} <span className="normal-case tracking-normal">· {items.length} items</span>
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {items.map((item) => {
+                    const isOwn = currentUser && item.addedBy === currentUser.id;
+                    const contributorName = getContributorName(item);
+                    const contributorAvatar = getContributorAvatar(item);
+                    const initial = (contributorName[0] || '?').toUpperCase();
+                    return (
+                      <div key={item.docId} className="bg-[#171720] border border-[#2a2a38] rounded-xl p-4">
+                        <div className="flex justify-between items-start mb-2">
+                          <div className="text-xl font-bold text-[#e0e0f0] noto">{item.word}</div>
+                          {isOwn && (
+                            <button onClick={() => handleDelete(item)} className="text-[#3a3a55] hover:text-[#C1392B] transition-colors ml-2 text-sm">🗑️</button>
+                          )}
+                        </div>
+                        <div className="text-sm text-[#606080] reading-text mb-0.5">{item.reading}</div>
+                        <div className="text-sm text-[#e0e0f0] mb-2">{item.meaning}</div>
+                        {item.relatedKanji?.length > 0 && (
+                          <div className="text-xs text-[#3a3a55] mb-2">Kanji: {item.relatedKanji.join(' · ')}</div>
+                        )}
+                        <div className="flex items-center gap-1.5 pt-2 border-t border-[#1e1e2a]">
+                          {contributorAvatar ? (
+                            <img src={contributorAvatar} alt={contributorName} className="w-5 h-5 rounded-full object-cover" />
+                          ) : (
+                            <div className="w-5 h-5 rounded-full bg-[#C1392B] flex items-center justify-center text-white text-[9px] font-bold">{initial}</div>
+                          )}
+                          <span className="text-xs text-[#3a3a55]">{contributorName}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      )}
+
+      {/* Stats */}
+      {vocabulary.length > 0 && (
+        <div className="mt-6 bg-[#171720] border border-[#2a2a38] rounded-xl p-4">
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              { label: 'Total Items', value: vocabulary.length, color: 'text-[#378ADD]' },
+              { label: 'Chapters', value: getUniqueChapters().length, color: 'text-[#3CBFA5]' },
+              { label: 'Contributors', value: new Set(vocabulary.map(v => v.addedBy)).size, color: 'text-[#8B82F0]' },
+            ].map(({ label, value, color }) => (
+              <div key={label} className="text-center">
+                <div className={`text-2xl font-bold ${color}`}>{value}</div>
+                <div className="text-xs text-[#606080] mt-0.5">{label}</div>
+              </div>
+            ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
