@@ -20,8 +20,35 @@ function AccuracyRing({ accuracy }) {
   );
 }
 
-// Normalize for auto-score comparison: trim + collapse whitespace
-const normalize = (s) => (s || '').trim().replace(/\s+/g, '');
+const norm = (s) => (s || '').trim().replace(/\s+/g, '');
+
+// Convert katakana to hiragana (ア→あ, offset 0x60)
+const toHiragana = (s) => s.replace(/[ァ-ン]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0x60));
+
+// Build all accepted forms of an answer:
+//   1. exact normalized
+//   2. katakana → hiragana
+//   3. optional brackets stripped entirely  e.g. みすい(の) → みすい
+//   4. brackets removed but content kept    e.g. みすい(の) → みすいの
+// Each form is also run through toHiragana so katakana+bracket combos are covered.
+const buildAcceptedForms = (answer) => {
+  const base = norm(answer);
+  const noBrackets = norm(base.replace(/[（(][^）)]*[）)]/g, ''));
+  const bracketContentKept = norm(base.replace(/[（(）)]/g, ''));
+  const forms = new Set([base, toHiragana(base)]);
+  if (noBrackets) { forms.add(noBrackets); forms.add(toHiragana(noBrackets)); }
+  if (bracketContentKept && bracketContentKept !== base) {
+    forms.add(bracketContentKept);
+    forms.add(toHiragana(bracketContentKept));
+  }
+  return forms;
+};
+
+const isAnswerCorrect = (userInput, correctAnswer) => {
+  const user = toHiragana(norm(userInput));
+  return buildAcceptedForms(correctAnswer).has(user) ||
+    [...buildAcceptedForms(correctAnswer)].some(f => toHiragana(f) === user);
+};
 
 export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome, onBackToChapters, onBackToWordSelection }) {
   const [cards, setCards] = useState([]);
@@ -74,7 +101,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
     }
     // Auto-score for reading modes
     if (isAutoScored) {
-      const result = normalize(userAnswer) === normalize(currentQuestion.answer) ? 'correct' : 'wrong';
+      const result = isAnswerCorrect(userAnswer, currentQuestion.answer) ? 'correct' : 'wrong';
       setAutoScore(result);
     }
     setShowAnswer(true);
