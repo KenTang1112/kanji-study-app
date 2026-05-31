@@ -33,7 +33,6 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   const [handwritingImage, setHandwritingImage] = useState('');
   const [autoScore, setAutoScore] = useState(null); // 'correct' | 'wrong' | null
   const [sessionStats, setSessionStats] = useState({ total: 0, correct: 0, wrong: 0, easy: 0, hard: 0 });
-  const [wrongCards, setWrongCards] = useState([]);
   const [missedCards, setMissedCards] = useState([]);
   const [sessionComplete, setSessionComplete] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -53,10 +52,10 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
       if (!quizData || quizData.length === 0) return;
       const shuffled = dataService.shuffleArray(quizData);
       setCards(shuffled);
+      setCurrentCardIndex(0);
       setCurrentQuestion(shuffled[0]);
-      setSessionStats(prev => ({ ...prev, total: shuffled.length }));
+      setSessionStats({ total: shuffled.length, correct: 0, wrong: 0, easy: 0, hard: 0 });
       setMissedCards([]);
-      setWrongCards([]);
     } catch (err) { console.error('Error initializing session:', err); }
   };
 
@@ -73,7 +72,6 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
     if (handwritingRef.current) handwritingRef.current.disableCanvas();
   };
 
-  // Fix: compute newWrongCards synchronously so moveToNextCard sees the correct value
   const handleGrade = (grade) => {
     const isCorrect = grade !== 'wrong';
     const word = mode.includes('vocabulary') ? currentQuestion.word : currentQuestion.kanji;
@@ -83,8 +81,19 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
       !isCorrect ? [word] : []
     );
 
+    // When wrong, splice the card back in 3-5 positions later so it comes back naturally
+    let newCards = cards;
+    if (!isCorrect) {
+      setMissedCards(prev => [...prev, currentQuestion]);
+      const insertPos = Math.min(currentCardIndex + 3 + Math.floor(Math.random() * 3), cards.length);
+      newCards = [...cards];
+      newCards.splice(insertPos, 0, currentQuestion);
+      setCards(newCards);
+    }
+
     const finalStats = {
       ...sessionStats,
+      total: isCorrect ? sessionStats.total : sessionStats.total + 1,
       correct: isCorrect ? sessionStats.correct + 1 : sessionStats.correct,
       wrong: !isCorrect ? sessionStats.wrong + 1 : sessionStats.wrong,
       easy: grade === 'easy' ? sessionStats.easy + 1 : sessionStats.easy,
@@ -92,16 +101,10 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
     };
     setSessionStats(finalStats);
 
-    const newWrongCards = !isCorrect ? [...wrongCards, currentQuestion] : wrongCards;
-    if (!isCorrect) {
-      setWrongCards(newWrongCards);
-      setMissedCards(prev => [...prev, currentQuestion]);
-    }
-
-    moveToNextCard(finalStats, newWrongCards);
+    moveToNextCard(finalStats, newCards);
   };
 
-  const moveToNextCard = (latestStats = sessionStats, latestWrongCards = wrongCards) => {
+  const moveToNextCard = (latestStats = sessionStats, latestCards = cards) => {
     setShowAnswer(false);
     setShowHint(false);
     setHintType(null);
@@ -113,15 +116,10 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
       handwritingRef.current.enableCanvas();
     }
 
-    if (currentCardIndex < cards.length - 1) {
-      const nextIndex = currentCardIndex + 1;
+    const nextIndex = currentCardIndex + 1;
+    if (nextIndex < latestCards.length) {
       setCurrentCardIndex(nextIndex);
-      setCurrentQuestion(cards[nextIndex]);
-    } else if (latestWrongCards.length > 0) {
-      // Wrong cards: remove first from queue and show it
-      const nextWrongCard = latestWrongCards[0];
-      setWrongCards(latestWrongCards.slice(1));
-      setCurrentQuestion(nextWrongCard);
+      setCurrentQuestion(latestCards[nextIndex]);
     } else {
       dataService.saveSessionResult({
         id: `session-${Date.now()}`,
@@ -137,14 +135,13 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   };
 
   const handleRestart = () => {
-    initializeSession();
-    setCurrentCardIndex(0);
     setSessionComplete(false);
     setShowAnswer(false);
     setShowHint(false);
     setHintType(null);
     setUserAnswer('');
     setAutoScore(null);
+    initializeSession();
   };
 
   const handleFlagSubmit = () => {
@@ -399,7 +396,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
                       : 'bg-[#C1392B] text-white hover:bg-[#a62f24]'
                   }`}
                 >
-                  {autoScore === 'correct' ? 'Next →' : 'Retry this card →'}
+                  Next →
                 </button>
               ) : (
                 /* Handwriting modes: manual grading */
