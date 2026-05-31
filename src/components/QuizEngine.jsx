@@ -66,17 +66,24 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   const [showFlagModal, setShowFlagModal] = useState(false);
   const [flagReason, setFlagReason] = useState('');
   const handwritingRef = useRef(null);
-  const primaryActionRef = useRef(null);
+  const pendingEnterAction = useRef(null);
+  const skipNextEnterKeyup = useRef(false);
 
   const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing';
   const isAutoScored = mode === 'kanji-to-reading' || mode === 'vocabulary-reading';
 
-  // Focus the primary action button when the answer is revealed so Enter naturally clicks it
+  // Use keyup (not keydown) so the Enter that reveals the answer never also advances.
+  // skipNextEnterKeyup is set by the input's onKeyDown so the release of the reveal
+  // press is swallowed; only a fresh subsequent press advances.
   useEffect(() => {
-    if (showAnswer && !showFlagModal && primaryActionRef.current) {
-      primaryActionRef.current.focus();
-    }
-  }, [showAnswer, showFlagModal]);
+    const onKeyUp = (e) => {
+      if (e.key !== 'Enter') return;
+      if (skipNextEnterKeyup.current) { skipNextEnterKeyup.current = false; return; }
+      if (pendingEnterAction.current) pendingEnterAction.current();
+    };
+    document.addEventListener('keyup', onKeyUp);
+    return () => document.removeEventListener('keyup', onKeyUp);
+  }, []);
 
   useEffect(() => { initializeSession(); }, [mode, selectedWords]);
 
@@ -197,6 +204,10 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   };
 
   const progress = sessionStats.total > 0 ? ((sessionStats.correct + sessionStats.wrong) / sessionStats.total) * 100 : 0;
+
+  pendingEnterAction.current = (showAnswer && !showFlagModal && !sessionComplete)
+    ? () => handleGrade(isAutoScored ? (autoScore === 'correct' ? 'easy' : 'wrong') : 'easy')
+    : null;
 
   // Loading
   if (!currentQuestion && cards.length === 0) {
@@ -346,7 +357,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
                 type="text"
                 value={userAnswer}
                 onChange={e => setUserAnswer(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && handleRevealAnswer()}
+                onKeyDown={e => { if (e.key === 'Enter') { skipNextEnterKeyup.current = true; handleRevealAnswer(); } }}
                 className="w-full max-w-sm mx-auto block px-4 py-3 text-xl text-center bg-[#0F0F14] border border-[#2a2a38] rounded-xl text-[#e0e0f0] focus:border-[#C1392B] focus:outline-none mb-4"
                 placeholder="Your answer…"
                 autoFocus
@@ -424,9 +435,8 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
             <div className="mt-5">
               {isAutoScored ? (
                 <button
-                  ref={primaryActionRef}
                   onClick={() => handleGrade(autoScore === 'correct' ? 'easy' : 'wrong')}
-                  className={`w-full py-3 font-semibold rounded-xl text-sm transition-colors focus:outline-none ${
+                  className={`w-full py-3 font-semibold rounded-xl text-sm transition-colors ${
                     autoScore === 'correct'
                       ? 'bg-[#4AA85C] text-white hover:bg-[#3d8f4d]'
                       : 'bg-[#C1392B] text-white hover:bg-[#a62f24]'
@@ -439,7 +449,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
                 <>
                   <p className="text-xs text-[#3a3a55] text-center mb-3">How was this card?</p>
                   <div className="grid grid-cols-3 gap-2 mb-3">
-                    <button ref={primaryActionRef} onClick={() => handleGrade('easy')} className="py-3 bg-[#4AA85C1a] border border-[#4AA85C44] text-[#4AA85C] font-semibold rounded-xl text-sm hover:bg-[#4AA85C2a] focus:outline-none transition-colors">
+                    <button onClick={() => handleGrade('easy')} className="py-3 bg-[#4AA85C1a] border border-[#4AA85C44] text-[#4AA85C] font-semibold rounded-xl text-sm hover:bg-[#4AA85C2a] transition-colors">
                       Correct
                     </button>
                     <button onClick={() => handleGrade('hard')} className="py-3 bg-[#171720] border border-[#2a2a38] text-[#606080] font-semibold rounded-xl text-sm hover:text-[#e0e0f0] transition-colors">
