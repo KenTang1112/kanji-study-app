@@ -39,9 +39,18 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   const [showFlagModal, setShowFlagModal] = useState(false);
   const [flagReason, setFlagReason] = useState('');
   const handwritingRef = useRef(null);
+  const pendingEnterAction = useRef(null);
 
   const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing';
   const isAutoScored = mode === 'kanji-to-reading' || mode === 'vocabulary-reading';
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === 'Enter' && pendingEnterAction.current) pendingEnterAction.current();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   useEffect(() => { initializeSession(); }, [mode, selectedWords]);
 
@@ -162,6 +171,11 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   };
 
   const progress = sessionStats.total > 0 ? ((sessionStats.correct + sessionStats.wrong) / sessionStats.total) * 100 : 0;
+
+  // Keep Enter key action up-to-date without re-registering the listener
+  pendingEnterAction.current = (showAnswer && !showFlagModal && !sessionComplete)
+    ? () => handleGrade(isAutoScored ? (autoScore === 'correct' ? 'easy' : 'wrong') : 'easy')
+    : null;
 
   // Loading
   if (!currentQuestion && cards.length === 0) {
