@@ -66,18 +66,17 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   const [showFlagModal, setShowFlagModal] = useState(false);
   const [flagReason, setFlagReason] = useState('');
   const handwritingRef = useRef(null);
-  const pendingEnterAction = useRef(null);
+  const primaryActionRef = useRef(null);
 
   const needsHandwriting = mode === 'kana-to-kanji' || mode === 'vocabulary-writing';
   const isAutoScored = mode === 'kanji-to-reading' || mode === 'vocabulary-reading';
 
+  // Focus the primary action button when the answer is revealed so Enter naturally clicks it
   useEffect(() => {
-    const onKeyDown = (e) => {
-      if (e.key === 'Enter' && pendingEnterAction.current) pendingEnterAction.current();
-    };
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, []);
+    if (showAnswer && !showFlagModal && primaryActionRef.current) {
+      primaryActionRef.current.focus();
+    }
+  }, [showAnswer, showFlagModal]);
 
   useEffect(() => { initializeSession(); }, [mode, selectedWords]);
 
@@ -198,11 +197,6 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   };
 
   const progress = sessionStats.total > 0 ? ((sessionStats.correct + sessionStats.wrong) / sessionStats.total) * 100 : 0;
-
-  // Keep Enter key action up-to-date without re-registering the listener
-  pendingEnterAction.current = (showAnswer && !showFlagModal && !sessionComplete)
-    ? () => handleGrade(isAutoScored ? (autoScore === 'correct' ? 'easy' : 'wrong') : 'easy')
-    : null;
 
   // Loading
   if (!currentQuestion && cards.length === 0) {
@@ -430,8 +424,9 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
             <div className="mt-5">
               {isAutoScored ? (
                 <button
+                  ref={primaryActionRef}
                   onClick={() => handleGrade(autoScore === 'correct' ? 'easy' : 'wrong')}
-                  className={`w-full py-3 font-semibold rounded-xl text-sm transition-colors ${
+                  className={`w-full py-3 font-semibold rounded-xl text-sm transition-colors focus:outline-none ${
                     autoScore === 'correct'
                       ? 'bg-[#4AA85C] text-white hover:bg-[#3d8f4d]'
                       : 'bg-[#C1392B] text-white hover:bg-[#a62f24]'
@@ -444,7 +439,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
                 <>
                   <p className="text-xs text-[#3a3a55] text-center mb-3">How was this card?</p>
                   <div className="grid grid-cols-3 gap-2 mb-3">
-                    <button onClick={() => handleGrade('easy')} className="py-3 bg-[#4AA85C1a] border border-[#4AA85C44] text-[#4AA85C] font-semibold rounded-xl text-sm hover:bg-[#4AA85C2a] transition-colors">
+                    <button ref={primaryActionRef} onClick={() => handleGrade('easy')} className="py-3 bg-[#4AA85C1a] border border-[#4AA85C44] text-[#4AA85C] font-semibold rounded-xl text-sm hover:bg-[#4AA85C2a] focus:outline-none transition-colors">
                       Correct
                     </button>
                     <button onClick={() => handleGrade('hard')} className="py-3 bg-[#171720] border border-[#2a2a38] text-[#606080] font-semibold rounded-xl text-sm hover:text-[#e0e0f0] transition-colors">
