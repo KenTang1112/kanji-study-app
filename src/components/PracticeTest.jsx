@@ -498,11 +498,35 @@ const CHAPTERS = [
     id: 20, accent: '#0891b2',
     sections: [
 
-      // 問題1 — word box fill-in-blank + reading targets
+      // 問題1a — word box fill-in-blank (語彙選択)
+      {
+        id: 's1a', type: 'word_box_fill',
+        label: '問題1 語彙選択',
+        instruction: '（　）に入る言葉を□の中から選んで書きなさい。',
+        groups: [
+          {
+            choices: ['訂正', '是正', '修正'],
+            sentences: [
+              { num: 1, pre: '先ほどお伝えしたニュースの中で間違いがありましたので、', post: 'してお詫びいたします。', answer: '訂正' },
+              { num: 2, pre: '法案を', post: 'する。', answer: '修正' },
+              { num: 3, pre: '貿易の不均衡を', post: 'する。', answer: '是正' },
+            ],
+          },
+          {
+            choices: ['処置', '措置'],
+            sentences: [
+              { num: 4, pre: '救急車で応急', post: 'をする。', answer: '処置' },
+              { num: 5, pre: 'A国がB国に対し、緊急輸入制限', post: 'をとったことで貿易の摩擦が生じている。', answer: '措置' },
+            ],
+          },
+        ],
+      },
+
+      // 問題1b — reading targets ①〜④
       {
         id: 's1', type: 'reading_list',
-        label: '問題1',
-        instruction: '（　）に入る言葉を□の中から選んで書きなさい。また下線部①〜④の読みをひらがなで書きなさい。',
+        label: '問題1 読み',
+        instruction: '下線部①〜④の読みをひらがなで書きなさい。',
         contextTitle: '語彙選択',
         contextLines: [
           '┌ 訂正・①是正・修正 ┐',
@@ -1116,6 +1140,63 @@ function InfoSection({ sec }) {
 }
 
 // ─────────────────────────────────────────────────────────────────
+// WORD BOX FILL SECTION — word box at top, pick which word fills each blank
+// ─────────────────────────────────────────────────────────────────
+function WordBoxFillSection({ sec, chId, answers, onChange, submitted }) {
+  return (
+    <div className="mb-10">
+      <SectionHeader label={sec.label} instruction={sec.instruction} />
+      <div className="space-y-6">
+        {sec.groups.map((group, gi) => (
+          <div key={gi}>
+            <div className="mb-3 px-4 py-2 border border-[#2a2a38] rounded-xl bg-[#0F0F14] text-[#e0e0f0] text-sm kanji-text text-center tracking-widest">
+              {group.choices.join('・')}
+            </div>
+            <div className="space-y-3">
+              {group.sentences.map(s => {
+                const key = `${chId}-${sec.id}-${s.num}`;
+                const selected = answers[key] || '';
+                return (
+                  <div key={s.num} className="flex items-start gap-3">
+                    <span className="text-[#606080] font-medium text-base shrink-0 mt-0.5">({s.num})</span>
+                    <p className="text-base kanji-text leading-loose">
+                      {s.pre}
+                      <span className="inline-flex gap-1 mx-1 align-middle flex-wrap">
+                        {group.choices.map(choice => {
+                          const isSelected = selected === choice;
+                          const showCorrect = submitted && choice === s.answer;
+                          const showWrong   = submitted && isSelected && choice !== s.answer;
+                          return (
+                            <button
+                              key={choice}
+                              onClick={() => !submitted && onChange(key, choice)}
+                              disabled={submitted}
+                              className={`px-2 py-0.5 rounded border kanji-text text-base transition-all
+                                ${isSelected && !submitted ? 'border-[#8B82F0] bg-[#8B82F011] text-[#8B82F0] font-bold' : ''}
+                                ${showCorrect ? 'border-[#4AA85C] bg-[#4AA85C11] text-[#4AA85C] font-bold' : ''}
+                                ${showWrong   ? 'border-[#D4861C] bg-[#D4861C11] text-[#D4861C] opacity-60' : ''}
+                                ${!isSelected && !showCorrect && !showWrong ? 'border-[#2a2a38] bg-[#0F0F14] text-[#e0e0f0] hover:border-[#8B82F0]' : ''}
+                              `}
+                            >
+                              {choice}
+                            </button>
+                          );
+                        })}
+                      </span>
+                      {s.post}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────
 // KANJI CHOICE SECTION — pick the correct kanji from two options
 // ─────────────────────────────────────────────────────────────────
 function KanjiChoiceSection({ sec, chId, answers, onChange, submitted }) {
@@ -1180,6 +1261,17 @@ function ScoreBanner({ chapter, answers, submitted }) {
   let correct = 0, total = 0;
   chapter.sections.forEach(sec => {
     if (sec.type === 'writing' || sec.type === 'info') return;
+    // word_box_fill — nested groups → sentences
+    if (sec.type === 'word_box_fill') {
+      (sec.groups || []).forEach(group => {
+        group.sentences.forEach(s => {
+          total++;
+          const key = `${chapter.id}-${sec.id}-${s.num}`;
+          if ((answers[key] || '') === s.answer) correct++;
+        });
+      });
+      return;
+    }
     const items = sec.questions || sec.sentences || [];
     items.forEach(item => {
       // questions array (reading_list / reading_headlines)
@@ -1478,6 +1570,7 @@ export default function PracticeTest({ onBack }) {
         if (sec.type === 'reading_sentences')  return <ReadingSentencesSection  key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
         if (sec.type === 'writing')            return <WritingSection           key={sec.id} sec={sec} submitted={isSubmitted} />;
         if (sec.type === 'kanji_choice')       return <KanjiChoiceSection       key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
+        if (sec.type === 'word_box_fill')      return <WordBoxFillSection        key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
         return null;
       })}
 
