@@ -876,6 +876,123 @@ const CHAPTERS = [
 
     ],
   },
+
+  // ═══ 23課 ═══════════════════════════════════════════════════════
+  {
+    id: 23, accent: '#d97706',
+    sections: [
+
+      // 問題1 — reading sentences (literature theme)
+      {
+        id: 's1', type: 'reading_sentences',
+        label: '問題1',
+        instruction: '下線部の読みをひらがなで書きなさい。',
+        sentences: [
+          {
+            num: 1,
+            full: '川柳は俳句と同じ17字の短い詩で、人生や世の中のできごとを皮肉に描写するものです。',
+            targets: [
+              { word: '川柳', answer: 'せんりゅう' },
+              { word: '俳句', answer: 'はいく' },
+              { word: '詩',   answer: 'し' },
+              { word: '皮肉', answer: 'ひにく' },
+              { word: '描写', answer: 'びょうしゃ' },
+            ],
+          },
+          {
+            num: 2,
+            full: '『枕草子』は平安時代に書かれた随筆です。',
+            targets: [
+              { word: '枕草子', answer: 'まくらのそうし' },
+              { word: '平安',   answer: 'へいあん' },
+              { word: '随筆',   answer: 'ずいひつ' },
+            ],
+          },
+          {
+            num: 3,
+            full: 'シェイクスピアは四大悲劇などたくさんの戯曲を書きました。',
+            targets: [
+              { word: '四大悲劇', answer: 'しだいひげき' },
+              { word: '戯曲',     answer: 'ぎきょく' },
+            ],
+          },
+          {
+            num: 4,
+            full: '比喩とは、例えば、「月のように丸い」のように、類似したものを借りて表現することです。',
+            targets: [
+              { word: '比喩', answer: 'ひゆ' },
+              { word: '類似', answer: 'るいじ' },
+            ],
+          },
+          {
+            num: 5,
+            full: '小説などの中で動物などを人間のように扱うことを擬人化といいます。',
+            targets: [
+              { word: '擬人化', answer: 'ぎじんか' },
+            ],
+          },
+          {
+            num: 6,
+            full: '詩において同一または似た音を、ある位置に繰り返し用いることを韻を踏むといいます。',
+            targets: [
+              { word: '韻', answer: 'いん' },
+            ],
+          },
+          {
+            num: 7,
+            full: 'これは吹奏楽のために書かれた曲の楽譜です。',
+            targets: [
+              { word: '吹奏楽', answer: 'すいそうがく' },
+              { word: '楽譜',   answer: 'がくふ' },
+            ],
+          },
+          {
+            num: 8,
+            full: 'イギリスで有名な探偵といえば、シャーロック・ホームズです。',
+            targets: [
+              { word: '探偵', answer: 'たんてい' },
+            ],
+          },
+        ],
+      },
+
+      // 問題2 — writing (hiragana → kanji)
+      {
+        id: 's2', type: 'writing',
+        label: '問題2',
+        instruction: '送りがなが必要な場合はそれに注意して、下線部の言葉を漢字で書きなさい。',
+        twoCol: true,
+        sentences: [
+          { num: 1, full: '時計がくるう。',              writingTargets: [{ word: 'くるう',    answer: '狂う' }] },
+          { num: 2, full: '野生動物が畑をあらす。',       writingTargets: [{ word: 'あらす',    answer: '荒らす' }] },
+          { num: 3, full: 'きぬの着物を縫う。',           writingTargets: [{ word: 'きぬ',      answer: '絹' }] },
+          { num: 4, full: 'かいこを育てる。',             writingTargets: [{ word: 'かいこ',    answer: '蚕' }] },
+          { num: 5, full: '言葉たくみに勧める。',         writingTargets: [{ word: 'たくみ',    answer: '巧み' }] },
+          { num: 6, full: '意志をつらぬく。',             writingTargets: [{ word: 'つらぬく',  answer: '貫く' }] },
+          { num: 7, full: '自分の将来を頭に思いえがく。', writingTargets: [{ word: 'えがく',    answer: '描く' }] },
+          { num: 8, full: '耳をすます。',                 writingTargets: [{ word: 'すます',    answer: '澄ます' }] },
+        ],
+      },
+
+      // 問題3 — kanji multiple choice
+      {
+        id: 's3', type: 'kanji_choice',
+        label: '問題3',
+        instruction: '{　} の正しいほうに○をつけなさい。',
+        sentences: [
+          { num: 1, pre: '部屋のすみ',   post: '',         choices: ['隅', '墨'],         answer: '隅' },
+          { num: 2, pre: 'もぎ',         post: '試験',     choices: ['模凝', '模擬'],     answer: '模擬' },
+          { num: 3, pre: 'せいこう',     post: 'な機械',   choices: ['成功', '精巧'],     answer: '精巧' },
+          { num: 4, pre: 'たいくつ',     post: 'な話',     choices: ['退屈', '退堀'],     answer: '退屈' },
+          { num: 5, pre: 'かんせい',     post: 'な住宅街', choices: ['感性', '閑静'],     answer: '閑静' },
+          { num: 6, pre: 'ぜん',         post: 'の精神',   choices: ['膳', '禅'],         answer: '禅' },
+          { num: 7, pre: 'きかがく',     post: '模様',     choices: ['幾何学', '機科学'], answer: '幾何学' },
+          { num: 8, pre: '突然のふほう', post: '',         choices: ['訃報', '計報'],     answer: '訃報' },
+        ],
+      },
+
+    ],
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────────
