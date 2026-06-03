@@ -890,12 +890,11 @@ const CHAPTERS = [
         sentences: [
           {
             num: 1,
-            full: '川柳は俳句と同じ17字の短い詩で、人生や世の中のできごとを皮肉に描写するものです。',
+            full: '川柳は俳句と同じ17字の短い詩で、人生や世の中のできごとを滑稽に描写するものです。',
             targets: [
               { word: '川柳', answer: 'せんりゅう' },
-              { word: '俳句', answer: 'はいく' },
               { word: '詩',   answer: 'し' },
-              { word: '皮肉', answer: 'ひにく' },
+              { word: '滑稽', answer: 'こっけい' },
               { word: '描写', answer: 'びょうしゃ' },
             ],
           },
@@ -903,17 +902,15 @@ const CHAPTERS = [
             num: 2,
             full: '『枕草子』は平安時代に書かれた随筆です。',
             targets: [
-              { word: '枕草子', answer: 'まくらのそうし' },
-              { word: '平安',   answer: 'へいあん' },
-              { word: '随筆',   answer: 'ずいひつ' },
+              { word: '随筆', answer: 'ずいひつ' },
             ],
           },
           {
             num: 3,
             full: 'シェイクスピアは四大悲劇などたくさんの戯曲を書きました。',
             targets: [
-              { word: '四大悲劇', answer: 'しだいひげき' },
-              { word: '戯曲',     answer: 'ぎきょく' },
+              { word: '悲劇', answer: 'ひげき' },
+              { word: '戯曲', answer: 'ぎきょく' },
             ],
           },
           {
@@ -921,13 +918,17 @@ const CHAPTERS = [
             full: '比喩とは、例えば、「月のように丸い」のように、類似したものを借りて表現することです。',
             targets: [
               { word: '比喩', answer: 'ひゆ' },
+              { word: '例えば', answer: 'たとえば' },
+              { word: '丸い', answer: 'まるい' },
               { word: '類似', answer: 'るいじ' },
+              { word: '表現', answer: 'ひょうげん' },
             ],
           },
           {
             num: 5,
             full: '小説などの中で動物などを人間のように扱うことを擬人化といいます。',
             targets: [
+              { word: '扱う',   answer: 'あつかう' },
               { word: '擬人化', answer: 'ぎじんか' },
             ],
           },
@@ -935,7 +936,12 @@ const CHAPTERS = [
             num: 6,
             full: '詩において同一または似た音を、ある位置に繰り返し用いることを韻を踏むといいます。',
             targets: [
-              { word: '韻', answer: 'いん' },
+              { word: '似た',   answer: 'にた' },
+              { word: '位置',   answer: 'いち' },
+              { word: '繰り返し', answer: 'くりかえし' },
+              { word: '用いる', answer: 'もちいる' },
+              { word: '韻',     answer: 'いん' },
+              { word: '踏む',   answer: 'ふむ' },
             ],
           },
           {
@@ -943,6 +949,7 @@ const CHAPTERS = [
             full: 'これは吹奏楽のために書かれた曲の楽譜です。',
             targets: [
               { word: '吹奏楽', answer: 'すいそうがく' },
+              { word: '曲',     answer: 'きょく' },
               { word: '楽譜',   answer: 'がくふ' },
             ],
           },
@@ -950,6 +957,7 @@ const CHAPTERS = [
             num: 8,
             full: 'イギリスで有名な探偵といえば、シャーロック・ホームズです。',
             targets: [
+              { word: '有名', answer: 'ゆうめい' },
               { word: '探偵', answer: 'たんてい' },
             ],
           },
@@ -967,7 +975,7 @@ const CHAPTERS = [
           { num: 2, full: '野生動物が畑をあらす。',       writingTargets: [{ word: 'あらす',    answer: '荒らす' }] },
           { num: 3, full: 'きぬの着物を縫う。',           writingTargets: [{ word: 'きぬ',      answer: '絹' }] },
           { num: 4, full: 'かいこを育てる。',             writingTargets: [{ word: 'かいこ',    answer: '蚕' }] },
-          { num: 5, full: '言葉たくみに勧める。',         writingTargets: [{ word: 'たくみ',    answer: '巧み' }] },
+          { num: 5, full: '言葉たくみに勧める。',         writingTargets: [{ word: 'たくみに',  answer: '巧みに' }] },
           { num: 6, full: '意志をつらぬく。',             writingTargets: [{ word: 'つらぬく',  answer: '貫く' }] },
           { num: 7, full: '自分の将来を頭に思いえがく。', writingTargets: [{ word: 'えがく',    answer: '描く' }] },
           { num: 8, full: '耳をすます。',                 writingTargets: [{ word: 'すます',    answer: '澄ます' }] },
