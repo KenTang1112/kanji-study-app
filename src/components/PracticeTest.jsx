@@ -1177,7 +1177,7 @@ const CHAPTERS = [
         questions: [
           { num: 1,  target: '蜜蜂',   answer: 'みつばち' },
           { num: 2,  target: '昆虫',   answer: 'こんちゅう' },
-          { num: 3,  target: '匹',     answer: 'ひき' },
+          { num: 3,  target: '1匹',    answer: 'いっぴき' },
           { num: 4,  target: '雌',     answer: 'めす' },
           { num: 5,  target: '巣造り', answer: 'すづくり' },
           { num: 6,  target: '餌採り', answer: 'えさとり' },
