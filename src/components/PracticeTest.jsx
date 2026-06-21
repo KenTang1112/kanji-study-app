@@ -48,7 +48,7 @@ function HandwritingCanvas({ width = 130, height = 75, disabled }) {
   );
 }
 
-const CIRCLED = ['①','②','③','④','⑤','⑥','⑦','⑧','⑨','⑩','⑪','⑫'];
+const CIRCLED = ['①','②','③','④','⑤','⑥','⑦','⑧','⑨','⑩','⑪','⑫','⑬','⑭','⑮','⑯','⑰','⑱','⑲','⑳'];
 
 // ─────────────────────────────────────────────────────────────────
 // Splits a sentence string into parts around multiple target words.
@@ -1119,14 +1119,17 @@ const CHAPTERS = [
         example: '例：わたしは大学へ行きます。　→　私　だいがく　いきます',
         sentences: [
           { num: 1,  full: '顕微鏡で植物のさいほうを見る。',
+            targets: [{ word: '顕微鏡', answer: 'けんびきょう' }],
             writingTargets: [{ word: 'さいほう', answer: '細胞' }] },
           { num: 2,  full: '太陽は東からのぼる。',
             writingTargets: [{ word: 'のぼる', answer: '昇る' }] },
           { num: 3,  full: '道端に咲いている野の花をつむ。',
+            targets: [{ word: '道端', answer: 'みちばた' }],
             writingTargets: [{ word: 'つむ', answer: '摘む' }] },
           { num: 4,  full: '判決をくつがえす。',
             writingTargets: [{ word: 'くつがえす', answer: '覆す' }] },
           { num: 5,  full: '隣の家では大きい犬をかっている。',
+            targets: [{ word: '隣', answer: 'となり' }],
             writingTargets: [{ word: 'かっている', answer: '飼っている' }] },
           { num: 6,  full: '夕日で空が赤くそまっている。',
             writingTargets: [{ word: 'そまっている', answer: '染まっている' }] },
@@ -1200,12 +1203,14 @@ const CHAPTERS = [
           { num: 1,  full: '日本の歴史や文化、しゅうきょうについて書かれた本を読む。',
             writingTargets: [{ word: 'しゅうきょう', answer: '宗教' }] },
           { num: 2,  full: 'すは穀物や果物から作られる。',
+            targets: [{ word: '穀物', answer: 'こくもつ' }, { word: '果物', answer: 'くだもの' }],
             writingTargets: [{ word: 'す', answer: '酢' }] },
           { num: 3,  full: '野菜を塩でつけて、保存食にする。',
             writingTargets: [{ word: 'つけて', answer: '漬けて' }] },
           { num: 4,  full: 'とがったものが入っていたので、袋がさけてしまった。',
             writingTargets: [{ word: 'さけて', answer: '裂けて' }] },
           { num: 5,  full: 'この映画は実在した人物の生涯をえがいたものです。',
+            targets: [{ word: '生涯', answer: 'しょうがい' }],
             writingTargets: [{ word: 'えがいた', answer: '描いた' }] },
           { num: 6,  full: 'あそこの曲がり角は木の葉がしげって見通しが悪い。',
             writingTargets: [{ word: 'しげって', answer: '茂って' }] },
@@ -1214,9 +1219,11 @@ const CHAPTERS = [
           { num: 8,  full: 'たつまきで家の屋根が飛ばされてしまった。',
             writingTargets: [{ word: 'たつまき', answer: '竜巻' }] },
           { num: 9,  full: '冬眠する動物は夏の終わりから秋にかけて体に脂肪をたくわえる。',
+            targets: [{ word: '脂肪', answer: 'しぼう' }],
             writingTargets: [{ word: 'たくわえる', answer: '蓄える' }] },
-          { num: 10, full: 'あいという植物の葉やくきから濃い青色の染料が採れます。',
-            writingTargets: [{ word: 'あい', answer: '藍' }, { word: 'くき', answer: '茎' }] },
+          { num: 10, full: '藍という植物の葉やくきから濃い青色の染料が採れます。',
+            targets: [{ word: '藍', answer: 'あい' }],
+            writingTargets: [{ word: 'くき', answer: '茎' }] },
           { num: 11, full: '恒温動物は気温や水温に影響されず、一定の体温を保つことができます。',
             targets: [{ word: '恒温', answer: 'こうおん' }, { word: '影響', answer: 'えいきょう' }] },
           { num: 12, full: '蚊のなかにはウイルスを媒介するものもある。',
