@@ -1118,9 +1118,9 @@ const CHAPTERS = [
         instruction: '例のように書きなさい。',
         example: '例：わたしは大学へ行きます。　→　私　だいがく　いきます',
         sentences: [
-          { num: 1,  full: '顕微鏡で植物のさいほうを見る。',
+          { num: 1,  full: '顕微鏡で植物のさいぼうを見る。',
             targets: [{ word: '顕微鏡', answer: 'けんびきょう' }],
-            writingTargets: [{ word: 'さいほう', answer: '細胞' }] },
+            writingTargets: [{ word: 'さいぼう', answer: '細胞' }] },
           { num: 2,  full: '太陽は東からのぼる。',
             writingTargets: [{ word: 'のぼる', answer: '昇る' }] },
           { num: 3,  full: '道端に咲いている野の花をつむ。',
