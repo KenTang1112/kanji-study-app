@@ -1233,6 +1233,90 @@ const CHAPTERS = [
     ],
   },
 
+  // ═══ 27課 ═══════════════════════════════════════════════════════
+  {
+    id: 27, accent: '#0891b2',
+    sections: [
+      {
+        id: 's1', type: 'reading_sentences',
+        label: '問題1',
+        instruction: '下線部の読みをひらがなで書きなさい。',
+        sentences: [
+          { num: 1,  full: 'これが丸く見えるのは、目の錯覚だ。',
+            targets: [{ word: '錯覚', answer: 'さっかく' }] },
+          { num: 2,  full: '病気の人に付き添う。',
+            targets: [{ word: '付き添う', answer: 'つきそう' }] },
+          { num: 3,  full: '長い時間、仕事をしたら、肩が凝った。',
+            targets: [{ word: '凝った', answer: 'こった' }] },
+          { num: 4,  full: '彼女に干渉するのはやめたほうがいい。',
+            targets: [{ word: '干渉', answer: 'かんしょう' }] },
+          { num: 5,  full: 'この法律には盲点がある。',
+            targets: [{ word: '盲点', answer: 'もうてん' }] },
+          { num: 6,  full: '事故現場では、懸命な救助が続けられた。',
+            targets: [{ word: '懸命', answer: 'けんめい' }] },
+          { num: 7,  full: '自己を知るためにはどのようにしたらいいだろうか。',
+            targets: [{ word: '自己', answer: 'じこ' }] },
+          { num: 8,  full: '彼の話には矛盾している点がたくさんあった。',
+            targets: [{ word: '矛盾', answer: 'むじゅん' }] },
+          { num: 9,  full: 'この解釈は間違っている。',
+            targets: [{ word: '解釈', answer: 'かいしゃく' }] },
+          { num: 10, full: '生物の授業で、魚を解剖した。',
+            targets: [{ word: '解剖', answer: 'かいぼう' }] },
+          { num: 11, full: 'その資料を閲覧したいのですが、どこで申し込めばいいですか。',
+            targets: [{ word: '閲覧', answer: 'えつらん' }] },
+        ],
+      },
+      {
+        id: 's2', type: 'reading_sentences',
+        label: '問題2',
+        instruction: '送りがなが必要な場合はそれに注意して、下線部の言葉を漢字で書きなさい。',
+        example: '例：わたしは大学へ行きます。　→　私　だいがく　いきます',
+        sentences: [
+          { num: 1,  full: '毎日、いっしょうけんめい勉強する。',
+            writingTargets: [{ word: 'いっしょうけんめい', answer: '一生懸命' }] },
+          { num: 2,  full: 'もう、この映画をごらんになりましたか。',
+            writingTargets: [{ word: 'ごらん', answer: 'ご覧' }] },
+          { num: 3,  full: '新しい商品をちんれつする。',
+            writingTargets: [{ word: 'ちんれつ', answer: '陳列' }] },
+          { num: 4,  full: 'ぼうけんについて書かれた小説を読むのが好きだ。',
+            writingTargets: [{ word: 'ぼうけん', answer: '冒険' }] },
+          { num: 5,  full: 'この木の中はくうどうになっている。',
+            writingTargets: [{ word: 'くうどう', answer: '空洞' }] },
+          { num: 6,  full: '手紙をそえて、花束を送った。',
+            writingTargets: [{ word: 'そえて', answer: '添えて' }] },
+          { num: 7,  full: 'この板はこうばいがある。',
+            writingTargets: [{ word: 'こうばい', answer: '勾配' }] },
+          { num: 8,  full: 'この計画はせいこうするでしょう。',
+            writingTargets: [{ word: 'せいこう', answer: '成功' }] },
+          { num: 9,  full: 'じしゃくはプラスチックを引きつけない。',
+            writingTargets: [{ word: 'じしゃく', answer: '磁石' }] },
+          { num: 10, full: 'このリストはじゅんじょが正しくない。',
+            writingTargets: [{ word: 'じゅんじょ', answer: '順序' }] },
+          { num: 11, full: '窓のわくを新しくする。',
+            writingTargets: [{ word: 'わく', answer: '枠' }] },
+          { num: 12, full: '考えたことをじっせんしてみる。',
+            writingTargets: [{ word: 'じっせん', answer: '実践' }] },
+        ],
+      },
+      {
+        id: 's3', type: 'compound_splitting',
+        label: '問題3',
+        instruction: '次の漢字はどのような構成になっていますか。例のように分けなさい。',
+        example: '例：不/裁切　　自己/紹介',
+        compounds: [
+          { num: 1, word: '冷蔵庫',       answer: '冷蔵/庫' },
+          { num: 2, word: '望遠鏡',       answer: '望遠/鏡' },
+          { num: 3, word: '無収入',       answer: '無/収入' },
+          { num: 4, word: '交通機関',     answer: '交通/機関' },
+          { num: 5, word: '化学調味料',   answer: '化学/調味料' },
+          { num: 6, word: '不得意科目',   answer: '不得意/科目' },
+          { num: 7, word: '経済援助計画', answer: '経済援助/計画' },
+          { num: 8, word: '新和英大辞典', answer: '新/和英大辞典' },
+        ],
+      },
+    ],
+  },
+
 ];
 
 // ─────────────────────────────────────────────────────────────────
@@ -1611,6 +1695,45 @@ function SectionHeader({ label, instruction }) {
 }
 
 // ─────────────────────────────────────────────────────────────────
+// COMPOUND SPLITTING SECTION (問題3 — type/分 a slash into the compound)
+// ─────────────────────────────────────────────────────────────────
+function CompoundSplittingSection({ sec, chId, answers, onChange, submitted }) {
+  return (
+    <div className="mb-10">
+      <SectionHeader label={sec.label} instruction={sec.instruction} />
+      {sec.example && (
+        <div className="border border-[#2a2a38] rounded inline-flex items-center px-4 py-1.5 mb-4 bg-[#171720] text-sm kanji-text text-[#606080]">{sec.example}</div>
+      )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {sec.compounds.map(c => {
+          const key = `${chId}-${sec.id}-${c.num}`;
+          const val = answers[key] || '';
+          const correct = submitted && val.trim() === c.answer;
+          const wrong = submitted && !correct;
+          return (
+            <div key={c.num}
+              className={`flex items-start gap-3 p-3 rounded-xl border transition-all
+                ${submitted ? (correct ? 'border-[#4AA85C44] bg-[#4AA85C0d]' : 'border-[#D4861C44] bg-[#D4861C0d]') : 'border-[#2a2a38] bg-[#171720] hover:border-[#3a3a55]'}`}
+            >
+              <span className="text-[#606080] text-sm font-semibold pt-1 shrink-0">{CIRCLED[c.num - 1]}</span>
+              <div className="flex-1">
+                <p className="text-2xl kanji-text font-medium text-[#e0e0f0] mb-2">{c.word}</p>
+                <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
+                  placeholder="例：冷蔵/庫"
+                  className={`w-full px-2 py-1 rounded border text-sm outline-none
+                    ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0F0F14] border-[#2a2a38] text-[#e0e0f0] focus:border-[#C1392B]'}`} />
+                {submitted && wrong && <p className="text-xs mt-1 kanji-text"><span className="line-through text-[#3a3a55] mr-1">{val || '未回答'}</span><span className="text-[#4AA85C] font-bold">→ {c.answer}</span></p>}
+                {submitted && correct && <p className="text-xs text-[#4AA85C] font-bold mt-1">✓ 正解</p>}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────
 // SCORE BANNER
 // ─────────────────────────────────────────────────────────────────
 function ScoreBanner({ chapter, answers, submitted }) {
@@ -1618,6 +1741,15 @@ function ScoreBanner({ chapter, answers, submitted }) {
   let correct = 0, total = 0;
   chapter.sections.forEach(sec => {
     if (sec.type === 'writing' || sec.type === 'info') return;
+    // compound_splitting — each compound is one answer
+    if (sec.type === 'compound_splitting') {
+      (sec.compounds || []).forEach(c => {
+        total++;
+        const key = `${chapter.id}-${sec.id}-${c.num}`;
+        if ((answers[key] || '').trim() === c.answer) correct++;
+      });
+      return;
+    }
     // word_box_fill — nested groups → sentences
     if (sec.type === 'word_box_fill') {
       (sec.groups || []).forEach(group => {
@@ -1925,9 +2057,10 @@ export default function PracticeTest({ onBack }) {
         if (sec.type === 'reading_list')       return <ReadingListSection       key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
         if (sec.type === 'reading_headlines')  return <ReadingHeadlinesSection  key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
         if (sec.type === 'reading_sentences')  return <ReadingSentencesSection  key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
-        if (sec.type === 'writing')            return <WritingSection           key={sec.id} sec={sec} submitted={isSubmitted} />;
-        if (sec.type === 'kanji_choice')       return <KanjiChoiceSection       key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
-        if (sec.type === 'word_box_fill')      return <WordBoxFillSection        key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
+        if (sec.type === 'writing')             return <WritingSection            key={sec.id} sec={sec} submitted={isSubmitted} />;
+        if (sec.type === 'kanji_choice')        return <KanjiChoiceSection        key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
+        if (sec.type === 'word_box_fill')       return <WordBoxFillSection        key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
+        if (sec.type === 'compound_splitting')  return <CompoundSplittingSection  key={sec.id} sec={sec} chId={chapter.id} answers={answers} onChange={handleChange} submitted={isSubmitted} />;
         return null;
       })}
 
