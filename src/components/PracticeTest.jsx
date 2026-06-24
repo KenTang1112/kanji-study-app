@@ -1708,7 +1708,8 @@ function CompoundSplittingSection({ sec, chId, answers, onChange, submitted }) {
         {sec.compounds.map(c => {
           const key = `${chId}-${sec.id}-${c.num}`;
           const val = answers[key] || '';
-          const correct = submitted && val.trim() === c.answer;
+          const normalized = val.trim().replace(/・/g, '/');
+          const correct = submitted && normalized === c.answer;
           const wrong = submitted && !correct;
           return (
             <div key={c.num}
@@ -1746,7 +1747,7 @@ function ScoreBanner({ chapter, answers, submitted }) {
       (sec.compounds || []).forEach(c => {
         total++;
         const key = `${chapter.id}-${sec.id}-${c.num}`;
-        if ((answers[key] || '').trim() === c.answer) correct++;
+        if ((answers[key] || '').trim().replace(/・/g, '/') === c.answer) correct++;
       });
       return;
     }
