@@ -76,7 +76,7 @@ export default function FlaggedItemsManager({ onBack }) {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="text-xl text-gray-600">Loading flagged items...</div>
+        <div className="text-xl text-[#C5CBDB]">Loading flagged items...</div>
       </div>
     );
   }
@@ -88,9 +88,9 @@ export default function FlaggedItemsManager({ onBack }) {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+        <div className="bg-[#131A2A] rounded-xl shadow-lg p-6 mb-6">
           <div className="flex justify-between items-center mb-4">
-            <h1 className="text-3xl font-bold text-gray-800">Flagged Items Management</h1>
+            <h1 className="text-3xl font-bold text-[#E8EBF4]">Flagged Items Management</h1>
             <button
               onClick={onBack}
               className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
@@ -102,9 +102,9 @@ export default function FlaggedItemsManager({ onBack }) {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
             {Object.entries(stats).map(([reason, count]) => (
-              <div key={reason} className="bg-gray-50 rounded-lg p-3 text-center">
+              <div key={reason} className="bg-[#1A2234] rounded-lg p-3 text-center">
                 <div className="text-2xl font-bold text-blue-600">{count}</div>
-                <div className="text-sm text-gray-600">{getReasonLabel(reason)}</div>
+                <div className="text-sm text-[#C5CBDB]">{getReasonLabel(reason)}</div>
               </div>
             ))}
           </div>
@@ -117,7 +117,7 @@ export default function FlaggedItemsManager({ onBack }) {
                 className={`px-4 py-2 rounded-lg transition-colors ${
                   filter === 'all' 
                     ? 'bg-blue-500 text-white' 
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    : 'bg-[#232C42] text-[#C5CBDB] hover:bg-gray-300'
                 }`}
               >
                 All ({flaggedItems.length})
@@ -129,7 +129,7 @@ export default function FlaggedItemsManager({ onBack }) {
                   className={`px-4 py-2 rounded-lg transition-colors ${
                     filter === reason 
                       ? 'bg-blue-500 text-white' 
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      : 'bg-[#232C42] text-[#C5CBDB] hover:bg-gray-300'
                   }`}
                 >
                   {getReasonLabel(reason)} ({stats[reason]})
@@ -155,11 +155,11 @@ export default function FlaggedItemsManager({ onBack }) {
         </div>
 
         {/* Flagged Items List */}
-        <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="bg-[#131A2A] rounded-xl shadow-lg p-6">
           {filteredItems.length === 0 ? (
             <div className="text-center py-8">
-              <div className="text-gray-500 text-lg">No flagged items found</div>
-              <div className="text-gray-400 mt-2">
+              <div className="text-[#7681A0] text-lg">No flagged items found</div>
+              <div className="text-[#7681A0] mt-2">
                 {filter === 'all' 
                   ? 'Users have not flagged any items yet.'
                   : `No items with reason: ${getReasonLabel(filter)}`
@@ -169,20 +169,20 @@ export default function FlaggedItemsManager({ onBack }) {
           ) : (
             <div className="space-y-4">
               {filteredItems.map((item, index) => (
-                <div key={item.id} className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                <div key={item.id} className="border border-[#232C42] rounded-lg p-4 hover:bg-[#1E2638] transition-colors">
                   <div className="flex justify-between items-start mb-2">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <span className="text-lg font-bold text-gray-800">
+                        <span className="text-lg font-bold text-[#E8EBF4]">
                           {item.word}
                         </span>
-                        <span className="text-gray-600">({item.reading})</span>
+                        <span className="text-[#C5CBDB]">({item.reading})</span>
                         <span className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full">
                           {getReasonLabel(item.reason)}
                         </span>
                       </div>
-                      <div className="text-gray-600 mb-1">{item.meaning}</div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-[#C5CBDB] mb-1">{item.meaning}</div>
+                      <div className="text-sm text-[#7681A0]">
                         Mode: {item.mode} | Chapter: {item.chapter} | 
                         Flagged: {formatDate(item.timestamp)}
                       </div>

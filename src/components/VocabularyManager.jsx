@@ -104,15 +104,15 @@ export default function VocabularyManager({ onBack, currentUser }) {
     return contributors[item.addedBy]?.avatarUrl || item.addedByAvatar || null;
   };
 
-  const inputCls = "w-full px-4 py-2.5 bg-[#0F0F14] border border-[#2a2a38] text-[#e0e0f0] rounded-xl focus:border-[#C1392B] focus:outline-none text-sm placeholder-[#3a3a55]";
-  const labelCls = "block text-xs font-medium text-[#606080] mb-1.5";
+  const inputCls = "w-full px-4 py-2.5 bg-[#0B0E17] border border-[#232C42] text-[#E8EBF4] rounded-xl focus:border-[#C1392B] focus:outline-none text-sm placeholder-[#35415E]";
+  const labelCls = "block text-xs font-medium text-[#7681A0] mb-1.5";
 
   return (
     <div className="max-w-4xl mx-auto">
       {/* Header */}
       <div className="mb-6">
-        <p className="text-[10px] font-semibold tracking-widest uppercase text-[#3a3a55] mb-0.5">Community</p>
-        <h2 className="text-2xl font-bold text-[#e0e0f0]">Shared Vocabulary</h2>
+        <p className="text-[10px] font-semibold tracking-widest uppercase text-[#35415E] mb-0.5">Community</p>
+        <h2 className="text-2xl font-bold text-[#E8EBF4]">Shared Vocabulary</h2>
       </div>
 
       {/* Action Buttons */}
@@ -125,7 +125,7 @@ export default function VocabularyManager({ onBack, currentUser }) {
         </button>
         <button
           onClick={loadVocabulary}
-          className="px-5 py-2.5 bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-xl text-sm hover:text-[#e0e0f0] hover:border-[#3a3a55] transition-colors"
+          className="px-5 py-2.5 bg-[#131A2A] border border-[#232C42] text-[#7681A0] rounded-xl text-sm hover:text-[#E8EBF4] hover:border-[#35415E] transition-colors"
         >
           🔄 Refresh
         </button>
@@ -133,8 +133,8 @@ export default function VocabularyManager({ onBack, currentUser }) {
 
       {/* Add Form */}
       {showAddForm && (
-        <div className="bg-[#171720] border border-[#2a2a38] rounded-2xl p-5 mb-5">
-          <h3 className="text-sm font-semibold text-[#e0e0f0] mb-4">Add New Vocabulary</h3>
+        <div className="bg-[#131A2A] border border-[#232C42] rounded-2xl p-5 mb-5">
+          <h3 className="text-sm font-semibold text-[#E8EBF4] mb-4">Add New Vocabulary</h3>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -167,7 +167,7 @@ export default function VocabularyManager({ onBack, currentUser }) {
             </div>
             <div className="flex gap-3 mt-5">
               <button type="submit" className="px-5 py-2 bg-[#C1392B] text-white rounded-xl text-sm font-semibold hover:bg-[#a62f24] transition-colors">Add</button>
-              <button type="button" onClick={resetForm} className="px-5 py-2 bg-[#0F0F14] border border-[#2a2a38] text-[#606080] rounded-xl text-sm hover:text-[#e0e0f0] transition-colors">Cancel</button>
+              <button type="button" onClick={resetForm} className="px-5 py-2 bg-[#0B0E17] border border-[#232C42] text-[#7681A0] rounded-xl text-sm hover:text-[#E8EBF4] transition-colors">Cancel</button>
             </div>
           </form>
         </div>
@@ -177,19 +177,19 @@ export default function VocabularyManager({ onBack, currentUser }) {
       {loading ? (
         <div className="text-center py-16">
           <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#C1392B] mx-auto mb-3" />
-          <p className="text-[#606080] text-sm">Loading shared vocabulary…</p>
+          <p className="text-[#7681A0] text-sm">Loading shared vocabulary…</p>
         </div>
       ) : (
         <div className="space-y-5">
           {getVocabularyByChapter().length === 0 ? (
-            <div className="text-center py-16 bg-[#171720] border border-[#2a2a38] rounded-2xl">
-              <p className="text-[#606080] mb-1">No shared vocabulary yet</p>
-              <p className="text-[#3a3a55] text-sm">Click "Add Vocabulary" to contribute</p>
+            <div className="text-center py-16 bg-[#131A2A] border border-[#232C42] rounded-2xl">
+              <p className="text-[#7681A0] mb-1">No shared vocabulary yet</p>
+              <p className="text-[#35415E] text-sm">Click "Add Vocabulary" to contribute</p>
             </div>
           ) : (
             getVocabularyByChapter().map(({ chapter, items }) => (
               <div key={chapter}>
-                <p className="text-[10px] font-semibold tracking-widest uppercase text-[#3a3a55] mb-3">
+                <p className="text-[10px] font-semibold tracking-widest uppercase text-[#35415E] mb-3">
                   Chapter {chapter} <span className="normal-case tracking-normal">· {items.length} items</span>
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -199,25 +199,25 @@ export default function VocabularyManager({ onBack, currentUser }) {
                     const contributorAvatar = getContributorAvatar(item);
                     const initial = (contributorName[0] || '?').toUpperCase();
                     return (
-                      <div key={item.docId} className="bg-[#171720] border border-[#2a2a38] rounded-xl p-4">
+                      <div key={item.docId} className="bg-[#131A2A] border border-[#232C42] rounded-xl p-4">
                         <div className="flex justify-between items-start mb-2">
-                          <div className="text-xl font-bold text-[#e0e0f0] noto">{item.word}</div>
+                          <div className="text-xl font-bold text-[#E8EBF4] noto">{item.word}</div>
                           {isOwn && (
-                            <button onClick={() => handleDelete(item)} className="text-[#3a3a55] hover:text-[#C1392B] transition-colors ml-2 text-sm">🗑️</button>
+                            <button onClick={() => handleDelete(item)} className="text-[#35415E] hover:text-[#C1392B] transition-colors ml-2 text-sm">🗑️</button>
                           )}
                         </div>
-                        <div className="text-sm text-[#606080] reading-text mb-0.5">{item.reading}</div>
-                        <div className="text-sm text-[#e0e0f0] mb-2">{item.meaning}</div>
+                        <div className="text-sm text-[#7681A0] reading-text mb-0.5">{item.reading}</div>
+                        <div className="text-sm text-[#E8EBF4] mb-2">{item.meaning}</div>
                         {item.relatedKanji?.length > 0 && (
-                          <div className="text-xs text-[#3a3a55] mb-2">Kanji: {item.relatedKanji.join(' · ')}</div>
+                          <div className="text-xs text-[#35415E] mb-2">Kanji: {item.relatedKanji.join(' · ')}</div>
                         )}
-                        <div className="flex items-center gap-1.5 pt-2 border-t border-[#1e1e2a]">
+                        <div className="flex items-center gap-1.5 pt-2 border-t border-[#1A2234]">
                           {contributorAvatar ? (
                             <img src={contributorAvatar} alt={contributorName} className="w-5 h-5 rounded-full object-cover" />
                           ) : (
                             <div className="w-5 h-5 rounded-full bg-[#C1392B] flex items-center justify-center text-white text-[9px] font-bold">{initial}</div>
                           )}
-                          <span className="text-xs text-[#3a3a55]">{contributorName}</span>
+                          <span className="text-xs text-[#35415E]">{contributorName}</span>
                         </div>
                       </div>
                     );
@@ -231,7 +231,7 @@ export default function VocabularyManager({ onBack, currentUser }) {
 
       {/* Stats */}
       {vocabulary.length > 0 && (
-        <div className="mt-6 bg-[#171720] border border-[#2a2a38] rounded-xl p-4">
+        <div className="mt-6 bg-[#131A2A] border border-[#232C42] rounded-xl p-4">
           <div className="grid grid-cols-3 gap-4">
             {[
               { label: 'Total Items', value: vocabulary.length, color: 'text-[#378ADD]' },
@@ -240,7 +240,7 @@ export default function VocabularyManager({ onBack, currentUser }) {
             ].map(({ label, value, color }) => (
               <div key={label} className="text-center">
                 <div className={`text-2xl font-bold ${color}`}>{value}</div>
-                <div className="text-xs text-[#606080] mt-0.5">{label}</div>
+                <div className="text-xs text-[#7681A0] mt-0.5">{label}</div>
               </div>
             ))}
           </div>

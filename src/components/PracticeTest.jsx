@@ -22,7 +22,7 @@ function HandwritingCanvas({ width = 130, height = 75, disabled }) {
     if (!drawing.current || disabled) return; e.preventDefault();
     const p = getPos(e); const ctx = canvasRef.current.getContext('2d');
     ctx.beginPath(); ctx.moveTo(last.current.x, last.current.y); ctx.lineTo(p.x, p.y);
-    ctx.strokeStyle = '#e0e0f0'; ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.stroke();
+    ctx.strokeStyle = '#E8EBF4'; ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.stroke();
     last.current = p;
   }, [disabled, getPos]);
   const stop = useCallback(() => { drawing.current = false; }, []);
@@ -42,7 +42,7 @@ function HandwritingCanvas({ width = 130, height = 75, disabled }) {
       <canvas ref={canvasRef} width={width * 2} height={height * 2}
         onMouseDown={start} onMouseMove={move} onMouseUp={stop} onMouseLeave={stop}
         style={{ touchAction: 'none', width: `${width}px`, height: `${height}px`, cursor: disabled ? 'default' : 'crosshair' }}
-        className="border border-[#2a2a38] rounded bg-[#0F0F14]" />
+        className="border border-[#232C42] rounded bg-[#0B0E17]" />
       {!disabled && <button onClick={clear} className="text-[10px] text-gray-400 hover:text-red-500 mt-0.5 leading-none">消す</button>}
     </span>
   );
@@ -1329,12 +1329,12 @@ function ReadingListSection({ sec, chId, answers, onChange, submitted }) {
 
       {/* Context box — single column */}
       {sec.contextLines && (
-        <div className="border border-[#2a2a38] rounded-xl p-4 mb-5 bg-[#0F0F14]">
+        <div className="border border-[#232C42] rounded-xl p-4 mb-5 bg-[#0B0E17]">
           {sec.contextTitle && (
-            <p className="text-center font-bold text-base tracking-widest kanji-text mb-3 border-b border-[#2a2a38] pb-2 text-[#e0e0f0]">{sec.contextTitle}</p>
+            <p className="text-center font-bold text-base tracking-widest kanji-text mb-3 border-b border-[#232C42] pb-2 text-[#E8EBF4]">{sec.contextTitle}</p>
           )}
           {sec.contextLines.map((line, i) => (
-            <p key={i} className="text-sm leading-7 kanji-text whitespace-pre-wrap text-[#e0e0f0]">{line || '\u00A0'}</p>
+            <p key={i} className="text-sm leading-7 kanji-text whitespace-pre-wrap text-[#E8EBF4]">{line || '\u00A0'}</p>
           ))}
         </div>
       )}
@@ -1343,10 +1343,10 @@ function ReadingListSection({ sec, chId, answers, onChange, submitted }) {
       {sec.contextDocs && (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
           {sec.contextDocs.map((doc, di) => (
-            <div key={di} className="border border-[#2a2a38] rounded-xl p-3 bg-[#0F0F14] text-xs">
-              <p className="font-bold text-[#606080] text-center mb-2 border-b border-[#2a2a38] pb-1">{doc.title}</p>
+            <div key={di} className="border border-[#232C42] rounded-xl p-3 bg-[#0B0E17] text-xs">
+              <p className="font-bold text-[#7681A0] text-center mb-2 border-b border-[#232C42] pb-1">{doc.title}</p>
               {doc.lines.map((line, li) => (
-                <p key={li} className="kanji-text leading-6 text-[#e0e0f0]">{line}</p>
+                <p key={li} className="kanji-text leading-6 text-[#E8EBF4]">{line}</p>
               ))}
             </div>
           ))}
@@ -1363,16 +1363,16 @@ function ReadingListSection({ sec, chId, answers, onChange, submitted }) {
           return (
             <div key={q.num}
               className={`flex items-start gap-3 p-3 rounded-xl border transition-all
-                ${submitted ? (correct ? 'border-[#4AA85C44] bg-[#4AA85C0d]' : 'border-[#D4861C44] bg-[#D4861C0d]') : 'border-[#2a2a38] bg-[#171720] hover:border-[#3a3a55]'}`}
+                ${submitted ? (correct ? 'border-[#4AA85C44] bg-[#4AA85C0d]' : 'border-[#D4861C44] bg-[#D4861C0d]') : 'border-[#232C42] bg-[#131A2A] hover:border-[#35415E]'}`}
             >
-              <span className="text-[#606080] text-sm font-semibold pt-1 shrink-0">{CIRCLED[q.num - 1]}</span>
+              <span className="text-[#7681A0] text-sm font-semibold pt-1 shrink-0">{CIRCLED[q.num - 1]}</span>
               <div className="flex-1">
-                <p className="text-xl kanji-text font-medium text-[#e0e0f0] border-b-2 border-[#606080] inline-block mb-1">{q.target}</p>
+                <p className="text-xl kanji-text font-medium text-[#E8EBF4] border-b-2 border-[#7681A0] inline-block mb-1">{q.target}</p>
                 <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
                   placeholder="ひらがなで"
                   className={`w-full px-2 py-1 rounded border text-sm outline-none
-                    ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0F0F14] border-[#2a2a38] text-[#e0e0f0] focus:border-[#C1392B]'}`} />
-                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-[#3a3a55] mr-1">{val || '未回答'}</span><span className="text-[#4AA85C] font-bold">→ {q.answer}</span></p>}
+                    ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0B0E17] border-[#232C42] text-[#E8EBF4] focus:border-[#C1392B]'}`} />
+                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-[#35415E] mr-1">{val || '未回答'}</span><span className="text-[#4AA85C] font-bold">→ {q.answer}</span></p>}
                 {submitted && correct && <p className="text-xs text-[#4AA85C] font-bold mt-1">✓ 正解</p>}
               </div>
             </div>
@@ -1390,11 +1390,11 @@ function ReadingHeadlinesSection({ sec, chId, answers, onChange, submitted }) {
   return (
     <div className="mb-10">
       <SectionHeader label={sec.label} instruction={sec.instruction} />
-      <div className="border border-[#2a2a38] rounded-xl p-4 mb-5 bg-[#0F0F14] space-y-3">
+      <div className="border border-[#232C42] rounded-xl p-4 mb-5 bg-[#0B0E17] space-y-3">
         {sec.headlines.map((h, i) => (
           <p key={i}
             className={`kanji-text text-lg leading-relaxed px-3 py-2 rounded font-medium
-              ${h.inverted ? 'bg-[#e0e0f0] text-[#0F0F14]' : 'border border-dashed border-[#3a3a55] text-[#e0e0f0]'}`}
+              ${h.inverted ? 'bg-[#E8EBF4] text-[#0B0E17]' : 'border border-dashed border-[#35415E] text-[#E8EBF4]'}`}
           >{h.text}</p>
         ))}
       </div>
@@ -1407,16 +1407,16 @@ function ReadingHeadlinesSection({ sec, chId, answers, onChange, submitted }) {
           return (
             <div key={q.num}
               className={`flex items-start gap-3 p-3 rounded-xl border transition-all
-                ${submitted ? (correct ? 'border-[#4AA85C44] bg-[#4AA85C0d]' : 'border-[#D4861C44] bg-[#D4861C0d]') : 'border-[#2a2a38] bg-[#171720] hover:border-[#3a3a55]'}`}
+                ${submitted ? (correct ? 'border-[#4AA85C44] bg-[#4AA85C0d]' : 'border-[#D4861C44] bg-[#D4861C0d]') : 'border-[#232C42] bg-[#131A2A] hover:border-[#35415E]'}`}
             >
-              <span className="text-[#606080] text-sm font-semibold pt-1 shrink-0">{CIRCLED[q.num - 1]}</span>
+              <span className="text-[#7681A0] text-sm font-semibold pt-1 shrink-0">{CIRCLED[q.num - 1]}</span>
               <div className="flex-1">
-                <p className="text-xl kanji-text font-medium text-[#e0e0f0] border-b-2 border-[#606080] inline-block mb-1">{q.target}</p>
+                <p className="text-xl kanji-text font-medium text-[#E8EBF4] border-b-2 border-[#7681A0] inline-block mb-1">{q.target}</p>
                 <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
                   placeholder="ひらがなで"
                   className={`w-full px-2 py-1 rounded border text-sm outline-none
-                    ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0F0F14] border-[#2a2a38] text-[#e0e0f0] focus:border-[#C1392B]'}`} />
-                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-[#3a3a55] mr-1">{val || '未回答'}</span><span className="text-[#4AA85C] font-bold">→ {q.answer}</span></p>}
+                    ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0B0E17] border-[#232C42] text-[#E8EBF4] focus:border-[#C1392B]'}`} />
+                {submitted && wrong && <p className="text-xs mt-1"><span className="line-through text-[#35415E] mr-1">{val || '未回答'}</span><span className="text-[#4AA85C] font-bold">→ {q.answer}</span></p>}
                 {submitted && correct && <p className="text-xs text-[#4AA85C] font-bold mt-1">✓ 正解</p>}
               </div>
             </div>
@@ -1435,7 +1435,7 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
     <div className="mb-10">
       <SectionHeader label={sec.label} instruction={sec.instruction} />
       {sec.example && (
-        <div className="border border-[#2a2a38] rounded inline-flex items-center px-4 py-1.5 mb-4 bg-[#171720] text-sm kanji-text text-[#606080]">{sec.example}</div>
+        <div className="border border-[#232C42] rounded inline-flex items-center px-4 py-1.5 mb-4 bg-[#131A2A] text-sm kanji-text text-[#7681A0]">{sec.example}</div>
       )}
       <div className="space-y-6">
         {sec.sentences.map(s => {
@@ -1451,7 +1451,7 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
 
           return (
             <div key={s.num} className="flex items-start gap-3">
-              <span className="text-[#606080] font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
+              <span className="text-[#7681A0] font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
               <div className="flex-1">
                 {/* Sentence with underlined targets inline */}
                 <p className="text-base kanji-text leading-loose mb-3">
@@ -1461,7 +1461,7 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
                     if (tInfo?.mode === 'writing') {
                       return <span key={si} className="border-b-2 border-[#8B82F0] text-[#8B82F0] font-medium">{seg.text}</span>;
                     }
-                    return <span key={si} className="border-b-2 border-[#606080] text-[#e0e0f0] font-medium">{seg.text}</span>;
+                    return <span key={si} className="border-b-2 border-[#7681A0] text-[#E8EBF4] font-medium">{seg.text}</span>;
                   })}
                 </p>
 
@@ -1475,11 +1475,11 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
                       const wrong = submitted && !correct;
                       return (
                         <div key={t.word} className="flex flex-col items-start gap-0.5">
-                          <span className="text-xs text-[#606080] kanji-text border-b border-[#3a3a55] inline-block">{t.word}</span>
+                          <span className="text-xs text-[#7681A0] kanji-text border-b border-[#35415E] inline-block">{t.word}</span>
                           <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
                             placeholder="読み"
                             className={`px-2 py-1 rounded border text-sm outline-none transition-all
-                              ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0F0F14] border-[#2a2a38] text-[#e0e0f0] focus:border-[#C1392B]'}`}
+                              ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0B0E17] border-[#232C42] text-[#E8EBF4] focus:border-[#C1392B]'}`}
                             style={{ width: `${Math.max(90, t.answer.length * 13 + 20)}px` }} />
                           {submitted && correct && <span className="text-[11px] text-[#4AA85C] font-bold">✓</span>}
                           {submitted && wrong && <span className="text-[11px] text-[#4AA85C] font-bold">{t.answer}</span>}
@@ -1499,8 +1499,8 @@ function ReadingSentencesSection({ sec, chId, answers, onChange, submitted }) {
                           <HandwritingCanvas width={120} height={68} disabled={submitted} />
                           {submitted && (
                             <div className="flex items-center gap-1">
-                              <span className="text-xs text-[#606080]">答：</span>
-                              <span className="text-2xl font-bold text-[#e0e0f0] kanji-text">{t.answer}</span>
+                              <span className="text-xs text-[#7681A0]">答：</span>
+                              <span className="text-2xl font-bold text-[#E8EBF4] kanji-text">{t.answer}</span>
                             </div>
                           )}
                         </div>
@@ -1531,12 +1531,12 @@ function WritingSection({ sec, submitted }) {
           const segments = splitSentence(s.full, writingTargets.map(t => ({ word: t.word, key: t.word })));
           return (
             <div key={s.num} className="flex items-start gap-3">
-              <span className="text-[#606080] font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
+              <span className="text-[#7681A0] font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
               <div className="flex-1">
                 <p className="text-base kanji-text leading-loose mb-2">
                   {segments.map((seg, si) =>
                     seg.isTarget
-                      ? <span key={si} className="border-b-2 border-[#606080] text-[#8B82F0] font-medium">{seg.text}</span>
+                      ? <span key={si} className="border-b-2 border-[#7681A0] text-[#8B82F0] font-medium">{seg.text}</span>
                       : <span key={si}>{seg.text}</span>
                   )}
                 </p>
@@ -1551,8 +1551,8 @@ function WritingSection({ sec, submitted }) {
                         <HandwritingCanvas width={130} height={75} disabled={submitted} />
                         {submitted && (
                           <div className="flex items-center gap-1">
-                            <span className="text-xs text-[#606080]">答え：</span>
-                            <span className="text-2xl font-bold text-[#e0e0f0] kanji-text">{t.answer}</span>
+                            <span className="text-xs text-[#7681A0]">答え：</span>
+                            <span className="text-2xl font-bold text-[#E8EBF4] kanji-text">{t.answer}</span>
                           </div>
                         )}
                       </div>
@@ -1573,9 +1573,9 @@ function WritingSection({ sec, submitted }) {
 // ─────────────────────────────────────────────────────────────────
 function InfoSection({ sec }) {
   return (
-    <div className="mb-10 border border-[#2a2a38] rounded-xl p-4 bg-[#171720]">
-      <p className="font-bold text-[#606080] mb-2">─ {sec.label} ─</p>
-      <p className="text-sm text-[#e0e0f0] leading-relaxed kanji-text whitespace-pre-line">{sec.content}</p>
+    <div className="mb-10 border border-[#232C42] rounded-xl p-4 bg-[#131A2A]">
+      <p className="font-bold text-[#7681A0] mb-2">─ {sec.label} ─</p>
+      <p className="text-sm text-[#E8EBF4] leading-relaxed kanji-text whitespace-pre-line">{sec.content}</p>
     </div>
   );
 }
@@ -1590,7 +1590,7 @@ function WordBoxFillSection({ sec, chId, answers, onChange, submitted }) {
       <div className="space-y-6">
         {sec.groups.map((group, gi) => (
           <div key={gi}>
-            <div className="mb-3 px-4 py-2 border border-[#2a2a38] rounded-xl bg-[#0F0F14] text-[#e0e0f0] text-sm kanji-text text-center tracking-widest">
+            <div className="mb-3 px-4 py-2 border border-[#232C42] rounded-xl bg-[#0B0E17] text-[#E8EBF4] text-sm kanji-text text-center tracking-widest">
               {group.choices.join('・')}
             </div>
             <div className="space-y-3">
@@ -1599,7 +1599,7 @@ function WordBoxFillSection({ sec, chId, answers, onChange, submitted }) {
                 const selected = answers[key] || '';
                 return (
                   <div key={s.num} className="flex items-start gap-3">
-                    <span className="text-[#606080] font-medium text-base shrink-0 mt-0.5">({s.num})</span>
+                    <span className="text-[#7681A0] font-medium text-base shrink-0 mt-0.5">({s.num})</span>
                     <p className="text-base kanji-text leading-loose">
                       {s.pre}
                       <span className="inline-flex gap-1 mx-1 align-middle flex-wrap">
@@ -1616,7 +1616,7 @@ function WordBoxFillSection({ sec, chId, answers, onChange, submitted }) {
                                 ${isSelected && !submitted ? 'border-[#8B82F0] bg-[#8B82F011] text-[#8B82F0] font-bold' : ''}
                                 ${showCorrect ? 'border-[#4AA85C] bg-[#4AA85C11] text-[#4AA85C] font-bold' : ''}
                                 ${showWrong   ? 'border-[#D4861C] bg-[#D4861C11] text-[#D4861C] opacity-60' : ''}
-                                ${!isSelected && !showCorrect && !showWrong ? 'border-[#2a2a38] bg-[#0F0F14] text-[#e0e0f0] hover:border-[#8B82F0]' : ''}
+                                ${!isSelected && !showCorrect && !showWrong ? 'border-[#232C42] bg-[#0B0E17] text-[#E8EBF4] hover:border-[#8B82F0]' : ''}
                               `}
                             >
                               {choice}
@@ -1650,7 +1650,7 @@ function KanjiChoiceSection({ sec, chId, answers, onChange, submitted }) {
           const selected = answers[key] || '';
           return (
             <div key={s.num} className="flex items-start gap-3">
-              <span className="text-[#606080] font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
+              <span className="text-[#7681A0] font-medium text-base shrink-0 mt-0.5">{CIRCLED[s.num - 1]}</span>
               <p className="text-base kanji-text leading-loose">
                 {s.pre}
                 <span className="inline-flex gap-2 mx-1 align-middle">
@@ -1667,7 +1667,7 @@ function KanjiChoiceSection({ sec, chId, answers, onChange, submitted }) {
                           ${isSelected && !submitted ? 'border-[#8B82F0] bg-[#8B82F011] text-[#8B82F0] font-bold' : ''}
                           ${showCorrect ? 'border-[#4AA85C] bg-[#4AA85C11] text-[#4AA85C] font-bold' : ''}
                           ${showWrong ? 'border-[#D4861C] bg-[#D4861C11] text-[#D4861C] opacity-60' : ''}
-                          ${!isSelected && !showCorrect && !showWrong ? 'border-[#2a2a38] bg-[#0F0F14] text-[#e0e0f0] hover:border-[#8B82F0]' : ''}
+                          ${!isSelected && !showCorrect && !showWrong ? 'border-[#232C42] bg-[#0B0E17] text-[#E8EBF4] hover:border-[#8B82F0]' : ''}
                         `}
                       >
                         {choice}
@@ -1688,8 +1688,8 @@ function KanjiChoiceSection({ sec, chId, answers, onChange, submitted }) {
 function SectionHeader({ label, instruction }) {
   return (
     <div className="flex flex-wrap items-baseline gap-2 mb-4">
-      <span className="font-bold text-[#e0e0f0] text-base shrink-0">{label}</span>
-      <span className="text-sm text-[#606080] leading-relaxed">{instruction}</span>
+      <span className="font-bold text-[#E8EBF4] text-base shrink-0">{label}</span>
+      <span className="text-sm text-[#7681A0] leading-relaxed">{instruction}</span>
     </div>
   );
 }
@@ -1702,7 +1702,7 @@ function CompoundSplittingSection({ sec, chId, answers, onChange, submitted }) {
     <div className="mb-10">
       <SectionHeader label={sec.label} instruction={sec.instruction} />
       {sec.example && (
-        <div className="border border-[#2a2a38] rounded inline-flex items-center px-4 py-1.5 mb-4 bg-[#171720] text-sm kanji-text text-[#606080]">{sec.example}</div>
+        <div className="border border-[#232C42] rounded inline-flex items-center px-4 py-1.5 mb-4 bg-[#131A2A] text-sm kanji-text text-[#7681A0]">{sec.example}</div>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {sec.compounds.map(c => {
@@ -1714,16 +1714,16 @@ function CompoundSplittingSection({ sec, chId, answers, onChange, submitted }) {
           return (
             <div key={c.num}
               className={`flex items-start gap-3 p-3 rounded-xl border transition-all
-                ${submitted ? (correct ? 'border-[#4AA85C44] bg-[#4AA85C0d]' : 'border-[#D4861C44] bg-[#D4861C0d]') : 'border-[#2a2a38] bg-[#171720] hover:border-[#3a3a55]'}`}
+                ${submitted ? (correct ? 'border-[#4AA85C44] bg-[#4AA85C0d]' : 'border-[#D4861C44] bg-[#D4861C0d]') : 'border-[#232C42] bg-[#131A2A] hover:border-[#35415E]'}`}
             >
-              <span className="text-[#606080] text-sm font-semibold pt-1 shrink-0">{CIRCLED[c.num - 1]}</span>
+              <span className="text-[#7681A0] text-sm font-semibold pt-1 shrink-0">{CIRCLED[c.num - 1]}</span>
               <div className="flex-1">
-                <p className="text-2xl kanji-text font-medium text-[#e0e0f0] mb-2">{c.word}</p>
+                <p className="text-2xl kanji-text font-medium text-[#E8EBF4] mb-2">{c.word}</p>
                 <input type="text" value={val} onChange={e => onChange(key, e.target.value)} disabled={submitted}
                   placeholder="例：冷蔵/庫"
                   className={`w-full px-2 py-1 rounded border text-sm outline-none
-                    ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0F0F14] border-[#2a2a38] text-[#e0e0f0] focus:border-[#C1392B]'}`} />
-                {submitted && wrong && <p className="text-xs mt-1 kanji-text"><span className="line-through text-[#3a3a55] mr-1">{val || '未回答'}</span><span className="text-[#4AA85C] font-bold">→ {c.answer}</span></p>}
+                    ${submitted ? (correct ? 'bg-[#4AA85C11] border-[#4AA85C44] text-[#4AA85C]' : 'bg-[#D4861C11] border-[#D4861C44] text-[#D4861C]') : 'bg-[#0B0E17] border-[#232C42] text-[#E8EBF4] focus:border-[#C1392B]'}`} />
+                {submitted && wrong && <p className="text-xs mt-1 kanji-text"><span className="line-through text-[#35415E] mr-1">{val || '未回答'}</span><span className="text-[#4AA85C] font-bold">→ {c.answer}</span></p>}
                 {submitted && correct && <p className="text-xs text-[#4AA85C] font-bold mt-1">✓ 正解</p>}
               </div>
             </div>
@@ -1856,12 +1856,12 @@ function WritingDrillView({ onExit }) {
     return (
       <div className="max-w-3xl mx-auto pb-32">
         <div className="flex items-center gap-4 mb-6">
-          <button onClick={onExit} className="flex items-center gap-1 px-3 py-2 bg-[#171720] rounded-xl border border-[#2a2a38] text-[#606080] hover:text-[#e0e0f0] text-sm">
+          <button onClick={onExit} className="flex items-center gap-1 px-3 py-2 bg-[#131A2A] rounded-xl border border-[#232C42] text-[#7681A0] hover:text-[#E8EBF4] text-sm">
             ← 練習テストに戻る
           </button>
-          <h2 className="text-xl font-bold text-[#e0e0f0]">書き練習</h2>
+          <h2 className="text-xl font-bold text-[#E8EBF4]">書き練習</h2>
         </div>
-        <p className="text-sm text-[#606080] mb-4">練習する課を選んでください</p>
+        <p className="text-sm text-[#7681A0] mb-4">練習する課を選んでください</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
           {CHAPTERS.map(ch => {
             const count = buildDrillCards(ch.id).length;
@@ -1896,16 +1896,16 @@ function WritingDrillView({ onExit }) {
   return (
     <div className="max-w-3xl mx-auto pb-32">
       <div className="flex items-center justify-between mb-6">
-        <button onClick={backToPicker} className="flex items-center gap-1 px-3 py-2 bg-[#171720] rounded-xl border border-[#2a2a38] text-[#606080] hover:text-[#e0e0f0] text-sm">
+        <button onClick={backToPicker} className="flex items-center gap-1 px-3 py-2 bg-[#131A2A] rounded-xl border border-[#232C42] text-[#7681A0] hover:text-[#E8EBF4] text-sm">
           ← 課選択に戻る
         </button>
-        {!done && <span className="text-sm text-[#606080] font-medium">{idx + 1} / {cards.length}</span>}
+        {!done && <span className="text-sm text-[#7681A0] font-medium">{idx + 1} / {cards.length}</span>}
       </div>
 
       {done ? (
         <div className="text-center py-20">
-          <p className="text-2xl font-bold text-[#e0e0f0] mb-2">全問完了！</p>
-          <p className="text-[#606080] mb-8">書き練習が終わりました。</p>
+          <p className="text-2xl font-bold text-[#E8EBF4] mb-2">全問完了！</p>
+          <p className="text-[#7681A0] mb-8">書き練習が終わりました。</p>
           <div className="flex gap-3 justify-center">
             <button onClick={handleRestart}
               className="px-6 py-2.5 rounded-xl font-bold text-white text-sm transition-all hover:scale-105 active:scale-95"
@@ -1913,15 +1913,15 @@ function WritingDrillView({ onExit }) {
               もう一度 ↺
             </button>
             <button onClick={backToPicker}
-              className="px-6 py-2.5 rounded-xl font-bold bg-[#171720] border border-[#2a2a38] text-[#606080] hover:text-[#e0e0f0] text-sm">
+              className="px-6 py-2.5 rounded-xl font-bold bg-[#131A2A] border border-[#232C42] text-[#7681A0] hover:text-[#E8EBF4] text-sm">
               別の課を選ぶ
             </button>
           </div>
         </div>
       ) : (
-        <div className="bg-[#171720] rounded-2xl border border-[#2a2a38] p-8">
+        <div className="bg-[#131A2A] rounded-2xl border border-[#232C42] p-8">
           {/* Progress bar */}
-          <div className="mb-6 bg-[#2a2a38] rounded-full h-1.5">
+          <div className="mb-6 bg-[#232C42] rounded-full h-1.5">
             <div className="rounded-full h-1.5 transition-all duration-300"
               style={{ width: `${(idx / cards.length) * 100}%`, background: accent }} />
           </div>
@@ -1931,7 +1931,7 @@ function WritingDrillView({ onExit }) {
             style={{ background: accent }}>{card.chapter}課</span>
 
           {/* Sentence context */}
-          <p className="text-sm text-[#606080] mt-4 mb-2 kanji-text leading-relaxed">
+          <p className="text-sm text-[#7681A0] mt-4 mb-2 kanji-text leading-relaxed">
             {card.sentence.split(card.word).map((part, i, arr) => (
               <span key={i}>
                 {part}
@@ -1945,7 +1945,7 @@ function WritingDrillView({ onExit }) {
           </p>
 
           {/* Prompt */}
-          <p className="text-lg font-bold text-[#e0e0f0] mb-6 kanji-text">
+          <p className="text-lg font-bold text-[#E8EBF4] mb-6 kanji-text">
             「<span className="text-[#8B82F0]">{card.word}</span>」を漢字で書いてください
           </p>
 
@@ -1954,8 +1954,8 @@ function WritingDrillView({ onExit }) {
             <HandwritingCanvas key={`${idx}-${cards.length}`} width={200} height={120} disabled={revealed} />
             {revealed && (
               <div className="flex items-center gap-2 mt-2">
-                <span className="text-sm text-[#606080]">答え：</span>
-                <span className="text-4xl font-bold text-[#e0e0f0] kanji-text">{card.answer}</span>
+                <span className="text-sm text-[#7681A0]">答え：</span>
+                <span className="text-4xl font-bold text-[#E8EBF4] kanji-text">{card.answer}</span>
               </div>
             )}
           </div>
@@ -2017,11 +2017,11 @@ export default function PracticeTest({ onBack }) {
     <div className="max-w-3xl mx-auto pb-32">
       {/* Header */}
       <div className="flex items-center gap-4 mb-6">
-        <button onClick={onBack} className="flex items-center gap-1 px-3 py-2 bg-[#171720] rounded-xl border border-[#2a2a38] text-[#606080] hover:text-[#e0e0f0] text-sm">
+        <button onClick={onBack} className="flex items-center gap-1 px-3 py-2 bg-[#131A2A] rounded-xl border border-[#232C42] text-[#7681A0] hover:text-[#E8EBF4] text-sm">
           ← ホーム
         </button>
         <div className="flex-1">
-          <h1 className="text-xl font-bold text-[#e0e0f0]">練習テスト</h1>
+          <h1 className="text-xl font-bold text-[#E8EBF4]">練習テスト</h1>
         </div>
         <button onClick={() => setDrillMode(true)}
           className="flex items-center gap-1.5 px-3 py-2 bg-[#C1392B] text-white rounded-xl text-sm font-bold hover:bg-[#a62f24] transition-all whitespace-nowrap">
@@ -2034,7 +2034,7 @@ export default function PracticeTest({ onBack }) {
         {CHAPTERS.map((ch, i) => (
           <button key={ch.id} onClick={() => setActiveIdx(i)}
             className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all whitespace-nowrap border-2
-              ${activeIdx === i ? 'text-white' : 'bg-[#171720] text-[#606080] border-[#2a2a38] hover:border-[#3a3a55]'}`}
+              ${activeIdx === i ? 'text-white' : 'bg-[#131A2A] text-[#7681A0] border-[#232C42] hover:border-[#35415E]'}`}
             style={activeIdx === i ? { background: ch.accent, borderColor: ch.accent } : {}}
           >
             {ch.id}課{submitted[ch.id] ? ' ✓' : ''}
@@ -2046,7 +2046,7 @@ export default function PracticeTest({ onBack }) {
       <div className="flex items-center gap-3 mb-8 pb-3 border-b-4" style={{ borderColor: chapter.accent }}>
         <span className="text-white text-3xl font-black px-3 py-1 rounded-lg leading-none" style={{ background: chapter.accent }}>{chapter.id}</span>
         <span className="text-white text-sm font-semibold px-1.5 py-0.5 rounded" style={{ background: chapter.accent }}>課</span>
-        <span className="text-2xl font-bold text-[#e0e0f0] tracking-wide">練習</span>
+        <span className="text-2xl font-bold text-[#E8EBF4] tracking-wide">練習</span>
       </div>
 
       {/* Score banner */}
@@ -2067,10 +2067,10 @@ export default function PracticeTest({ onBack }) {
 
       {/* Sticky bar */}
       <div className="fixed bottom-4 left-0 right-0 px-4 z-50">
-        <div className="max-w-3xl mx-auto bg-[#171720]/95 backdrop-blur rounded-2xl border border-[#2a2a38] shadow-2xl p-4 flex items-center gap-4">
+        <div className="max-w-3xl mx-auto bg-[#131A2A]/95 backdrop-blur rounded-2xl border border-[#232C42] shadow-2xl p-4 flex items-center gap-4">
           {!isSubmitted ? (
             <>
-              <p className="flex-1 text-xs text-[#606080] leading-relaxed">読み問題を入力後に採点。手書き問題（問題3）は自己採点してください。</p>
+              <p className="flex-1 text-xs text-[#7681A0] leading-relaxed">読み問題を入力後に採点。手書き問題（問題3）は自己採点してください。</p>
               <button onClick={handleSubmit}
                 className="px-6 py-2.5 rounded-xl font-bold text-white text-sm transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
                 style={{ background: chapter.accent }}>
@@ -2079,9 +2079,9 @@ export default function PracticeTest({ onBack }) {
             </>
           ) : (
             <>
-              <p className="flex-1 text-xs text-[#606080]">採点完了！手書き問題の答えを確認してください。</p>
+              <p className="flex-1 text-xs text-[#7681A0]">採点完了！手書き問題の答えを確認してください。</p>
               <button onClick={handleReset}
-                className="px-6 py-2.5 rounded-xl font-bold bg-[#0F0F14] border border-[#2a2a38] text-[#606080] hover:text-[#e0e0f0] text-sm transition-all whitespace-nowrap">
+                className="px-6 py-2.5 rounded-xl font-bold bg-[#0B0E17] border border-[#232C42] text-[#7681A0] hover:text-[#E8EBF4] text-sm transition-all whitespace-nowrap">
                 やり直す ↺
               </button>
             </>

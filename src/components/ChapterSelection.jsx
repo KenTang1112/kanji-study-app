@@ -51,7 +51,7 @@ export default function ChapterSelection({ selectedMode, onChaptersSelect, onBac
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0F0F14] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0B0E17] flex items-center justify-center">
         <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#C1392B]" />
       </div>
     );
@@ -67,15 +67,15 @@ export default function ChapterSelection({ selectedMode, onChaptersSelect, onBac
       <div className="flex items-center gap-3 mb-6">
         <button
           onClick={onBack}
-          className="w-9 h-9 bg-[#171720] border border-[#2a2a38] rounded-lg flex items-center justify-center text-[#606080] hover:text-[#e0e0f0] transition-colors flex-shrink-0"
+          className="w-9 h-9 bg-[#131A2A] border border-[#232C42] rounded-lg flex items-center justify-center text-[#7681A0] hover:text-[#E8EBF4] transition-colors flex-shrink-0"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <div>
-          <h2 className="text-lg font-semibold text-[#e0e0f0]">{MODE_LABELS[selectedMode] || selectedMode}</h2>
-          <p className="text-xs text-[#606080]">Select chapters</p>
+          <h2 className="text-lg font-semibold text-[#E8EBF4]">{MODE_LABELS[selectedMode] || selectedMode}</h2>
+          <p className="text-xs text-[#7681A0]">Select chapters</p>
         </div>
       </div>
 
@@ -86,9 +86,9 @@ export default function ChapterSelection({ selectedMode, onChaptersSelect, onBac
           { label: 'kanji', value: totalKanji, color: 'text-[#3CBFA5]' },
           { label: 'chapters total', value: availableChapters.length, color: 'text-[#D4861C]' },
         ].map(({ label, value, color }) => (
-          <div key={label} className="bg-[#171720] border border-[#2a2a38] rounded-xl p-3 text-center">
+          <div key={label} className="bg-[#131A2A] border border-[#232C42] rounded-xl p-3 text-center">
             <div className={`text-xl font-bold ${color}`}>{value}</div>
-            <div className="text-[10px] text-[#606080] mt-0.5">{label}</div>
+            <div className="text-[10px] text-[#7681A0] mt-0.5">{label}</div>
           </div>
         ))}
       </div>
@@ -97,13 +97,13 @@ export default function ChapterSelection({ selectedMode, onChaptersSelect, onBac
       <div className="flex gap-2 mb-4">
         <button
           onClick={() => setSelectedChapters(availableChapters)}
-          className="px-3 py-1.5 text-xs font-medium bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-lg hover:text-[#e0e0f0] hover:border-[#3a3a55] transition-colors"
+          className="px-3 py-1.5 text-xs font-medium bg-[#131A2A] border border-[#232C42] text-[#7681A0] rounded-lg hover:text-[#E8EBF4] hover:border-[#35415E] transition-colors"
         >
           Select all
         </button>
         <button
           onClick={() => setSelectedChapters([])}
-          className="px-3 py-1.5 text-xs font-medium bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-lg hover:text-[#e0e0f0] hover:border-[#3a3a55] transition-colors"
+          className="px-3 py-1.5 text-xs font-medium bg-[#131A2A] border border-[#232C42] text-[#7681A0] rounded-lg hover:text-[#E8EBF4] hover:border-[#35415E] transition-colors"
         >
           Deselect all
         </button>
@@ -118,20 +118,20 @@ export default function ChapterSelection({ selectedMode, onChaptersSelect, onBac
             <button
               key={chapter}
               onClick={() => handleChapterToggle(chapter)}
-              className={`bg-[#171720] border rounded-xl px-4 py-3 flex items-center justify-between transition-all ${
-                selected ? 'border-[#C1392B]' : 'border-[#2a2a38] hover:border-[#3a3a55]'
+              className={`bg-[#131A2A] border rounded-xl px-4 py-3 flex items-center justify-between transition-all ${
+                selected ? 'border-[#C1392B]' : 'border-[#232C42] hover:border-[#35415E]'
               }`}
             >
               <div className="flex items-center gap-3">
                 <div className={`w-5 h-5 rounded flex items-center justify-center flex-shrink-0 ${
-                  selected ? 'bg-[#C1392B]' : 'bg-[#2a2a38] border border-[#3a3a55]'
+                  selected ? 'bg-[#C1392B]' : 'bg-[#232C42] border border-[#35415E]'
                 }`}>
-                  {selected && <div className="w-2.5 h-2.5 bg-white rounded-sm" />}
+                  {selected && <div className="w-2.5 h-2.5 bg-[#131A2A] rounded-sm" />}
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-semibold text-[#e0e0f0]">Chapter {chapter}</div>
+                  <div className="text-sm font-semibold text-[#E8EBF4]">Chapter {chapter}</div>
                   {chapterStats[String(chapter)]?.studyCount > 0 && (
-                    <div className="text-xs text-[#3a3a55]">
+                    <div className="text-xs text-[#35415E]">
                       Studied {chapterStats[String(chapter)].studyCount}×
                     </div>
                   )}
@@ -140,7 +140,7 @@ export default function ChapterSelection({ selectedMode, onChaptersSelect, onBac
               {accuracy !== null ? (
                 <span className={`text-sm font-semibold ${accuracyColor(accuracy)}`}>{accuracy}%</span>
               ) : (
-                <span className="text-sm text-[#3a3a55]">—</span>
+                <span className="text-sm text-[#35415E]">—</span>
               )}
             </button>
           );
@@ -153,7 +153,7 @@ export default function ChapterSelection({ selectedMode, onChaptersSelect, onBac
         disabled={selectedChapters.length === 0}
         className={`w-full py-4 rounded-xl font-semibold text-sm transition-all ${
           selectedChapters.length === 0
-            ? 'bg-[#171720] text-[#3a3a55] border border-[#2a2a38] cursor-not-allowed'
+            ? 'bg-[#131A2A] text-[#35415E] border border-[#232C42] cursor-not-allowed'
             : 'bg-[#C1392B] text-white hover:bg-[#a62f24]'
         }`}
       >

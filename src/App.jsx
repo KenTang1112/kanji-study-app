@@ -13,7 +13,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import HubScreen from './components/HubScreen';
 import ClassScreen from './components/ClassScreen';
 import ClassTest from './components/ClassTest';
-import { CLASSES } from './tests';
+import { CLASSES, drawCombined, buildCombined, picksKey } from './tests';
 import { testProgressService } from './services/testProgressService';
 import { userService } from './services/userService';
 import dataService from './services/dataService';
@@ -84,18 +84,32 @@ function App() {
     setCurrentScreen('class');
   };
 
-  const handleOpenTest = (testId) => {
-    setSelectedTestId(testId);
-    setCurrentScreen('class-test');
-  };
-
   const handleSaveTest = (testId, state) => {
     setTestProgress((prev) => ({ ...prev, [testId]: state }));
     testProgressService.save(currentUser, testId, state);
   };
 
   const selectedClass = CLASSES.find((c) => c.id === selectedClassId);
-  const selectedTest = selectedClass?.tests.find((t) => t.id === selectedTestId);
+  const combinedCfg = selectedClass?.combined;
+  const isCombined = combinedCfg && selectedTestId === combinedCfg.id;
+  const combinedPicks = combinedCfg ? testProgress[picksKey(combinedCfg.id)] : null;
+
+  // A fresh random draw for the combined midterm; answers from the old draw are cleared.
+  const redrawCombined = (cls) => {
+    const picks = { refs: drawCombined(cls), drawnAt: Date.now() };
+    handleSaveTest(picksKey(cls.combined.id), picks);
+    handleSaveTest(cls.combined.id, null);
+  };
+
+  const handleOpenTest = (testId) => {
+    if (selectedClass?.combined?.id === testId && !testProgress[picksKey(testId)]?.refs) redrawCombined(selectedClass);
+    setSelectedTestId(testId);
+    setCurrentScreen('class-test');
+  };
+
+  const selectedTest = isCombined
+    ? (combinedPicks?.refs ? buildCombined(selectedClass, combinedPicks.refs) : null)
+    : selectedClass?.tests.find((t) => t.id === selectedTestId);
 
   const handleModeSelect = (mode) => {
     setSelectedMode(mode);
@@ -151,17 +165,17 @@ function App() {
 
   if (!appReady) {
     return (
-      <div className="min-h-screen bg-[#0F0F14] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0B0E17] flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C1392B] mx-auto mb-4" />
-          <p className="text-[#606080] text-lg">読み込み中...</p>
+          <div className="moon mx-auto mb-4 animate-pulse" />
+          <p className="text-[#7681A0] text-base">Loading…</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#0F0F14]">
+    <div className="min-h-screen bg-[#0B0E17]">
       {needsProfileSetup && (
         <FirstVisitModal onComplete={handleProfileSetupComplete} />
       )}
@@ -173,6 +187,7 @@ function App() {
             onOpenClass={handleOpenClass}
             onNavigateToProfile={handleNavigateToProfile}
             currentUser={currentUser}
+            progress={testProgress}
           />
         )}
 
@@ -188,11 +203,12 @@ function App() {
         {currentScreen === 'class-test' && selectedClass && selectedTest && (
           <ErrorBoundary>
             <ClassTest
-              key={selectedTest.id}
+              key={`${selectedTest.id}:${isCombined ? combinedPicks?.drawnAt : ''}`}
               test={selectedTest}
               classInfo={selectedClass}
               savedState={testProgress[selectedTest.id]}
               onSave={(state) => handleSaveTest(selectedTest.id, state)}
+              onRedraw={isCombined ? () => redrawCombined(selectedClass) : undefined}
               onBack={() => setCurrentScreen('class')}
             />
           </ErrorBoundary>
@@ -262,36 +278,41 @@ function App() {
             currentUser={currentUser}
             onUserUpdate={handleUserUpdate}
             onSignOut={handleSignOut}
-            onBack={handleBackToHome}
+            onBack={() => setCurrentScreen('hub')}
           />
         )}
       </div>
 
       {/* Bottom Navigation — phone and tablet only */}
       {showBottomNav && (
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-[#0F0F14] border-t border-[#1e1e2a] flex z-40 pb-safe">
+        <nav className="lg:hidden fixed bottom-0 left-0 right-0 glass border-t border-[#1A2234] flex z-40 pb-safe">
           {[
-            { screen: 'hub', icon: '🏠', label: 'Home' },
-            { screen: 'home', icon: '漢', label: 'Kanji' },
-            { screen: 'vocabulary-manager', icon: '📚', label: 'Vocab' },
-            { screen: 'progress', icon: '📊', label: 'Progress' },
-            { screen: 'profile', icon: '👤', label: 'Profile' },
-          ].map(({ screen, icon, label }) => (
-            <button
-              key={screen}
-              onClick={() => setCurrentScreen(screen)}
-              className={`flex-1 flex flex-col items-center gap-1 py-3 text-xs font-medium transition-colors ${
-                currentScreen === screen ? 'text-[#C1392B]' : 'text-[#3a3a55] hover:text-[#606080]'
-              }`}
-            >
-              <span className="text-xl leading-none">{icon}</span>
-              <span>{label}</span>
-              {currentScreen === screen && (
-                <span className="w-1 h-1 rounded-full bg-[#C1392B]" />
-              )}
-            </button>
-          ))}
-        </div>
+            { screen: 'hub', group: ['hub', 'class'], label: 'Classes', path: 'M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z' },
+            { screen: 'home', group: ['home', 'vocabulary-manager', 'progress', 'flagged-items', 'chapters', 'word-selection', 'practice-test'], label: 'Kanji', glyph: '漢' },
+            { screen: 'profile', group: ['profile'], label: 'Profile', path: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-7 9a7 7 0 0 1 14 0' },
+          ].map(({ screen, group, label, path, glyph }) => {
+            const active = group.includes(currentScreen);
+            return (
+              <button
+                key={screen}
+                onClick={() => setCurrentScreen(screen)}
+                aria-current={active ? 'page' : undefined}
+                className={`flex-1 flex flex-col items-center gap-1 pt-2.5 pb-2 text-[11px] font-semibold tracking-wide transition-colors ${
+                  active ? 'text-[#F2B544]' : 'text-[#5A6482] hover:text-[#9AA3BD]'
+                }`}
+              >
+                {glyph ? (
+                  <span className="noto text-[19px] leading-[22px] font-bold" aria-hidden="true">{glyph}</span>
+                ) : (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d={path} />
+                  </svg>
+                )}
+                <span>{label}</span>
+              </button>
+            );
+          })}
+        </nav>
       )}
     </div>
   );

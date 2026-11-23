@@ -47,13 +47,13 @@ export default function FirstVisitModal({ onComplete }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-      <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full mx-4">
-        <div className="text-center mb-8">
-          <div className="text-5xl mb-3">漢字</div>
-          <h2 className="text-2xl font-bold text-gray-800">Welcome!</h2>
-          <p className="text-gray-500 mt-2 text-sm">
-            Sign in so your vocabulary additions are linked to you across all your devices.
+    <div className="fixed inset-0 bg-[#05070d]/80 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="bg-[#131A2A] border border-[#232C42] rounded-2xl shadow-2xl p-8 max-w-sm w-full mx-4">
+        <div className="text-center mb-7">
+          <div className="moon mx-auto mb-4" aria-hidden="true" />
+          <h2 className="font-display text-3xl font-bold text-[#E8EBF4]">The Night Before</h2>
+          <p className="text-[#9AA3BD] mt-2 text-[15px]">
+            Sign in so your test scores and progress follow you to any device.
           </p>
         </div>
 
@@ -62,10 +62,10 @@ export default function FirstVisitModal({ onComplete }) {
         )}
 
         {app && (
-          <div className="mb-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-sm text-amber-900">
+          <div className="mb-4 p-3 rounded-xl bg-[#2A2214] border border-[#5C4A22] text-sm text-[#F2D9A0]">
             <p className="mb-2">Google sign-in doesn't work inside {app}'s built-in browser. Open this page in Safari or Chrome first.</p>
             {app === 'LINE' ? (
-              <button onClick={openInExternalBrowser} className="w-full py-2 rounded-lg bg-amber-500 text-white font-semibold">
+              <button onClick={openInExternalBrowser} className="w-full py-2 rounded-lg bg-[#F2B544] text-[#0B0E17] font-semibold">
                 Open in browser
               </button>
             ) : (
@@ -77,7 +77,7 @@ export default function FirstVisitModal({ onComplete }) {
         <button
           onClick={handleGoogle}
           disabled={loading}
-          className="w-full flex items-center justify-center gap-3 py-3 border-2 border-gray-200 rounded-xl hover:bg-gray-50 transition-colors font-semibold text-gray-700 disabled:opacity-50 mb-3"
+          className="w-full flex items-center justify-center gap-3 py-3 border-2 border-[#232C42] rounded-xl hover:bg-[#1E2638] transition-colors font-semibold text-[#C5CBDB] disabled:opacity-50 mb-3"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -91,13 +91,13 @@ export default function FirstVisitModal({ onComplete }) {
         <button
           onClick={handleGuest}
           disabled={loading}
-          className="w-full py-3 bg-gray-100 text-gray-600 rounded-xl font-semibold hover:bg-gray-200 transition-colors disabled:opacity-50"
+          className="w-full py-3 bg-[#1A2234] text-[#C5CBDB] rounded-xl font-semibold hover:bg-[#1E2638] transition-colors disabled:opacity-50"
         >
           Continue as Guest
         </button>
 
-        <p className="text-xs text-gray-400 text-center mt-4">
-          Google login lets you add and delete vocab from any device.
+        <p className="text-xs text-[#7681A0] text-center mt-4">
+          Guest progress stays on this device only.
         </p>
       </div>
     </div>

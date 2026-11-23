@@ -66,7 +66,7 @@ export default function WordSelection({ mode, selectedChapters, onBack, onStartQ
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0F0F14] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0B0E17] flex items-center justify-center">
         <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#C1392B]" />
       </div>
     );
@@ -78,28 +78,28 @@ export default function WordSelection({ mode, selectedChapters, onBack, onStartQ
       <div className="flex items-center gap-3 mb-5">
         <button
           onClick={onBack}
-          className="w-9 h-9 bg-[#171720] border border-[#2a2a38] rounded-lg flex items-center justify-center text-[#606080] hover:text-[#e0e0f0] transition-colors flex-shrink-0"
+          className="w-9 h-9 bg-[#131A2A] border border-[#232C42] rounded-lg flex items-center justify-center text-[#7681A0] hover:text-[#E8EBF4] transition-colors flex-shrink-0"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <div className="flex-1 min-w-0">
-          <h2 className="text-lg font-semibold text-[#e0e0f0]">Select Words</h2>
-          <p className="text-xs text-[#606080]">
+          <h2 className="text-lg font-semibold text-[#E8EBF4]">Select Words</h2>
+          <p className="text-xs text-[#7681A0]">
             <span className="text-[#C1392B] font-semibold">{selectedWords.size}</span> / {words.length} selected
           </p>
         </div>
         <div className="flex gap-2">
           <button
             onClick={() => setSelectedWords(new Set(words.map(getWordId)))}
-            className="px-3 py-1.5 text-xs bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-lg hover:text-[#e0e0f0] transition-colors"
+            className="px-3 py-1.5 text-xs bg-[#131A2A] border border-[#232C42] text-[#7681A0] rounded-lg hover:text-[#E8EBF4] transition-colors"
           >
             All
           </button>
           <button
             onClick={() => setSelectedWords(new Set())}
-            className="px-3 py-1.5 text-xs bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-lg hover:text-[#e0e0f0] transition-colors"
+            className="px-3 py-1.5 text-xs bg-[#131A2A] border border-[#232C42] text-[#7681A0] rounded-lg hover:text-[#E8EBF4] transition-colors"
           >
             None
           </button>
@@ -115,30 +115,30 @@ export default function WordSelection({ mode, selectedChapters, onBack, onStartQ
           const isExpanded = expandedChapters.has(Number(chapter));
 
           return (
-            <div key={chapter} className="bg-[#171720] border border-[#2a2a38] rounded-xl overflow-hidden">
+            <div key={chapter} className="bg-[#131A2A] border border-[#232C42] rounded-xl overflow-hidden">
               <div
-                className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-[#1e1e2a] transition-colors"
+                className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-[#1A2234] transition-colors"
                 onClick={() => toggleExpand(Number(chapter))}
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-sm font-semibold text-[#e0e0f0]">Chapter {chapter}</span>
-                  <span className="text-xs text-[#3a3a55]">{selCount}/{chapterWords.length}</span>
+                  <span className="text-sm font-semibold text-[#E8EBF4]">Chapter {chapter}</span>
+                  <span className="text-xs text-[#35415E]">{selCount}/{chapterWords.length}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={e => { e.stopPropagation(); toggleChapter(Number(chapter)); }}
                     className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                      allSel ? 'bg-[#C1392B] text-white' : 'bg-[#2a2a38] text-[#606080] hover:text-[#e0e0f0]'
+                      allSel ? 'bg-[#C1392B] text-white' : 'bg-[#232C42] text-[#7681A0] hover:text-[#E8EBF4]'
                     }`}
                   >
                     {allSel ? 'Deselect' : 'Select all'}
                   </button>
-                  <span className="text-[#3a3a55] text-xs">{isExpanded ? '▼' : '▶'}</span>
+                  <span className="text-[#35415E] text-xs">{isExpanded ? '▼' : '▶'}</span>
                 </div>
               </div>
 
               {isExpanded && (
-                <div className="border-t border-[#1e1e2a] divide-y divide-[#1e1e2a]">
+                <div className="border-t border-[#1A2234] divide-y divide-[#1A2234]">
                   {chapterWords.map(word => {
                     const id = getWordId(word);
                     const sel = selectedWords.has(id);
@@ -147,11 +147,11 @@ export default function WordSelection({ mode, selectedChapters, onBack, onStartQ
                         key={id}
                         onClick={() => toggleWord(id)}
                         className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors ${
-                          sel ? 'bg-[#C1392B]11' : 'hover:bg-[#1e1e2a]'
+                          sel ? 'bg-[#C1392B]11' : 'hover:bg-[#1A2234]'
                         }`}
                       >
                         <div className={`w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 ${
-                          sel ? 'bg-[#C1392B] border-[#C1392B]' : 'border-[#3a3a55]'
+                          sel ? 'bg-[#C1392B] border-[#C1392B]' : 'border-[#35415E]'
                         }`}>
                           {sel && (
                             <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -160,10 +160,10 @@ export default function WordSelection({ mode, selectedChapters, onBack, onStartQ
                           )}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <span className="text-sm font-semibold text-[#e0e0f0] noto">{word.word}</span>
-                          <span className="text-xs text-[#606080] ml-2">{word.reading} · {word.meaning}</span>
+                          <span className="text-sm font-semibold text-[#E8EBF4] noto">{word.word}</span>
+                          <span className="text-xs text-[#7681A0] ml-2">{word.reading} · {word.meaning}</span>
                         </div>
-                        <span className="text-[10px] text-[#3a3a55] bg-[#2a2a38] px-1.5 py-0.5 rounded flex-shrink-0">
+                        <span className="text-[10px] text-[#35415E] bg-[#232C42] px-1.5 py-0.5 rounded flex-shrink-0">
                           {word.type}
                         </span>
                       </div>
@@ -182,7 +182,7 @@ export default function WordSelection({ mode, selectedChapters, onBack, onStartQ
         disabled={selectedWords.size === 0}
         className={`w-full py-4 rounded-xl font-semibold text-sm transition-all ${
           selectedWords.size === 0
-            ? 'bg-[#171720] text-[#3a3a55] border border-[#2a2a38] cursor-not-allowed'
+            ? 'bg-[#131A2A] text-[#35415E] border border-[#232C42] cursor-not-allowed'
             : 'bg-[#C1392B] text-white hover:bg-[#a62f24]'
         }`}
       >

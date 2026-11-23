@@ -9,7 +9,7 @@ function AccuracyRing({ accuracy }) {
   const offset = circ * (1 - accuracy / 100);
   return (
     <svg width="88" height="88" viewBox="0 0 88 88" className="mx-auto">
-      <circle cx="44" cy="44" r={r} fill="none" stroke="#2a2a38" strokeWidth="5" />
+      <circle cx="44" cy="44" r={r} fill="none" stroke="#232C42" strokeWidth="5" />
       <circle cx="44" cy="44" r={r} fill="none" stroke="#C1392B" strokeWidth="5"
         strokeDasharray={circ} strokeDashoffset={offset}
         strokeLinecap="round" transform="rotate(-90 44 44)" />
@@ -212,7 +212,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
   // Loading
   if (!currentQuestion && cards.length === 0) {
     return (
-      <div className="min-h-screen bg-[#0F0F14] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0B0E17] flex items-center justify-center">
         <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#C1392B]" />
       </div>
     );
@@ -226,12 +226,12 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
 
     return (
       <div className="max-w-lg mx-auto">
-        <div className="bg-[#171720] border border-[#2a2a38] rounded-2xl p-6">
-          <h2 className="text-base font-semibold text-[#e0e0f0] text-center mb-5">Session complete</h2>
+        <div className="bg-[#131A2A] border border-[#232C42] rounded-2xl p-6">
+          <h2 className="text-base font-semibold text-[#E8EBF4] text-center mb-5">Session complete</h2>
 
           <div className="mb-4">
             <AccuracyRing accuracy={finalAccuracy} />
-            <p className="text-xs text-[#606080] text-center mt-1">Accuracy · {sessionStats.total} questions</p>
+            <p className="text-xs text-[#7681A0] text-center mt-1">Accuracy · {sessionStats.total} questions</p>
           </div>
 
           <div className="grid grid-cols-3 gap-2 mb-6">
@@ -240,26 +240,26 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
               { label: 'Wrong', value: sessionStats.wrong, color: 'text-[#C1392B]' },
               { label: 'Hard', value: sessionStats.hard, color: 'text-[#D4861C]' },
             ].map(({ label, value, color }) => (
-              <div key={label} className="bg-[#0F0F14] border border-[#2a2a38] rounded-xl p-3 text-center">
+              <div key={label} className="bg-[#0B0E17] border border-[#232C42] rounded-xl p-3 text-center">
                 <div className={`text-xl font-bold ${color}`}>{value}</div>
-                <div className="text-[10px] text-[#606080] mt-0.5">{label}</div>
+                <div className="text-[10px] text-[#7681A0] mt-0.5">{label}</div>
               </div>
             ))}
           </div>
 
           {missedCards.length > 0 && (
             <div className="mb-6">
-              <p className="text-[10px] font-semibold tracking-widest uppercase text-[#3a3a55] mb-3">Missed</p>
+              <p className="text-[10px] font-semibold tracking-widest uppercase text-[#35415E] mb-3">Missed</p>
               <div className="flex flex-col gap-2">
                 {missedCards.slice(0, 5).map((card, i) => (
-                  <div key={i} className="bg-[#0F0F14] border border-[#2a2a38] rounded-xl px-4 py-3 flex items-center justify-between">
+                  <div key={i} className="bg-[#0B0E17] border border-[#232C42] rounded-xl px-4 py-3 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <span className="noto text-lg font-bold text-[#e0e0f0]">
+                      <span className="noto text-lg font-bold text-[#E8EBF4]">
                         {mode.includes('vocabulary') ? card.word : (card.kanji || card.answer)}
                       </span>
                       <div>
-                        <div className="text-xs font-semibold text-[#e0e0f0]">{card.reading}</div>
-                        <div className="text-xs text-[#606080]">{card.meaning}</div>
+                        <div className="text-xs font-semibold text-[#E8EBF4]">{card.reading}</div>
+                        <div className="text-xs text-[#7681A0]">{card.meaning}</div>
                       </div>
                     </div>
                     <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full border border-[#C1392B33] text-[#C1392B] bg-[#C1392B11]">
@@ -268,7 +268,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
                   </div>
                 ))}
                 {missedCards.length > 5 && (
-                  <p className="text-xs text-[#3a3a55] text-center">+{missedCards.length - 5} more</p>
+                  <p className="text-xs text-[#35415E] text-center">+{missedCards.length - 5} more</p>
                 )}
               </div>
             </div>
@@ -278,14 +278,14 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
             <button onClick={handleRestart} className="flex-1 py-3 bg-[#3CBFA5] text-[#0A0A0F] font-semibold rounded-xl text-sm hover:bg-[#33a891] transition-colors">
               Study again
             </button>
-            <button onClick={onBackToHome} className="flex-1 py-3 bg-[#0F0F14] border border-[#2a2a38] text-[#606080] font-semibold rounded-xl text-sm hover:text-[#e0e0f0] hover:border-[#3a3a55] transition-colors">
+            <button onClick={onBackToHome} className="flex-1 py-3 bg-[#0B0E17] border border-[#232C42] text-[#7681A0] font-semibold rounded-xl text-sm hover:text-[#E8EBF4] hover:border-[#35415E] transition-colors">
               Home
             </button>
           </div>
           {/* Fix 1: "Change chapters" now visible */}
           <button
             onClick={onBackToChapters}
-            className="w-full mt-3 py-2.5 bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-xl text-sm font-medium hover:text-[#e0e0f0] hover:border-[#3a3a55] transition-colors"
+            className="w-full mt-3 py-2.5 bg-[#131A2A] border border-[#232C42] text-[#7681A0] rounded-xl text-sm font-medium hover:text-[#E8EBF4] hover:border-[#35415E] transition-colors"
           >
             Change chapters
           </button>
@@ -302,32 +302,32 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
       <div className="flex items-center gap-3 mb-5">
         <button
           onClick={onBackToChapters}
-          className="w-9 h-9 bg-[#171720] border border-[#2a2a38] rounded-lg flex items-center justify-center text-[#606080] hover:text-[#e0e0f0] transition-colors flex-shrink-0"
+          className="w-9 h-9 bg-[#131A2A] border border-[#232C42] rounded-lg flex items-center justify-center text-[#7681A0] hover:text-[#E8EBF4] transition-colors flex-shrink-0"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <div className="flex-1 h-2 bg-[#1e1e2a] rounded-full overflow-hidden">
+        <div className="flex-1 h-2 bg-[#1A2234] rounded-full overflow-hidden">
           <div
             className="h-full bg-[#C1392B] rounded-full transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
-        <span className="text-xs text-[#606080] flex-shrink-0">
+        <span className="text-xs text-[#7681A0] flex-shrink-0">
           {sessionStats.correct + sessionStats.wrong} / {sessionStats.total}
         </span>
       </div>
 
       {/* Question card */}
-      <div className="bg-[#171720] border border-[#2a2a38] rounded-2xl p-6 mb-4 text-center">
-        <p className="text-[10px] font-semibold tracking-widest uppercase text-[#606080] mb-4">
+      <div className="bg-[#131A2A] border border-[#232C42] rounded-2xl p-6 mb-4 text-center">
+        <p className="text-[10px] font-semibold tracking-widest uppercase text-[#7681A0] mb-4">
           {mode === 'kana-to-kanji' ? 'Write the kanji for' :
            mode === 'kanji-to-reading' ? 'Write the reading for' :
            mode === 'vocabulary-writing' ? 'Write the word for' :
            'Write the reading for'}
         </p>
-        <div className="noto text-4xl font-bold text-[#e0e0f0] mb-2">
+        <div className="noto text-4xl font-bold text-[#E8EBF4] mb-2">
           {currentQuestion.question}
         </div>
         {showHint && hintType === 'meaning' && (
@@ -345,7 +345,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
       </div>
 
       {/* Answer area */}
-      <div className="bg-[#171720] border border-[#2a2a38] rounded-2xl p-6 mb-4">
+      <div className="bg-[#131A2A] border border-[#232C42] rounded-2xl p-6 mb-4">
         {!showAnswer ? (
           <div className="text-center">
             {needsHandwriting ? (
@@ -358,7 +358,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
                 value={userAnswer}
                 onChange={e => setUserAnswer(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter') { skipNextEnterKeyup.current = true; handleRevealAnswer(); } }}
-                className="w-full max-w-sm mx-auto block px-4 py-3 text-xl text-center bg-[#0F0F14] border border-[#2a2a38] rounded-xl text-[#e0e0f0] focus:border-[#C1392B] focus:outline-none mb-4"
+                className="w-full max-w-sm mx-auto block px-4 py-3 text-xl text-center bg-[#0B0E17] border border-[#232C42] rounded-xl text-[#E8EBF4] focus:border-[#C1392B] focus:outline-none mb-4"
                 placeholder="Your answer…"
                 autoFocus
               />
@@ -366,13 +366,13 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
             <div className="flex gap-3 justify-center mb-4">
               <button
                 onClick={() => { setHintType('meaning'); setShowHint(true); }}
-                className="px-4 py-2 bg-[#0F0F14] border border-[#2a2a38] text-[#606080] rounded-xl text-sm hover:text-[#e0e0f0] transition-colors"
+                className="px-4 py-2 bg-[#0B0E17] border border-[#232C42] text-[#7681A0] rounded-xl text-sm hover:text-[#E8EBF4] transition-colors"
               >
                 Meaning hint
               </button>
               <button
                 onClick={() => { setHintType('kanji'); setShowHint(true); }}
-                className="px-4 py-2 bg-[#0F0F14] border border-[#2a2a38] text-[#606080] rounded-xl text-sm hover:text-[#e0e0f0] transition-colors"
+                className="px-4 py-2 bg-[#0B0E17] border border-[#232C42] text-[#7681A0] rounded-xl text-sm hover:text-[#E8EBF4] transition-colors"
               >
                 Related hint
               </button>
@@ -399,8 +399,8 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
                     {autoScore === 'correct' ? 'Correct!' : 'Incorrect'}
                   </p>
                   {autoScore === 'wrong' && userAnswer && (
-                    <p className="text-xs text-[#606080] mt-0.5 truncate">
-                      You wrote: <span className="text-[#e0e0f0]">{userAnswer}</span>
+                    <p className="text-xs text-[#7681A0] mt-0.5 truncate">
+                      You wrote: <span className="text-[#E8EBF4]">{userAnswer}</span>
                     </p>
                   )}
                 </div>
@@ -410,17 +410,17 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
             {/* Handwriting image (writing modes) */}
             {needsHandwriting && handwritingImage && (
               <div className="mb-4 text-center">
-                <p className="text-xs text-[#3a3a55] mb-2">Your answer</p>
-                <img src={handwritingImage} alt="Your answer" className="max-w-[200px] mx-auto rounded-lg border border-[#2a2a38] opacity-80" />
+                <p className="text-xs text-[#35415E] mb-2">Your answer</p>
+                <img src={handwritingImage} alt="Your answer" className="max-w-[200px] mx-auto rounded-lg border border-[#232C42] opacity-80" />
               </div>
             )}
 
             {/* Correct answer */}
             <div className="text-center mb-5">
-              <p className="text-xs text-[#3a3a55] mb-2">Correct answer</p>
-              <div className="noto text-4xl font-bold text-[#e0e0f0] mb-1">{currentQuestion.answer}</div>
+              <p className="text-xs text-[#35415E] mb-2">Correct answer</p>
+              <div className="noto text-4xl font-bold text-[#E8EBF4] mb-1">{currentQuestion.answer}</div>
               {mode !== 'vocabulary-reading' && (
-                <div className="text-base text-[#606080]">{currentQuestion.reading}</div>
+                <div className="text-base text-[#7681A0]">{currentQuestion.reading}</div>
               )}
             </div>
 
@@ -447,12 +447,12 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
               ) : (
                 /* Handwriting modes: manual grading */
                 <>
-                  <p className="text-xs text-[#3a3a55] text-center mb-3">How was this card?</p>
+                  <p className="text-xs text-[#35415E] text-center mb-3">How was this card?</p>
                   <div className="grid grid-cols-3 gap-2 mb-3">
                     <button onClick={() => handleGrade('easy')} className="py-3 bg-[#4AA85C1a] border border-[#4AA85C44] text-[#4AA85C] font-semibold rounded-xl text-sm hover:bg-[#4AA85C2a] transition-colors">
                       Correct
                     </button>
-                    <button onClick={() => handleGrade('hard')} className="py-3 bg-[#171720] border border-[#2a2a38] text-[#606080] font-semibold rounded-xl text-sm hover:text-[#e0e0f0] transition-colors">
+                    <button onClick={() => handleGrade('hard')} className="py-3 bg-[#131A2A] border border-[#232C42] text-[#7681A0] font-semibold rounded-xl text-sm hover:text-[#E8EBF4] transition-colors">
                       Hard
                     </button>
                     <button onClick={() => handleGrade('wrong')} className="py-3 bg-[#C1392B1a] border border-[#C1392B44] text-[#C1392B] font-semibold rounded-xl text-sm hover:bg-[#C1392B2a] transition-colors">
@@ -461,7 +461,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
                   </div>
                 </>
               )}
-              <button onClick={() => setShowFlagModal(true)} className="w-full py-2 text-xs text-[#3a3a55] hover:text-[#606080] transition-colors">
+              <button onClick={() => setShowFlagModal(true)} className="w-full py-2 text-xs text-[#35415E] hover:text-[#7681A0] transition-colors">
                 🚩 Flag as incorrect
               </button>
             </div>
@@ -472,15 +472,15 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
       {/* Flag modal */}
       {showFlagModal && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="bg-[#171720] border border-[#2a2a38] rounded-2xl p-6 max-w-sm w-full mx-4">
-            <h3 className="text-base font-semibold text-[#e0e0f0] mb-1">Flag as incorrect</h3>
-            <p className="text-xs text-[#606080] mb-4">
+          <div className="bg-[#131A2A] border border-[#232C42] rounded-2xl p-6 max-w-sm w-full mx-4">
+            <h3 className="text-base font-semibold text-[#E8EBF4] mb-1">Flag as incorrect</h3>
+            <p className="text-xs text-[#7681A0] mb-4">
               {mode.includes('vocabulary') ? currentQuestion?.word : currentQuestion?.kanji} · {currentQuestion?.reading}
             </p>
             <select
               value={flagReason}
               onChange={e => setFlagReason(e.target.value)}
-              className="w-full px-3 py-2.5 bg-[#0F0F14] border border-[#2a2a38] text-[#e0e0f0] rounded-xl text-sm focus:border-[#C1392B] focus:outline-none mb-4"
+              className="w-full px-3 py-2.5 bg-[#0B0E17] border border-[#232C42] text-[#E8EBF4] rounded-xl text-sm focus:border-[#C1392B] focus:outline-none mb-4"
             >
               <option value="">Select a reason…</option>
               <option value="wrong-reading">Incorrect reading</option>
@@ -491,7 +491,7 @@ export default function QuizEngine({ mode, chapters, selectedWords, onBackToHome
               <option value="other">Other issue</option>
             </select>
             <div className="flex gap-3">
-              <button onClick={() => setShowFlagModal(false)} className="flex-1 py-2.5 bg-[#0F0F14] border border-[#2a2a38] text-[#606080] rounded-xl text-sm hover:text-[#e0e0f0] transition-colors">
+              <button onClick={() => setShowFlagModal(false)} className="flex-1 py-2.5 bg-[#0B0E17] border border-[#232C42] text-[#7681A0] rounded-xl text-sm hover:text-[#E8EBF4] transition-colors">
                 Cancel
               </button>
               <button onClick={handleFlagSubmit} className="flex-1 py-2.5 bg-[#C1392B] text-white rounded-xl text-sm font-semibold hover:bg-[#a62f24] transition-colors">

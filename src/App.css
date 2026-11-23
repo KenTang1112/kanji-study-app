@@ -3,10 +3,29 @@
 * { box-sizing: border-box; }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #0F0F14;
-  color: #e0e0f0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+  background:
+    radial-gradient(1200px 520px at 50% -180px, rgba(242, 181, 68, 0.10), transparent 70%),
+    radial-gradient(900px 600px at 100% 0%, rgba(70, 92, 170, 0.14), transparent 70%),
+    #0B0E17;
+  background-attachment: fixed;
+  color: #E8EBF4;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* Crescent moon: a lamp-yellow disc with a night-coloured shadow cut out of it */
+.moon {
+  width: 44px; height: 44px; border-radius: 50%;
+  box-shadow: inset -11px -4px 0 0 #F2B544;
+  filter: drop-shadow(0 0 14px rgba(242, 181, 68, 0.45));
+}
+.moon-sm { width: 22px; height: 22px; box-shadow: inset -6px -2px 0 0 #F2B544; filter: drop-shadow(0 0 8px rgba(242, 181, 68, 0.4)); border-radius: 50%; }
+
+.glass { background: rgba(11, 14, 23, 0.78); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+
+.font-display { font-feature-settings: "ss01"; letter-spacing: -0.02em; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 
 .kanji-text, .noto {
   font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
@@ -23,9 +42,9 @@ body {
 
 /* Scrollbar dark styling */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #0F0F14; }
-::-webkit-scrollbar-thumb { background: #2a2a38; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #3a3a55; }
+::-webkit-scrollbar-track { background: #0B0E17; }
+::-webkit-scrollbar-thumb { background: #232C42; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #35415E; }
 
 /* Safe area for bottom nav on iOS */
 .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }

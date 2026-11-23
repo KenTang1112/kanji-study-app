@@ -19,7 +19,7 @@ const HandwritingCanvas = forwardRef((props, ref) => {
       canvas.height = rect.height;
       
       // Set drawing styles
-      ctx.strokeStyle = '#e0e0f0';
+      ctx.strokeStyle = '#E8EBF4';
       ctx.lineWidth = 2;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
@@ -149,7 +149,7 @@ const HandwritingCanvas = forwardRef((props, ref) => {
     <div className="flex flex-col items-center">
       <canvas
         ref={canvasRef}
-        className="handwriting-canvas border border-[#2a2a38] rounded-xl bg-[#0F0F14]"
+        className="handwriting-canvas border border-[#232C42] rounded-xl bg-[#0B0E17]"
         style={{ 
           width: '300px', 
           height: '200px', 
@@ -159,7 +159,7 @@ const HandwritingCanvas = forwardRef((props, ref) => {
       />
       <button
         onClick={handleClear}
-        className="mt-2 px-4 py-1.5 bg-[#171720] border border-[#2a2a38] text-[#606080] rounded-lg hover:text-[#e0e0f0] transition-colors text-xs font-medium"
+        className="mt-2 px-4 py-1.5 bg-[#131A2A] border border-[#232C42] text-[#7681A0] rounded-lg hover:text-[#E8EBF4] transition-colors text-xs font-medium"
       >
         消す (Clear)
       </button>

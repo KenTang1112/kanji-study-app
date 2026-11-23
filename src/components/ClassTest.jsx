@@ -42,7 +42,7 @@ export function summarize(test, state) {
   return { total, done, first, finished: done === total };
 }
 
-export default function ClassTest({ test, classInfo, savedState, onSave, onBack }) {
+export default function ClassTest({ test, classInfo, savedState, onSave, onBack, onRedraw }) {
   const [state, setState] = useState(() => {
     const s = savedState && savedState.ans ? savedState : freshState(test);
     // make sure every MC item has a shuffled order (tests can gain questions later)
@@ -99,7 +99,8 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
     Object.entries(prev.ans).forEach(([k, v]) => { const { retry, ...rest } = v; ans[k] = rest; });
     return { ...prev, ans, onlyMissed: false };
   });
-  const reset = () => { update(() => freshState(test)); setConfirmReset(false); window.scrollTo({ top: 0 }); };
+  // Combined tests get a brand-new random draw; normal tests just clear their answers.
+  const reset = () => { setConfirmReset(false); window.scrollTo({ top: 0 }); if (onRedraw) onRedraw(); else update(() => freshState(test)); };
 
   const sum = summarize(test, state);
   const nowRight = Object.values(state.ans).filter((v) => v.ok).length;
@@ -118,34 +119,34 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
   return (
     <div className="pb-16">
       {/* Header */}
-      <button onClick={onBack} className="text-sm text-[#606080] hover:text-[#e0e0f0] mb-4">← {classInfo.name}</button>
+      <button onClick={onBack} className="text-sm text-[#7681A0] hover:text-[#E8EBF4] mb-4">← {classInfo.name}</button>
       <div className="mb-4">
         <p className="text-xs font-semibold tracking-widest uppercase mb-1" style={{ color: accent }}>{classInfo.subtitle}</p>
-        <h1 className="noto text-2xl sm:text-3xl font-bold text-[#e0e0f0] leading-snug">{test.title}</h1>
-        {test.description && <p className="text-base text-[#808098] mt-1">{test.description}</p>}
+        <h1 className="noto text-3xl sm:text-4xl font-bold text-[#F3F1EA] leading-tight">{test.title}</h1>
+        {test.description && <p className="noto text-base text-[#9AA3BD] mt-2">{test.description}</p>}
       </div>
 
       {/* Sticky score strip */}
-      <div className="sticky top-0 z-20 bg-[#0F0F14] border-b-2 py-3 mb-6 flex flex-wrap items-center gap-x-5 gap-y-2" style={{ borderColor: accent }}>
-        <span className="text-sm text-[#a0a0c0] tabular-nums">{en ? 'Correct' : '正解'} <b className="text-lg text-[#e0e0f0]">{nowRight}</b> / {sum.done}</span>
-        <span className="text-sm text-[#a0a0c0] tabular-nums">{en ? 'Left' : '残り'} <b className="text-lg text-[#e0e0f0]">{sum.total - sum.done}</b></span>
-        <div className="flex-1 min-w-[100px] h-1.5 rounded bg-[#1e1e2a] overflow-hidden">
+      <div className="sticky top-0 z-20 glass -mx-4 px-4 border-b py-3 mb-6 flex flex-wrap items-center gap-x-5 gap-y-2" style={{ borderColor: `${accent}55` }}>
+        <span className="text-sm text-[#9AA3BD] tabular-nums">{en ? 'Correct' : '正解'} <b className="text-lg text-[#E8EBF4]">{nowRight}</b> / {sum.done}</span>
+        <span className="text-sm text-[#9AA3BD] tabular-nums">{en ? 'Left' : '残り'} <b className="text-lg text-[#E8EBF4]">{sum.total - sum.done}</b></span>
+        <div className="flex-1 min-w-[100px] h-1.5 rounded bg-[#1A2234] overflow-hidden">
           <div className="h-full transition-all" style={{ width: `${(sum.done / sum.total) * 100}%`, background: accent }} />
         </div>
         <div className="flex gap-2 flex-wrap">
           {!state.onlyMissed && anyWrong && (
-            <button onClick={startRetry} className="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#2a2a38] text-[#e0e0f0] hover:border-[#3a3a55]">{en ? 'Retry missed' : '間違えた問題だけ'}</button>
+            <button onClick={startRetry} className="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#232C42] text-[#E8EBF4] hover:border-[#35415E]">{en ? 'Retry missed' : '間違えた問題だけ'}</button>
           )}
           {state.onlyMissed && (
-            <button onClick={showAll} className="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#2a2a38] text-[#e0e0f0] hover:border-[#3a3a55]">{en ? 'Show all' : '全問表示'}</button>
+            <button onClick={showAll} className="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#232C42] text-[#E8EBF4] hover:border-[#35415E]">{en ? 'Show all' : '全問表示'}</button>
           )}
           {!confirmReset ? (
-            <button onClick={() => setConfirmReset(true)} className="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#2a2a38] text-[#606080] hover:text-[#e0e0f0]">{en ? 'Reset' : 'リセット'}</button>
+            <button onClick={() => setConfirmReset(true)} className="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#232C42] text-[#7681A0] hover:text-[#E8EBF4]">{onRedraw ? (en ? 'New draw' : '新しく出題') : (en ? 'Reset' : 'リセット')}</button>
           ) : (
             <span className="flex items-center gap-2 text-xs text-[#E5534B]">
-              {en ? 'Clear all answers?' : '全部消しますか？'}
-              <button onClick={reset} className="px-2 py-1 rounded bg-[#E5534B] text-white font-semibold">{en ? 'Clear' : '消す'}</button>
-              <button onClick={() => setConfirmReset(false)} className="px-2 py-1 rounded border border-[#2a2a38] text-[#a0a0c0]">{en ? 'Cancel' : 'やめる'}</button>
+              {onRedraw ? (en ? 'Draw new questions?' : '新しい問題にしますか？') : (en ? 'Clear all answers?' : '全部消しますか？')}
+              <button onClick={reset} className="px-2 py-1 rounded bg-[#E5534B] text-white font-semibold">{onRedraw ? (en ? 'Draw' : '出題') : (en ? 'Clear' : '消す')}</button>
+              <button onClick={() => setConfirmReset(false)} className="px-2 py-1 rounded border border-[#232C42] text-[#9AA3BD]">{en ? 'Cancel' : 'やめる'}</button>
             </span>
           )}
         </div>
@@ -153,9 +154,9 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
 
       {test.sections.map((sec, si) => (
         <section key={si} className="mb-8">
-          <h2 className="noto text-xl font-bold text-[#e0e0f0]">{sec.title}</h2>
-          {sec.instruction && <p className="text-sm text-[#707090] mb-3">{sec.instruction}</p>}
-          <div className="bg-[#171720] border border-[#2a2a38] rounded-xl divide-y divide-[#22222e]">
+          <h2 className="noto text-xl font-bold text-[#E8EBF4]">{sec.title} <span className="text-sm font-normal text-[#7681A0]">· {sec.items.length}</span></h2>
+          {sec.instruction && <p className="text-sm text-[#7681A0] mb-3">{sec.instruction}</p>}
+          <div className="bg-[#131A2A] border border-[#232C42] rounded-2xl divide-y divide-[#1E2638] overflow-hidden">
             {sec.items.map((it, ii) => {
               const key = `${si}-${ii}`;
               const a = state.ans[key];
@@ -166,9 +167,10 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
                 <div key={key} className="p-4 sm:p-5">
                   <div className="flex gap-3 items-baseline">
                     <span className="text-sm font-mono flex-shrink-0 w-10" style={{ color: accent }}>{num}</span>
-                    <p className="noto text-[17px] sm:text-lg text-[#e0e0f0] leading-relaxed whitespace-pre-line min-w-0">
+                    <p className="noto text-[17px] sm:text-lg text-[#E8EBF4] leading-relaxed whitespace-pre-line min-w-0">
                       {it.q}
-                      {it.reversed && <span className="ml-2 text-[10px] px-1.5 py-0.5 rounded border border-[#3a3a55] text-[#a0a0c0] align-middle">逆</span>}
+                      {it.reversed && <span className="ml-2 text-[10px] px-1.5 py-0.5 rounded border border-[#35415E] text-[#9AA3BD] align-middle">逆</span>}
+                      {it.tag && <span className="ml-2 text-[10px] px-1.5 py-0.5 rounded-full align-middle whitespace-nowrap" style={{ color: accent, background: `${accent}1f` }}>{it.tag}</span>}
                     </p>
                   </div>
 
@@ -177,7 +179,7 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
                       {(state.order[key] || it.choices.map((_, k) => k)).map((orig, pos) => {
                         const isRight = orig === it.answer;
                         const isPick = answered && a.pick === orig;
-                        let cls = 'border-transparent hover:bg-[#1e1e2a]';
+                        let cls = 'border-transparent hover:bg-[#1A2234]';
                         if (answered && isRight) cls = 'border-[#2f6b52] bg-[#14271f]';
                         if (isPick && !isRight) cls = 'border-[#7a2e2a] bg-[#2a1616]';
                         return (
@@ -190,12 +192,12 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
                             <span
                               className="flex-shrink-0 w-8 h-6 mt-0.5 rounded-full border text-xs font-mono flex items-center justify-center"
                               style={isPick
-                                ? { background: isRight ? '#34C38F' : '#E5534B', borderColor: 'transparent', color: '#0F0F14' }
+                                ? { background: isRight ? '#34C38F' : '#E5534B', borderColor: 'transparent', color: '#0B0E17' }
                                 : answered && isRight
                                   ? { borderColor: '#34C38F', color: '#34C38F', borderWidth: 2 }
                                   : { borderColor: accent, color: accent }}
                             >{LETTERS[pos]}</span>
-                            <span className="noto text-base sm:text-[17px] text-[#d0d0e0] leading-relaxed">{it.choices[orig]}</span>
+                            <span className="noto text-base sm:text-[17px] text-[#D5DAE6] leading-relaxed">{it.choices[orig]}</span>
                           </button>
                         );
                       })}
@@ -212,7 +214,7 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
                   )}
 
                   {answered && (
-                    <div className={`mt-3 sm:ml-[52px] border-l-[3px] pl-3 py-1 text-[15px] sm:text-base text-[#b0b0c8] grid gap-1 ${a.ok ? 'border-[#34C38F]' : 'border-[#E5534B]'}`}>
+                    <div className={`mt-3 sm:ml-[52px] border-l-[3px] pl-3 py-1 text-[15px] sm:text-base text-[#B4BCD0] grid gap-1 ${a.ok ? 'border-[#34C38F]' : 'border-[#E5534B]'}`}>
                       <span className={`font-bold ${a.ok ? 'text-[#34C38F]' : 'text-[#E5534B]'}`}>
                         {a.ok
                           ? (a.self ? (en ? 'Correct (self-marked)' : '正解（自己採点）') : (en ? 'Correct' : '正解'))
@@ -222,7 +224,7 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
                       </span>
                       {sec.type === 'blank' && <span className="noto">{en ? 'Answer: ' : '答え：'}{it.answer}</span>}
                       {it.explanation && <span className="noto">{it.explanation}</span>}
-                      {it.source && <span className="font-mono text-xs text-[#707090]">{it.source}</span>}
+                      {it.source && <span className="font-mono text-xs text-[#7681A0]">{it.source}</span>}
                       {sec.type === 'blank' && !a.ok && (
                         <button onClick={() => markCorrect(key)} className="text-left text-xs underline" style={{ color: accent }}>
                           {en ? 'My answer means the same → mark correct' : '同じ意味の答えだった → 正解にする'}
@@ -234,17 +236,17 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
               );
             }).filter(Boolean)}
             {state.onlyMissed && sec.items.every((_, ii) => { const a = state.ans[`${si}-${ii}`]; return !(a && !a.first); }) && (
-              <p className="p-4 text-sm text-[#606080]">{en ? 'Nothing missed in this part.' : 'このパートは全問正解。'}</p>
+              <p className="p-4 text-sm text-[#7681A0]">{en ? 'Nothing missed in this part.' : 'このパートは全問正解。'}</p>
             )}
           </div>
         </section>
       ))}
 
       {sum.finished && (
-        <section className="mt-8 p-5 rounded-xl border-2 bg-[#171720]" style={{ borderColor: accent }} aria-live="polite">
-          <h2 className="noto text-xl font-bold text-[#e0e0f0] mb-2">{en ? 'Result' : '結果'}</h2>
-          <p className="font-mono text-4xl text-[#e0e0f0] tabular-nums mb-2">{sum.first} / {sum.total} · {pct}%</p>
-          <p className="text-xs text-[#606080] mb-1">
+        <section className="mt-8 p-5 rounded-xl border-2 bg-[#131A2A]" style={{ borderColor: accent }} aria-live="polite">
+          <h2 className="noto text-xl font-bold text-[#E8EBF4] mb-2">{en ? 'Result' : '結果'}</h2>
+          <p className="font-mono text-4xl text-[#E8EBF4] tabular-nums mb-2">{sum.first} / {sum.total} · {pct}%</p>
+          <p className="text-xs text-[#7681A0] mb-1">
             {test.sections.map((sec, si) => {
               const n = sec.items.filter((_, ii) => state.ans[`${si}-${ii}`]?.first).length;
               return `${sec.type === 'mc' ? (en ? 'Multiple choice' : '選択') : (en ? 'Blanks' : '穴埋め')} ${n}/${sec.items.length}`;
@@ -253,10 +255,10 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
           </p>
           {missed.length > 0 ? (
             <>
-              <p className="text-sm text-[#a0a0c0] mt-3 mb-2">{en ? 'Missed on the first try:' : '初回で間違えた問題：'}</p>
-              <ol className="list-decimal pl-5 grid gap-1.5 text-base text-[#d0d0e0] noto">
+              <p className="text-sm text-[#9AA3BD] mt-3 mb-2">{en ? 'Missed on the first try:' : '初回で間違えた問題：'}</p>
+              <ol className="list-decimal pl-5 grid gap-1.5 text-base text-[#D5DAE6] noto">
                 {missed.map((m, i) => (
-                  <li key={i}>{m.label}: {m.answer} <span className="font-mono text-xs text-[#707090]">{m.source}</span></li>
+                  <li key={i}>{m.label}: {m.answer} <span className="font-mono text-xs text-[#7681A0]">{m.source}</span></li>
                 ))}
               </ol>
             </>
@@ -281,12 +283,12 @@ function BlankInput({ answered, value, onCheck, accent, en }) {
         readOnly={answered}
         onChange={(e) => setText(e.target.value)}
         autoComplete="off"
-        className="noto bg-transparent border-0 border-b-2 px-2 py-1.5 text-lg text-[#e0e0f0] w-full max-w-[320px] focus:outline-none"
-        style={{ borderColor: answered ? '#2a2a38' : accent }}
+        className="noto bg-transparent border-0 border-b-2 px-2 py-1.5 text-lg text-[#E8EBF4] w-full max-w-[320px] focus:outline-none"
+        style={{ borderColor: answered ? '#232C42' : accent }}
         aria-label={en ? 'Answer' : '答え'}
       />
       {!answered && (
-        <button type="submit" className="px-4 py-2 text-sm font-semibold rounded-lg text-[#0F0F14]" style={{ background: accent }}>
+        <button type="submit" className="px-4 py-2 text-sm font-semibold rounded-lg text-[#0B0E17]" style={{ background: accent }}>
           {en ? 'Check' : '答え合わせ'}
         </button>
       )}
