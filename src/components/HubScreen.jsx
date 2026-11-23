@@ -19,8 +19,8 @@ export default function HubScreen({ onOpenKanji, onOpenClass, onNavigateToProfil
       </button>
 
       <div className="text-center mb-10 mt-10">
-        <h1 className="noto text-6xl font-bold text-[#e0e0f0] mb-2 tracking-wide">{APP_NAME}</h1>
-        <p className="text-lg text-[#a0a0c0] mb-1">{APP_NAME_ROMAJI}</p>
+        <h1 className="text-5xl sm:text-6xl font-bold text-[#e0e0f0] mb-3 tracking-tight" style={{ textWrap: 'balance' }}>{APP_NAME}</h1>
+        {APP_NAME_ROMAJI && <p className="text-lg text-[#a0a0c0] mb-1">{APP_NAME_ROMAJI}</p>}
         <p className="text-sm text-[#606080]">{APP_TAGLINE}</p>
       </div>
 
