@@ -35,6 +35,9 @@ function App() {
     // Load shared vocab once on mount (independent of auth)
     dataService.loadSharedVocab().catch(console.error);
 
+    // Finish a Google sign-in that fell back to a full-page redirect (phones that block popups).
+    userService.finishRedirectSignIn().catch((err) => console.error('Redirect sign-in failed:', err));
+
     // Listen for Firebase Auth state — fires immediately on load
     const unsubscribe = userService.onAuthStateChanged(async (firebaseUser) => {
       if (firebaseUser) {

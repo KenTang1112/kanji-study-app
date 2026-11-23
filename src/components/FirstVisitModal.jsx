@@ -1,19 +1,34 @@
 import { useState } from 'react';
-import { userService } from '../services/userService';
+import { userService, inAppBrowser } from '../services/userService';
+
+const ERROR_TEXT = {
+  'auth/popup-closed-by-user': 'The Google window was closed before sign-in finished.',
+  'auth/unauthorized-domain': "This web address isn't allowed for sign-in yet (Firebase → Authentication → Settings → Authorized domains).",
+  'auth/network-request-failed': 'No connection. Check your internet and try again.',
+  'auth/web-storage-unsupported': 'This browser is blocking storage. Turn off private browsing, or try Safari or Chrome.',
+};
+
+// LINE opens links in its own browser; this URL flag makes it hand the page to Safari/Chrome.
+function openInExternalBrowser() {
+  const url = new URL(window.location.href);
+  url.searchParams.set('openExternalBrowser', '1');
+  window.location.href = url.toString();
+}
 
 export default function FirstVisitModal({ onComplete }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const app = inAppBrowser();
 
   const handleGoogle = async () => {
     setLoading(true);
     setError('');
     try {
       const user = await userService.signInWithGoogle();
-      onComplete(user);
+      if (user) onComplete(user); // null = redirecting to Google; finished after the page returns
     } catch (err) {
       console.error(err);
-      setError('Sign-in failed. Please try again.');
+      setError(`${ERROR_TEXT[err?.code] || 'Sign-in failed. Please try again.'}${err?.code ? ` (${err.code})` : ''}`);
       setLoading(false);
     }
   };
@@ -44,6 +59,19 @@ export default function FirstVisitModal({ onComplete }) {
 
         {error && (
           <p className="text-red-500 text-sm text-center mb-4">{error}</p>
+        )}
+
+        {app && (
+          <div className="mb-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-sm text-amber-900">
+            <p className="mb-2">Google sign-in doesn't work inside {app}'s built-in browser. Open this page in Safari or Chrome first.</p>
+            {app === 'LINE' ? (
+              <button onClick={openInExternalBrowser} className="w-full py-2 rounded-lg bg-amber-500 text-white font-semibold">
+                Open in browser
+              </button>
+            ) : (
+              <p className="text-xs">Tap the ⋯ menu and choose "Open in browser".</p>
+            )}
+          </div>
         )}
 
         <button

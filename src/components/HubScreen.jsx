@@ -21,7 +21,7 @@ export default function HubScreen({ onOpenKanji, onOpenClass, onNavigateToProfil
       <div className="text-center mb-10 mt-10">
         <h1 className="text-5xl sm:text-6xl font-bold text-[#e0e0f0] mb-3 tracking-tight" style={{ textWrap: 'balance' }}>{APP_NAME}</h1>
         {APP_NAME_ROMAJI && <p className="text-lg text-[#a0a0c0] mb-1">{APP_NAME_ROMAJI}</p>}
-        <p className="text-sm text-[#606080]">{APP_TAGLINE}</p>
+        <p className="text-base text-[#808098]">{APP_TAGLINE}</p>
       </div>
 
       <p className="self-start w-full max-w-2xl mx-auto text-[10px] font-semibold tracking-widest uppercase text-[#3a3a55] mb-3">Classes</p>
@@ -32,7 +32,7 @@ export default function HubScreen({ onOpenKanji, onOpenClass, onNavigateToProfil
         >
           <p className="text-xs font-semibold tracking-widest uppercase text-[#C1392B] mb-2">Japanese</p>
           <h2 className="noto text-2xl font-bold text-[#e0e0f0] mb-1">漢字・語彙</h2>
-          <p className="text-sm text-[#606080]">Kanji and vocab drills, chapter practice tests, shared vocab</p>
+          <p className="text-base text-[#808098]">Kanji and vocab drills, chapter practice tests, shared vocab</p>
         </button>
 
         {CLASSES.map((c) => {
@@ -45,7 +45,7 @@ export default function HubScreen({ onOpenKanji, onOpenClass, onNavigateToProfil
             >
               <p className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ color: c.accent }}>{c.subtitle}</p>
               <h2 className="noto text-2xl font-bold text-[#e0e0f0] mb-1">{c.name}</h2>
-              <p className="text-sm text-[#606080]">{c.tests.length} {c.tests.length === 1 ? 'test' : 'tests'} · {items} questions{c.exam ? ` · ${c.exam}` : ''}</p>
+              <p className="text-base text-[#808098]">{c.tests.length} {c.tests.length === 1 ? 'test' : 'tests'} · {items} questions{c.exam ? ` · ${c.exam}` : ''}</p>
             </button>
           );
         })}

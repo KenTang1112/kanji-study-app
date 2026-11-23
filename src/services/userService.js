@@ -1,8 +1,25 @@
 import { db, auth } from '../firebase.js';
 import {
-  GoogleAuthProvider, signInWithPopup, signInAnonymously,
-  signOut as firebaseSignOut, onAuthStateChanged,
+  GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
+  signInAnonymously, signOut as firebaseSignOut, onAuthStateChanged,
 } from 'firebase/auth';
+
+// In-app browsers (LINE, Instagram, Facebook, WeChat) are blocked by Google sign-in.
+export function inAppBrowser() {
+  const ua = navigator.userAgent || '';
+  if (/\bLine\//i.test(ua)) return 'LINE';
+  if (/Instagram/i.test(ua)) return 'Instagram';
+  if (/FBAN|FBAV/i.test(ua)) return 'Facebook';
+  if (/MicroMessenger/i.test(ua)) return 'WeChat';
+  return null;
+}
+
+// Popup errors where a full-page redirect is likely to work instead.
+const REDIRECT_FALLBACK = new Set([
+  'auth/popup-blocked',
+  'auth/operation-not-supported-in-this-environment',
+  'auth/cancelled-popup-request',
+]);
 import { doc, getDoc, setDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 
 async function ensureUserDocument(firebaseUser, overrides = {}) {
@@ -25,8 +42,22 @@ async function ensureUserDocument(firebaseUser, overrides = {}) {
 export const userService = {
   async signInWithGoogle() {
     const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(auth, provider);
-    return ensureUserDocument(result.user);
+    try {
+      const result = await signInWithPopup(auth, provider);
+      return ensureUserDocument(result.user);
+    } catch (err) {
+      if (REDIRECT_FALLBACK.has(err?.code)) {
+        await signInWithRedirect(auth, provider); // leaves the page; finished in finishRedirectSignIn()
+        return null;
+      }
+      throw err;
+    }
+  },
+
+  // Call once on load: completes a sign-in that went through the redirect fallback.
+  async finishRedirectSignIn() {
+    const result = await getRedirectResult(auth);
+    return result?.user ? ensureUserDocument(result.user) : null;
   },
 
   async signInAsGuest() {

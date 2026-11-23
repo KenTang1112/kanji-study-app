@@ -23,11 +23,11 @@ export default function ClassScreen({ classInfo, progress, onOpenTest, onBack })
               className="text-left bg-[#171720] border border-[#2a2a38] rounded-xl p-5 hover:border-[#3a3a55] transition-colors flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4"
             >
               <div className="flex-1 min-w-0">
-                <h2 className="noto text-lg font-bold text-[#e0e0f0]">{t.title}</h2>
-                {t.description && <p className="noto text-sm text-[#606080]">{t.description}</p>}
+                <h2 className="noto text-xl font-bold text-[#e0e0f0]">{t.title}</h2>
+                {t.description && <p className="noto text-base text-[#808098]">{t.description}</p>}
               </div>
               <span
-                className="text-xs font-semibold px-3 py-1 rounded-full border flex-shrink-0 self-start sm:self-center"
+                className="text-sm font-semibold px-3 py-1 rounded-full border flex-shrink-0 self-start sm:self-center"
                 style={s.finished
                   ? { color: classInfo.accent, borderColor: `${classInfo.accent}55`, background: `${classInfo.accent}18` }
                   : { color: '#a0a0c0', borderColor: '#2a2a38' }}

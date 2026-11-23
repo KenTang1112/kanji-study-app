@@ -122,7 +122,7 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
       <div className="mb-4">
         <p className="text-xs font-semibold tracking-widest uppercase mb-1" style={{ color: accent }}>{classInfo.subtitle}</p>
         <h1 className="noto text-2xl sm:text-3xl font-bold text-[#e0e0f0] leading-snug">{test.title}</h1>
-        {test.description && <p className="text-sm text-[#606080] mt-1">{test.description}</p>}
+        {test.description && <p className="text-base text-[#808098] mt-1">{test.description}</p>}
       </div>
 
       {/* Sticky score strip */}
@@ -153,8 +153,8 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
 
       {test.sections.map((sec, si) => (
         <section key={si} className="mb-8">
-          <h2 className="noto text-lg font-bold text-[#e0e0f0]">{sec.title}</h2>
-          {sec.instruction && <p className="text-xs text-[#606080] mb-3">{sec.instruction}</p>}
+          <h2 className="noto text-xl font-bold text-[#e0e0f0]">{sec.title}</h2>
+          {sec.instruction && <p className="text-sm text-[#707090] mb-3">{sec.instruction}</p>}
           <div className="bg-[#171720] border border-[#2a2a38] rounded-xl divide-y divide-[#22222e]">
             {sec.items.map((it, ii) => {
               const key = `${si}-${ii}`;
@@ -165,8 +165,8 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
               return (
                 <div key={key} className="p-4 sm:p-5">
                   <div className="flex gap-3 items-baseline">
-                    <span className="text-xs font-mono flex-shrink-0 w-10" style={{ color: accent }}>{num}</span>
-                    <p className="noto text-[15px] text-[#e0e0f0] leading-relaxed whitespace-pre-line min-w-0">
+                    <span className="text-sm font-mono flex-shrink-0 w-10" style={{ color: accent }}>{num}</span>
+                    <p className="noto text-[17px] sm:text-lg text-[#e0e0f0] leading-relaxed whitespace-pre-line min-w-0">
                       {it.q}
                       {it.reversed && <span className="ml-2 text-[10px] px-1.5 py-0.5 rounded border border-[#3a3a55] text-[#a0a0c0] align-middle">逆</span>}
                     </p>
@@ -188,10 +188,14 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
                             className={`flex gap-3 items-start text-left w-full px-2.5 py-2 rounded-lg border transition-colors ${cls} ${answered ? 'cursor-default' : ''}`}
                           >
                             <span
-                              className="flex-shrink-0 w-7 h-5 mt-0.5 rounded-full border text-[11px] font-mono flex items-center justify-center"
-                              style={isPick ? { background: isRight ? '#34C38F' : '#E5534B', borderColor: 'transparent', color: '#0F0F14' } : { borderColor: accent, color: accent }}
+                              className="flex-shrink-0 w-8 h-6 mt-0.5 rounded-full border text-xs font-mono flex items-center justify-center"
+                              style={isPick
+                                ? { background: isRight ? '#34C38F' : '#E5534B', borderColor: 'transparent', color: '#0F0F14' }
+                                : answered && isRight
+                                  ? { borderColor: '#34C38F', color: '#34C38F', borderWidth: 2 }
+                                  : { borderColor: accent, color: accent }}
                             >{LETTERS[pos]}</span>
-                            <span className="noto text-sm text-[#d0d0e0] leading-relaxed">{it.choices[orig]}</span>
+                            <span className="noto text-base sm:text-[17px] text-[#d0d0e0] leading-relaxed">{it.choices[orig]}</span>
                           </button>
                         );
                       })}
@@ -208,7 +212,7 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
                   )}
 
                   {answered && (
-                    <div className={`mt-3 sm:ml-[52px] border-l-[3px] pl-3 py-1 text-[13px] text-[#a0a0c0] grid gap-1 ${a.ok ? 'border-[#34C38F]' : 'border-[#E5534B]'}`}>
+                    <div className={`mt-3 sm:ml-[52px] border-l-[3px] pl-3 py-1 text-[15px] sm:text-base text-[#b0b0c8] grid gap-1 ${a.ok ? 'border-[#34C38F]' : 'border-[#E5534B]'}`}>
                       <span className={`font-bold ${a.ok ? 'text-[#34C38F]' : 'text-[#E5534B]'}`}>
                         {a.ok
                           ? (a.self ? (en ? 'Correct (self-marked)' : '正解（自己採点）') : (en ? 'Correct' : '正解'))
@@ -218,7 +222,7 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
                       </span>
                       {sec.type === 'blank' && <span className="noto">{en ? 'Answer: ' : '答え：'}{it.answer}</span>}
                       {it.explanation && <span className="noto">{it.explanation}</span>}
-                      {it.source && <span className="font-mono text-[11px] text-[#606080]">{it.source}</span>}
+                      {it.source && <span className="font-mono text-xs text-[#707090]">{it.source}</span>}
                       {sec.type === 'blank' && !a.ok && (
                         <button onClick={() => markCorrect(key)} className="text-left text-xs underline" style={{ color: accent }}>
                           {en ? 'My answer means the same → mark correct' : '同じ意味の答えだった → 正解にする'}
@@ -250,9 +254,9 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack 
           {missed.length > 0 ? (
             <>
               <p className="text-sm text-[#a0a0c0] mt-3 mb-2">{en ? 'Missed on the first try:' : '初回で間違えた問題：'}</p>
-              <ol className="list-decimal pl-5 grid gap-1 text-sm text-[#d0d0e0] noto">
+              <ol className="list-decimal pl-5 grid gap-1.5 text-base text-[#d0d0e0] noto">
                 {missed.map((m, i) => (
-                  <li key={i}>{m.label}: {m.answer} <span className="font-mono text-[11px] text-[#606080]">{m.source}</span></li>
+                  <li key={i}>{m.label}: {m.answer} <span className="font-mono text-xs text-[#707090]">{m.source}</span></li>
                 ))}
               </ol>
             </>
@@ -277,12 +281,12 @@ function BlankInput({ answered, value, onCheck, accent, en }) {
         readOnly={answered}
         onChange={(e) => setText(e.target.value)}
         autoComplete="off"
-        className="noto bg-transparent border-0 border-b-2 px-2 py-1.5 text-base text-[#e0e0f0] w-full max-w-[280px] focus:outline-none"
+        className="noto bg-transparent border-0 border-b-2 px-2 py-1.5 text-lg text-[#e0e0f0] w-full max-w-[320px] focus:outline-none"
         style={{ borderColor: answered ? '#2a2a38' : accent }}
         aria-label={en ? 'Answer' : '答え'}
       />
       {!answered && (
-        <button type="submit" className="px-3 py-1.5 text-xs font-semibold rounded-lg text-[#0F0F14]" style={{ background: accent }}>
+        <button type="submit" className="px-4 py-2 text-sm font-semibold rounded-lg text-[#0F0F14]" style={{ background: accent }}>
           {en ? 'Check' : '答え合わせ'}
         </button>
       )}
