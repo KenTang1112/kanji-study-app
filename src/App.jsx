@@ -10,12 +10,20 @@ import ProgressScreen from './components/ProgressScreen';
 import ProfileScreen from './components/ProfileScreen';
 import FirstVisitModal from './components/FirstVisitModal';
 import ErrorBoundary from './components/ErrorBoundary';
+import HubScreen from './components/HubScreen';
+import ClassScreen from './components/ClassScreen';
+import ClassTest from './components/ClassTest';
+import { CLASSES } from './tests';
+import { testProgressService } from './services/testProgressService';
 import { userService } from './services/userService';
 import dataService from './services/dataService';
 import './App.css';
 
 function App() {
-  const [currentScreen, setCurrentScreen] = useState('home');
+  const [currentScreen, setCurrentScreen] = useState('hub');
+  const [selectedClassId, setSelectedClassId] = useState(null);
+  const [selectedTestId, setSelectedTestId] = useState(null);
+  const [testProgress, setTestProgress] = useState(() => testProgressService.loadAll(null));
   const [selectedMode, setSelectedMode] = useState(null);
   const [selectedChapters, setSelectedChapters] = useState([]);
   const [selectedWords, setSelectedWords] = useState([]);
@@ -32,6 +40,7 @@ function App() {
       if (firebaseUser) {
         try {
           const profile = await userService.getUser(firebaseUser.uid);
+          setTestProgress(testProgressService.loadAll(profile));
           setCurrentUser(profile || {
             id: firebaseUser.uid,
             displayName: firebaseUser.displayName || 'User',
@@ -64,8 +73,26 @@ function App() {
   const handleSignOut = () => {
     setCurrentUser(null);
     setNeedsProfileSetup(true);
-    setCurrentScreen('home');
+    setCurrentScreen('hub');
   };
+
+  const handleOpenClass = (classId) => {
+    setSelectedClassId(classId);
+    setCurrentScreen('class');
+  };
+
+  const handleOpenTest = (testId) => {
+    setSelectedTestId(testId);
+    setCurrentScreen('class-test');
+  };
+
+  const handleSaveTest = (testId, state) => {
+    setTestProgress((prev) => ({ ...prev, [testId]: state }));
+    testProgressService.save(currentUser, testId, state);
+  };
+
+  const selectedClass = CLASSES.find((c) => c.id === selectedClassId);
+  const selectedTest = selectedClass?.tests.find((t) => t.id === selectedTestId);
 
   const handleModeSelect = (mode) => {
     setSelectedMode(mode);
@@ -116,7 +143,7 @@ function App() {
     setCurrentScreen('profile');
   };
 
-  const bottomNavScreens = ['home', 'vocabulary-manager', 'progress', 'profile', 'flagged-items'];
+  const bottomNavScreens = ['hub', 'class', 'home', 'vocabulary-manager', 'progress', 'profile', 'flagged-items'];
   const showBottomNav = bottomNavScreens.includes(currentScreen);
 
   if (!appReady) {
@@ -137,8 +164,40 @@ function App() {
       )}
 
       <div className={`container mx-auto px-4 max-w-4xl ${showBottomNav ? 'pb-20 lg:pb-6 pt-6' : 'py-6'}`}>
+        {currentScreen === 'hub' && (
+          <HubScreen
+            onOpenKanji={() => setCurrentScreen('home')}
+            onOpenClass={handleOpenClass}
+            onNavigateToProfile={handleNavigateToProfile}
+            currentUser={currentUser}
+          />
+        )}
+
+        {currentScreen === 'class' && selectedClass && (
+          <ClassScreen
+            classInfo={selectedClass}
+            progress={testProgress}
+            onOpenTest={handleOpenTest}
+            onBack={() => setCurrentScreen('hub')}
+          />
+        )}
+
+        {currentScreen === 'class-test' && selectedClass && selectedTest && (
+          <ErrorBoundary>
+            <ClassTest
+              key={selectedTest.id}
+              test={selectedTest}
+              classInfo={selectedClass}
+              savedState={testProgress[selectedTest.id]}
+              onSave={(state) => handleSaveTest(selectedTest.id, state)}
+              onBack={() => setCurrentScreen('class')}
+            />
+          </ErrorBoundary>
+        )}
+
         {currentScreen === 'home' && (
           <HomeScreen
+            onBackToHub={() => setCurrentScreen('hub')}
             onModeSelect={handleModeSelect}
             onManageVocabulary={handleManageVocabulary}
             onManageFlaggedItems={handleFlaggedItems}
@@ -209,7 +268,8 @@ function App() {
       {showBottomNav && (
         <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-[#0F0F14] border-t border-[#1e1e2a] flex z-40 pb-safe">
           {[
-            { screen: 'home', icon: '🏠', label: 'Home' },
+            { screen: 'hub', icon: '🏠', label: 'Home' },
+            { screen: 'home', icon: '漢', label: 'Kanji' },
             { screen: 'vocabulary-manager', icon: '📚', label: 'Vocab' },
             { screen: 'progress', icon: '📊', label: 'Progress' },
             { screen: 'profile', icon: '👤', label: 'Profile' },

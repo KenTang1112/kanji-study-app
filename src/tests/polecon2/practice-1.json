@@ -1,0 +1,573 @@
+{
+ "id": "practice-1",
+ "title": "Practice midterm 1",
+ "description": "35 multiple choice + 15 blanks: World Bank (1993), Vogel, Fasteau & Fletcher (Japan, Korea), Tomeczek.",
+ "language": "en",
+ "sections": [
+  {
+   "type": "mc",
+   "title": "I. Multiple choice",
+   "instruction": "Choose the one best answer",
+   "items": [
+    {
+     "q": "Which group correctly lists the eight \"high-performing Asian economies\" (HPAEs) in the World Bank (1993) report?",
+     "choices": [
+      "Japan; Hong Kong, Korea, Singapore, Taiwan; Indonesia, Malaysia, Thailand",
+      "Japan; Hong Kong, Korea, Singapore, Taiwan; China, the Philippines, Vietnam",
+      "Japan, China, Korea, Taiwan, India, Indonesia, Malaysia, Thailand",
+      "Hong Kong, Korea, Singapore, Taiwan, China, India, the Philippines, Thailand"
+     ],
+     "answer": 0,
+     "explanation": "Japan + Four Tigers + three Southeast Asian NIEs. China is explicitly left out of the study",
+     "source": "WB 1"
+    },
+    {
+     "q": "Which of the following is NOT one of the \"Four Tigers\"?",
+     "choices": [
+      "Hong Kong",
+      "Singapore",
+      "Malaysia",
+      "the Republic of Korea"
+     ],
+     "answer": 2,
+     "explanation": "Malaysia is one of the Southeast Asian NIEs",
+     "source": "WB 1"
+    },
+    {
+     "q": "According to the World Bank (1993), roughly how much of the HPAEs' growth is accounted for by high investment and human capital (accumulation)?",
+     "choices": [
+      "one-third",
+      "one-half",
+      "two-thirds",
+      "nine-tenths"
+     ],
+     "answer": 2,
+     "explanation": "Accumulation ≈ two-thirds, productivity growth = the rest",
+     "source": "WB 8"
+    },
+    {
+     "q": "Find a FALSE statement about the World Bank's (1993) account of the HPAEs.",
+     "choices": [
+      "The HPAEs combined rapid growth with declining income inequality.",
+      "Investment exceeded 20 percent of GDP on average between 1960 and 1990.",
+      "Education spending focused mainly on universities rather than primary and secondary schools.",
+      "Inflation averaged about 9 percent, compared with 18 percent in other low- and middle-income economies."
+     ],
+     "answer": 2,
+     "explanation": "The opposite: spending went to primary and secondary schools; tertiary was left mostly to private funding",
+     "source": "WB 15–16 (others: 2, 8, 12)"
+    },
+    {
+     "q": "The idea that East Asian governments deliberately \"got the prices wrong\" to boost industries is associated with which view?",
+     "choices": [
+      "the neoclassical view",
+      "the revisionist view (e.g., Amsden 1989)",
+      "the market-friendly view of the World Development Report 1991",
+      "the dependency view"
+     ],
+     "answer": 1,
+     "explanation": "Revisionists: governments \"led the market\"",
+     "source": "WB 9"
+    },
+    {
+     "q": "What does the World Bank (1993) mean by \"deliberation councils\"?",
+     "choices": [
+      "secret meetings where firms lobby politicians for special favors",
+      "forums in which private sector groups help shape and implement government policies relevant to their interests",
+      "courts that settle disputes between ministries",
+      "labor unions that negotiate wages with the government"
+     ],
+     "answer": 1,
+     "explanation": "Unlike lobbying, the councils make allocation rules clear to everyone. Japan, Korea, Malaysia, Singapore",
+     "source": "WB 14"
+    },
+    {
+     "q": "What does the World Bank call the practice of holding deposit and lending rates below market-clearing levels?",
+     "choices": [
+      "financial liberalization",
+      "quantitative easing",
+      "financial repression",
+      "capital flight"
+     ],
+     "answer": 2,
+     "explanation": "Mild version = real rates positive but low. Transfers income from households (savers) to firms (borrowers)",
+     "source": "WB 11, 17"
+    },
+    {
+     "q": "Which of the following was NOT one of the mechanisms the World Bank lists as showing that \"all would have a share of future wealth\" (the principle of shared growth)?",
+     "choices": [
+      "comprehensive land reform in Korea and Taiwan",
+      "rice and fertilizer price policies in Indonesia",
+      "massive public housing programs in Hong Kong and Singapore",
+      "nationalization of all private banks in Japan"
+     ],
+     "answer": 3,
+     "explanation": "The listed ones are a, b, c, plus Malaysia's wealth-sharing for ethnic Malays",
+     "source": "WB 13–14"
+    },
+    {
+     "q": "According to the World Bank (1993), which Japanese ministry acted as a check on MITI's ability to carry out subsidy policies?",
+     "choices": [
+      "the Ministry of Finance",
+      "the Ministry of Foreign Affairs",
+      "the Ministry of Construction",
+      "the Ministry of Agriculture, Forestry and Fisheries"
+     ],
+     "answer": 0,
+     "explanation": "MOF checked MITI. In Indonesia and Thailand, balanced-budget laws did the same job",
+     "source": "WB 7"
+    },
+    {
+     "q": "How did Chalmers Johnson (1982) famously describe Japan's postwar politics?",
+     "choices": [
+      "Bureaucrats reigned while politicians ruled.",
+      "Politicians reigned while bureaucrats ruled.",
+      "Business reigned while politicians ruled.",
+      "The emperor reigned while the LDP ruled."
+     ],
+     "answer": 1,
+     "explanation": "Politicians reigned, bureaucrats ruled (actually ran the country). Easy to swap",
+     "source": "V 101"
+    },
+    {
+     "q": "What did Muramatsu and Krauss (1987) call the Japanese political system?",
+     "choices": [
+      "corporatism without labor",
+      "bureaupluralism",
+      "patterned pluralism",
+      "the developmental state"
+     ],
+     "answer": 2,
+     "explanation": "a = Pempel & Tsunekawa (1979), b = Aoki (1988), d = Johnson's school. Vogel calls patterned pluralism \"descriptively accurate yet analytically misleading\"",
+     "source": "V 101"
+    },
+    {
+     "q": "How did Ramseyer and Rosenbluth (1993) turn Johnson's thesis on its head?",
+     "choices": [
+      "They argued that business, not bureaucrats, controlled policy.",
+      "They positioned politicians as \"principals\" and bureaucrats as their \"agents.\"",
+      "They argued that the courts dominated policymaking.",
+      "They argued that bureaucrats were principals and politicians their agents."
+     ],
+     "answer": 1,
+     "explanation": "Vogel's criticism: they ignored how bureaucrats manipulated politicians. Kato (1994) looked at both directions",
+     "source": "V 102"
+    },
+    {
+     "q": "In the jankenpon (rock, paper, scissors) model described by Vogel, which pattern is correct?",
+     "choices": [
+      "Politicians defeat bureaucrats, bureaucrats defeat industry, industry defeats politicians.",
+      "Bureaucrats defeat politicians, politicians defeat industry, industry defeats bureaucrats.",
+      "Industry defeats bureaucrats, bureaucrats defeat politicians, politicians defeat industry.",
+      "Politicians defeat industry and bureaucrats equally."
+     ],
+     "answer": 0,
+     "explanation": "From Iio (2008). So bureaucrats got industry to lobby politicians for them",
+     "source": "V 104"
+    },
+    {
+     "q": "Which is NOT one of the three distinctive features of Japan's postwar model according to Vogel (2021)?",
+     "choices": [
+      "Ministry officials held their own policy preferences, independent of societal interests.",
+      "Ministry officials actively manipulated politicians to achieve their goals.",
+      "Ministry officials played an unusually political role in balancing interests within their jurisdiction.",
+      "Ministry officials simply carried out the policy positions written by Keidanren."
+     ],
+     "answer": 3,
+     "explanation": "The Keidanren story shows the reverse: MPT officials told Keidanren what to ask for",
+     "source": "V 102, 104–105"
+    },
+    {
+     "q": "In Vogel's account of the \"Telecom Wars\" of the 1980s, which ministries fought, and who won?",
+     "choices": [
+      "MITI and MOF; MOF won",
+      "MPT and MITI; MPT won",
+      "MPT and MITI; MITI won",
+      "MOF and MPT; MOF won"
+     ],
+     "answer": 1,
+     "explanation": "MPT (communications) vs MITI (computers) over the emerging IT sector. MPT won. The MPT official needed a second subway pass to Keidanren",
+     "source": "V 104–105"
+    },
+    {
+     "q": "What are shingikai?",
+     "choices": [
+      "LDP factions",
+      "policy councils organized by the ministries",
+      "post-retirement positions for bureaucrats",
+      "presidents' clubs of keiretsu firms"
+     ],
+     "answer": 1,
+     "explanation": "Ministry officials controlled membership and agenda. MITI councils = manufacturing, MOF councils = finance",
+     "source": "V 106"
+    },
+    {
+     "q": "According to Vogel, when did the Japanese bureaucracy enjoy its \"heyday of power\"?",
+     "choices": [
+      "the Meiji era only",
+      "from the 1950s through the early 1970s",
+      "during the bubble years of the late 1980s",
+      "after the 2001 administrative reform"
+     ],
+     "answer": 1,
+     "explanation": "Decline from the 1970s (slower growth, MOF budget ceilings contested, the rise of zoku), then the 1990s crash and scandals",
+     "source": "V 106–107"
+    },
+    {
+     "q": "Find a TRUE statement about the 1994 political reform.",
+     "choices": [
+      "It replaced a two-party system with a multiparty system.",
+      "It combined 300 single-member (first-past-the-post) seats with 200 proportional representation seats, replacing the old SNTV system.",
+      "It was passed by the LDP government of Prime Minister Hashimoto.",
+      "It created 511 single-member districts."
+     ],
+     "answer": 1,
+     "explanation": "Passed by the Hosokawa coalition in January 1994. The old system had 130 multi-member districts and 511 seats",
+     "source": "V 107"
+    },
+    {
+     "q": "The administrative reorganization launched by Prime Minister Hashimoto and implemented in January 2001 reduced the number of cabinet-level ministries and agencies from ___ to ___.",
+     "choices": [
+      "30 to 20",
+      "22 to 13",
+      "18 to 12",
+      "13 to 10"
+     ],
+     "answer": 1,
+     "explanation": "Also created the Cabinet Office and the CEFP (which took budgeting power from MOF)",
+     "source": "V 108"
+    },
+    {
+     "q": "Which body, created under the second Abe administration in 2014, gave the prime minister and cabinet greater control over the appointments of top bureaucrats?",
+     "choices": [
+      "the Council on Economic and Fiscal Policy",
+      "the Cabinet Bureau of Personnel Affairs (Naikaku jinjikyoku)",
+      "the Economic Planning Agency",
+      "the Policy Affairs Research Council"
+     ],
+     "answer": 1,
+     "explanation": "The DPJ had failed three times to pass it. a = CEFP (2001)",
+     "source": "V 109"
+    },
+    {
+     "q": "In Vogel's discussion of the Moritomo Gakuen scandal, what does sontaku mean?",
+     "choices": [
+      "bribery of a minister",
+      "preemptive action to satisfy superiors",
+      "a formal order from the prime minister",
+      "the leaking of documents to the press"
+     ],
+     "answer": 1,
+     "explanation": "MOF officials deleted references to Akie Abe in the land-sale documents",
+     "source": "V 110"
+    },
+    {
+     "q": "According to Fasteau and Fletcher (2024), what are the two kinds of industrial policy Japan has employed?",
+     "choices": [
+      "import-substitution policy and export-promotion policy",
+      "catch-up industrial policy (CUIP), from roughly 1870 to 1990, and mature-economy industrial policy (MEIP) since then",
+      "military industrial policy and civilian industrial policy",
+      "neoclassical policy and revisionist policy"
+     ],
+     "answer": 1,
+     "explanation": "Japan has used MEIP since about 1990",
+     "source": "FF-J 91"
+    },
+    {
+     "q": "Find a FALSE statement about the Fiscal Investment and Loan Program (FILP).",
+     "choices": [
+      "It allowed the MOF to loan funds from postal savings accounts and public pensions to strategic industries.",
+      "It ranged from 3.3 percent of GDP in 1956 to a high of 6.3 percent in 1972.",
+      "For its first two to three decades, it was made annually by MITI and MOF bureaucrats with little input from elected officials.",
+      "It was controlled directly by the LDP's Policy Affairs Research Council."
+     ],
+     "answer": 3,
+     "explanation": "It was made by bureaucrats, with little political input",
+     "source": "FF-J 97"
+    },
+    {
+     "q": "What role did the Development Bank of Japan (DBJ) play, according to Fasteau and Fletcher?",
+     "choices": [
+      "It financed most of Japan's industry by itself.",
+      "It invested small amounts in targeted industries and functioned as a signal to private banks about which industries the government was implicitly guaranteeing.",
+      "It controlled the exchange rate.",
+      "It regulated the stock market."
+     ],
+     "answer": 1,
+     "explanation": "A signalling role. FILP money was usually channelled through the DBJ",
+     "source": "FF-J 97"
+    },
+    {
+     "q": "According to Fasteau and Fletcher, policy in Japan was set by the \"iron triangle\" of ______.",
+     "choices": [
+      "the emperor, the military, and the LDP",
+      "big business, the bureaucracy, and the LDP",
+      "labor unions, farmers, and the JSP",
+      "the US, MITI, and MOF"
+     ],
+     "answer": 1,
+     "explanation": "Collective leadership, not strong individual leaders",
+     "source": "FF-J 97"
+    },
+    {
+     "q": "Which of the following is NOT one of the six major postwar horizontal keiretsu named by Fasteau and Fletcher?",
+     "choices": [
+      "Sumitomo",
+      "Fuyo",
+      "Sanwa",
+      "Toyota"
+     ],
+     "answer": 3,
+     "explanation": "The six: Sumitomo, Mitsui, Mitsubishi, Fuyo, Daiichi Kangyo, Sanwa. Each was centred on a bank; the first four have prewar zaibatsu roots. Toyota heads a supply-chain keiretsu",
+     "source": "FF-J 99"
+    },
+    {
+     "q": "Which of the following do Fasteau and Fletcher call one of MITI's \"more notorious mistakes\"?",
+     "choices": [
+      "supporting the steel industry",
+      "trying to keep Honda from producing anything other than motorcycles",
+      "promoting semiconductors",
+      "joining the OECD"
+     ],
+     "answer": 1,
+     "explanation": "Firms also overruled MITI's plans to consolidate the auto and computer industries",
+     "source": "FF-J 100"
+    },
+    {
+     "q": "At what rate was the yen fixed against the US dollar from 1949 to 1971?",
+     "choices": [
+      "100 yen",
+      "240 yen",
+      "308 yen",
+      "360 yen"
+     ],
+     "answer": 3,
+     "explanation": "Under Bretton Woods. Nixon ended the peg in 1971",
+     "source": "FF-J 97, 103"
+    },
+    {
+     "q": "According to Tomeczek (2022), the 1947 Anti-Monopoly Law made holding companies illegal. In what year were holding companies legalized again?",
+     "choices": [
+      "1952",
+      "1973",
+      "1997",
+      "2008"
+     ],
+     "answer": 2,
+     "explanation": "Part of the 1990s deregulation",
+     "source": "T 2, 5"
+    },
+    {
+     "q": "Find a FALSE statement about keiretsu institutions (Tomeczek 2022).",
+     "choices": [
+      "The shachō-kai is the presidents' club of a horizontal keiretsu.",
+      "The kyōryoku-kai is the suppliers' association of a vertical keiretsu.",
+      "The sōgō shōsha is the general trading company of the keiretsu.",
+      "The shachō-kai exists in both horizontal and vertical keiretsu."
+     ],
+     "answer": 3,
+     "explanation": "Shachō-kai exist only in horizontal keiretsu; the vertical equivalent is the kyōryoku-kai",
+     "source": "T 4"
+    },
+    {
+     "q": "After a series of mergers of keiretsu main banks, which three \"super-keiretsu\" financial groups remain today?",
+     "choices": [
+      "Mitsubishi UFJ, Sumitomo Mitsui, and Mizuho",
+      "Nomura, Daiwa, and Nikko",
+      "Mitsubishi UFJ, Nomura, and Japan Post",
+      "Mitsui, Mitsubishi, and Yasuda"
+     ],
+     "answer": 0,
+     "explanation": "b are securities firms",
+     "source": "T 6"
+    },
+    {
+     "q": "After taking power in a coup in May 1961, Park Chung Hee created a new \"superministry\" with wide-ranging powers to coordinate other ministries. What was it?",
+     "choices": [
+      "the Ministry of Reconstruction",
+      "the Economic Planning Board (EPB)",
+      "the Korea Development Bank",
+      "the Fair Trade Commission"
+     ],
+     "answer": 1,
+     "explanation": "a = Rhee's ministry. d = created inside the EPB in 1981. The EPB was abolished in 1994",
+     "source": "FF-K 2–4, 8"
+    },
+    {
+     "q": "Which of the following was NOT a chaebol?",
+     "choices": [
+      "Samsung",
+      "Hyundai",
+      "Daewoo",
+      "Pohang Iron and Steel Company (POSCO)"
+     ],
+     "answer": 3,
+     "explanation": "POSCO was a state-owned enterprise, not part of any group. The 1975 chaebol list: Samsung, Lucky (LG), Hyundai, Hanjin, Hyosung, SsangYong, Daewoo",
+     "source": "FF-K 6, 10"
+    },
+    {
+     "q": "Find a TRUE statement about POSCO, according to Fasteau and Fletcher.",
+     "choices": [
+      "The World Bank strongly recommended building it.",
+      "It was financed partly by Japan's 1968–9 \"reparations\" payments, after a World Bank study concluded it would not be feasible.",
+      "It was created by the Samsung group.",
+      "Its first plant opened two years behind schedule."
+     ],
+     "answer": 1,
+     "explanation": "It opened in 1973, two months ahead of schedule. Run by Park Tae-Joon, a retired general",
+     "source": "FF-K 10"
+    },
+    {
+     "q": "As a condition of the IMF package approved on December 3, 1997, what cap was imposed on chaebol borrowing?",
+     "choices": [
+      "debt limited to 100 percent of equity",
+      "debt limited to 200 percent of equity",
+      "debt limited to 400 percent of equity",
+      "no cap was imposed"
+     ],
+     "answer": 1,
+     "explanation": "The package was $58 billion. Debt-to-equity had reached almost 400% by 1997",
+     "source": "FF-K 8–9"
+    }
+   ]
+  },
+  {
+   "type": "blank",
+   "title": "II. Fill in the blanks",
+   "instruction": "Type the missing word(s)",
+   "items": [
+    {
+     "q": "The World Bank calls the eight fast-growing economies the \"( )-( ) Asian economies\" (HPAEs).",
+     "accept": [
+      "high-performing"
+     ],
+     "answer": "high-performing",
+     "source": "WB 1"
+    },
+    {
+     "q": "Revisionists such as Amsden argue that East Asian governments deliberately got the prices ( ).",
+     "accept": [
+      "wrong"
+     ],
+     "answer": "wrong",
+     "source": "WB 9"
+    },
+    {
+     "q": "Forums in which the private sector helps shape government policy are called ( ) councils.",
+     "accept": [
+      "deliberation"
+     ],
+     "answer": "deliberation",
+     "source": "WB 14"
+    },
+    {
+     "q": "Holding deposit and lending rates below market-clearing levels is called financial ( ).",
+     "accept": [
+      "repression"
+     ],
+     "answer": "repression",
+     "source": "WB 17"
+    },
+    {
+     "q": "Muramatsu and Krauss described the Japanese system as \"( ) pluralism.\"",
+     "accept": [
+      "patterned"
+     ],
+     "answer": "patterned",
+     "source": "V 101"
+    },
+    {
+     "q": "Pempel and Tsunekawa (1979) described the postwar regime as \"corporatism without ( ).\"",
+     "accept": [
+      "labor"
+     ],
+     "answer": "labor",
+     "source": "V 101"
+    },
+    {
+     "q": "LDP \"tribes\" of policy specialists that emerged in the 1970s are called ( ). [Japanese word]",
+     "accept": [
+      "zoku"
+     ],
+     "answer": "zoku",
+     "source": "V 107"
+    },
+    {
+     "q": "The practice of ministries arranging post-retirement positions in industry for their officials is called ( ), \"descent from heaven.\" [Japanese word]",
+     "accept": [
+      "amakudari"
+     ],
+     "answer": "amakudari",
+     "source": "V 108"
+    },
+    {
+     "q": "The \"( )( )\" of big business, the bureaucracy, and the LDP.",
+     "accept": [
+      "iron triangle",
+      "irontriangle"
+     ],
+     "answer": "iron triangle",
+     "source": "FF-J 97"
+    },
+    {
+     "q": "The quasi-hidden second budget: the ( ) ( ) and Loan Program (FILP).",
+     "accept": [
+      "Fiscal Investment",
+      "FiscalInvestment"
+     ],
+     "answer": "Fiscal Investment",
+     "source": "FF-J 97"
+    },
+    {
+     "q": "Japan practiced ( )-( ) industrial policy (CUIP) from roughly 1870 to 1990.",
+     "accept": [
+      "catch-up"
+     ],
+     "answer": "catch-up",
+     "source": "FF-J 91"
+    },
+    {
+     "q": "A keiretsu is a network of firms with a single commercial bank in the middle, known as the ( ) ( ).",
+     "accept": [
+      "main bank",
+      "mainbank"
+     ],
+     "answer": "main bank",
+     "source": "T 1, 3"
+    },
+    {
+     "q": "The general trading company of a keiretsu is called the ( ) ( ). [Japanese words]",
+     "accept": [
+      "sōgō shōsha",
+      "sōgōshōsha",
+      "sogo shosha",
+      "sougou shousha",
+      "sogoshosha"
+     ],
+     "answer": "sōgō shōsha",
+     "source": "T 4"
+    },
+    {
+     "q": "Park Chung Hee's superministry: the Economic ( ) ( ) (EPB).",
+     "accept": [
+      "Planning Board",
+      "PlanningBoard"
+     ],
+     "answer": "Planning Board",
+     "source": "FF-K 3"
+    },
+    {
+     "q": "In the late 1960s and early 1970s Park pivoted to the ( ) and ( ) Industry (HCI) drive.",
+     "accept": [
+      "Heavy, Chemical",
+      "Heavy,Chemical",
+      "heavy chemical",
+      "heavy and chemical"
+     ],
+     "answer": "Heavy, Chemical",
+     "source": "FF-K 4"
+    }
+   ]
+  }
+ ]
+}

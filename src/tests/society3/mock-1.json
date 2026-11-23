@@ -1,0 +1,573 @@
+{
+ "id": "mock-1",
+ "title": "模擬中間テスト ①（少子高齢化）",
+ "description": "35 multiple choice + 14 blanks from 山田 ch. 1 & 5 and the week 2–3 slides and charts.",
+ "language": "ja",
+ "sections": [
+  {
+   "type": "mc",
+   "title": "Ⅰ. 選択問題",
+   "instruction": "最も適切なものを1つ選べ",
+   "items": [
+    {
+     "q": "「合計特殊出生率」とは何か？",
+     "choices": [
+      "全国で1年間に生まれる子どもの数",
+      "女性1人あたりが一生涯に産む子どもの平均数",
+      "結婚した夫婦1組あたりが最終的にもつ子どもの数",
+      "人口千人あたりの1年間の出生数"
+     ],
+     "answer": 1,
+     "explanation": "a = 出生数 (Sasada's own example), c = 完結出生児数. Three similar statistics: learn all three",
+     "source": "02 p. 3"
+    },
+    {
+     "q": "「完結出生児数」とは何か？",
+     "choices": [
+      "結婚した夫婦1組あたりが最終的にもつ子どもの平均数",
+      "女性1人あたりが一生涯に産む子どもの平均数",
+      "未婚の母から生まれる子どもの割合",
+      "1年間に生まれる子どもの数の前年比"
+     ],
+     "answer": 0,
+     "explanation": "夫婦出生力 = 一組あたりが産む子ども数. Was about 2.2 for 30 years, then 2.09 in 2005",
+     "source": "02 pp. 2, 5"
+    },
+    {
+     "q": "長期的に人口が増えも減りもしない合計特殊出生率の水準（人口置換水準）は、およそいくつか？",
+     "choices": [
+      "1.26",
+      "1.57",
+      "2.07",
+      "4.0"
+     ],
+     "answer": 2,
+     "explanation": "2.07. The extra 0.07 is there because about 5% more boys are born than girls, and some girls die before they can have children",
+     "source": "02 p. 3"
+    },
+    {
+     "q": "山田が2005年の「少子化の深刻化・四点セット」として挙げたものに含まれないものはどれか？",
+     "choices": [
+      "日本の総人口の減少開始",
+      "合計特殊出生率1.26",
+      "30代前半の未婚率の上昇",
+      "65歳以上の高齢者の割合が30%を超えたこと"
+     ],
+     "answer": 3,
+     "explanation": "The four: total population starts falling · TFR 1.26 · 未婚率 (30代前半: women 32.0%, men 47.1%) · 完結出生児数 2.23 → 2.09. The 65+ share in 2005 was 21%",
+     "source": "02 pp. 2, 10"
+    },
+    {
+     "q": "日本の人口減少が始まった年として、山田が挙げているのは何年か？",
+     "choices": [
+      "1995年",
+      "2000年",
+      "2005年",
+      "2010年"
+     ],
+     "answer": 2,
+     "explanation": "「二〇〇五年」は日本の人口減少が開始された年",
+     "source": "02 p. 1"
+    },
+    {
+     "q": "1950〜55年の少子化について、正しいものはどれか？",
+     "choices": [
+      "地域や家族によって大きな差を伴って進んだ",
+      "ほとんどの若者が結婚し、子どもを2人産む家族が多数派になった",
+      "非嫡出子（未婚の母から生まれる子）の割合が大きく上昇した",
+      "合計特殊出生率は4.0以上を保った"
+     ],
+     "answer": 1,
+     "explanation": "「家族の画一化」. Children per family fell everywhere at the same time. TFR 4.40 → 2.37 (about halved)",
+     "source": "02 p. 6"
+    },
+    {
+     "q": "高度成長期の日本は「皆婚」社会と呼ばれる。当時、結婚適齢期を迎えた世代の生涯未婚率はどのくらいだったか？",
+     "choices": [
+      "3%未満",
+      "約10%",
+      "約15%",
+      "約25%"
+     ],
+     "answer": 0,
+     "explanation": "生涯未婚率3%未満の「皆婚」社会",
+     "source": "03 p. 2"
+    },
+    {
+     "q": "1995年から2005年にかけて、出生数の減少率が最も高かった都道府県はどこか？",
+     "choices": [
+      "東京都",
+      "沖縄県",
+      "滋賀県",
+      "青森県"
+     ],
+     "answer": 3,
+     "explanation": "青森 −24.7% (13,972 → 10,524). 東京 only −0.2%",
+     "source": "02 pp. 6–7 (表1-4)"
+    },
+    {
+     "q": "都市部で、出生数はあまり減らないのに合計特殊出生率が低くなる理由として、山田の説明に合うものはどれか？",
+     "choices": [
+      "地方から若い女性が流入し、計算の分母が大きくなるから",
+      "都市部の方が子育てにお金がかからないから",
+      "都市部では非嫡出子が多いから",
+      "都市部では平均初婚年齢が低いから"
+     ],
+     "answer": 0,
+     "explanation": "Young women move to the cities, so the denominator grows there and shrinks in rural areas. Rural areas: births fall but TFR stays high",
+     "source": "02 p. 7"
+    },
+    {
+     "q": "山田によれば、現在の少子化が社会問題である最大の理由はどれか？",
+     "choices": [
+      "地球全体の人口が増えすぎているから",
+      "地域格差と家族格差を伴って進んでいるから",
+      "大学に入りやすくなり、大学の価値が下がるから",
+      "中国の一人っ子政策の影響を受けているから"
+     ],
+     "answer": 1,
+     "explanation": "「地域格差」「家族格差」を伴っていること",
+     "source": "02 p. 9"
+    },
+    {
+     "q": "少子化の結果としての「人口構成の変化」がもたらすマクロ的なデメリットとして、山田が挙げていないものはどれか？",
+     "choices": [
+      "労働力不足",
+      "年金などの社会保障負担の増大",
+      "経済成長の鈍化",
+      "通勤電車の混雑"
+     ],
+     "answer": 3,
+     "explanation": "The emptier commuter train is an item from the メリット論, which 山田 dismisses. The three デメリット: ①労働力不足 ②社会保障負担の増大 ③経済成長の鈍化",
+     "source": "02 pp. 10–11"
+    },
+    {
+     "q": "少子化対策について、山田の立場として正しいものはどれか？",
+     "choices": [
+      "「出生率を上げる」対策だけが必要である",
+      "「少子化を前提とし、それに対応した社会を作る」対策だけが必要である",
+      "両方とも必要である",
+      "少子化は放置してもかまわない"
+     ],
+     "answer": 2,
+     "explanation": "「私は両方とも必要だと思っている」",
+     "source": "02 p. 12"
+    },
+    {
+     "q": "1975年以降の少子化の直接の原因として、山田が挙げているものはどれか？",
+     "choices": [
+      "結婚した夫婦がもつ子どもの数が半減したこと",
+      "晩婚化と未婚化",
+      "非嫡出子の増加",
+      "離婚の減少"
+     ],
+     "answer": 1,
+     "explanation": "完結出生児数 was stable at about 2.2, so the cause is 晩婚化・未婚化 (people marrying later, and fewer people marrying)",
+     "source": "03 p. 3"
+    },
+    {
+     "q": "「希望は努力が報われると感じるときに生じる」という言葉を山田は引用している。この言葉は誰のものか？",
+     "choices": [
+      "社会心理学者のネッセ",
+      "社会学者の落合恵美子",
+      "マーケティング・アナリストの三浦展",
+      "経済学者の松谷明彦"
+     ],
+     "answer": 0,
+     "explanation": "ネッセ (social psychologist). 落合 = 再生産平等主義 · 三浦展 = 団塊ジュニア data · 松谷 = an optimist book on population decline",
+     "source": "03 p. 2 (others: 02 pp. 6, 12; 03 p. 4)"
+    },
+    {
+     "q": "山田の定義による「パラサイト・シングル」とはどのような人か？",
+     "choices": [
+      "学校卒業後に一人暮らしを始め、自立して生活している独身者",
+      "学卒後も親に基本的生活条件を依存して、リッチな生活をしている独身者",
+      "親の介護のために実家に戻った既婚者",
+      "非正規雇用のため、結婚したくてもできない独身男性"
+     ],
+     "answer": 1,
+     "explanation": "His definition, first used in 1997",
+     "source": "03 p. 14"
+    },
+    {
+     "q": "日本で結婚年齢の上昇と合計特殊出生率の低下が始まった1975年頃に、そのきっかけとなった経済的な出来事はどれか？",
+     "choices": [
+      "バブル経済の崩壊",
+      "1973年のオイルショック",
+      "東京オリンピック",
+      "リーマン・ショック"
+     ],
+     "answer": 1,
+     "explanation": "1971 Nixon shock (ドルショック) → 1973 oil shock → 1974 first postwar negative growth. Later marriage and the TFR fall begin in 1975, 1–2 years behind",
+     "source": "03 p. 8"
+    },
+    {
+     "q": "低成長化によって若年男性の収入見通しが低下した理由として、山田の説明に合わないものはどれか？",
+     "choices": [
+      "企業の中で年配の男性が増え、年功序列賃金カーブの傾きが緩くなった",
+      "規制緩和で、中小企業・農家・自営業で働く若年男性の収入の伸びが期待できなくなった",
+      "スーパーマーケットなど大型小売店が規模を拡大した",
+      "女性の平均賃金が男性の平均賃金を上回った"
+     ],
+     "answer": 3,
+     "explanation": "a = reason ①, b and c = reason ② (規制緩和: farm-import liberalisation, 減反, big stores)",
+     "source": "03 pp. 8–9"
+    },
+    {
+     "q": "1980年代以降も出生率の低下が止まらなかった国はどれか？",
+     "choices": [
+      "アメリカ",
+      "スウェーデン",
+      "イタリア",
+      "フランス"
+     ],
+     "answer": 2,
+     "explanation": "The US, Northern Europe, France and the UK recovered in the 1980s. Italy, Spain and West Germany did not",
+     "source": "03 p. 16"
+    },
+    {
+     "q": "山田によれば、欧米で少子化が止まった国と止まらなかった国の差を生んだ条件として正しいものはどれか？",
+     "choices": [
+      "移民を多く受け入れたかどうか",
+      "「パラサイト社会」かどうかと、「男女共同参画社会」への転換が進んだかどうか",
+      "国の経済成長率が高いかどうか",
+      "カトリック教徒の割合が低いかどうかだけ"
+     ],
+     "answer": 1,
+     "explanation": "The cultural condition (「パラサイト社会」 or not) + the social condition (男女共同参画). (d) is a trap: Catholicism (divorce is hard) is only one extra factor for Italy",
+     "source": "03 pp. 16, 18"
+    },
+    {
+     "q": "2020年の生涯未婚率（50歳まで結婚経験がない割合）として正しい組み合わせはどれか？",
+     "choices": [
+      "男性 2.1%、女性 4.3%",
+      "男性 8.9%、女性 5.1%",
+      "男性 25.7%、女性 16.4%",
+      "男性 47.1%、女性 32.0%"
+     ],
+     "answer": 2,
+     "explanation": "a = 1975, b = 1995, d = the 30–34 未婚率 in 2005 (a different statistic). 2015: men 23.4%, women 14.1%",
+     "source": "slides w3 s4 (02 p. 2)"
+    },
+    {
+     "q": "2025年の日本の合計特殊出生率はいくつか？",
+     "choices": [
+      "1.14",
+      "1.26",
+      "1.57",
+      "2.07"
+     ],
+     "answer": 0,
+     "explanation": "1.26 = 2005 (and 2022), 2.07 = replacement level. Slide series: 2018 1.42 → 2020 1.33 → 2023 1.20 → 2024 1.15 → 2025 1.14",
+     "source": "slides w2 s2, s4"
+    },
+    {
+     "q": "2025年の合計特殊出生率が最も低いのはどこか？",
+     "choices": [
+      "日本",
+      "韓国",
+      "中国",
+      "台湾"
+     ],
+     "answer": 3,
+     "explanation": "台湾 0.69 · 韓国 0.80 · 中国 0.93 (2025). All lower than Japan's 1.14",
+     "source": "slides w2 s6"
+    },
+    {
+     "q": "「団塊ジュニア世代」とはどの世代か？",
+     "choices": [
+      "1947〜49年生まれ、第1次ベビーブームの世代",
+      "1966年（丙午）生まれの世代",
+      "1971〜74年生まれ、第2次ベビーブームの世代",
+      "1990年代のバブル崩壊後に生まれた世代"
+     ],
+     "answer": 2,
+     "explanation": "a = 団塊世代. 丙午 comes once every 60 years, the next is 2026",
+     "source": "slides w2 s3"
+    },
+    {
+     "q": "授業で挙げられた「少子化への対応」に当てはまらないものはどれか？",
+     "choices": [
+      "機械化・AI・工業用ロボットの活用による一人あたり生産性の向上",
+      "女性の労働力の活用",
+      "外国人労働者の受け入れ",
+      "東京への「一極集中」の強化"
+     ],
+     "answer": 3,
+     "explanation": "The slide says 一極集中の解消 (break it up). Also listed: smaller pension spending, higher medical costs for the elderly",
+     "source": "slides w2 s13"
+    },
+    {
+     "q": "2022年の日本の育児休業取得率として正しい組み合わせはどれか？",
+     "choices": [
+      "女性 17.1%、男性 80.2%",
+      "女性 80.2%、男性 17.1%",
+      "女性 50.0%、男性 50.0%",
+      "女性 95.0%、男性 2.0%"
+     ],
+     "answer": 1,
+     "explanation": "2022. Benefit: 50–60% of wages; employers can't refuse. In the US there is no national parental leave (only 9 states)",
+     "source": "slides w3 s16"
+    },
+    {
+     "q": "2023年の日本の出生数として正しいものはどれか？",
+     "choices": [
+      "約209万人",
+      "約136万人",
+      "約100万人",
+      "約73万人"
+     ],
+     "answer": 3,
+     "explanation": "727,277人 (2023), the lowest ever, down 43,482. a = 1973, b = 1966 (丙午), c ≈ 2014–15",
+     "source": "slides w2 s2 (chart)"
+    },
+    {
+     "q": "戦後、出生数が最も多かった年はいつか？",
+     "choices": [
+      "1949年",
+      "1966年",
+      "1973年",
+      "1989年"
+     ],
+     "answer": 0,
+     "explanation": "2,696,638人 (1949), first baby boom 1947–49. 1973 = 2,091,983 (second boom peak)",
+     "source": "w2 s2, w3 s3"
+    },
+    {
+     "q": "「1.57ショック」と呼ばれる、それまでの最低（丙午の1.58）を下回った合計特殊出生率が記録されたのは何年か？",
+     "choices": [
+      "1966年",
+      "1975年",
+      "1989年",
+      "2005年"
+     ],
+     "answer": 2,
+     "explanation": "1989: 1.57, below 丙午 1966's 1.58. 2005 = 1.26 (old record low), 2023 = 1.20",
+     "source": "w2 s2"
+    },
+    {
+     "q": "2023年の婚姻件数と婚姻率（人口千対）として正しい組み合わせはどれか？",
+     "choices": [
+      "約110万組、12.0",
+      "約93万組、12.0",
+      "約50万組、4.1",
+      "約47万組、3.9"
+     ],
+     "answer": 3,
+     "explanation": "474,717組, 3.9 (2023). a = 1972 peak (1,099,984組), b = 1947 (rate 12.0), c = 2022 (50万組, 4.1)",
+     "source": "w3 s6 (chart)"
+    },
+    {
+     "q": "見合い結婚と恋愛結婚の割合が逆転した（恋愛結婚が多数派になった）のはおよそいつ頃か？",
+     "choices": [
+      "1940年代前半",
+      "1960年代後半",
+      "1980年代後半",
+      "2000年代後半"
+     ],
+     "answer": 1,
+     "explanation": "Crossover about 1965–69 (48.6% vs 44.9%). Love marriage peaked ≈88% in the 2000s; 2021: 74.6% love, 9.9% arranged, 15.2% met online",
+     "source": "w3 s14 (chart)"
+    },
+    {
+     "q": "25〜34歳の未婚者が独身でいる理由として、男女ともに最も多いものはどれか（2021年調査）？",
+     "choices": [
+      "結婚資金が足りない",
+      "自由さや気楽さを失いたくない",
+      "適当な相手にめぐりあわない",
+      "まだ必要性を感じない"
+     ],
+     "answer": 2,
+     "explanation": "Men 43.3%, women 48.1%. 「異性とうまくつき合えない」 has risen since 2005",
+     "source": "w3 s15 (chart)"
+    },
+    {
+     "q": "授業の地図で示された「消滅危惧市町村」の数はいくつか？",
+     "choices": [
+      "179",
+      "487",
+      "896",
+      "1,718"
+     ],
+     "answer": 2,
+     "explanation": "896自治体 (消滅危惧市町村, from the 増田リポート map)",
+     "source": "w2 s9 (map)"
+    },
+    {
+     "q": "年金の「賦課方式」のデメリットとして授業で挙げられたものはどれか？",
+     "choices": [
+      "インフレに対応しにくい",
+      "少子高齢化によって現役世代の負担が増加し、世代間の不公平が大きくなりやすい",
+      "資産運用によっては給付が減ったり制度が破綻したりする可能性がある",
+      "現在の自分が将来の自分のために積み立てるため、納得感が得にくい"
+     ],
+     "answer": 1,
+     "explanation": "a, c = 積立方式's drawbacks. 賦課方式 = current workers pay current pensioners",
+     "source": "w2 s18–19"
+    },
+    {
+     "q": "2022年から、一定以上の所得がある75歳以上の医療費窓口負担はどう変わったか？",
+     "choices": [
+      "無料から1割に",
+      "1割から2割に",
+      "2割から3割に",
+      "3割から1割に"
+     ],
+     "answer": 1,
+     "explanation": "For income 200万–383万円 (single household). Under 70: 3割; 70–74: 2割",
+     "source": "w2 s14 (chart)"
+    },
+    {
+     "q": "授業で示された国際比較（2000年）で、一人あたりGDPと合計特殊出生率の関係として正しいものはどれか？",
+     "choices": [
+      "一人あたりGDPが高い国ほど、出生率が高い傾向がある",
+      "一人あたりGDPが高い国ほど、出生率が低い傾向がある",
+      "両者の間にはまったく関係がない",
+      "一人あたりGDPが$10,000の国で出生率が最も高い"
+     ],
+     "answer": 1,
+     "explanation": "Negative relationship: richer countries have fewer children",
+     "source": "w3 s11 (chart)"
+    }
+   ]
+  },
+  {
+   "type": "blank",
+   "title": "Ⅱ. 穴埋め問題",
+   "instruction": "空欄に入る語句を書け",
+   "items": [
+    {
+     "q": "結婚する年齢が遅くなることを（　　　　）という。",
+     "accept": [
+      "ばんこんか",
+      "晩婚化"
+     ],
+     "answer": "晩婚化（ばんこんか）",
+     "source": "03 p. 3"
+    },
+    {
+     "q": "結婚しない人が増えることを（　　　　）という。",
+     "accept": [
+      "みこんか",
+      "未婚化"
+     ],
+     "answer": "未婚化（みこんか）. This is Sasada's own example question",
+     "source": "03 p. 3"
+    },
+    {
+     "q": "長期的に人口が増えも減りもしない出生率の水準を（　　　　）水準という。",
+     "accept": [
+      "じんこうちかん",
+      "人口置換"
+     ],
+     "answer": "人口置換（じんこうちかん）水準",
+     "source": "02 p. 3"
+    },
+    {
+     "q": "出生より死亡が多いことによる人口減少を自然減という。これに対し、若い人が大都市へ流出することによる人口減少を（　　　　）減という。",
+     "accept": [
+      "社会",
+      "社会減",
+      "しゃかい",
+      "しゃかいげん"
+     ],
+     "answer": "社会減",
+     "source": "02 p. 7"
+    },
+    {
+     "q": "1966年は（　　　　）の年で、出生数が例外的に少なかった。",
+     "accept": [
+      "ひのえうま",
+      "丙午"
+     ],
+     "answer": "丙午（ひのえうま）",
+     "source": "02 p. 2"
+    },
+    {
+     "q": "1950〜55年の少子化の結果、ほぼ全員が結婚し、子どもを2〜3人もてる社会が実現した。社会学者の落合恵美子はこれを（　　　　）主義と名付けた。",
+     "accept": [
+      "再生産平等",
+      "再生産平等主義"
+     ],
+     "answer": "再生産平等主義",
+     "source": "02 p. 6"
+    },
+    {
+     "q": "学卒後も親に基本的生活条件を依存してリッチな生活をしている独身者を、山田は（　　　　）・（　　　　）と呼んだ。",
+     "accept": [
+      "パラサイト シングル",
+      "パラサイト/シングル",
+      "パラサイトシングル",
+      "パラサイト・シングル",
+      "ぱらさいとしんぐる"
+     ],
+     "answer": "パラサイト・シングル",
+     "source": "03 pp. 4, 14"
+    },
+    {
+     "q": "年齢とともに賃金が上がる日本の賃金のしくみを（　　　　）賃金という。",
+     "accept": [
+      "ねんこうじょれつ",
+      "年功序列"
+     ],
+     "answer": "年功序列（ねんこうじょれつ）賃金",
+     "source": "03 p. 8"
+    },
+    {
+     "q": "現役世代が支払う保険料で高齢者の年金をまかなう方式を（　　　　）方式という。",
+     "accept": [
+      "ふか",
+      "賦課"
+     ],
+     "answer": "賦課（ふか）方式",
+     "source": "02 p. 11"
+    },
+    {
+     "q": "男女が共に働き、家事・育児を分担する社会を（　　　　）社会という。",
+     "accept": [
+      "だんじょきょうどうさんかく",
+      "男女共同参画"
+     ],
+     "answer": "男女共同参画（だんじょきょうどうさんかく）社会",
+     "source": "03 pp. 16–17"
+    },
+    {
+     "q": "総所得から税金と社会保険料を引いた、自由に使える所得を（　　　　）所得という。",
+     "accept": [
+      "かしょぶん",
+      "可処分"
+     ],
+     "answer": "可処分（かしょぶん）所得 = 総所得 − 税金 − 社会保険料. Marriage lowers it, so パラサイト・シングル avoid marriage",
+     "source": "slides w3 s9"
+    },
+    {
+     "q": "その年の人口1000人当たりの新生児の数を（　　　　）という。",
+     "accept": [
+      "出生率",
+      "しゅっしょうりつ"
+     ],
+     "answer": "出生率（しゅっしょうりつ, crude birth rate). Not the same as 合計特殊出生率 or 出生数: the three definitions are on one slide",
+     "source": "slides w2 s3"
+    },
+    {
+     "q": "現在の自分が将来の自分のために保険料を積み立てる年金の方式を（　　　　）方式という。",
+     "accept": [
+      "つみたて",
+      "積立"
+     ],
+     "answer": "積立（つみたて）方式. Pros: copes with ageing, fairer between generations. Cons: inflation, investment risk",
+     "source": "slides w2 s18–19"
+    },
+    {
+     "q": "1971〜74年の第2次ベビーブームに生まれた世代を（　　　　）世代という。",
+     "accept": [
+      "だんかいジュニア",
+      "団塊ジュニア"
+     ],
+     "answer": "団塊ジュニア（だんかいジュニア）世代",
+     "source": "slides w2 s3"
+    }
+   ]
+  }
+ ]
+}

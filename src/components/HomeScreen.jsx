@@ -85,13 +85,19 @@ const studyModes = [
 
 export default function HomeScreen({
   onModeSelect, onManageVocabulary, onManageFlaggedItems, onPracticeTest,
-  onProgress, onNavigateToProfile, currentUser,
+  onProgress, onNavigateToProfile, currentUser, onBackToHub,
 }) {
   const [hoveredMode, setHoveredMode] = useState(null);
   const initial = (currentUser?.displayName || '?')[0].toUpperCase();
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-[calc(100vh-80px)] py-8">
+
+      {onBackToHub && (
+        <button onClick={onBackToHub} className="absolute top-2 left-0 text-sm text-[#606080] hover:text-[#e0e0f0]">
+          ← All classes
+        </button>
+      )}
 
       {/* Profile button — top right */}
       <button
