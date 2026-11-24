@@ -18,8 +18,14 @@
       "人口の大都市への集約"
      ],
      "answer": 3,
-     "explanation": "Goals: grow the population (birth rate, people moving in) and revive the local economy (local firms, local products, sales channels, inbound tourism).",
-     "source": "w4 s3"
+     "explanation": "Pulling people into big cities is the opposite of 地域再生. The two goals: grow the population (birth rate, people moving in) and revive the local economy (local firms, local products, sales channels, inbound tourism).",
+     "source": "w4 s3",
+     "notes": [
+      "A goal: grow the population (w4 s3)",
+      "A goal: grow the population (w4 s3)",
+      "A goal: revive the local economy (w4 s3)",
+      ""
+     ]
     },
     {
      "q": "「雇用の創生、税金、人口増加、地元消費増」が期待される政策はどれか。",
@@ -32,7 +38,13 @@
      "answer": 0,
      "explanation": "企業誘致 = bringing a company's factory or office to the area.",
      "source": "w4 s4",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "",
+      "Aims at selling goods and name recognition (w4 s4)",
+      "Aims at new residents (w4 s4)",
+      "Aims at visitors and name recognition (w4 s4)"
+     ]
     },
     {
      "q": "「地元製品・グッズなどの販売、知名度UP」を狙う政策はどれか。",
@@ -45,19 +57,31 @@
      "answer": 2,
      "explanation": "ゆるキャラ. The slide's verdict: 「ゆるキャラはまちおこしではない」.",
      "source": "w4 s4",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Aims at jobs, tax and population (w4 s4)",
+      "Aims at new residents (w4 s4)",
+      "",
+      "A way to shrink on purpose, not a promotion policy (w4 s15)"
+     ]
     },
     {
      "q": "「移住者の誘致」の手段としてスライドに挙げられているものはどれか。",
      "choices": [
-      "法人税の引き下げ",
+      "企業向けの法人税の引き下げ、工場用地の無償提供",
       "起業費用・農業経営への補助金、光熱費支援、住居の提供",
-      "アニメとのコラボイベント",
-      "大型ショッピングセンターの建設"
+      "アニメとのコラボイベント、聖地巡礼のスタンプラリー",
+      "大型ショッピングセンターの建設、駅前の再開発"
      ],
      "answer": 1,
      "explanation": "Subsidies (start-up, farming), help with utility bills, housing. E.g. Toyama: up to ¥1 million for moving there.",
-     "source": "w4 s3–4"
+     "source": "w4 s3–4",
+     "notes": [
+      "Made up. Sounds like 企業誘致 (w4 s4)",
+      "",
+      "That's 町おこし / コンテンツ・ツーリズム (w4 s4–5)",
+      "Made up. Big shopping centres are a threat to 商店街 (w4 s11)"
+     ]
     },
     {
      "q": "アニメ「ガールズ&パンツァー」と観光を組み合わせた町おこしで知られる自治体はどれか。",
@@ -70,7 +94,13 @@
      "answer": 1,
      "explanation": "大洗町 (population 16,000; 日本原子力研究所, 大洗港). 沼津 = ラブライブ！サンシャイン!!.",
      "source": "w4 s5–6",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "That's ラブライブ！サンシャイン!! (w4 s7)",
+      "",
+      "Made up. 銀山温泉 is in 山形 (w4 s12)",
+      "The scallop-shell 付加価値 example (w4 s14)"
+     ]
     },
     {
      "q": "大洗あんこう祭りの来場者数の推移として正しいものはどれか。",
@@ -82,19 +112,31 @@
      ],
      "answer": 0,
      "explanation": "3万 → 14万 (Nov 2019) → 9万 (2024). 35万 is 沼津.",
-     "source": "w4 s5"
+     "source": "w4 s5",
+     "notes": [
+      "",
+      "First two years swapped",
+      "35万 is 沼津's 2-day event (w4 s7)",
+      "35万 is 沼津's 2-day event (w4 s7)"
+     ]
     },
     {
      "q": "静岡県沼津市が「ラブライブ！サンシャイン!!」の舞台になったきっかけはどれか。",
      "choices": [
-      "市が制作会社に企画を持ち込んだ",
+      "2013年春、市役所が制作会社に町を舞台にする企画を持ち込んだ",
       "2014年秋、制作委員会から市役所にかかってきた1本の電話",
-      "地元の高校生がSNSで発信した",
-      "県の観光課が広告代理店に依頼した"
+      "地元の高校生が町の風景をSNSで発信して話題になった",
+      "静岡県の観光課が広告代理店にアニメ制作を依頼した"
      ],
      "answer": 1,
      "explanation": "The production committee phoned the city hall in autumn 2014; the film-commission staff showed them around 内浦.",
-     "source": "w4 s7"
+     "source": "w4 s7",
+     "notes": [
+      "Backwards. The committee came to the city (w4 s7)",
+      "",
+      "Made up",
+      "Made up. Sounds like 外注主義 (w4 s10)"
+     ]
     },
     {
      "q": "2023年7月、沼津市のイベントで2日間に集まった人数はどれか。",
@@ -106,55 +148,85 @@
      ],
      "answer": 3,
      "explanation": "35万 in 2 days. 2.4万 = the October 2023 concert (3 days, about ¥200 million in sales).",
-     "source": "w4 s7–8"
+     "source": "w4 s7–8",
+     "notes": [
+      "The October 2023 concert, 3 days (w4 s8)",
+      "大洗あんこう祭り 2024 (w4 s5)",
+      "大洗あんこう祭り 2019 (w4 s5)",
+      ""
+     ]
     },
     {
      "q": "町おこしが「投資回収ができていない」理由として正しいものはどれか。",
      "choices": [
-      "イベントに人が集まらないから",
-      "利益がイベントの時だけの一時的なもので、企業や広告代理店など外部に流出するから",
-      "国が補助金を出さないから",
-      "入場料が高すぎるから"
+      "宣伝が足りず、イベントにそもそも人が集まらないから",
+      "利益がイベントの時だけの一時的なもので、外部に流出するから",
+      "国が補助金を出さないため、自治体の持ち出しになるから",
+      "入場料が高すぎて、来場者がお金を使わなくなるから"
      ],
      "answer": 1,
      "explanation": "Costs are big (events, mascots); profit is 一時的 and leaves the area (外部への流出).",
-     "source": "w4 s9"
+     "source": "w4 s9",
+     "notes": [
+      "Made up. People do come; the money just doesn't stay",
+      "",
+      "Backwards. They rely on 補助金 (w4 s9)",
+      "Made up"
+     ]
     },
     {
      "q": "「民間の視点が欠如」している例として正しいものはどれか。",
      "choices": [
-      "民間企業が事業を主導しすぎる",
-      "自治体主導で予算・補助金に頼り、黒字化する必要性を感じていない",
-      "住民がイベントに参加しない",
-      "広告を出しすぎる"
+      "民間企業が事業を主導しすぎて、住民の声が届かない",
+      "自治体主導で予算・補助金に頼り、黒字化の必要性を感じない",
+      "住民がイベントに参加せず、行政だけが盛り上がっている",
+      "広告を出しすぎて、事業の予算がすぐになくなってしまう"
      ],
      "answer": 1,
      "explanation": "自治体主導, 予算・補助金頼み, 黒字化する必要性を感じていない.",
-     "source": "w4 s9"
+     "source": "w4 s9",
+     "notes": [
+      "Backwards. The problem is too little private-sector thinking (w4 s9)",
+      "",
+      "Made up",
+      "Made up. Close to 外注主義 (w4 s10)"
+     ]
     },
     {
      "q": "町おこしが「陳腐化」する原因はどれか。",
      "choices": [
-      "他の自治体の模倣・横並びで同様のイベントが乱発されるから",
-      "地元の人材だけで企画するから",
-      "伝統工芸を使うから",
-      "イベントの回数が少ないから"
+      "他の自治体の模倣・横並びで、同様のイベントが乱発されるから",
+      "外部の専門家を入れず、地元の人材だけで企画するから",
+      "伝統工芸や古い街並みなど、昔からあるものを使うから",
+      "イベントの開催回数が少なく、町の名前が覚えられないから"
      ],
      "answer": 0,
      "explanation": "同様のイベントの乱発 → 模倣・横並び → 陳腐化.",
-     "source": "w4 s10"
+     "source": "w4 s10",
+     "notes": [
+      "",
+      "Backwards. Local talent is a success factor: 人材育成 (w4 s12)",
+      "Backwards. That's 差別化 (w4 s12)",
+      "Made up"
+     ]
     },
     {
      "q": "「外注主義」の問題点として正しいものはどれか。",
      "choices": [
-      "地元の人材が育ちすぎる",
+      "地元の人材が育ちすぎて、外部の企業と対立してしまう",
       "広告代理店やイベント企画制作会社に任せるため、コストが高い",
-      "補助金がもらえない",
-      "知名度が上がらない"
+      "外注すると国の基準を満たせず、補助金がもらえなくなる",
+      "外部の会社は地元を知らないため、知名度が上がらない"
      ],
      "answer": 1,
      "explanation": "Outsourcing to agencies and event companies is expensive, and the money leaves the area.",
-     "source": "w4 s10"
+     "source": "w4 s10",
+     "notes": [
+      "Made up",
+      "",
+      "Made up",
+      "Made up. The slide's point is cost, not name recognition"
+     ]
     },
     {
      "q": "「ゆるキャラはまちおこしではない」という言葉は、どの課題の例として挙げられているか。",
@@ -166,31 +238,49 @@
      ],
      "answer": 2,
      "explanation": "目標設定の失敗: projects that don't lead to local spending or visitors, e.g. PR for a small Tōhoku village in Tokyo with nowhere to buy its products.",
-     "source": "w4 s10"
+     "source": "w4 s10",
+     "notes": [
+      "A different problem: outsourcing to agencies (w4 s10)",
+      "A different problem: shop owners won't sell or rent (w4 s11)",
+      "",
+      "A different problem: big supermarkets (w4 s11)"
+     ]
     },
     {
      "q": "シャッター商店街が生まれる理由として、スライドに挙げられているものはどれか。",
      "choices": [
-      "商店主が店舗の売却・賃貸に後ろ向き（マンション経営、税金対策）",
-      "商店街の家賃が上がりすぎた",
-      "若者が商店街で起業しすぎた",
-      "自治体が商店街を閉鎖した"
+      "商店主が売却・賃貸に後ろ向き（マンション経営、税金対策）",
+      "商店街の家賃が上がりすぎて、若い店主が入れなくなった",
+      "若者が商店街で起業しすぎて、店同士で客を奪い合った",
+      "自治体がコンパクト・シティ計画で商店街を閉鎖した"
      ],
      "answer": 0,
      "explanation": "地方の意欲欠如: owners keep shops shut for income and inheritance-tax reasons. Plus competition from big supermarkets and chain stores.",
-     "source": "w4 s11"
+     "source": "w4 s11",
+     "notes": [
+      "",
+      "Made up. The shops are empty, not overpriced",
+      "Made up",
+      "Made up. Compact cities pull people into the centre (w4 s15)"
+     ]
     },
     {
      "q": "チェーンストアへの依存の問題点はどれか。",
      "choices": [
-      "商品の値段が高い",
+      "全国一律の価格のため、地元の店より値段が高くなる",
       "収益のほとんどが域外に出てしまい、事業が短期的",
-      "店員が足りない",
-      "営業時間が短い"
+      "地元の人を雇わないため、店員がいつも足りない",
+      "本社の方針で営業時間が短く、住民に不便である"
      ],
      "answer": 1,
      "explanation": "Profits go to head offices outside the area.",
-     "source": "w4 s11"
+     "source": "w4 s11",
+     "notes": [
+      "Backwards. Big stores sell more cheaply (w4 s11)",
+      "",
+      "Made up",
+      "Made up"
+     ]
     },
     {
      "q": "「商品・サービスの差別化」の例として挙げられていないものはどれか。",
@@ -202,7 +292,13 @@
      ],
      "answer": 3,
      "explanation": "差別化 = offer what no other area has. ゆるキャラ is the kind of copycat project the slides criticise.",
-     "source": "w4 s12"
+     "source": "w4 s12",
+     "notes": [
+      "差別化 example (w4 s12)",
+      "差別化 example: 倉敷, 銀山温泉 (w4 s12–13)",
+      "差別化 example (w4 s12)",
+      ""
+     ]
     },
     {
      "q": "銀山温泉はどこにあるか。",
@@ -214,7 +310,13 @@
      ],
      "answer": 1,
      "explanation": "山形・銀山温泉 (差別化 example). 倉敷 is in 岡山.",
-     "source": "w4 s12"
+     "source": "w4 s12",
+     "notes": [
+      "余市 whisky and 八雲 are Hokkaido examples (w4 s12, s14)",
+      "",
+      "That's 倉敷 (w4 s13)",
+      "茅野's rice-husk fuel is in 長野 (w4 s14)"
+     ]
     },
     {
      "q": "ホタテの貝殻（廃棄物）からカルシウム製品を作った「付加価値の付与」の例はどこか。",
@@ -227,31 +329,49 @@
      "answer": 0,
      "explanation": "八雲町: scallop shells → calcium products. 茅野: もみがら (rice husks) → fuel.",
      "source": "w4 s14",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "",
+      "Rice husks (もみがら) → solid fuel (w4 s14)",
+      "差別化: preserved streetscape (w4 s13)",
+      "Anime 町おこし (w4 s7)"
+     ]
     },
     {
      "q": "「人材育成」の方策として正しいものはどれか。",
      "choices": [
-      "有名な広告代理店に企画を任せる",
+      "実績のある有名な広告代理店に企画を任せる",
       "外注ではなく、域内の人材で企画・実行する",
-      "都市部の大学生を短期で雇う",
-      "補助金で専門家を呼ぶ"
+      "都市部の大学生を短期のアルバイトで雇う",
+      "補助金を使って外部から専門家を呼ぶ"
      ],
      "answer": 1,
      "explanation": "外注ではなく、域内の人材で企画・実行.",
-     "source": "w4 s12"
+     "source": "w4 s12",
+     "notes": [
+      "That's 外注主義, a cause of failure (w4 s10)",
+      "",
+      "Made up",
+      "Made up. Still outside people and 補助金"
+     ]
     },
     {
      "q": "「稼げる仕組み」（恒久的なビジネスモデル）の条件として正しいものはどれか。",
      "choices": [
-      "補助金を最大限に使う",
+      "国や県の補助金を最大限に使い続ける",
       "持続可能で黒字化でき、補助金に依存しない",
-      "大企業を誘致する",
-      "一度の大イベントで利益を出す"
+      "大企業の工場を誘致して雇用を生む",
+      "一度の大きなイベントで大きな利益を出す"
      ],
      "answer": 1,
      "explanation": "持続可能性, 黒字化, 補助金に依存しない.",
-     "source": "w4 s13"
+     "source": "w4 s13",
+     "notes": [
+      "Backwards. Must not depend on 補助金 (w4 s13)",
+      "",
+      "That's 企業誘致, a different policy (w4 s4)",
+      "Backwards. One-off profit is a failure cause (w4 s9)"
+     ]
     },
     {
      "q": "「域内収支」の考え方として正しいものはどれか。",
@@ -263,7 +383,13 @@
      ],
      "answer": 0,
      "explanation": "Treat trade with other areas like a country's trade and keep it in surplus.",
-     "source": "w4 s13"
+     "source": "w4 s13",
+     "notes": [
+      "",
+      "Backwards",
+      "Made up",
+      "Made up. Relying on 補助金 is the problem (w4 s9)"
+     ]
     },
     {
      "q": "コンパクト・シティー（集約型都市）の「課題」として挙げられていないものはどれか。",
@@ -275,7 +401,13 @@
      ],
      "answer": 3,
      "explanation": "Lower maintenance costs are a benefit, not a problem.",
-     "source": "w4 s15"
+     "source": "w4 s15",
+     "notes": [
+      "A real problem (w4 s15)",
+      "A real problem (w4 s15)",
+      "A real problem (w4 s15)",
+      ""
+     ]
     },
     {
      "q": "「過疎」の尺度として、スライドに挙げられていないものはどれか。",
@@ -286,45 +418,69 @@
       "観光客の数"
      ],
      "answer": 3,
-     "explanation": "The five: QOL · local community · local-government finances · primary industry · sustainability.",
-     "source": "w5 s4"
+     "explanation": "The five measures: QOL · local community · local-government finances · primary industry · sustainability. Tourist numbers aren't one.",
+     "source": "w5 s4",
+     "notes": [
+      "Measure 1 (w5 s4)",
+      "Measure 2 (w5 s4)",
+      "Measure 3 (w5 s4)",
+      ""
+     ]
     },
     {
      "q": "「集落移転」の説明として正しいものはどれか。",
      "choices": [
-      "一部の住民だけが都市部へ引っ越すこと",
+      "一部の若い住民だけが都市部へ引っ越すこと",
       "コミュニティ全体が別の場所に移転すること",
-      "自治体同士が合併すること",
-      "新しい住宅地を郊外に作ること"
+      "近くの自治体同士がひとつに合併すること",
+      "郊外に新しい住宅地を作って人を呼ぶこと"
      ],
      "answer": 1,
      "explanation": "Earlier kinds: dam construction and disaster relocation.",
      "source": "w5 s5",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Made up. That's just 過疎化 itself",
+      "",
+      "Merging is a separate response to bankruptcy (w4 s15)",
+      "Made up"
+     ]
     },
     {
      "q": "東日本大震災（2011年）の後に行われた集落移転はどれか。",
      "choices": [
-      "ダム建設に伴う移転",
+      "川の上流のダム建設に伴う集落の移転",
       "津波被害を受けた海辺集落の高台移転",
-      "自主再建型移転",
-      "北海道への集団移住"
+      "限界集落を町へまとめる自主再建型移転",
+      "奈良県から北海道への集団移住"
      ],
      "answer": 1,
      "explanation": "高台移転 (moving to higher ground).",
-     "source": "w5 s5"
+     "source": "w5 s5",
+     "notes": [
+      "Another kind of 集落移転, not 2011 (w5 s5)",
+      "",
+      "林's proposal for 過疎 villages, not disaster moves (w5 s7)",
+      "That's 十津川村 → 新十津川町, 1890 (w5 s6)"
+     ]
     },
     {
      "q": "北海道の新十津川町は、どこからの集団移住で生まれたか。",
      "choices": [
-      "岩手県の津波被災地",
+      "岩手県の津波被災地（2011年の東日本大震災）",
       "奈良県十津川村（1889年の大水害）",
-      "夕張市の炭鉱住宅",
-      "和歌山県の山村"
+      "夕張市の炭鉱住宅（2006年の財政破綻）",
+      "和歌山県の山村（1953年の大水害）"
      ],
      "answer": 1,
      "explanation": "1889 flood: 168 dead, a quarter of the village destroyed. 2,489 people moved to Hokkaido in 1890.",
-     "source": "w5 s6"
+     "source": "w5 s6",
+     "notes": [
+      "That's 高台移転 (w5 s5)",
+      "",
+      "夕張 moved people within the city (w5 s8)",
+      "Made up"
+     ]
     },
     {
      "q": "1890年に十津川村から北海道に移住した住民の数はどれか。",
@@ -336,44 +492,68 @@
      ],
      "answer": 2,
      "explanation": "168 = the number who died in the 1889 flood.",
-     "source": "w5 s6"
+     "source": "w5 s6",
+     "notes": [
+      "Deaths in the 1889 flood (w5 s6)",
+      "Made up. The slide also says 6000戸 (households), not 600 people (w5 s6)",
+      "",
+      "夕張's 1960s population (w5 s8)"
+     ]
     },
     {
      "q": "「自主再建型移転」で住民全員を移転させる理由はどれか。",
      "choices": [
-      "費用を安くするため",
-      "孤立化を防ぐため",
-      "土地を売るため",
-      "ダムを作るため"
+      "一人ずつ移転するより費用が安くなるため",
+      "移転先で孤立する人を出さないため",
+      "空いた土地をまとめて企業に売るため",
+      "跡地にダムを作る予定があるため"
      ],
      "answer": 1,
      "explanation": "過疎化による限界集落 → move the whole community to a town together, so no one is left isolated.",
-     "source": "w5 s7"
+     "source": "w5 s7",
+     "notes": [
+      "Made up",
+      "",
+      "Made up",
+      "Dams are an older reason for moves (w5 s5)"
+     ]
     },
     {
      "q": "「獣害」とは何か。",
      "choices": [
-      "家畜の伝染病",
+      "家畜の間で広がる伝染病による被害",
       "シカやイノシシなどによる農作物への被害",
-      "野生動物の減少",
-      "害虫による森林被害"
+      "開発で野生動物の数が減っていくこと",
+      "害虫が木を枯らしてしまう森林への被害"
      ],
      "answer": 1,
      "explanation": "獣害（じゅうがい）. One of the problems of 僻地・山間地, with shopping, hospital visits and snow clearing.",
      "source": "w5 s7",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Made up",
+      "",
+      "Made up. Backwards: there are too many animals",
+      "Made up"
+     ]
     },
     {
      "q": "夕張市について正しいものはどれか。",
      "choices": [
-      "人口は1960年代から変わっていない",
-      "1960年代の約12万人から約6,700人に減り、2006年に財政破綻した",
-      "2006年にコンパクト・シティ計画を中止した",
-      "財政黒字200億円を達成した"
+      "人口は1960年代とほぼ変わらず、約12万人を保っている",
+      "約12万人から約6,700人に減り、2006年に財政破綻した",
+      "2006年にコンパクト・シティ計画を中止し、炭鉱住宅を残した",
+      "炭鉱の再開で財政が黒字に転じ、200億円の黒字を達成した"
      ],
      "answer": 1,
      "explanation": "約12万 → 6,700 · 2006 bankrupt · deficit ¥20 billion · コンパクト・シティ計画 (old coal-mine housing → new city housing).",
-     "source": "w5 s8"
+     "source": "w5 s8",
+     "notes": [
+      "Made up. It fell to about 6,700 (w5 s8)",
+      "",
+      "Backwards. It carried out the plan (w5 s8)",
+      "Backwards. ¥20 billion was its deficit (w5 s8)"
+     ]
     },
     {
      "q": "「道路を作れば孤立化を防げる」という考えは、自主再建型移転のどの課題にあたるか。",
@@ -385,31 +565,49 @@
      ],
      "answer": 0,
      "explanation": "The other: 「村おこしで活性化できる」 = 村おこしへの過度の期待.",
-     "source": "w5 s9"
+     "source": "w5 s9",
+     "notes": [
+      "",
+      "The other 過度の期待: 「村おこしで活性化できる」 (w5 s9)",
+      "A real problem, but not this one (w5 s9)",
+      "A real problem, but about land and graves (w5 s9)"
+     ]
     },
     {
      "q": "集落移転への「反対意見」として挙げられていないものはどれか。",
      "choices": [
-      "国土・森林の荒廃",
+      "国土・森林が荒れ果てる",
       "下流地域への洪水被害",
       "民俗知の消滅",
       "僻地での公共サービスのコスト高"
      ],
      "answer": 3,
      "explanation": "High public-service costs are an argument for relocation. The fourth objection is 農作物生産の縮小.",
-     "source": "w5 s7, s10"
+     "source": "w5 s7, s10",
+     "notes": [
+      "Objection 1 (w5 s10)",
+      "Objection 2 (w5 s10)",
+      "Objection 4 (w5 s10)",
+      ""
+     ]
     },
     {
      "q": "「国土・森林の荒廃」という反対意見への反論として正しいものはどれか。",
      "choices": [
-      "森林はすべて天然林なので荒廃しない",
-      "多くは人工林（スギ・ヒノキ、全体の約4割）で、天然林に戻ることが荒廃と言えるか",
-      "移転後も住民が森林を管理する",
-      "国が森林を買い取る"
+      "森林はすべて天然林なので、人がいなくなっても荒廃しない",
+      "多くは人工林で、天然林に戻ることが荒廃と言えるか",
+      "移転した後も、元の住民が通って森林を管理し続ける",
+      "国が森林を買い取り、公務員が手入れをすれば荒廃しない"
      ],
      "answer": 1,
-     "explanation": "人工林 → 天然林 ＝ 荒廃？",
-     "source": "w5 s11"
+     "explanation": "Most of it is 人工林 (スギ・ヒノキ, about 40% of all forest). If it goes back to 天然林, is that really ruin?",
+     "source": "w5 s11",
+     "notes": [
+      "Backwards. About 4割 is planted 人工林 (w5 s11)",
+      "",
+      "Made up",
+      "Made up"
+     ]
     },
     {
      "q": "「下流地域への洪水被害」という反対意見への反論はどれか。",
@@ -422,31 +620,49 @@
      "answer": 0,
      "explanation": "Natural forest holds water well.",
      "source": "w5 s11",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "",
+      "Made up",
+      "Made up",
+      "Made up"
+     ]
     },
     {
      "q": "「農作物生産の縮小」への反論として正しいものはどれか。",
      "choices": [
       "米は生産過剰で、僻地での生産は微々たるもの",
-      "移転先で同じ量を生産できる",
-      "輸入を増やせばよい",
-      "工場で野菜を作ればよい"
+      "移転先の平地でも、同じ量を生産できる",
+      "足りない分は輸入を増やせば補える",
+      "これからは工場で野菜を作ればよい"
      ],
      "answer": 0,
      "explanation": "米は生産過剰 · 僻地での生産は微々たるもの.",
-     "source": "w5 s11"
+     "source": "w5 s11",
+     "notes": [
+      "",
+      "Made up",
+      "Made up",
+      "Made up"
+     ]
     },
     {
      "q": "「民俗知の消滅」への反論として正しいものはどれか。",
      "choices": [
-      "民俗知は必要ない",
+      "民俗知はもう生活に必要ない",
       "拠点集落を残し、情報を記録する",
-      "博物館を建てる",
-      "若者を移住させる"
+      "移転先に博物館を建てて展示する",
+      "都市の若者を集落に移住させる"
      ],
      "answer": 1,
      "explanation": "拠点集落を残す、情報の記録.",
-     "source": "w5 s11"
+     "source": "w5 s11",
+     "notes": [
+      "Made up",
+      "",
+      "Made up",
+      "Made up. Sounds like 移住者の誘致 (w4 s4)"
+     ]
     },
     {
      "q": "集落維持に必要な農業所得は500〜600万円とされる。そのために必要な水田の面積はどれか。",
@@ -458,7 +674,13 @@
      ],
      "answer": 1,
      "explanation": "Paddies 7–10 ha, dry fields 2–3 ha. 2万ha = the biomass break-even (planted forest).",
-     "source": "w5 s12"
+     "source": "w5 s12",
+     "notes": [
+      "That's for dry fields (畑) (w5 s12)",
+      "",
+      "Made up",
+      "Biomass break-even, planted forest (w5 s12)"
+     ]
     },
     {
      "q": "間伐材を使ったバイオマス発電の採算ラインとされる人工林の面積はどれか。",
@@ -470,7 +692,13 @@
      ],
      "answer": 2,
      "explanation": "About 20,000 ha of planted forest.",
-     "source": "w5 s12"
+     "source": "w5 s12",
+     "notes": [
+      "Made up",
+      "Made up",
+      "",
+      "Made up"
+     ]
     },
     {
      "q": "林が過疎地について示す結論はどれか。",
@@ -483,7 +711,13 @@
      "answer": 1,
      "explanation": "「正しい諦め」が必要（林 p.219）.",
      "source": "w5 s12",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Made up. 林 argues the opposite",
+      "",
+      "That's the 過度の期待 problem (w5 s9)",
+      "That's the 過度の期待 problem (w5 s9)"
+     ]
     },
     {
      "q": "JR北海道の経常赤字（2020年）はどれか。",
@@ -494,8 +728,14 @@
       "約2,154億円"
      ],
      "answer": 2,
-     "explanation": "446億 (2020). 2,154億 = its sales; −106億 = recurring loss in the JR comparison chart.",
-     "source": "w5 s14"
+     "explanation": "¥44.6 billion recurring loss (2020). The JR comparison chart gives sales ¥215.4 billion and a loss of ¥10.6 billion.",
+     "source": "w5 s14",
+     "notes": [
+      "JR四国's loss in the JR chart (w5 s20)",
+      "JR北海道's loss in the JR chart (w5 s20)",
+      "",
+      "JR北海道's sales (w5 s20)"
+     ]
     },
     {
      "q": "JR北海道が廃止の方針を示したのはどれか。",
@@ -507,7 +747,13 @@
      ],
      "answer": 1,
      "explanation": "10路線13区間, replaced by buses.",
-     "source": "w5 s14"
+     "source": "w5 s14",
+     "notes": [
+      "Made up",
+      "",
+      "Made up. Every line loses money, but not every line is closing",
+      "Made up"
+     ]
     },
     {
      "q": "2022年に廃線が決まった区間はどれか。",
@@ -519,7 +765,13 @@
      ],
      "answer": 0,
      "explanation": "小樽–余市. The debate topic: 「函館本線小樽・余市間は廃止すべきか？」.",
-     "source": "w5 s21–22"
+     "source": "w5 s21–22",
+     "notes": [
+      "",
+      "Made up",
+      "Made up",
+      "Made up"
+     ]
     }
    ]
   },
@@ -679,5 +931,6 @@
     }
    ]
   }
- ]
+ ],
+ "shuffle": true
 }

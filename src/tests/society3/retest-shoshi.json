@@ -18,9 +18,15 @@
       "結婚した夫婦が最終的にもつ子どもの数"
      ],
      "answer": 2,
-     "explanation": "a = 出生率, b = 出生数, d = 完結出生児数. Three look-alike statistics.",
+     "explanation": "TFR = the average number of children one woman has in her life. Sasada puts all three look-alike statistics on one slide.",
      "source": "w2 s3",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "That's 出生率, the crude birth rate (w2 s3)",
+      "That's 出生数, the raw number of births (w2 s3)",
+      "",
+      "That's 完結出生児数 / 夫婦出生力 (R1 p.5)"
+     ]
     },
     {
      "q": "「その年の1000人当たりの新生児の数」を何というか。",
@@ -32,19 +38,31 @@
      ],
      "answer": 1,
      "explanation": "出生率（しゅっしょうりつ） = crude birth rate. Same slide as the other two definitions.",
-     "source": "w2 s3"
+     "source": "w2 s3",
+     "notes": [
+      "Births per year as a raw number (w2 s3)",
+      "",
+      "Children per woman over her life (w2 s3)",
+      "The TFR needed to keep the population stable, 2.07 (R1 p.3)"
+     ]
     },
     {
      "q": "人口置換水準が「2」ではなく2.07になっている理由として正しいものはどれか。",
      "choices": [
-      "海外へ移住する人がいるため",
-      "男の子のほうがやや多く生まれ、出産年齢に達する前に亡くなる女性もいるため",
-      "高齢者の死亡率が上がっているため",
-      "結婚しない人が一定数いるため"
+      "海外へ移住する人が毎年一定数いて、その分を補う必要があるため",
+      "男の子がやや多く生まれ、出産前に亡くなる女性もいるため",
+      "高齢者の寿命が延びて、人口に占める高齢者の割合が上がるため",
+      "結婚しない人が一定数いて、その人たちは子どもを産まないため"
      ],
      "answer": 1,
      "explanation": "About 5% more boys are born than girls, and some girls die before they can have children.",
-     "source": "R1 p.3"
+     "source": "R1 p.3",
+     "notes": [
+      "Made up. Emigration isn't part of the definition",
+      "",
+      "Made up. Longer lives affect 高齢化, not the replacement level",
+      "Made up. Sounds like 未婚化 (R5 p.3), but the TFR already counts unmarried women"
+     ]
     },
     {
      "q": "2025年の日本の合計特殊出生率はどれか。",
@@ -56,7 +74,13 @@
      ],
      "answer": 3,
      "explanation": "2022 1.26 · 2023 1.20 · 2024 1.15 · 2025 1.14.",
-     "source": "w2 s4"
+     "source": "w2 s4",
+     "notes": [
+      "Real TFR, but for 2022 (also 2005) (w2 s4)",
+      "Real TFR, but for 2023 (w2 s4)",
+      "Real TFR, but for 2024 (w2 s4)",
+      ""
+     ]
     },
     {
      "q": "合計特殊出生率が丙午（1966年）の1.58を下回った「1.57ショック」は何年か。",
@@ -68,7 +92,13 @@
      ],
      "answer": 1,
      "explanation": "1989: 1.57. 2005 = 1.26 (the old record low).",
-     "source": "w2 s2"
+     "source": "w2 s2",
+     "notes": [
+      "Year 少子化 began, TFR about 2.0 (w3 s2)",
+      "",
+      "TFR 1.42 that year (R5 p.2)",
+      "TFR 1.26, the old record low (R1 p.2)"
+     ]
     },
     {
      "q": "次の丙午（ひのえうま）の年はどれか。",
@@ -81,7 +111,13 @@
      "answer": 2,
      "explanation": "Every 60 years: 1966 → 2026.",
      "source": "w2 s3",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Made up",
+      "Made up",
+      "",
+      "Made up (丙午 comes every 60 years: 1966 → 2026)"
+     ]
     },
     {
      "q": "「団塊ジュニア世代」が生まれた時期はどれか。",
@@ -93,7 +129,13 @@
      ],
      "answer": 2,
      "explanation": "1947–49 = 団塊世代 (first boom). 1971–74 = 団塊ジュニア (second boom).",
-     "source": "w2 s3"
+     "source": "w2 s3",
+     "notes": [
+      "That's 団塊世代, the first baby boom (w2 s3)",
+      "Made up",
+      "",
+      "Made up. Women born 1985 appear in 山田's projection (R1 p.8)"
+     ]
     },
     {
      "q": "2023年の出生数として正しいものはどれか。",
@@ -105,7 +147,13 @@
      ],
      "answer": 3,
      "explanation": "727,277 (2023), the lowest ever. 209万 = 1973, 136万 = 1966 (丙午), 106万 = 2005.",
-     "source": "w2 s2"
+     "source": "w2 s2",
+     "notes": [
+      "1973, the second baby boom (w2 s2)",
+      "1966, the 丙午 year (w2 s3)",
+      "2005 (w2 s2)",
+      ""
+     ]
     },
     {
      "q": "山田が示す「少子化の深刻化を示す4つの指標」（2005年）に含まれないものはどれか。",
@@ -116,8 +164,14 @@
       "65歳以上の割合が初めて3割を超えた"
      ],
      "answer": 3,
-     "explanation": "The fourth one is 未婚率 of people in their early 30s (women 32.0%, men 47.1%). 65+ was about 20% in 2005.",
-     "source": "R1 p.2 表1-1"
+     "explanation": "The fourth indicator is ③ 国勢調査: 未婚率 of people in their early 30s (women 32.0%, men 47.1%). 65+ was only about 20% in 2005.",
+     "source": "R1 p.2 表1-1",
+     "notes": [
+      "Indicator ① 人口動態統計 (R1 p.2)",
+      "Indicator ② 人口動態統計 (R1 p.2)",
+      "Indicator ④ 出生動向基本調査 (R1 p.2)",
+      ""
+     ]
     },
     {
      "q": "夫婦の完結出生児数は、1972年頃から約30年間、およそ何人で安定していたか。",
@@ -129,7 +183,13 @@
      ],
      "answer": 1,
      "explanation": "About 2.2 until 2002, then 2.09 in 2005. So married couples didn't cut back: fewer people married.",
-     "source": "R1 p.5 図1-3"
+     "source": "R1 p.5 図1-3",
+     "notes": [
+      "Made up",
+      "",
+      "Made up",
+      "Made up (pre-war families were bigger, but not this figure)"
+     ]
     },
     {
      "q": "1950〜55年の「第1回目」の少子化の特徴として正しいものはどれか。",
@@ -141,7 +201,13 @@
      ],
      "answer": 1,
      "explanation": "「家族の画一化」: almost everyone married and had 2–3 children. The 格差 belongs to the second wave (1975–).",
-     "source": "R1 p.6"
+     "source": "R1 p.6",
+     "notes": [
+      "That's the second wave, 1975– (R1 p.9)",
+      "",
+      "Made up. The first wave happened the same way everywhere",
+      "That's the cause of the second wave (R5 p.3)"
+     ]
     },
     {
      "q": "「再生産平等主義」という言葉を使った人物は誰か。",
@@ -154,7 +220,13 @@
      "answer": 1,
      "explanation": "落合 = 再生産平等主義. 三浦展 = data on where 団塊ジュニア grew up. ネッセ = the quote on hope.",
      "source": "R1 p.6",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "山田 wrote the readings but uses 「家族の画一化」 (R1 p.6)",
+      "",
+      "三浦展: data on where 団塊ジュニア were born (R5 p.4)",
+      "ネッセ: the quote about hope (R5 p.1)"
+     ]
     },
     {
      "q": "表1-4（1995→2005年）で、出生数の減少率が最も低かった都道府県はどれか。",
@@ -167,19 +239,31 @@
      "answer": 0,
      "explanation": "東京 −0.2% (lowest). 青森 −24.7% was the highest.",
      "source": "R1 p.7 表1-4",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "",
+      "3rd smallest fall, −3.8% (R1 p.7)",
+      "4th smallest fall, −5.6% (R1 p.7)",
+      "The biggest fall, −24.7% (R1 p.7)"
+     ]
     },
     {
      "q": "出生数が少ない地方で、合計特殊出生率がむしろ高くなる理由として山田が挙げるものはどれか。",
      "choices": [
-      "地方の女性ほど子どもを多く産むから",
+      "地方の女性ほど、もともと子どもを多く産む傾向があるから",
       "若い女性が都市部に流出し、出生率の分母が小さくなるから",
-      "地方では結婚年齢が早いから",
-      "地方には子育て補助金が多いから"
+      "地方では都市部よりも結婚する年齢がずっと早いから",
+      "地方のほうが子育てへの補助金や支援が手厚いから"
      ],
      "answer": 1,
      "explanation": "Young women move to the cities, so the cities' denominator grows and the rural one shrinks.",
-     "source": "R1 p.7"
+     "source": "R1 p.7",
+     "notes": [
+      "Made up. Births really are few there",
+      "",
+      "Made up. 晩婚化 is the national cause (R5 p.3)",
+      "Made up"
+     ]
     },
     {
      "q": "2006年の推計で、1985年生まれの女性のうち「一生子どもをもたない」と予測された割合はどれか。",
@@ -191,7 +275,13 @@
      ],
      "answer": 2,
      "explanation": "23.5% never marry, 37% have no children. Men: about 30% and about 45%.",
-     "source": "R1 p.8"
+     "source": "R1 p.8",
+     "notes": [
+      "Made up",
+      "Never marry, women born 1985 (R1 p.8)",
+      "",
+      "Made up (men: about 45% no children)"
+     ]
     },
     {
      "q": "山田が挙げる少子化の「マクロ的デメリット」に含まれないものはどれか。",
@@ -203,7 +293,13 @@
      ],
      "answer": 3,
      "explanation": "Less housing shortage is on the slide's メリット list. 山田 dismisses the merit arguments.",
-     "source": "R1 pp.10–11, w2 s12"
+     "source": "R1 pp.10–11, w2 s12",
+     "notes": [
+      "Demerit ① (R1 p.10)",
+      "Demerit ② (R1 p.10)",
+      "Demerit ③ (R1 p.11)",
+      ""
+     ]
     },
     {
      "q": "少子化対策について、山田の立場として正しいものはどれか。",
@@ -215,7 +311,13 @@
      ],
      "answer": 2,
      "explanation": "「私は両方とも必要だと思っている」.",
-     "source": "R1 p.12"
+     "source": "R1 p.12",
+     "notes": [
+      "Half of his view only (R1 p.12)",
+      "Half of his view only. 赤川学 is the optimist (R1 p.12)",
+      "",
+      "Made up"
+     ]
     },
     {
      "q": "「インフレに対応しやすい」が、少子高齢化で現役世代の負担が増す年金の方式はどれか。",
@@ -228,7 +330,13 @@
      "answer": 1,
      "explanation": "賦課方式 = today's workers pay today's pensioners. 積立方式 copes with ageing but not with inflation.",
      "source": "w2 s18–19",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Copes with ageing, weak against inflation (w2 s18)",
+      "",
+      "Made up. Not on the slide",
+      "Made up. Not on the slide"
+     ]
     },
     {
      "q": "2022年から、一定の所得がある75歳以上の医療費の窓口負担はどう変わったか。",
@@ -240,7 +348,13 @@
      ],
      "answer": 1,
      "explanation": "For incomes of ¥2–3.83 million (single household). Under 70: 3割, 70–74: 2割.",
-     "source": "w2 s14"
+     "source": "w2 s14",
+     "notes": [
+      "Made up",
+      "",
+      "Made up. 2割 is the 70–74 rate (w2 s14)",
+      "Made up. 3割 is the under-70 rate (w2 s14)"
+     ]
     },
     {
      "q": "「少子化への対応」のスライドに挙げられていないものはどれか。",
@@ -252,7 +366,13 @@
      ],
      "answer": 3,
      "explanation": "The list: productivity (machines, AI, robots), women's work, foreign workers, smaller pensions and higher elderly medical costs, ending Tokyo's 一極集中.",
-     "source": "w2 s13"
+     "source": "w2 s13",
+     "notes": [
+      "On the list: raise productivity (w2 s13)",
+      "On the list (w2 s13)",
+      "On the list (w2 s13)",
+      ""
+     ]
     },
     {
      "q": "2045年の高齢化率の予想はどれか。",
@@ -264,7 +384,13 @@
      ],
      "answer": 1,
      "explanation": "29.4% = 2025. In 2045 the population is also down by more than 20 million.",
-     "source": "w2 s9"
+     "source": "w2 s9",
+     "notes": [
+      "2025's 高齢化率 (w2 s4)",
+      "",
+      "Made up",
+      "Made up"
+     ]
     },
     {
      "q": "「消滅危惧市町村」は何自治体とされているか。",
@@ -276,7 +402,13 @@
      ],
      "answer": 1,
      "explanation": "896 (the 増田リポート map).",
-     "source": "w2 s9"
+     "source": "w2 s9",
+     "notes": [
+      "Made up",
+      "",
+      "Made up",
+      "Made up"
+     ]
     },
     {
      "q": "山田によれば、現在まで続く少子化が始まったのは何年頃か。",
@@ -288,7 +420,13 @@
      ],
      "answer": 2,
      "explanation": "1975, with the generation after the 団塊ジュニア.",
-     "source": "R5, w3 s2"
+     "source": "R5, w3 s2",
+     "notes": [
+      "End of the first wave, TFR 2.37 (R1 p.6)",
+      "The 丙午 year (w2 s3)",
+      "",
+      "The 1.57 shock (w2 s2)"
+     ]
     },
     {
      "q": "1975年以降の出生率低下の直接の原因として山田が示すものはどれか。",
@@ -300,7 +438,13 @@
      ],
      "answer": 1,
      "explanation": "完結出生児数 stayed at about 2.2, so the fall came from later and fewer marriages.",
-     "source": "R5 p.3"
+     "source": "R5 p.3",
+     "notes": [
+      "No. Couples kept about 2.2 children (R5 p.2 表5-1)",
+      "",
+      "Divorce is mentioned (260,000 in 2006, R1 p.8) but isn't the cause",
+      "Made up"
+     ]
     },
     {
      "q": "2005年時点で、日本の出生のうち非嫡出子（結婚していない女性から生まれた子ども）の割合はおよそどれくらいか。",
@@ -312,7 +456,13 @@
      ],
      "answer": 0,
      "explanation": "About 2%, so fewer marriages directly means fewer births. Pre-war it was 5–8% (一夫多妻的慣習).",
-     "source": "R5 p.2"
+     "source": "R5 p.2",
+     "notes": [
+      "",
+      "Made up (pre-war was 5–8%, R5 p.2)",
+      "Made up",
+      "Made up"
+     ]
     },
     {
      "q": "高度成長期の日本は、生涯未婚率が何%未満の「皆婚」社会だったか。",
@@ -324,7 +474,13 @@
      ],
      "answer": 0,
      "explanation": "Under 3%. 2020: men 25.7%, women 16.4%.",
-     "source": "R5 p.2"
+     "source": "R5 p.2",
+     "notes": [
+      "",
+      "Made up",
+      "Made up (2015 women 14.1%, w3 s4)",
+      "Made up (2020 men 25.7%, w3 s4)"
+     ]
     },
     {
      "q": "「希望は努力が報われると感じるときに生じる」と述べた社会心理学者は誰か。",
@@ -337,7 +493,13 @@
      "answer": 2,
      "explanation": "ネッセ. 赤川学 wrote 『子どもが減って何が悪い』.",
      "source": "R5 p.1",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "落合: 再生産平等主義 (R1 p.6)",
+      "三浦展: where 団塊ジュニア were born (R5 p.4)",
+      "",
+      "赤川学: 『子どもが減って何が悪い』 (R1 p.12)"
+     ]
     },
     {
      "q": "三浦展の計算によると、団塊ジュニア世代のうち大都市圏で生まれた人の割合はどれか。",
@@ -349,7 +511,13 @@
      ],
      "answer": 3,
      "explanation": "49% (3.98 million). 29% is the 団塊世代 figure. They grew up comfortable in the suburbs, so their expectations are high.",
-     "source": "R5 p.4"
+     "source": "R5 p.4",
+     "notes": [
+      "Made up",
+      "That's the 団塊世代 figure (R5 p.4)",
+      "Made up",
+      ""
+     ]
     },
     {
      "q": "1974年に起きたこととして正しいものはどれか。",
@@ -361,7 +529,13 @@
      ],
      "answer": 2,
      "explanation": "1971 ドルショック → 1973 oil shock → 1974 first negative growth since the war. 晩婚化 begins in 1975, 1–2 years later.",
-     "source": "R5 p.8"
+     "source": "R5 p.8",
+     "notes": [
+      "1971 (R5 p.8)",
+      "1973 (R5 p.8)",
+      "",
+      "Early 1990s (w3 s9)"
+     ]
     },
     {
      "q": "若年男性の収入見通しが低下した理由として、山田が挙げていないものはどれか。",
@@ -373,19 +547,31 @@
      ],
      "answer": 2,
      "explanation": "That's not in 山田. His reasons: the shift to industry and services finished, the seniority curve flattened, and deregulation hit farmers and small shops.",
-     "source": "R5 pp.8–9"
+     "source": "R5 pp.8–9",
+     "notes": [
+      "One of 山田's reasons (R5 p.8 図5-3)",
+      "One of 山田's reasons (R5 p.9)",
+      "",
+      "One of 山田's reasons (R5 p.8)"
+     ]
     },
     {
      "q": "表5-2（男性の学歴別未婚率）からわかることはどれか。",
      "choices": [
-      "学歴が高いほど未婚率が高い",
-      "学歴が低いほど未婚率が高く、その差が広がっている",
-      "学歴と未婚率には関係がない",
-      "大卒の未婚率だけが下がっている"
+      "学歴が高い男性ほど未婚率が高く、その差が広がっている",
+      "学歴が低い男性ほど未婚率が高く、その差が広がっている",
+      "学歴と未婚率の間には、はっきりした関係は見られない",
+      "大卒の男性の未婚率だけが世代を追うごとに下がっている"
      ],
      "answer": 1,
      "explanation": "Men born 1960–64: 中卒 38.2%, 高卒 26.8%, 大卒 22.2%.",
-     "source": "R5 p.10 表5-2"
+     "source": "R5 p.10 表5-2",
+     "notes": [
+      "Backwards: 中卒 38.2% vs 大卒 22.2% (R5 p.10)",
+      "",
+      "Made up. The gap is clear",
+      "Made up. All three rose"
+     ]
     },
     {
      "q": "2020年の平均初婚年齢として正しい組み合わせはどれか。",
@@ -396,8 +582,14 @@
       "男性33.0歳・女性31.5歳"
      ],
      "answer": 2,
-     "explanation": "a = up to 1975, b = 1995. 2015 was almost the same (31.1 / 29.4).",
-     "source": "w3 s4"
+     "explanation": "2020: men 31.0, women 29.4. 2015 was almost the same (31.1 / 29.4).",
+     "source": "w3 s4",
+     "notes": [
+      "1975 (w3 s4)",
+      "1995 (w3 s4)",
+      "",
+      "Made up"
+     ]
     },
     {
      "q": "「生涯未婚率」の定義として正しいものはどれか。",
@@ -409,7 +601,13 @@
      ],
      "answer": 2,
      "explanation": "50歳まで結婚経験がない割合.",
-     "source": "w3 s4"
+     "source": "w3 s4",
+     "notes": [
+      "Made up",
+      "Made up",
+      "",
+      "Made up"
+     ]
     },
     {
      "q": "「学卒後も親に基本的生活条件を依存してリッチな生活をしている独身者」を何というか。",
@@ -422,7 +620,13 @@
      "answer": 1,
      "explanation": "山田's own term, first used in 1997.",
      "source": "R5 p.14",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Couples with two incomes and no kids (w3 s13)",
+      "",
+      "Men not pursuing romance (w3 s13)",
+      "Not on the elite career track (R5 難解語句)"
+     ]
     },
     {
      "q": "親と同居している20〜34歳の未婚者は、2005年にこの年齢層の未婚者の何%に達したか。",
@@ -434,31 +638,49 @@
      ],
      "answer": 3,
      "explanation": "1980 29.5% (8.17 million) → 1990 41.7% → 2005 45.3% (11.7 million). 17% is the slide's 35–44 figure for 2015.",
-     "source": "R5 p.14 表5-4"
+     "source": "R5 p.14 表5-4",
+     "notes": [
+      "Slide's 35–44 figure for 2015 (w3 s7)",
+      "1980 (R5 p.14)",
+      "1990 (R5 p.14)",
+      ""
+     ]
     },
     {
      "q": "「可処分所得」の求め方として正しいものはどれか。",
      "choices": [
-      "総所得 − 税金",
+      "総所得 − 税金（所得税・住民税）",
       "総所得 − 税金 − 社会保険料",
-      "総所得 + 親からの仕送り",
-      "総所得 − 生活費"
+      "総所得 + 親からの仕送りや小遣い",
+      "総所得 − 毎月の家賃や食費"
      ],
      "answer": 1,
      "explanation": "Living at home keeps it high. Marriage lowers it, so パラサイト・シングル put off marriage.",
-     "source": "w3 s9"
+     "source": "w3 s9",
+     "notes": [
+      "Forgets 社会保険料 (w3 s9)",
+      "",
+      "Made up",
+      "Made up"
+     ]
     },
     {
      "q": "父親の収入が高い場合について、山田（p.113）の指摘として正しいものはどれか。",
      "choices": [
-      "子どもは早く結婚する",
+      "親から自立する時期が早く、子どもは早く結婚する",
       "結婚相手に期待する収入の水準が高くなり、未婚率が高い",
-      "子どもは親と同居しなくなる",
-      "子どもの出生率が上がる"
+      "親の家を出る時期が早くなり、親と同居しなくなる",
+      "経済的な余裕があるため、子どもの出生率が上がる"
      ],
      "answer": 1,
      "explanation": "Higher father's income → higher expectations of a partner → higher 未婚率.",
-     "source": "w3 s9"
+     "source": "w3 s9",
+     "notes": [
+      "Made up. The opposite (w3 s9)",
+      "",
+      "Made up. They stay: パラサイト (R5 p.14)",
+      "Made up"
+     ]
     },
     {
      "q": "25〜34歳の未婚者が独身でいる理由として、男女ともに最も多いものはどれか。",
@@ -470,7 +692,13 @@
      ],
      "answer": 2,
      "explanation": "Men 43.3%, women 48.1%. 「異性とうまくつき合えない」 has risen since 2005.",
-     "source": "w3 s15"
+     "source": "w3 s15",
+     "notes": [
+      "Real survey answer, but not the top one (w3 s15)",
+      "Real survey answer, but not the top one (w3 s15)",
+      "",
+      "Real survey answer, but not the top one (w3 s15)"
+     ]
     },
     {
      "q": "恋愛結婚の割合が見合い結婚を初めて上回ったのはいつ頃か。",
@@ -482,7 +710,13 @@
      ],
      "answer": 1,
      "explanation": "Crossover in 1965–69. 2021: love 74.6%, arranged 9.9%, met online 15.2%.",
-     "source": "w3 s14"
+     "source": "w3 s14",
+     "notes": [
+      "Made up",
+      "",
+      "Made up",
+      "Made up (2021: online meetings 15.2%)"
+     ]
     },
     {
      "q": "国際比較で、1人あたりGDPと合計特殊出生率の関係として正しいものはどれか。",
@@ -494,7 +728,13 @@
      ],
      "answer": 1,
      "explanation": "A negative relationship. Useful for 「なぜ経済が発展すると少子高齢化が起きるのか？」.",
-     "source": "w3 s11"
+     "source": "w3 s11",
+     "notes": [
+      "Backwards (w3 s11)",
+      "",
+      "Made up. The chart shows a clear negative link",
+      "Made up"
+     ]
     },
     {
      "q": "1980年代に出生率が回復しなかった国の組み合わせはどれか。",
@@ -507,19 +747,31 @@
      "answer": 2,
      "explanation": "The US, Northern Europe, France and the UK recovered. Italy, Spain and West Germany are like Japan.",
      "source": "R5 p.16",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Recovered (R5 p.16)",
+      "Recovered (R5 p.16)",
+      "",
+      "Recovered (R5 p.16)"
+     ]
     },
     {
      "q": "山田によれば、欧米で出生率が回復した2つの条件はどれか。",
      "choices": [
-      "移民の受け入れと宗教",
+      "移民の受け入れとキリスト教の信仰",
       "非パラサイト社会と男女共同参画社会",
-      "高い経済成長と年功序列",
+      "高い経済成長と年功序列賃金",
       "専業主婦の増加と見合い結婚"
      ],
      "answer": 1,
      "explanation": "Cultural (adult children leave home) + social (women work, two incomes). Catholicism is only an extra factor for Italy.",
-     "source": "R5 pp.16–18"
+     "source": "R5 pp.16–18",
+     "notes": [
+      "Made up. Catholicism is only an extra factor for Italy (R5 p.17)",
+      "",
+      "Made up. 年功序列 is a Japanese pay system (R5 p.8)",
+      "Backwards. These belong to the old Japanese model"
+     ]
     },
     {
      "q": "2022年の日本の男性の育児休業取得率はどれか。",
@@ -531,7 +783,13 @@
      ],
      "answer": 1,
      "explanation": "Women 80.2%, men 17.1%. It pays 50–60% of wages and employers can't refuse.",
-     "source": "w3 s16"
+     "source": "w3 s16",
+     "notes": [
+      "Made up",
+      "",
+      "Made up",
+      "That's women (w3 s16)"
+     ]
     },
     {
      "q": "2026年のこども家庭庁の予算はどれか。",
@@ -543,19 +801,31 @@
      ],
      "answer": 0,
      "explanation": "¥7.5 trillion.",
-     "source": "w3 s17"
+     "source": "w3 s17",
+     "notes": [
+      "",
+      "Made up",
+      "Made up",
+      "Made up (10× too big)"
+     ]
     },
     {
      "q": "手厚い子育て支援で知られるフィンランドについて、スライドからわかることはどれか。",
      "choices": [
-      "出生率は上がり続けている",
-      "2010年頃から急低下し、2022年には日本と同じ1.26前後になった",
-      "出生率はずっと日本より低い",
-      "育児休業制度がない"
+      "出生率は2010年以降も上がり続け、2.0を超えている",
+      "2010年頃から急低下し、2022年には日本並みの1.26前後に",
+      "出生率は2000年以降ずっと日本より低い水準にある",
+      "国としての育児休業制度がなく、各自治体に任されている"
      ],
      "answer": 1,
      "explanation": "About 1.87 (2010) → 1.26 (2022). Generous support alone doesn't guarantee recovery.",
-     "source": "w3 s19"
+     "source": "w3 s19",
+     "notes": [
+      "Made up",
+      "",
+      "Made up. It was far higher until about 2020 (w3 s19)",
+      "That's the US (w3 s18). Finland has generous leave"
+     ]
     },
     {
      "q": "2025年の合計特殊出生率が最も低い国・地域はどれか。",
@@ -567,7 +837,13 @@
      ],
      "answer": 3,
      "explanation": "台湾 0.69 · 韓国 0.80 · 中国 0.93 · 日本 1.14.",
-     "source": "w2 s6"
+     "source": "w2 s6",
+     "notes": [
+      "1.14 (w2 s4)",
+      "0.80 (w2 s6)",
+      "0.93 (w2 s6)",
+      ""
+     ]
     }
    ]
   },
@@ -736,5 +1012,6 @@
     }
    ]
   }
- ]
+ ],
+ "shuffle": true
 }

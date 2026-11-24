@@ -25,7 +25,7 @@ function freshState(test) {
   const order = {};
   test.sections.forEach((sec, si) => {
     if (sec.type !== 'mc') return;
-    // Explanations refer to choices by letter (a = …), so only shuffle tests that opt in.
+    // Only tests that opt in are shuffled: their explanations don't refer to letters, and each wrong choice has its own note.
     sec.items.forEach((it, ii) => {
       const ids = it.choices.map((_, k) => k);
       order[`${si}-${ii}`] = test.shuffle ? shuffle(ids) : ids;
@@ -197,7 +197,14 @@ export default function ClassTest({ test, classInfo, savedState, onSave, onBack,
                                   ? { borderColor: '#34C38F', color: '#34C38F', borderWidth: 2 }
                                   : { borderColor: accent, color: accent }}
                             >{LETTERS[pos]}</span>
-                            <span className="noto text-base sm:text-[17px] text-[#D5DAE6] leading-relaxed">{it.choices[orig]}</span>
+                            <span className="min-w-0">
+                              <span className="noto block text-base sm:text-[17px] text-[#D5DAE6] leading-relaxed">{it.choices[orig]}</span>
+                              {answered && !isRight && it.notes?.[orig] && (
+                                <span className={`noto block text-[13px] sm:text-sm leading-snug mt-0.5 ${isPick ? 'text-[#E8A29C]' : 'text-[#7681A0]'}`}>
+                                  ↳ {it.notes[orig]}
+                                </span>
+                              )}
+                            </span>
                           </button>
                         );
                       })}

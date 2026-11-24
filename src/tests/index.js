@@ -127,6 +127,7 @@ export function buildCombined(cls, picks) {
     description: cfg.description,
     language: 'ja',
     combined: true,
+    shuffle: cls.tests.every((t) => t.shuffle),
     sections: [
       { type: 'mc', title: 'Ⅰ. 選択問題', instruction: '最も適切なものを1つ選べ', items: sections.mc },
       { type: 'blank', title: 'Ⅱ. 穴埋め問題', instruction: '空欄に入る語句を書け（漢字・ひらがなどちらでも可）', items: sections.blank },

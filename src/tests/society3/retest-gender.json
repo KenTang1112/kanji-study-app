@@ -14,12 +14,18 @@
      "choices": [
       "男性のほうが約300万人多い",
       "女性のほうが約340万人多い",
-      "男女ほぼ同数",
+      "男女はほぼ同数で、差は10万人以下",
       "女性のほうが約1,000万人多い"
      ],
      "answer": 1,
      "explanation": "Men 61.25 million, women 64.63 million. Women are the majority but a small share of politicians.",
-     "source": "w7 s5"
+     "source": "w7 s5",
+     "notes": [
+      "Backwards (w7 s5)",
+      "",
+      "Made up",
+      "Made up"
+     ]
     },
     {
      "q": "2019年の衆議院における女性議員の割合はどれか。",
@@ -31,7 +37,13 @@
      ],
      "answer": 0,
      "explanation": "2019: 衆 10.1%, 参 20.7%. 2025: 衆 15.7%, 参 26.7%.",
-     "source": "w7 s5"
+     "source": "w7 s5",
+     "notes": [
+      "",
+      "衆議院 2025 (w7 s5)",
+      "参議院 2019 (w7 s5)",
+      "参議院 2025 (w7 s5)"
+     ]
     },
     {
      "q": "2025年の参議院における女性議員の割合はどれか。",
@@ -43,7 +55,13 @@
      ],
      "answer": 3,
      "explanation": "15.7% = 衆議院 2025. 20.7% = 参議院 2019.",
-     "source": "w7 s5"
+     "source": "w7 s5",
+     "notes": [
+      "衆議院 2019 (w7 s5)",
+      "衆議院 2025 (w7 s5)",
+      "参議院 2019 (w7 s5)",
+      ""
+     ]
     },
     {
      "q": "2019年、女性議員の割合が最も低かった議会はどれか。",
@@ -55,7 +73,13 @@
      ],
      "answer": 3,
      "explanation": "町村議会 9.9% · 都道府県議会 10.1% · 衆議院 10.1% · 市議会 14.4% · 参議院 20.7%.",
-     "source": "w7 s5"
+     "source": "w7 s5",
+     "notes": [
+      "The highest, 20.7% (w7 s5)",
+      "14.4% (w7 s5)",
+      "10.1%, just above (w7 s5)",
+      ""
+     ]
     },
     {
      "q": "IPUの「女性議員の割合の国別ランキング」（2019年）で1位の国はどれか。",
@@ -67,7 +91,13 @@
      ],
      "answer": 2,
      "explanation": "ルワンダ 61.3% · キューバ 53.2 · ボリビア 53.1 · メキシコ 48.2 · スウェーデン 47.3.",
-     "source": "w7 s7"
+     "source": "w7 s7",
+     "notes": [
+      "5th, 47.3% (w7 s7)",
+      "2nd, 53.2% (w7 s7)",
+      "",
+      "39.7% (w7 s7)"
+     ]
     },
     {
      "q": "同じランキング（2019年1月）での日本の順位と割合はどれか。",
@@ -78,8 +108,14 @@
       "165位・10.2%"
      ],
      "answer": 3,
-     "explanation": "a = アメリカ, b = 韓国, c = ロシア. The slide text gives a later rank of 166位.",
-     "source": "w7 s7"
+     "explanation": "165th at 10.2% (January 2019). The slide text gives a later rank of 166th.",
+     "source": "w7 s7",
+     "notes": [
+      "Close to the US figure, 23.5% (w7 s7)",
+      "South Korea's share, 17.1% (w7 s7)",
+      "Russia's share, 15.8% (w7 s7)",
+      ""
+     ]
     },
     {
      "q": "2017年の衆議院選挙で、当選者に占める女性の割合はどれか。",
@@ -91,7 +127,13 @@
      ],
      "answer": 0,
      "explanation": "Candidates 17.7%, winners 10.1%. 24.4% = women candidates in 2026.",
-     "source": "w7 s6"
+     "source": "w7 s6",
+     "notes": [
+      "",
+      "Women's share of candidates in 2017 (w7 s6)",
+      "Women candidates in the 2026 election (w7 s14)",
+      "参議院 2025 (w7 s5)"
+     ]
     },
     {
      "q": "2022年の参議院選挙で、当選者に占める女性の割合が最も高かった主要政党はどれか。",
@@ -103,7 +145,13 @@
      ],
      "answer": 1,
      "explanation": "立憲 52.9% · 共産 50.0 · 国民 40.0 · 維新 25.0 · 自民 20.6 · 公明 15.4.",
-     "source": "w7 s8"
+     "source": "w7 s8",
+     "notes": [
+      "20.6% (w7 s8)",
+      "",
+      "15.4%, the lowest (w7 s8)",
+      "25.0% (w7 s8)"
+     ]
     },
     {
      "q": "2022年の参議院選挙で、自民党の当選者に占める女性の割合はどれか。",
@@ -114,21 +162,33 @@
       "52.9%"
      ],
      "answer": 1,
-     "explanation": "15.4% = 公明, 40.0% = 国民民主, 52.9% = 立憲.",
-     "source": "w7 s8"
+     "explanation": "自民党 20.6%. 立憲 52.9% · 共産 50.0 · 国民 40.0 · 維新 25.0 · 公明 15.4.",
+     "source": "w7 s8",
+     "notes": [
+      "公明党 (w7 s8)",
+      "",
+      "国民民主党 (w7 s8)",
+      "立憲民主党 (w7 s8)"
+     ]
     },
     {
      "q": "「閣僚」とは何か。",
      "choices": [
-      "衆議院の議長",
+      "衆議院の議長と副議長",
       "内閣のメンバー（＝大臣）",
-      "都道府県の知事",
-      "政党の幹事長"
+      "都道府県の知事と副知事",
+      "政党の幹事長などの役員"
      ],
      "answer": 1,
      "explanation": "閣僚 = 内閣のメンバー = 大臣.",
      "source": "w7 s9",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Made up",
+      "",
+      "知事 are governors (w7 s10)",
+      "Made up"
+     ]
     },
     {
      "q": "女性閣僚比率の国際比較（2017年）で、OECD平均と日本の組み合わせとして正しいものはどれか。",
@@ -140,7 +200,13 @@
      ],
      "answer": 1,
      "explanation": "OECD average 27.9%, Japan 15.8%. France is top at 52.9%.",
-     "source": "w7 s9"
+     "source": "w7 s9",
+     "notes": [
+      "52.9% is France, the top (w7 s9)",
+      "",
+      "10.2% is Japan's Diet share (w7 s7)",
+      "39.7% = France in IPU; 6.4% = women governors (w7 s7, s10)"
+     ]
     },
     {
      "q": "各分野の「指導的地位」に占める女性の割合で、最も低い部類に入るものはどれか。",
@@ -152,7 +218,13 @@
      ],
      "answer": 3,
      "explanation": "知事 6.4% (自治会長 5.4%). 薬剤師 65.9%, 審議会委員 37.4%, 国家公務員採用者 32.5%.",
-     "source": "w7 s10"
+     "source": "w7 s10",
+     "notes": [
+      "The highest, 65.9% (w7 s10)",
+      "37.4% (w7 s10)",
+      "32.5% (w7 s10)",
+      ""
+     ]
     },
     {
      "q": "男性政治家が志向しがちな政策として、スライドに挙げられていないものはどれか。",
@@ -164,7 +236,13 @@
      ],
      "answer": 3,
      "explanation": "選択的夫婦別姓 is on the list of policies women voters prefer, with social welfare and getting women into work.",
-     "source": "w7 s11"
+     "source": "w7 s11",
+     "notes": [
+      "Men's list (w7 s11)",
+      "Men's list (w7 s11)",
+      "Men's list (w7 s11)",
+      ""
+     ]
     },
     {
      "q": "女性有権者が好む政策として挙げられているものはどれか。",
@@ -177,7 +255,13 @@
      "answer": 1,
      "explanation": "選択的夫婦別姓 · 社会福祉政策 · 女性の社会進出の推進.",
      "source": "w7 s11",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Men's list (w7 s11)",
+      "",
+      "Men's list (w7 s11)",
+      "Men's list (w7 s11)"
+     ]
     },
     {
      "q": "前田（2019）の本のタイトルはどれか。",
@@ -188,8 +272,14 @@
       "『女性議員の政治学』"
      ],
      "answer": 0,
-     "explanation": "b = 山田, c = 赤川学.",
-     "source": "w7 s12"
+     "explanation": "前田 (2019) 『女性のいない民主主義』.",
+     "source": "w7 s12",
+     "notes": [
+      "",
+      "山田's book (week 3)",
+      "赤川学's book (R1 p.12)",
+      "Made up"
+     ]
     },
     {
      "q": "前田が「政治代表の男女差に影響を与える要因」として挙げていないものはどれか。",
@@ -201,7 +291,13 @@
      ],
      "answer": 3,
      "explanation": "The four: 有権者 · 候補者 · 政党組織 · 選挙制度. Media is a good answer for 「この本で扱われている以外の要因」.",
-     "source": "w7 s12"
+     "source": "w7 s12",
+     "notes": [
+      "Factor ① (w7 s12)",
+      "Factor ② (w7 s12)",
+      "Factor ③ (w7 s12)",
+      ""
+     ]
     },
     {
      "q": "仮説1a「女性有権者の投票率が低いから」の検証結果はどれか。",
@@ -213,19 +309,31 @@
      ],
      "answer": 1,
      "explanation": "There is no gender gap in turnout (p.168).",
-     "source": "w7 s13, s17"
+     "source": "w7 s13, s17",
+     "notes": [
+      "Hypothesis 2's result (w7 s17)",
+      "",
+      "Hypothesis 3's result (w7 s17)",
+      "Hypotheses 1b and 4 (w7 s17)"
+     ]
     },
     {
      "q": "仮説1b「有権者は男性の方が政治家にふさわしいと考えている」について、矛盾するデータとして挙げられているものはどれか。",
      "choices": [
-      "女性の投票率のほうが高い",
-      "世論調査では、女性代表のふさわしい割合は30%程度とされる",
-      "女性候補者の当選率が高い",
-      "女性議員の支持率が高い"
+      "実際の選挙では、女性の投票率のほうが男性より高い",
+      "世論調査では、女性議員はおよそ30%が適当とされる",
+      "女性候補者の当選率は、男性候補者よりも高い",
+      "女性議員の支持率は、男性議員よりも高い傾向がある"
      ],
      "answer": 1,
      "explanation": "Male-dominant norms do appear (p.172), but polls say about 30% of representatives should be women → 相反するデータ.",
-     "source": "w7 s13"
+     "source": "w7 s13",
+     "notes": [
+      "Made up. Turnout shows no gap (p.168)",
+      "",
+      "Made up",
+      "Made up"
+     ]
     },
     {
      "q": "4つの仮説のうち、検証結果が「肯定」だったものはどれか。",
@@ -238,7 +346,13 @@
      "answer": 2,
      "explanation": "Only hypothesis 2 is confirmed. 1a 否定, 1b and 4 相反するデータ, 3 政党による.",
      "source": "w7 s17",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "1a: 否定 (w7 s17)",
+      "1b: 相反するデータ (w7 s17)",
+      "",
+      "4: 相反するデータ (w7 s17)"
+     ]
     },
     {
      "q": "2017年の衆議院選挙で、候補者に占める女性の割合はどれか（スライドの数字）。",
@@ -250,7 +364,13 @@
      ],
      "answer": 1,
      "explanation": "17% (2017) → 24.4% (2026).",
-     "source": "w7 s14"
+     "source": "w7 s14",
+     "notes": [
+      "Winners, not candidates, 10.1% (w7 s6)",
+      "",
+      "2026 election, 24.4% (w7 s14)",
+      "The share voters say is right (w7 s13)"
+     ]
     },
     {
      "q": "国会議員につながる職業として、スライドに挙げられていないものはどれか。",
@@ -262,7 +382,13 @@
      ],
      "answer": 3,
      "explanation": "The list: 弁護士, 経営者, 地方議員, 官僚, 議員秘書, 労働組合職員.",
-     "source": "w7 s14"
+     "source": "w7 s14",
+     "notes": [
+      "On the list (w7 s14)",
+      "On the list (w7 s14)",
+      "On the list (w7 s14)",
+      ""
+     ]
     },
     {
      "q": "仮説3「政党は女性を候補者にしたがらない」の検証結果はどれか。",
@@ -274,7 +400,13 @@
      ],
      "answer": 2,
      "explanation": "Left parties field many women; conservative parties field few.",
-     "source": "w7 s15, s17"
+     "source": "w7 s15, s17",
+     "notes": [
+      "Hypothesis 2 (w7 s17)",
+      "Hypothesis 1a (w7 s17)",
+      "",
+      "Hypotheses 1b and 4 (w7 s17)"
+     ]
     },
     {
      "q": "1986年・89年に女性候補者を積極的に立てた戦略を何というか。",
@@ -287,19 +419,31 @@
      "answer": 1,
      "explanation": "マドンナ作戦 (革新系・左派).",
      "source": "w7 s15",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Made up. 小泉 did use women candidates, but in 2005 (w7 s15)",
+      "",
+      "Made up",
+      "Glass ceiling, a 難解語句 (w7 s22)"
+     ]
     },
     {
      "q": "保守系政党（自民党など）に女性候補者が少ない理由として挙げられていないものはどれか。",
      "choices": [
-      "男性優位",
-      "年功序列制度",
-      "後援会制度",
-      "ジェンダー・クォータ制の導入"
+      "男性優位の組織文化",
+      "年功序列の人事制度",
+      "議員個人の後援会制度",
+      "ジェンダー・クォータ制"
      ],
      "answer": 3,
      "explanation": "Japan has no quota system (only the 2018 努力目標 law). The reasons: 男性優位, 年功序列, 後援会, few powerful women politicians.",
-     "source": "w7 s15"
+     "source": "w7 s15",
+     "notes": [
+      "A real reason (w7 s15)",
+      "A real reason (w7 s15)",
+      "A real reason (w7 s15)",
+      ""
+     ]
     },
     {
      "q": "過去に女性候補者を積極的に活用したリーダーとして挙げられているのは誰か。",
@@ -311,7 +455,13 @@
      ],
      "answer": 1,
      "explanation": "小泉, 2005. Today parties have little 誘因 to do this.",
-     "source": "w7 s15"
+     "source": "w7 s15",
+     "notes": [
+      "Made up",
+      "",
+      "Made up",
+      "Made up. 1986 is the マドンナ作戦 year (w7 s15)"
+     ]
     },
     {
      "q": "選挙制度と民主主義の型の組み合わせとして正しいものはどれか。",
@@ -319,36 +469,54 @@
       "小選挙区制 → 多党制・合意型民主主義",
       "比例代表制 → 二大政党制・多数決型民主主義",
       "小選挙区制 → 二大政党制・多数決型民主主義",
-      "比例代表制 → 一党優位制"
+      "比例代表制 → 一党優位制・多数決型民主主義"
      ],
      "answer": 2,
      "explanation": "小選挙区制 → 二大政党制・多数決型. 比例代表制 → 多党制・合意型.",
-     "source": "w7 s16"
+     "source": "w7 s16",
+     "notes": [
+      "The results belong to 比例代表制 (w7 s16)",
+      "The results belong to 小選挙区制 (w7 s16)",
+      "",
+      "Made up"
+     ]
     },
     {
      "q": "日本の選挙制度と女性議員の関係について、スライドの説明として正しいものはどれか。",
      "choices": [
-      "小選挙区制に変わって女性議員が減った",
+      "中選挙区制から小選挙区制に変わって、女性議員が減った",
       "中選挙区制から小選挙区制に変わって、女性議員が増えた",
-      "比例代表制を廃止して女性議員が増えた",
-      "選挙制度は女性議員の数に影響しない"
+      "比例代表制を廃止したことで、女性議員が増えた",
+      "選挙制度は女性議員の数にまったく影響しない"
      ],
      "answer": 1,
      "explanation": "In theory single-member districts are worse for minorities, but in Japan women increased after the switch → 相反するデータ.",
-     "source": "w7 s16"
+     "source": "w7 s16",
+     "notes": [
+      "Backwards. That's what theory predicts, not what happened (w7 s16)",
+      "",
+      "Made up. Japan still has PR",
+      "Made up. The result is 相反するデータ, not 'no effect'"
+     ]
     },
     {
      "q": "「ジェンダー・クォータ制」の説明として正しいものはどれか。",
      "choices": [
-      "女性の投票を義務化する制度",
+      "女性の投票を法律で義務にする制度",
       "一定割合の候補者や議席を女性に割り当てる仕組み",
-      "女性議員の給与を上げる制度",
-      "女性だけが立候補できる選挙区"
+      "女性議員の給与や手当を引き上げる制度",
+      "女性だけが立候補できる選挙区を作る仕組み"
      ],
      "answer": 1,
      "explanation": "Many countries use it. Types on the map: legislated candidate quotas, reserved seats, voluntary party quotas.",
      "source": "w7 s18–19",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "Made up",
+      "",
+      "Made up",
+      "Close to 'reserved seats', but that's one type, not the definition (w7 s19)"
+     ]
     },
     {
      "q": "2018年に制定された「候補者男女均等法」について正しいものはどれか。",
@@ -360,7 +528,13 @@
      ],
      "answer": 2,
      "explanation": "努力目標, 違反しても罰則なし.",
-     "source": "w7 s18"
+     "source": "w7 s18",
+     "notes": [
+      "Backwards. No penalty (w7 s18)",
+      "Made up. It's only a target",
+      "",
+      "Made up"
+     ]
     },
     {
      "q": "世界のジェンダー・クォータ制の地図で、日本はどこに分類されるか。",
@@ -372,7 +546,13 @@
      ],
      "answer": 3,
      "explanation": "Japan has none (only the non-binding 2018 law).",
-     "source": "w7 s19"
+     "source": "w7 s19",
+     "notes": [
+      "One quota type on the map (w7 s19)",
+      "One quota type on the map (w7 s19)",
+      "One quota type on the map (w7 s19)",
+      ""
+     ]
     },
     {
      "q": "江別市議会の女性議員の割合（2023年）はどれか。",
@@ -384,7 +564,13 @@
      ],
      "answer": 3,
      "explanation": "12 of 25 seats, first in Japan. 13.8% = Hokkaido municipal councils overall; 29.1% = councils with no women.",
-     "source": "w7 s20"
+     "source": "w7 s20",
+     "notes": [
+      "Hokkaido municipal councils overall (w7 s20)",
+      "Hokkaido councils with no women (w7 s20)",
+      "Made up",
+      ""
+     ]
     },
     {
      "q": "北海道の市町村議会で、女性議員がゼロの議会の割合はどれか。",
@@ -396,19 +582,31 @@
      ],
      "answer": 2,
      "explanation": "29.1% have no women. Women are 13.8% of Hokkaido municipal councillors overall.",
-     "source": "w7 s20"
+     "source": "w7 s20",
+     "notes": [
+      "Made up",
+      "Hokkaido women councillors overall (w7 s20)",
+      "",
+      "江別市 (w7 s20)"
+     ]
     },
     {
      "q": "「ガラスの天井」の意味として正しいものはどれか。",
      "choices": [
       "女性が一定以上の地位に昇進することを阻む、見えない壁",
-      "議会の天井がガラスでできていること",
-      "女性議員の割合が30%を超えること",
-      "政治家の給与の上限"
+      "国会議事堂の天井がガラスでできていること",
+      "女性議員の割合が30%を超えて影響力を持つこと",
+      "法律で決められている、政治家の給与の上限"
      ],
      "answer": 0,
      "explanation": "Glass ceiling. Use it for the third discussion question: more women legislators, but few ministers (15.8%) and governors (6.4%).",
-     "source": "w7 s22"
+     "source": "w7 s22",
+     "notes": [
+      "",
+      "Made up (literal reading)",
+      "That's クリティカル・マス理論 (w7 s22)",
+      "Made up"
+     ]
     },
     {
      "q": "衆議院の比例代表で使われている名簿の方式はどれか。",
@@ -420,7 +618,13 @@
      ],
      "answer": 1,
      "explanation": "衆議院 = 拘束名簿式 (closed-list), 参議院 = 非拘束名簿式 (open-list).",
-     "source": "w7 s22"
+     "source": "w7 s22",
+     "notes": [
+      "Used by the 参議院 (w7 s22)",
+      "",
+      "Made up. Not in the slides",
+      "Made up"
+     ]
     },
     {
      "q": "親などの地盤を受け継いで議員になった人を何というか。",
@@ -433,7 +637,13 @@
      "answer": 0,
      "explanation": "世襲議員（せしゅうぎいん）: a good extra factor for 「この本で扱われている以外の要因」.",
      "source": "w7 s22",
-     "reversed": true
+     "reversed": true,
+     "notes": [
+      "",
+      "Centre-right (w7 s22)",
+      "Made up. 下野する = a party losing power (w7 s22)",
+      "Made up"
+     ]
     }
    ]
   },
@@ -569,5 +779,6 @@
     }
    ]
   }
- ]
+ ],
+ "shuffle": true
 }
